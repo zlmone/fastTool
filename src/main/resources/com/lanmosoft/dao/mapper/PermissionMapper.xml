@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.PermissionMapper">
+  
+  	<cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Permission">
+	    INSERT INTO permission (id
+  ,position_id
+  ,position_name
+  ,function_id
+  ,function_name
+  ,function_type
+  ,firstModule
+  ,secondModule
+  ,data_role
+  ,delstatus
+  ,creatorId
+  ,creatorName
+  ,superOrg_id
+  ,superOrg_name
+  ,fulldept_id
+  ,fulldept_name
+  ,fullpost_id
+  ,fullpost_name
+  ,createTime
+  ,modifiedTime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{position_id,jdbcType=VARCHAR},
+  #{position_name,jdbcType=VARCHAR},
+  #{function_id,jdbcType=VARCHAR},
+  #{function_name,jdbcType=VARCHAR},
+  #{function_type,jdbcType=VARCHAR},
+  #{firstModule,jdbcType=VARCHAR},
+  #{secondModule,jdbcType=VARCHAR},
+  #{data_role,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR},
+  #{creatorId,jdbcType=VARCHAR},
+  #{creatorName,jdbcType=VARCHAR},
+  #{superOrg_id,jdbcType=VARCHAR},
+  #{superOrg_name,jdbcType=VARCHAR},
+  #{fulldept_id,jdbcType=VARCHAR},
+  #{fulldept_name,jdbcType=VARCHAR},
+  #{fullpost_id,jdbcType=VARCHAR},
+  #{fullpost_name,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Permission">
+    	UPDATE permission 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="position_id != null" >
+        position_id = #{position_id,jdbcType=VARCHAR},
+      </if>
+		<if test="position_name != null" >
+        position_name = #{position_name,jdbcType=VARCHAR},
+      </if>
+		<if test="function_id != null" >
+        function_id = #{function_id,jdbcType=VARCHAR},
+      </if>
+		<if test="function_name != null" >
+        function_name = #{function_name,jdbcType=VARCHAR},
+      </if>
+		<if test="function_type != null" >
+        function_type = #{function_type,jdbcType=VARCHAR},
+      </if>
+		<if test="firstModule != null" >
+        firstModule = #{firstModule,jdbcType=VARCHAR},
+      </if>
+		<if test="secondModule != null" >
+        secondModule = #{secondModule,jdbcType=VARCHAR},
+      </if>
+		<if test="data_role != null" >
+        data_role = #{data_role,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_id != null" >
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_name != null" >
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_id != null" >
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_name != null" >
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_id != null" >
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_name != null" >
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Permission">
+    	UPDATE permission 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        position_id = #{position_id,jdbcType=VARCHAR},
+        position_name = #{position_name,jdbcType=VARCHAR},
+        function_id = #{function_id,jdbcType=VARCHAR},
+        function_name = #{function_name,jdbcType=VARCHAR},
+        function_type = #{function_type,jdbcType=VARCHAR},
+        firstModule = #{firstModule,jdbcType=VARCHAR},
+        secondModule = #{secondModule,jdbcType=VARCHAR},
+        data_role = #{data_role,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from permission where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from permission <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE permission 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.position_id != null" >
+        position_id = #{domain.position_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.position_name != null" >
+        position_name = #{domain.position_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.function_id != null" >
+        function_id = #{domain.function_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.function_name != null" >
+        function_name = #{domain.function_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.function_type != null" >
+        function_type = #{domain.function_type,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.firstModule != null" >
+        firstModule = #{domain.firstModule,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.secondModule != null" >
+        secondModule = #{domain.secondModule,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.data_role != null" >
+        data_role = #{domain.data_role,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorId != null" >
+        creatorId = #{domain.creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorName != null" >
+        creatorName = #{domain.creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_id != null" >
+        superOrg_id = #{domain.superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_name != null" >
+        superOrg_name = #{domain.superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_id != null" >
+        fulldept_id = #{domain.fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_name != null" >
+        fulldept_name = #{domain.fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_id != null" >
+        fullpost_id = #{domain.fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_name != null" >
+        fullpost_name = #{domain.fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Permission">
+		select <include refid="Base_Column_List"/> from permission where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Permission" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from permission <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from permission <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,position_id
+,position_name
+,function_id
+,function_name
+,function_type
+,firstModule
+,secondModule
+,data_role
+,delstatus
+,creatorId
+,creatorName
+,superOrg_id
+,superOrg_name
+,fulldept_id
+,fulldept_name
+,fullpost_id
+,fullpost_name
+,createTime
+,modifiedTime
+	</sql>
+</mapper>

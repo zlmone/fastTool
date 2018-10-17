@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>联系人信息</title>
+	<link rel="stylesheet" href="js/mint-ui/mint-ui.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/vue.min.js"></script>
+	<script src="js/mint-ui/mint-ui.js"></script>
+	<script src="js/sea.min.js"></script>
+	<script src="js/sea.config.js"></script>
+</head>
+<body>
+	<div id="app" class="bg-gray" v-cloak>
+		<div class="list-label">请选择您的运营商</div>
+		<picker-select label="运营商" v-model="seller.value" v-bind:options="seller.options"></picker-select>
+		<div class="hr"></div>
+		<mt-field label="服务密码" type="password" placeholder="请输入" v-model="password"></mt-field>
+		<div class="hr"></div>
+		<mt-field label="登录动态码" type="text" placeholder="请输入" v-model="login">
+			<button class="get-validate-btn" v-on:click="getValidate">获取验证码</button>
+		</mt-field>
+		<div class="hr"></div>
+		<div class="submit-btn-wrap">
+			<div class="affix-wrap">
+				<checkbox-btn title="阅读并同意" v-model="affix"></checkbox-btn>
+				<a href="#">《授权条款协议》</a>
+			</div>
+			<mt-button v-on:click="onSubmit">立即授权</mt-button>
+		</div>
+		<div class="cut"></div>
+		<div class="hint-wrap">
+			<p class="head">备注：</p>
+			<p class="title">联通号码密码重置步骤：</p>
+			<p>1、通过本机编辑短信405至10010进行重置密码；</p>
+			<p>2、请回复“MMCZ#6位新密码#证件号后6位”进行重置；</p><br/>
+			<p class="title">移动号码密码查询步骤：</p>
+			<p>通过本机编辑短信2010至10086进行查询密码；</p><br/>
+			<p class="title">电信号码密码查询步骤：</p>
+			<p>通过本机编辑短信551至10001进行查询密码；</p>
+		</div>
+		<div class="cut"></div>
+	</div>
+	<script>
+		(function(Vue, seajs){
+			seajs.use(["fieldInput", "pickerSelect", "countdown", "checkbox"], function(fieldInput, pickerSelect, countdown, checkbox){
+				Vue.component(fieldInput.name,fieldInput);
+				Vue.component(pickerSelect.name,pickerSelect);
+				Vue.component(checkbox.name, checkbox);
+				var app = new Vue({
+					el: "#app",
+					data: {
+						seller: {
+							value: "移动",
+							options: [{
+								values: ["移动","联通","电信"]
+							}]
+						},
+						password: "",
+						login: "",
+						affix: true
+					},
+					methods: {
+						validate: function(){
+							if(!this.password.length){
+								this.$toast('请填写服务密码!');
+								return false
+							}else if(!this.login.length){
+								this.$toast('请填写登录动态码!');
+								return false
+							}else if(!this.affix){
+								this.$toast('请确认授权条款协议!');
+								return false
+							}
+							return true
+						},
+						getValidate: function(e){
+							//获取验证码开始计时
+							countdown.set(e.target);
+						},
+						onSubmit: function(){
+							if(!this.validate()) return
+							this.$indicator.open();
+							//提交
+							console.log(this.$data);
+						}
+					}
+				});
+			});
+		})(Vue, seajs);
+	</script>
+</body>
+</html>

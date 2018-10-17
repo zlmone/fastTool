@@ -1,0 +1,242 @@
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row" ng-form="bigform">
+    <div class="col-md-12">
+
+        <div class="portlet light bordered ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-pencil"></i>添加用户
+                </div>
+                <div class="actions btn-set">
+            <!--        <button type="button" name="back" class="btn default" ng-click="$root.settings.utils.back()"><i class="fa fa-angle-left"></i> 返回</button>
+                    <button ng-disabled="bigform.$invalid" class="btn green" ng-click="view_bug_value.save(1)"popover-trigger="mouseenter"><i class="fa fa-check"></i> 保存并返回</button>
+                    <button ng-disabled="bigform.$invalid"  class="btn green" ng-click="view_bug_value.save(2)"  popover-trigger="mouseenter"><i class="fa fa-check-circle"></i>保存并新增</button>
+             -->
+                    <input class="btn green" type="submit" value="保存" ng-click="user.save(0)" ng-disabled="form.$invalid"/>
+                    <input class="btn green" type="submit" value="保存并新建" ng-click="user.save(1)" ng-disabled="form.$invalid">
+                    <input class="btn green" type="reset" value="返回" onclick="javascript:history.go(-1)">
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <!-- BEGIN FORM-->
+                            <form action="#" name="form" class="form-horizontal">
+                                <div class="form-body">
+
+                                    <!--/row-->
+                                    <div class="col-md-12" >
+                                        <div class="form-group">
+                                            <div class="col-md-9">
+                                                <label class="control-label col-md-6" style="color:red">真实名/用户名一旦保存就不可以修改</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">真实名<span ng-class="{required:form.value_name.$invalid}">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" ng-model="user.item.value_name" required  name="value_name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">用户名<span ng-class="{required:form.username.$invalid}">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" ng-model="user.item.name" required  name="username"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">密码<span ng-class="{required:form.password.$invalid}">*</span></label>
+                                            <div class="col-md-9">
+                                                <input type="password" class="form-control" ng-model="user.item.password" required  name="password"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">用户类别<span ng-class="{required:form.category_id.$invalid}">*</span></label>
+                                            <div class="col-md-9">
+                                                <select type="text" class="form-control" required   ng-model="user.item.category_id"  name="category_id" >
+                                                    <option value="">请选择</option>
+                                                    <option value="1">管理员</option>
+                                                    <option value="2">信审专员</option>
+                                                    <option value="3">回访专员</option>
+                                                   	<option value="4">销售经理</option>
+                                                   	<option value="5">催收专员</option>
+                                                   	<option value="6">风控主管</option>
+                                                   	<option value="7">催收主管</option>
+                                                  <!--  <option value="3">施工人员</option>-->
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">部门<span ng-class="{required:form.department_id.$invalid}">*</span></label>
+                                            <div class="col-md-9">
+                                                <select type="text" class="form-control"   name="department_id" ng-model="user.item.department_id" required  ng-options="dept.id as dept.name for dept in user.deptList">
+                                                </select>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">岗位<span ng-class="{required:form.position_id.$invalid}">*</span></label>
+                                            <div class="col-md-9">
+                                                <select type="text" class="form-control"   name="position_id" ng-model="user.item.position_id" required  ng-options="post.id as post.name for post in user.postList">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+									
+                                    <!-- <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">所属城市<span ng-class="{required:form.belong_city.$invalid}">*</span></label>
+                                            <div class="col-md-9">
+                                                <select type="text" class="form-control"   name="belong_city" ng-model="user.item.belong_city" required >
+                                                    <option value="">--请选择--</option>
+                                                    <option value="上海市">上海市</option>
+                                                    <option value="杭州市">杭州市</option>
+                                                    <option value="北京市">北京市</option>
+                                                    <option value="天津市">天津市</option>
+                                                    <option value="广州市">广州市</option>
+                                                    <option value="南京市">南京市</option>
+                                                    <option value="义乌市">义乌市</option>
+                                                    <option value="宁波市">宁波市</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+
+
+                                    <!-- <div class="col-md-12" >
+                                    <div class="form-group">
+                                        <label class="control-label col-md-1">可见城市</label>
+                                        <div class="col-md-11" style="margin-top: 10px">
+                                            <input type="checkbox"  ng-model="user.item.city1"  name="city"/>全国
+                                            <input type="checkbox"  ng-model="user.item.city2"  name="city"/>上海市
+                                            <input type="checkbox"  ng-model="user.item.city3"  name="city"/>杭州市
+                                            <input type="checkbox"  ng-model="user.item.city4"  name="city"/>北京市
+                                            <input type="checkbox"  ng-model="user.item.city5"  name="city"/>天津市
+                                            <input type="checkbox"  ng-model="user.item.city6"  name="city"/>广州市
+                                            <input type="checkbox"  ng-model="user.item.city7"  name="city"/>南京市
+                                            <input type="checkbox"  ng-model="user.item.city8"  name="city"/>义乌市
+                                            <input type="checkbox"  ng-model="user.item.city9"  name="city"/>宁波市
+
+                                        </div>
+                                    </div>
+                                </div> -->
+
+                                </div>
+
+                            </form>
+                            <!-- END FORM-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<!---选择区域--->
+<script type="text/ng-template" id="quyu_checked.html">
+    <div class="modal-header lm_window_head" >
+        <span>选择区域</span>
+        <p class="p2" >  <button class="btn green" ng-click="cancel()">关闭</button></p>
+    </div>
+
+
+    <div class="modal-body">
+        <div class="table-container">
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <!-- BEGIN FORM-->
+                            <form action="#" name="myform" class="form-horizontal">
+                                <div class="form-body">
+
+
+
+
+
+                                    <div class="col-md-12" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">覆盖区域</label>
+                                            <div class="col-md-3">
+                                                <span  ng-class="{required:myform.province_id.$invalid}">*</span>
+                                                <select  ng-change="initCity()"    required
+                                                         type="text" class="form-control  form-filter input-sm" ng-model="project.item.province_id"  name="province_id"
+                                                         ng-options="nation.code as nation.name for nation in  project.provinceList">
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span  ng-class="{required:myform.city_id.$invalid}">*</span>
+                                                <select  ng-change="initRegoin()"   required
+                                                         type="text" class="form-control  form-filter input-sm" ng-model="project.item.city_id"  name="city_id"
+                                                         ng-options="nation.code as nation.name for nation in   project.cityList">
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <span  ng-class="{required:myform.region_id.$invalid}">*</span>
+                                                <select     required ng-change="initArea()"
+                                                            type="text" class="form-control  form-filter input-sm" ng-model="project.item.region_id"  name="region_id"
+                                                            ng-options="nation.code as nation.name for nation in  project.regoinList">
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">起运地</label>
+
+                                            <div class="col-md-3">
+                                                <span  ng-class="{required:myform.departure.$invalid}">*</span>
+                                                <select     required type="text" class="form-control  form-filter input-sm" ng-model="project.item.departure"  name="departure"
+                                                        >
+                                                    <option value="1"> 北京</option>
+                                                    <option value="2">上海</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn green"  ng-click="submit()"> 提交</button>
+        <button class="btn green" ng-click="cancel()">关闭</button>
+    </div>
+</script>
+
+
+
+
+
+

@@ -1,0 +1,146 @@
+
+<!--content_left-->
+<div class="container_top15">
+<!--khst-->
+
+
+<!--消息-->
+<div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+        <span data-ng-bind-html="alert.msg"></span>
+    </alert>
+</div>
+
+<!--plczkh-->
+<div id="plczkh">
+    <div id="plczkh_neirong">
+        <!--plczkh_neirong_shang-->
+        <div id="plczkh_neirong_shang">
+            <div class="smsrecord_tiaojian" >
+               <!-- <div class="smsrecord_tiaojian_sc">
+                    <a href ng-click="processzhuti.delete('520',$event)">
+                        <div id="smsrecord_tiaojian_sc_img"><img src="images/kehu_01.png" border="0" /></div>
+                        <div id="smsrecord_tiaojian_sc_txt">删除</div>
+                        <div class="clear"></div>
+                    </a>
+                </div>
+
+
+                <div class="smsrecord_tiaojian_ss">
+                    <a href ng-click="processzhuti.search1()">
+                        <div class="smsrecord_tiaojian_ss_img"><img src="images/gjss_01.png" border="0" /></div>
+                        <div class="smsrecord_tiaojian_ss_txt">搜索</div>
+                        <div class="clear"></div>
+                    </a>
+                </div>-->
+
+                <div class="pull-right" style="margin:0 0 10px 10px;">
+                    <a  class="btn btn-primary green" ng-if="$root.auth('1071')" href="#processzhuti-edit/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;添加审批流</a>
+                </div>
+
+                <div class="clear"></div>
+            </div>
+        </div>
+        <!--plczkh_neirong_xia-->
+        <div id="plczkh_neirong_xia">
+            <div id="plczkh_neirong_xia_shang">
+                <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                    <tr>
+                        <td>
+                            <span class="plczkh_table_kong"></span>
+                            <input  type="checkbox" ng-model="headcheck" ng-click="processzhuti.checkAll(headcheck)"/>
+                        </td>
+                        <td>
+                               <span class="plczkh_table_title"> <a class="sortable" href ng-click="processzhuti.setOrderby(processzhuti.collations, 'paymentorder_number')">
+                                   审批类型&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':processzhuti.isArrowUp('paymentorder_number'), 'glyphicon-arrow-down':processzhuti.isArrowDown('paymentorder_number')}"></span>
+                               </a></span>
+                        </td>
+                        <td>
+                               <span class="plczkh_table_title"> <a class="sortable" href ng-click="processzhuti.setOrderby(processzhuti.collations, 'belong_city')">
+                                   所属城市&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':processzhuti.isArrowUp('belong_city'), 'glyphicon-arrow-down':processzhuti.isArrowDown('belong_city')}"></span>
+                               </a></span>
+                        </td>
+                        <td>
+                                <span class="plczkh_table_title"><a class="sortable" href ng-click="processzhuti.setOrderby(processzhuti.collations, 'type')">
+                                    创建人&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':processzhuti.isArrowUp('type'), 'glyphicon-arrow-down':processzhuti.isArrowDown('type')}"></span>
+                                </a></span>
+                        </td>
+                        <td>
+                               <span class="plczkh_table_title"> <a class="sortable" href ng-click="processzhuti.setOrderby(processzhuti.collations, 'supplier_name')">
+                                   创建时间&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':processzhuti.isArrowUp('supplier_name'), 'glyphicon-arrow-down':processzhuti.isArrowDown('supplier_name')}"></span>
+                               </a></span>
+                        </td>
+                        <td>
+                               <span class="plczkh_table_title"> <a class="sortable" href ng-click="processzhuti.setOrderby(processzhuti.collations, 'supplier_name')">
+                                   状态&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':processzhuti.isArrowUp('supplier_name'), 'glyphicon-arrow-down':processzhuti.isArrowDown('supplier_name')}"></span>
+                               </a></span>
+                        </td>
+                        <td>
+                            <span class="plczkh_table_title">操作</span>
+                            <span class="plczkh_table_kong"></span>
+                        </td>
+                    </tr>
+                    <tr ng-if="processzhuti.dataList.length==0">
+                        <td colspan="11"> ----暂无数据！----</td>
+                    </tr>
+
+                    <tr ng-if="processzhuti.dataList.length>0"  ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in processzhuti.dataList">
+                        <td>
+                            <span class="plczkh_table_kong"></span>
+                            <input type="checkbox" ng-model="d.checked"/>
+                        </td>
+                        <td><a href="#processzhuti-detail/{{d.id}}/0">
+                            {{d.shenpileixing=="33" && "离职审批" ||
+                            d.shenpileixing=="13" && "请假(7天以内)审批" ||
+                            d.shenpileixing=="73" && "报销审批"||
+                            d.shenpileixing=="75" && "物资审批"||
+                            d.shenpileixing=="28" && "请假(7天以上)审批" ||
+                            d.shenpileixing=="100" && "更改为1审批"
+                            }}
+                        </a></td>
+                        <td ng-if="d.shenpileixing!=73">{{d.belong_city|limitTo:11}}</td>
+                        <td ng-if="d.shenpileixing==73">----</td>
+                        <td>{{d.creatorName|limitTo:11}}</td>
+                        <td>{{d.createTime|limitTo:11}}</td>
+                        <td>{{d.status=='1'&&'启用'||d.status=='0'&&'禁用'||''}}</td>
+                        <td>
+                            <span class="glyphicon   glyphicon-pencil"></span><a></a> <a ng-if="$root.auth('1074')" ng-href="#processzhuti-detail/{{d.id}}/0">查看</a>
+                            <span class="glyphicon   glyphicon-pencil"></span><a></a> <a ng-if="$root.auth('1072')" ng-href="#processzhuti-edit/{{d.id}}">修改</a>
+                            <span class="glyphicon   glyphicon-remove"></span>  <a></a>  <a ng-if="$root.auth('1073')" href ng-click="processzhuti.deleteData(d)">删除</a>
+                        </td>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="plczkh_neirong_xia_xia">
+                <div class="plczkh_neirong_xia_xia_left">
+                    共{{processzhuti.searchForm.page.totalItems}}条记录{{processzhuti.searchForm.page.currentPage}}/{{processzhuti.searchForm.page.totalPages}}页
+                </div>
+                <div class="plczkh_neirong_xia_xia_mid">
+
+                    <pagination boundary-links="true" total-items="processzhuti.searchForm.page.totalItems"      items-per-page="processzhuti.searchForm.page.itemsperpage"  ng-model="processzhuti.searchForm.page.currentPage"  max-size="5" num-pages
+                                class="pagination-sm" previous-text="&lt;&lt;上一页" next-text="下一页&gt;&gt;"
+                                first-text="首页"
+                                last-text="尾页"></pagination>
+                    <label style="display: inline-block;vertical-align: 8px;">每页
+                        <select ng-model="processzhuti.searchForm.page.itemsperpage" class="tnz_select input-xsmall input-sm input-inline">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                        </select>
+                        条</label>
+                    <div class="clear"></div>
+                </div>
+                <div class="plczkh_neirong_xia_xia_right">
+                    跳转至第<input ng-model="goto" type="number" class="t1"><input class="b1" type="button" ng-click="processzhuti.searchCurrent(goto)"/>页
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="clear"></div>

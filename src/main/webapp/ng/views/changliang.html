@@ -1,0 +1,151 @@
+<!-- BEGIN PAGE HEADER-->
+
+<!--<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#">系统管理</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">系统初始化常量</a>
+        </li>
+
+    </ul>
+</div>-->
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="todo-ui">
+            <!-- BEGIN TODO SIDEBAR -->
+            <div class="todo-sidebar">
+                <div class="portlet light">
+                    <div class="portlet-title">
+                        <div class="caption" data-toggle="collapse" data-target=".todo-project-list-content">
+                            <span class="caption-subject font-green-sharp bold uppercase">基础数据维护 </span>
+                        </div>
+                    </div>
+                    <div class="portlet-body todo-project-list-content">
+                        <div class="todo-project-list">
+                            <ul class="nav nav-pills nav-stacked">
+                                <li  class="{{(menu=='quyu')&&'active'}}">
+                                    <a href="#" ng-click="changliang.findleibie('quyu','客户区域')">
+                                        <span class="badge badge-success {{(menu=='quyu')&&' badge-active'}}"> {{changliang.allchangliang.quyu}} </span> 客户区域 </a>
+                                </li>
+                                <li  class="{{(menu=='xingji')&&'active'}}">
+                                    <a href="#" ng-click="changliang.findleibie('xingji','星级设置')">
+                                        <span class="badge badge-success {{(menu=='xingji')&&' badge-active'}}"> {{changliang.allchangliang.xingji}} </span> 星级设置 </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO SIDEBAR -->
+            <!-- BEGIN TODO CONTENT -->
+            <div class="todo-content">
+                <div class="portlet light">
+                <!-- PROJECT HEAD -->
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-bar-chart font-green-sharp hide"></i>
+                        <span class="caption-helper">基础数据维护:</span> &nbsp; <span class="caption-subject font-green-sharp bold uppercase">{{menuname||'请选择基础数据类型进行维护'}}</span>
+                    </div>
+                </div>
+                <!-- end PROJECT HEAD -->
+                <div class="portlet-body">
+                <div class="row">
+                 <div class="col-md-7 col-sm-8">
+                     <table class="table table-striped table-bordered table-hover">
+                         <thead>
+                         <tr role="row" class="heading">
+
+                             <th width="5%">
+                                序号
+                             </th>
+                             <th width="10%">
+                                名称
+                             </th>
+                             <th width="10%">
+                                 代码
+                             </th>
+                             <th width="2%">
+                                 操作
+                             </th>
+                         </tr>
+
+                         </thead>
+                         <tbody>
+                         <tr ng-repeat="d in changliang.dataList"   ng-class-odd="'odd'" ng-class-even="'even'" ng-click="changliang.item=d" style="cursor: pointer">
+                            <td>{{d.ext5}}</td>
+                            <td>{{d.mingcheng}}</td>
+                            <td>{{d.daima}}</td>
+                            <td><a ng-click="changliang.deleteData(d)">删除</a></td>
+                         </tr>
+                         </tbody>
+                     </table>
+                </div>
+                <div class="todo-tasklist-devider">
+                </div>
+                <div class="col-md-5 col-sm-4" ng-if="menu">
+                <div class="form">
+                <!-- BEGIN FORM-->
+                <form action="#" name="myform" class="form-horizontal">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="text" ng-model="changliang.item.ext5" name="mingcheng" placeholder="序号|不填可自动生成"   class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="text" ng-model="changliang.item.mingcheng" name="mingcheng" placeholder="名称|必填" required  class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="text" ng-model="changliang.item.daima" name="mingcheng" placeholder="代码|不填可自动生成"     class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <button type="button" name="back" class="btn btn-xs" ng-click="changliang.reset()" > 重置</button>
+                                    <button type="button" name="back"  ng-disabled="myform.$invalid" class="btn btn-xs" ng-click="changliang.save()"> 提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                </form>
+                <!-- END FORM-->
+
+                </div>
+                </div>
+                </div>
+                </div>
+                </div>
+             </div>
+
+         </div>
+    </div>
+</div>
+<!-- END PAGE CONTENT-->

@@ -1,0 +1,133 @@
+<!-- BEGIN STYLE CUSTOMIZER(optional) -->
+<!--<div data-ng-include="'tpl/theme-panel.html'" data-ng-controller="ThemePanelController"
+     class="theme-panel hidden-xs hidden-sm">
+</div>-->
+<!-- END STYLE CUSTOMIZER -->
+<!-- BEGIN PAGE HEADER-->
+<!--<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#/dashboard.html">首页</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">欢迎页</a>
+        </li>
+    </ul>
+</div>-->
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div data-ng-init="goto()">
+    <!-- <div class="note note-success note-bordered">
+        <table style="text-align: center;" cellpadding="0" cellspacing="0" border="0" width="1000px" height="400px">
+        	<tr height="150">
+        		<td width="250px">
+        		<a href="#/ruku-list/0"><img width="100px" height="100px" ng-src="images/ruku.png"/></a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/chuku-list/0"><img width="100px" height="100px" ng-src="images/chuku.png"/></a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/enterplan-list/0"><img width="100px" height="100px" ng-src="images/plan.png"/></a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/car-list/0"><img width="100px" height="100px" ng-src="images/car.png"/></a>
+        		</td>
+        	</tr>
+        	
+        	<tr height="50px">
+        		<td width="250px">
+        		<a href="#/ruku-list/0"><span style="font-size: 24px;">入库</span></a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/chuku-list/0" style="font-size: 24px;">出库</a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/enterplan-list/0" style="font-size: 24px;">计划</a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/car-list/0" style="font-size: 24px;">车辆</a>
+        		</td>
+        	</tr>
+        	
+        	<tr height="150px">
+        		<td width="250px">
+        		<a href="#/kucun-list/0"><img width="100px" height="100px" ng-src="images/kucun.png"/></a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/peixun-list/0"><img width="100px" height="100px" ng-src="images/peixun.png"/></a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/anjian_data-list/0"><img width="100px" height="100px" ng-src="images/xinxi.png"/></a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/kehu-list/0"><img width="100px" height="100px" ng-src="images/xitong.png"/></a>
+        		</td>
+        	</tr>
+        	
+        	<tr height="50px">
+        		<td width="250">
+        		<a href="#/kucun-list/0" style="font-size: 24px;">库存</a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a href="#/peixun-list/0" style="font-size: 24px;">培训管理</a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a style="font-size: 24px;" href="#/anjian_data-list/0">信息查询</a>
+        		</td>
+        		
+        		<td width="250px">
+        		<a style="font-size: 24px;" href="#/kehu-list/0">系统设置</a>
+        		</td>
+        	</tr>
+        </table>
+    </div> -->
+</div>
+<!-- <div class="row">
+    <div class="col-md-12 col-sm-6">
+        <div class="portlet box green-haze tasks-widget">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-volume-up"></i>系统公告
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="task-content">
+                   <div data-always-visible="1" data-rail-visible1="1" ng-controller="common_controller" ng-init="initmeg()"> </div>
+                    START TASK LIST
+                        <ul class="task-list">
+                            <li ng-repeat="d in dashbord.list">
+                                <div class="task-title" title="{{d.content}}">
+                                    <span class="task-bell"><i class="fa fa-bell-o"></i></span>
+                                    <span ng-if="d.content.length>60" class="task-title-sp">{{d.content|limitTo:60}}...</span>
+                                    <span ng-if="d.content.length<=60" class="task-title-sp">{{d.content}}</span>
+                                    <span style="float: right;">发布人：{{d.creatorName}}&nbsp;&nbsp;发布时间：{{d.createTime}}</span>
+                                </div>
+                            </li>
+                        </ul>
+                    END START TASK LIST
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS & CSS -->
+<script>
+
+    Tasks.initDashboardWidget();
+</script>
+<!-- BEGIN MAIN JS & CSS -->

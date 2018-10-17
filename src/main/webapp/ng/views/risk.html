@@ -1,0 +1,85 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                        <div class="form-body">
+                           <form action="#" name="form" class="form-horizontal">
+					     <div class="form-body">
+                                        
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">反欺诈调查结果</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="20%">欺诈得分</td>
+                					<td width="15%">
+                						<span></span>
+                					</td>
+                					<td class="tdleft" width="17%">欺诈告警类别</td>
+                					<td width="13%">
+                						<span></span>
+                					</td>
+                					<td class="tdleft" width="15%">判断结果</td>
+                					<td width="20%"></td>
+                			</tr>
+                      		<tr>
+                					<td class="tdleft" width="12%">环节类型</td>
+                					<td width="15%">
+                						<span></span>
+                					</td>
+                					<td class="tdleft" width="25%">决定原因</td>
+                					<td width="13%">
+                						<span></span>
+                					</td>
+                					<td class="tdleft" width="15%">欺诈种类</td>
+                					<td width="20%"></td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="12%">时间</td>
+                					<td width="15%">
+                						<span></span>
+                					</td>
+                					<td class="tdleft" width="25%">调查人员</td>
+                					<td width="13%">
+                						<span></span>
+                					</td>
+                					<td class="tdleft" width="15%">调查结果</td>
+                					<td width="20%"></td>
+                			</tr>
+                           </table>
+                	
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6" >风险事件信息</td>
+               					</tr>
+                				<tr>
+                					<td>未提交风险事件</td>
+                			</tr>
+                      		
+                           </table>
+                	
+                	
+                        </div>
+					   </form>
+                        </div>
+					   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

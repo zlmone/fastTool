@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>我的资料</title>
+	<link rel="stylesheet" href="js/mint-ui/mint-ui.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/vue.min.js"></script>
+	<script src="js/mint-ui/mint-ui.js"></script>
+	<script src="js/sea.min.js"></script>
+	<script src="js/sea.config.js"></script>
+</head>
+<body>
+	<div id="app" class="bg-gray" v-cloak>
+		<div class="cut"></div>
+		<field-text class="guide-ico" icon="icon system-ico sign1" label="通讯录" value="去完善" href="#"></field-text>
+		<div class="cut"></div>
+		<field-text class="guide-ico" icon="icon system-ico sign2" label="实名认证" value="待完善" href="#"></field-text>
+		<div class="hr"></div>
+		<field-text class="guide-ico" icon="icon system-ico sign3" label="绑定银行卡" value="去绑定" href="#"></field-text>
+		<div class="cut"></div>
+		<field-text class="guide-ico" icon="icon system-ico sign4" label="芝麻信用" value="待完善" href="#"></field-text>
+		<div class="hr"></div>
+		<field-text class="guide-ico" icon="icon system-ico sign5" label="淘宝认证" value="待完善" href="#"></field-text>
+		<div class="hr"></div>
+		<field-text class="guide-ico" icon="icon system-ico sign6" label="运营商认证" value="待完善" href="#"></field-text>
+	</div>
+	<script>
+		(function(Vue, seajs){
+			seajs.use(["fieldText"], function(fieldText){
+				Vue.component(fieldText.name,fieldText);
+				var app = new Vue({
+					el: "#app"
+				});
+			});
+		})(Vue, seajs);
+	</script>
+</body>
+</html>

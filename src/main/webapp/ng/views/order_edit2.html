@@ -1,0 +1,426 @@
+<div>
+	
+	<div style="margin-bottom: 20px;font-size: 16px;">
+		进件编号:18011244030708812032&nbsp;&nbsp;&nbsp;提交人:{{order.item.realname}}&nbsp;&nbsp;&nbsp;<span
+			style="color: #ff6368">信息采集方式:电子采集</span>&nbsp;&nbsp;&nbsp;
+		<button style="background-color: #0b78cb; width: 110px; color: white;">提交反欺诈</button>
+		&nbsp;&nbsp;&nbsp;
+		<button style="background-color: #0b78cb; width: 110px; color: white;" ng-click="tijiao()">提交决策</button>
+	</div>
+
+	<div style="float: left;height:800px;width: 50%;">
+		<ul id="myTab" class="nav nav-tabs">
+				<li class="active"><a data-target="#tab1" data-toggle="tab">
+						申请信息 </a></li>
+			</ul>
+			
+			<div id="myTabContent" class="tab-content" style="height: 750px;overflow: auto;">
+					<div class="tab-pane fade in active" id="tab1">
+						<div class="back_box" style="position: relative;">
+						 <div class="form-body">
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">业务信息</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="15%">客户姓名</td>
+                					<td width="30%">
+                						<span>{{order.item.realname}}</span>
+                					</td>
+                					<td class="tdleft" width="20%">客户性别</td>
+                					<td width="5%">
+                						<span>{{order.item.sex}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">年龄</td>
+                					<td width="15%">{{order.item.age}}</td>
+                			</tr>
+                      		<tr>
+                      			<td class="tdleft" width="15%">证件类型</td>
+                      			<td width="30%">身份证</td>
+                      			<td class="tdleft" width="20%">身份证号</td>
+                      			<td colspan="3" width="40%">{{order.item.idcard}}</td>
+                      		</tr>
+                      		<tr>
+                      			<td class="tdleft" width="10%">移动电话</td>
+                      			<td width="30%">{{order.item.cellphone}}</td>
+                      			<td class="tdleft" width="20%">其他手机号</td>
+                      			<td colspan="3" width="35%"></td>
+                      		</tr>
+                      		<tr>
+                					<td class="tdleft" width="15%">申请日期</td>
+                					<td width="30%">
+                						<span>{{order.item.addtime}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">渠道商户</td>
+                					<td colspan="3" width="5%">
+                						<span>{{order.item.merchant}}</span>
+                					</td>
+
+                			</tr>
+                           </table>
+                        
+                        
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">借款信息</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="12%">商品类型</td>
+                					<td width="15%">
+                						<span>{{order.item.goodsmodel}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">商品名称</td>
+                					<td width="23%">
+                						<span>{{order.item.goodsname}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">商品售价</td>
+                					<td width="20%">{{order.item.goodsprice}}</td>
+                			</tr>
+                      		<tr>
+                					<td class="tdleft" width="12%">首付金额</td>
+                					<td width="15%">
+                						<span>{{order.item.firstpay}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">销售代码</td>
+                					<td width="23%">
+                						<span>{{order.item.sellercode}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">分期月数</td>
+                					<td width="20%">{{order.item.monthnumber}}</td>
+                			</tr>
+                           </table>
+                           
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">个人信息</td>
+               					</tr>
+               					<tr>
+               						<td colspan="4"></td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="20%">婚姻状况</td>
+                					<td width="40%">
+                						<span>{{order.item.marriage}}</span>
+                					</td>
+                					<td class="tdleft" width="20%">最高学历</td>
+                					<td width="20%">
+                					{{order.item.education}}
+                					</td>
+                					
+                			</tr>
+                      		<tr>
+                      			<td class="tdleft" width="20%">户口所在地</td>
+                      			<td colspan="3">{{order.item.address}}</td>
+                      		</tr>
+                      		<tr>
+                      			<td class="tdleft" width="20%">现住宅地址</td>
+                      			<td colspan="3"></td>
+                      		</tr>
+                      		<tr>
+                					<td class="tdleft" width="20%">住宅电话</td>
+                					<td width="40%">
+                						<span></span>
+                					</td>
+                					<td class="tdleft" width="20%">来本市的年份</td>
+                					<td width="20%">
+                					
+                					</td>
+         
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="20%">银行卡号</td>
+                					<td width="40%">
+                						{{order.item.bank}}
+                					</td>
+                					<td class="tdleft" width="20%">银行卡是否本人</td>
+                					<td width="20%">
+                					
+                					</td>
+         
+                			</tr>
+                           </table>
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">工作信息</td>
+               					</tr>
+               					<tr>
+               						<td colspan="4"></td>
+               					</tr>
+                				<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">单位名称</td>
+                					<td width="35%">
+                						{{order.item.unit}}
+                					</td>
+                					<td class="tdleft" width="15%">单位地址</td>
+                					<td width="35%">
+                					{{order.item.unitaddress}}
+                					</td>
+         
+                			</tr>
+                				<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">工作年限</td>
+                					<td width="35%">
+                						
+                					</td>
+                					<td class="tdleft" width="15%">公司规模</td>
+                					<td width="35%">
+                					
+                					</td>
+         							
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">公司性质</td>
+                					<td width="35%">
+                						
+                					</td>
+                					<td class="tdleft" width="15%">部门</td>
+                					<td width="35%">
+                					
+                					</td>
+         
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">职位</td>
+                					<td width="35%">
+                						{{order.item.position}}
+                					</td>
+                					<td class="tdleft" width="15%">每月收入</td>
+                					<td width="35%">
+                					
+                					</td>
+         
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">单位座机</td>
+                					<td width="35%">
+                						{{order.item.unitphone}}
+                					</td>
+                					<td class="tdleft" width="15%">入职时间</td>
+                					<td width="35%">
+                						{{order.item.entry_time}}
+                					</td>
+         
+                			</tr>	
+                			</table>
+                			
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6" >联系人信息</td>
+               					</tr>
+               					<tr>
+               						<td colspan="6"></td>
+               					</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						{{order.item.first_realname}}
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						{{order.item.first_relation}}
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						{{order.item.first_cellphone}}
+                					</td>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						{{order.item.second_realname}}
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						{{order.item.second_relation}}
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						{{order.item.second_cellphone}}
+                					</td>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						{{order.item.third_realname}}
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						{{order.item.third_relation}}
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						{{order.item.third_cellphone}}
+                					</td>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						{{order.item.fourth_realname}}
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						{{order.item.fourth_relation}}
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						{{order.item.fourth_cellphone}}
+                					</td>
+                			</tr>
+                			</table>
+                			
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">房产信息</td>
+               					</tr>
+               					<tr>
+               						<td colspan="4"></td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="15%">房产地址</td>
+                					<td width="30%">
+                						
+                					</td>
+                					<td class="tdleft" width="20%">是否按揭</td>
+                					<td></td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="15%">贷款金额</td>
+                					<td width="30%">
+                						
+                					</td>
+                					<td class="tdleft" width="20%">每月还款金额</td>
+                					<td></td>
+                			</tr>
+                			</table>
+                			<table border="0" cellpadding="0"cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">车辆信息</td>
+               					</tr>
+               					<tr>
+               						<td colspan="4"></td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="20%">车辆情况</td>
+                					<td>
+                						无
+                					</td>
+                					
+                			</tr>
+                			</table>
+                        </div>
+					</div>
+					</div>
+			</div>
+			
+	</div>
+	<div style="float: left;height:800px;overflow: auto;width: 50%;">
+		<ul id="myTab" class="nav nav-tabs">
+				<li class="active"><a data-target="#tab1" data-toggle="tab">
+						回访结论 </a></li>
+			</ul>
+			
+		<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="tab1">
+					<div class="panel-group" id="accordion">
+	<div class="panel panel-default">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a id="collapseOneparent" ng-click="zhedie1()" data-toggle="collapse" data-parent="#accordion" 
+				   >
+					回访结论<i style="float: right;" class="icon-angle-down"></i>
+				</a>
+			</h4>
+		</div>
+		<div id="collapseOne1" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<textarea style="width: 74%;height: 100px;" ng-model="return_visit.item.content"></textarea><button ng-click="save_return_visit()">保存</button>
+			</div>
+		</div>
+	</div>
+	</div>
+				</div>
+		</div>		
+	
+	               	<div class="table-scrollable" style="overflow-y: auto">
+                    	<table class="table table-striped table-bordered table-hover">
+                        	<thead>
+                        	<tr role="row" class="heading">
+                            <th width="1%">
+                                	序号
+                            </th>
+                            <th width="10%">
+                                	创建时间
+                            </th>
+                            <th width="10%">
+                                创建人
+                            </th>
+                            <th width="10%">
+                                催收情况
+                            </th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="d in return_visit.dataList" ng-class-odd="'odd'" ng-click="xuan(d)" ng-class-even="'even'">
+                            <td>{{$index+1}}</td>
+                            <td>
+								{{d.addTime}}
+                           </td>
+                            <td>
+                                {{d.creator}}
+                            </td>
+                            <td>
+                                {{d.content}}
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--&lt;!&ndash;结束table&ndash;&gt;-->
+                <!--&lt;!&ndash;开始table尾部分页以及工具栏&ndash;&gt;-->
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="dataTables_paginate paging_bootstrap_extended">
+                            <div class="pagination-panel" style="float: left;margin-left: 25%;"> 第 <a ng-click="return_visit.prePage()"
+                                                                class="btn btn-sm default prev"
+                                                                title="Prev"><i class="fa fa-angle-left"></i></a><input
+                                    type="text"  ng-model="return_visit.searchForm.page.currentPage"
+                                    class="pagination-panel-input form-control input-mini input-inline input-sm"
+                                    maxlenght="5" style="text-align:center; margin: 0 5px;"><a   ng-click="return_visit.nextPage()"
+                                                                                                 class="btn btn-sm default next"
+                                                                                                 title="Next"><i
+                                    class="fa fa-angle-right"></i></a> 页,&nbsp;&nbsp;&nbsp;总<span class="pagination-panel-total">{{return_visit.searchForm.page.totalPages}}</span>页
+                            </div>
+                        </div>
+                        <div class="dataTables_length" ><label><span
+                                class="seperator">|</span>每页 <select ng-model="return_visit.searchForm.page.itemsperpage" class="form-control input-xsmall input-sm input-inline">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                        </select> 条</label></div>
+                        <div class="dataTables_info"  role="status" aria-live="polite">
+                            <span class="seperator">|</span>总计{{return_visit.searchForm.page.totalItems}} 条
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+
+                    </div>
+                </div>
+			
+	</div>
+</div>

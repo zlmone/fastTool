@@ -1,0 +1,202 @@
+<div class="page-sidebar navbar-collapse collapse">
+    <!-- 开始左侧菜单 -->
+    <!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+    <!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+    <!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+    <!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+    <!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+    <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+
+    <ul class="page-sidebar-menu" ng-controller="common_controller"  data-keep-expanded="false" data-auto-scroll="true"
+        data-slide-speed="200" ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+        <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+        <li class="sidebar-search-wrapper">
+            <!-- 开始响应式快速搜索表单-->
+            <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+            <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+
+    <!--        <form class="sidebar-search sidebar-search-bordered " action="http://baidu.com/s" method="GET"
+                  target="_blank">
+                <a href="javascript:;" class="remove">
+                    <i class="icon-close"></i>
+                </a>
+                <div class="input-group">
+                    <input type="text" class="form-control" name="wd" placeholder="百度一下...">
+					<span class="input-group-btn">
+					<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+					</span>
+                </div>
+            </form>-->
+
+            <!-- 结束响应式快速搜索表单 -->
+        </li>
+		
+		 <li  ng-if="user.category_id=='1'||user.category_id=='6'">
+            <a href="#/">
+                <i class="icon-docs"></i>
+                <span class="title">首页</span>
+                <span class="arrow "></span>
+            </a>
+        </li>
+		
+		<!-- <li>
+            <a href="javascript:;">
+                <i class=" icon-step-backward"></i>
+                <span class="title">贷前管理</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li ng-if="$root.auth('203')|| user.category_id=='0'|| user.category_id=='1'" ng-click="menu1Click('subMenu1')">
+                    <a href="#/order-list/0">
+                        <span><i class="icon-docs"></i>申请</span>
+                    </a>
+                </li>
+                <li ng-if="$root.auth('204')|| user.category_id=='0'|| user.category_id=='1'">
+                    <a href="#/order-list1/0">
+                       <span > <i class="icon-docs"></i>初审</span>
+                    </a>
+                </li>
+                <li ng-if="$root.auth('204')|| user.category_id=='0'|| user.category_id=='1'">
+                    <a href="#/order-list2/0">
+                       <span > <i class="icon-docs"></i>终审</span>
+                    </a>
+                </li>
+            </ul>
+        </li> -->
+		
+		<li>
+            <a href="javascript:;" ng-if="user.category_id=='4'|| user.category_id=='1'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">订单管理</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#/order-list3/0">
+                        <span>信借数据</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/order-list4/0">
+                       <span>我的主页</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+		
+		<li>
+            <a href="javascript:;" ng-if="user.category_id=='2'|| user.category_id=='1'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">超机贷信审管理</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#/order-list/0">
+                        <span ng-click="go(0)">我的待审批列表</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/order-list1/0">
+                       <span ng-click=go(1)>我的已审批列表</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#/policy-edit/0" ng-if="user.category_id=='1'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">政策管理</span>
+                <span class="arrow "></span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="javascript:;" ng-if="user.category_id=='1'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">车优贷信审管理</span>
+                <span class="arrow "></span>
+            </a>
+         
+        </li>
+        
+        <li>
+            <a href="javascript:;" ng-if="user.category_id=='5'|| user.category_id=='1'|| user.category_id=='3'|| user.category_id=='7'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">催收管理</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li ng-if="user.category_id=='5'|| user.category_id=='1'|| user.category_id=='3'">
+                    <a href="#/order-list5/0">
+                        <span>回访结论</span>
+                    </a>
+                </li>
+                <li ng-if="user.category_id=='5'|| user.category_id=='1'|| user.category_id=='7'">
+                    <a href="#/payinfo-list/0">
+                       <span>逾期情况</span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        
+        <li>
+            <a href="#/operationlog-list/0" ng-if="user.category_id=='1'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">操作日志</span>
+                <span class="arrow "></span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="javascript:;" ng-if="user.category_id=='1'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">财务管理</span>
+                <span class="arrow "></span>
+            </a>
+        </li>
+        
+        <li>
+            <a href="#/order-list6/0" ng-if="user.category_id=='1'||user.category_id=='6'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">调单管理</span>
+                <span class="arrow "></span>
+            </a>
+        </li>
+		
+		<li>
+            <a href="#/seller-list/0" ng-if="user.category_id=='1'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">渠道管理</span>
+                <span class="arrow "></span>
+            </a>
+        </li>
+		
+        <li>
+            <a href="javascript:;" ng-if="user.category_id=='1'">
+                <i class=" icon-step-backward"></i>
+                <span class="title">系统设置</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="#/user-list/0">
+                        <span><i class="icon-docs"></i>组织结构</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#/org-role-list/0">
+                       <span > <i class="icon-docs"></i>权限管理</span>
+                    </a>
+                </li>
+              
+            </ul>
+        </li>
+
+        <!--机构用户-->
+
+	
+    </ul>
+    <!-- END SIDEBAR MENU -->
+</div>	

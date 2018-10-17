@@ -1,0 +1,122 @@
+<!--content_left-->
+<div>
+<ul id="myTab" class="nav nav-tabs" style="background-color: white;">
+
+	<li ng-click="qu(0)">
+		<a data-toggle="tab">
+			信借数据
+		</a>
+	</li>
+	<li ng-click="qu(1)">
+		<a data-toggle="tab">
+			 我的主页
+		</a>
+	</li>
+</ul>
+</div>
+<div class="container_top15">
+    <!--khst-->
+    <!--消息-->
+    <div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+            <span data-ng-bind-html="alert.msg"></span>
+        </alert>
+    </div>
+
+    <!--plczkh-->
+    <div id="plczkh">
+        <div id="plczkh_neirong" style="padding: 0 0 0 0;margin: 0;">
+		
+		   <div id="khst_neirong">
+		   		<div style="float: left;">
+            		统计条件:<br/>
+            		时间:<input class="span2 date-picker1" ng-keypress="chuku.exitsearch($event)" ng-model="order.item.time" ng-change="xuanze()" data-date-format="yyyy-mm" type="text">
+            		&nbsp;&nbsp;&nbsp;统计维度:<select ng-model="order.item.type" ng-change="xuanze()">
+            			<option value="1">按日</option>
+            			<option value="2">按周</option>
+            			<option value="3">按月</option>
+            		</select>
+            	</div>
+		   		<!-- <div style="width: 100%;height: 200px;text-align: center;vertical-align: middle;float: left;"> -->
+                   		<div style="width: 20%;float: right;height: 50px;text-align: right;">
+							<div><img alt="" src="images/jisuanqi.png" width="50px" height="50px;" ng-click="jisuan()"></div>
+						</div>
+<!--                    </div> -->
+                <div class="clear"></div>
+            </div>
+		
+            <!--plczkh_neirong_shang-->
+            <div id="plczkh_neirong_shang" style="padding: 10px 0 0 0">
+                <div class="smsrecord_tiaojian" >
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--plczkh_neirong_xia-->
+            <div id="plczkh_neirong_xia">
+            
+                <div id="plczkh_neirong_xia_shang">
+                   <div id="chartmain" style="width:100%; height: 400px;"></div>
+                   <div id="chartmain1" style="width:100%; height: 400px;"></div>
+                   <div style="width: 100%;height: auto;">
+                   
+                   		<p style="display: block;height: 30px;font-size: 20px;">办理进度</p>	
+                   
+                   		<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                   			<tr ng-repeat="d in order.dataList1">
+                   				<td>{{d.realname}}</td>
+                   				<td>{{d.leibie=='0'&&'3C分期'||''}}</td>
+                   				<td>{{d.addtime}}</td>
+                   				<td>{{d.shenpiStatus=='0'&&'待审核'||d.shenpiStatus=='1'&&'审核中'||d.shenpiStatus=='2'&&'已审核'||d.shenpiStatus=='3'&&'回退补件'||d.shenpiStatus=='4'&&'进件挂起'||''}}</td>
+                   			</tr>
+                   		</table>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>
+
+<script type="text/ng-template" id="jisuan.html">
+	
+    <div class="modal-header lm_window_head" >
+        <span>分期计算器</span>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    	<div class="modal-body">
+        	<div class="table-container">
+            	<div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+					
+
+                <!--&lt;!&ndash;开始table&ndash;&gt;-->
+                	<div class="table-scrollable" style="overflow-y: auto">
+						<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+								<tr>
+									<td class="tdleft">贷款金额:</td>
+									<td><input type="text" ng-model="daikuan.item.jine"/></td>
+									<td class="tdleft">年利率:</td>
+									<td><input type="text" ng-model="daikuan.item.lixi"/>%</td>
+								</tr>
+								<tr>
+									<td class="tdleft">分期数:</td>
+									<td><input type="text" ng-model="daikuan.item.month"/></td>
+									<td class="tdleft">每月还款:</td>
+									<td><input type="text" ng-model="daikuan.item.monthpay"/>元</td>
+								</tr>
+								<tr>
+									<td colspan="4"><button ng-click="jisuan()">计算</button><button ng-click="reset()">重置</button></td>
+								</tr>
+						</table>	  
+                </div>
+                <!--&lt;!&ndash;结束table&ndash;&gt;-->
+                <!--&lt;!&ndash;开始table尾部分页以及工具栏&ndash;&gt;-->
+
+
+            </div>
+        </div>
+    </div>
+
+
+</script>

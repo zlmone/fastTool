@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.XulieMapper">
+  
+  	<cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Xulie">
+	    INSERT INTO xulie (id
+  ,dangqian
+  ,shijian
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{dangqian,jdbcType=BIGINT},
+  #{shijian,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Xulie">
+    	UPDATE xulie 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="dangqian != null" >
+        dangqian = #{dangqian,jdbcType=BIGINT},
+      </if>
+		<if test="shijian != null" >
+        shijian = #{shijian,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Xulie">
+    	UPDATE xulie 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        dangqian = #{dangqian,jdbcType=BIGINT},
+        shijian = #{shijian,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from xulie where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from xulie <include refid="Where_Clause" />
+	</delete>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Xulie">
+		select <include refid="Base_Column_List"/> from xulie where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Xulie" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from xulie <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from xulie <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,dangqian
+,shijian
+	</sql>
+</mapper>

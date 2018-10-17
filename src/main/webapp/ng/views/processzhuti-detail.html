@@ -1,0 +1,192 @@
+<div id="xzbjd">
+    <div id="xzbjd_title">
+        <span ng-if="processzhuti.item.id==undefined||processzhuti.item.id==''">新建审批流</span>
+        <span ng-if="processzhuti.item.id!=undefined&&processzhuti.item.id!=''">编辑审批流</span>
+    </div>
+    <!--消息-->
+    <div id="gzrl_dlcg" style="width: 98%; margin-top: 10px;">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+            <span data-ng-bind-html="alert.msg"></span>
+        </alert>
+    </div>
+    <form name="form" action="#">
+        <div id="xzbjd_jbxx">
+            <table border="0" cellpadding="0" cellspacing="0" class="xzbjd_jbxx_table zdytjzdnr_table">
+                <tbody>
+                <tr>
+                    <td colspan="2">
+                        <span class="tnz_kong"></span>
+                        <strong>基本信息</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="xzbjd_jbxx_table_hui">
+                        审批类型
+                        <span class="tnz_kong"></span>
+                    </td>
+                    <td class="xzbjd_jbxx_table_bai">
+                        <span class="tnz_kong"></span>
+                        <select ng-model="processzhuti.item.shenpileixing" name="shenpileixing" class="tnz_select" disabled required>
+                            <option value="">--请选择--</option>
+                            <option value="33">离职审批</option>
+                            <option value="13">请假(7天以内)审批</option>
+                            <option value="73">报销审批</option>
+                            <option value="75">物资审批</option>
+                            <option value="28">请假(7天以上)审批</option>
+                            <option value="100">更改为1审批</option>
+                        </select>
+                    </td>
+                    <td  colspan="2" style="border:0px">
+                    </td>
+                </tr>
+                <tr ng-if="processzhuti.item.shenpileixing!=73">
+                    <td class="xzbjd_jbxx_table_hui">
+                     所属城市
+                        <span class="tnz_kong"></span>
+                    </td>
+                    <td class="xzbjd_jbxx_table_bai">
+                        <span class="tnz_kong"></span>
+                        <select ng-model="processzhuti.item.belong_city" name="belong_city" class="tnz_select" disabled required>
+                            <option value="">--请选择--</option>
+                            <option value="上海市">上海市</option>
+                            <option value="杭州市">杭州市</option>
+                            <option value="北京市">北京市</option>
+                            <option value="天津市">天津市</option>
+                            <option value="广州市">广州市</option>
+                            <option value="南京市">南京市</option>
+                            <option value="义乌市">义乌市</option>
+                            <option value="宁波市">宁波市</option>
+                        </select>
+                    </td>
+                    <td  colspan="2" style="border:0px">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="xzbjd_jbxx_table_hui">
+                        审批状态
+                        <span class="tnz_kong"></span>
+                    </td>
+                    <td class="xzbjd_jbxx_table_bai">
+                        <!--     <div class="zdytjzdnr_table_sf01">
+                                 <div class="zdytjzdnr_table_left"  style="width: 100px"><input ng-model="hetongmoban.item.isDefault" name="shifouyanzheng" value="1" type="radio" checked="checked" /></div>
+                                 <div class="zdytjzdnr_table_right" style="width: 100px">启用</div>
+                                 <div class="clear"></div>
+                             </div>
+                             <div class="zdytjzdnr_table_sf02">
+                                 <div class="zdytjzdnr_table_left"  style="width: 100px"><input ng-model="hetongmoban.item.isDefault" name="shifouyanzheng" value="0" type="radio" /></div>
+                                 <div class="zdytjzdnr_table_right" style="width: 100px">禁用</div>
+                                 <div class="clear"></div>
+                             </div>-->
+
+                        <div class="zdytjzdnr_table_zdm_01">
+                            <input class="icheck" disabled ng-model="processzhuti.item.status" name="status"  type="radio" value="1"/>启用
+                            <span class="tnz_kong"></span>
+
+                            <input class="icheck" disabled ng-model="processzhuti.item.status" name="status" value="0" type="radio"/>禁用
+                            <span class="tnz_kong"></span>
+
+                        </div>
+
+
+
+                    </td>
+                    <td  colspan="2" style="border:0px">
+                    </td>
+                </tr>
+               <!-- <tr>
+                    <td class="xzbjd_jbxx_table_hui">
+                        通知形式
+                        <span class="tnz_kong"></span>
+                    </td>
+                    <td class="xzbjd_jbxx_table_bai">
+                        <div class="zdytjzdnr_table_zdm_01">
+                            <input type="checkbox" disabled ng-model="processzhuti.item.iszhanleixin_notice" name="iszhanleixin_notice" ng-true-value="1" ng-false-value="0"/>站内信通知
+                            <span class="tnz_kong"></span>
+
+
+                            <input type="checkbox" disabled ng-model="processzhuti.item.isduanxin_notice" name="isduanxin_notice" ng-true-value="1" ng-false-value="0"/>短信通知
+                            <span class="tnz_kong"></span>
+
+
+                            <input type="checkbox" disabled ng-model="processzhuti.item.isyoujian_notice" name="isyoujian_notice" ng-true-value="1" ng-false-value="0"/>邮件通知
+                            <span class="tnz_kong"></span>
+
+                        </div>
+                    </td>
+                    <td  colspan="2" style="border:0px">
+                    </td>
+                </tr>-->
+
+                </tbody>
+            </table>
+        </div>
+
+        <div id="xzbjd_jbxx4">
+            <table border="0" cellpadding="0" cellspacing="0" class="zdytjzdnr_table4 xzbjd_jbxx_table">
+                <tbody>
+                <tr>
+                    <td colspan="2" style="border:0px" >
+                        <span class="tnz_kong"></span>
+                        <strong>审批流程</strong>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="xzbjd_jbxx_table_bai1">
+                        序号
+                        <span class="tnz_kong"></span>
+                    </td>
+                    <td class="xzbjd_jbxx_table_bai2">
+                        审批人
+                    </td>
+                    <td class="xzbjd_jbxx_table_bai3" style="border:0px">
+                        <!--操作-->
+                    </td>
+                    <td  colspan="1" style="border:0px">
+                    </td>
+                </tr>
+                <tr ng-repeat="d in processzhuti.list">
+                    <td class="xzbjd_jbxx_table_bai1" >
+                        {{d.index=$index+1}}
+                        <span class="tnz_kong"></span>
+                    </td>
+                    <td class="xzbjd_jbxx_table_bai2" >
+              <span class="tnz_kong" ng-repeat="p in d.shenpirenlist">
+                {{p.shenpiren}}
+               </span>
+                    </td>
+                    <td class="xzbjd_jbxx_table_bai3" style="border:0px">
+
+                    </td>
+                    <td  colspan="1" style="border:0px">
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-offset-5 col-md-4">
+
+                       <input type="reset" class="zdytjzdnr_table_reset" value="返回" ng-click="$root.settings.utils.back()"/>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="xzbjd_cpxx" style="position:relative;">
+            <!--审批流程-->
+
+            <div ng-if="hetongdingdan.item.processstatus=='2'" style="position: absolute;right: 2%;bottom: 20px;">
+                <img src="images/audit.png">
+            </div>
+        </div>
+    </form>
+
+</div>
+
+

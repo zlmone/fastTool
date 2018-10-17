@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.OperationlogMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Operationlog">
+	    INSERT INTO operationlog (id
+  ,addTime
+  ,content
+  ,operator
+  ,IPAddress
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{addTime,jdbcType=VARCHAR},
+  #{content,jdbcType=VARCHAR},
+  #{operator,jdbcType=VARCHAR},
+  #{IPAddress,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Operationlog">
+    	UPDATE operationlog 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="addTime != null" >
+        addTime = #{addTime,jdbcType=VARCHAR},
+      </if>
+		<if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+		<if test="operator != null" >
+        operator = #{operator,jdbcType=VARCHAR},
+      </if>
+      	<if test="IPAddress != null" >
+        IPAddress = #{IPAddress,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Operationlog">
+    	UPDATE operationlog 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        addTime = #{addTime,jdbcType=VARCHAR},
+        content = #{content,jdbcType=VARCHAR},
+        operator = #{operator,jdbcType=VARCHAR},
+        IPAddress = #{IPAddress,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from operationlog where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from operationlog <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE operationlog 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.addTime != null" >
+        addTime = #{domain.addTime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.content != null" >
+        content = #{domain.content,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.operator != null" >
+        operator = #{domain.operator,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.IPAddress != null" >
+        IPAddress = #{domain.IPAddress,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Operationlog">
+		select <include refid="Base_Column_List"/> from operationlog where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Operationlog" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from operationlog <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from operationlog <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,addTime
+,content
+,operator
+,IPAddress
+	</sql>
+</mapper>

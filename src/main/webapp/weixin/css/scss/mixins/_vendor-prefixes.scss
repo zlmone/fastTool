@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+// 默认变量
+$prefix: -webkit-, -moz-, -ms-, -o-, null !default;
+$prefix-ago: false !default;
+
+// 属性前缀
+@mixin prefix($style-name, $style-value, $prefix-list: $prefix) {
+  @if $prefix-ago == false {
+    @each $prefix-name in $prefix-list {
+      #{$prefix-name}#{$style-name}: $style-value;
+    }
+  } @else {
+    #{$prefix-ago}#{$style-name}: $style-value;
+  }
+}
+
+// 动画前缀
+@mixin keyframes($animate-name, $prefix-list: $prefix) {
+  @at-root(without:all){
+    @each $prefix-name in $prefix-list {
+      $prefix-ago: $prefix-name !global;
+      @if $prefix-name == -webkit- {
+        @-webkit-keyframes #{$animate-name} {
+          @content;
+        }
+      } @else if $prefix-name == -moz- {
+        @-moz-keyframes #{$animate-name} {
+          @content;
+        }
+      } @else if $prefix-name == -ms- {
+        @-ms-keyframes #{$animate-name} {
+          @content;
+        }
+      } @else if $prefix-name == -o- {
+        @-o-keyframes #{$animate-name} {
+          @content;
+        }
+      } @else if $prefix-name == null {
+        @keyframes #{$animate-name} {
+          @content;
+        }
+      }
+    }
+    $prefix-ago: false !global;
+  }
+}
+
+// 输入字段提示信息样式前缀
+@mixin placeholder($prefix-list: $prefix) {
+  @each $prefix-name in $prefix-list {
+    $prefix-ago: $prefix-name !global;
+    @if $prefix-name == -webkit- {
+      &::-webkit-input-placeholder {
+        @content;
+      }
+    } @else if $prefix-name == -moz- {
+      &:-moz-placeholder {
+        @content;
+      }
+      &::-moz-placeholder {
+        opacity: 1;
+        @content;
+      }
+    } @else if $prefix-name == -ms- {
+      &:-ms-input-placeholder {
+        @content;
+      }
+    }
+  }
+  &.placeholder[placeholder]{
+    @content;
+  }
+  $prefix-ago: false !global;
+}
+
+// 用户选中样式前缀
+@mixin selection($prefix-list: $prefix) {
+  @each $prefix-name in $prefix-list {
+    $prefix-ago: $prefix-name !global;
+    @if $prefix-name == -moz- {
+      &::-moz-selection {
+        @content;
+      }
+    } @else if $prefix-name == null {
+      &::selection {
+        @content;
+      }
+    }
+  }
+  $prefix-ago: false !global;
+}

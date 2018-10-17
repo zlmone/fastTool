@@ -1,0 +1,103 @@
+<div>
+	<div class="panel-group" id="accordion">
+	<div class="panel panel-default">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a id="collapseOneparent" ng-click="zhedie(1)" data-toggle="collapse" data-parent="#accordion" 
+				   >
+					工商网查询
+				</a>
+				&nbsp;&nbsp;&nbsp;<a href="http://zj.gsxt.gov.cn/index.html" target="_blank" style="text-decoration: underline;color: #ff6368;">访问工商网</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseOne" class="panel-collapse collapse in">
+			<div class="panel-body">
+				单位名称：<span id="unit1">{{order.item.unit}}</span> <div style="float: right;"><input type="radio" id="business_status_1" ng-click="zhengchang(1,1)" name="shenhe"/>正常&nbsp;&nbsp;&nbsp;<input type="radio" ng-click="yichang(1)" id="business_status_2" name="shenhe"/>异常&nbsp;&nbsp;&nbsp;<input type="radio" ng-click="zhengchang(1,3)" id="business_status_3" name="shenhe"/>无信息</div>
+			</div>
+		</div>
+		<div id="collapseSix" class="panel-collapse collapse">
+			<div class="panel-body">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.out.business_note" ng-blur="save1(1)"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(2)"
+				   >
+					网络查询
+				</a>
+								&nbsp;&nbsp;&nbsp;<a href="http://www.baidu.com" target="_blank" style="text-decoration: underline;color: #ff6368;">访问百度</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseTwo" class="panel-collapse collapse">
+			<div class="panel-body">
+				单位名称：{{order.item.unit}} <div style="float: right;"><input type="radio" id="network_status_1" ng-click="zhengchang(2,1)" name="shenhe1"/>正常&nbsp;&nbsp;&nbsp;<input type="radio" ng-click="yichang(2)" id="network_status_2" name="shenhe1"/>异常&nbsp;&nbsp;&nbsp;<input type="radio" ng-click="zhengchang(2,3)" id="network_status_3" name="shenhe1"/>无信息</div>
+			</div>
+		</div>
+		<div id="collapseSeven" class="panel-collapse collapse">
+			<div class="panel-body">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.out.network_note" ng-blur="save1(2)"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(3)"
+				  >
+					人法网查询
+				</a>
+				&nbsp;&nbsp;&nbsp;<a href="http://zhixing.court.gov.cn/search/" target="_blank" style="text-decoration: underline;color: #ff6368;">访问人法网</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseThree" class="panel-collapse collapse">
+			<div class="panel-body">
+				<p>客户姓名：{{order.item.realname}}</p><p>身份证号：{{order.item.idcard}}</p><div style="float: right;margin-top: -42px;"><input type="radio" ng-click="zhengchang(3,1)" id="manlaw_status_1" name="shenhe2"/>正常&nbsp;&nbsp;&nbsp;<input type="radio" ng-click="yichang(3)" id="manlaw_status_2" name="shenhe2"/>异常&nbsp;&nbsp;&nbsp;<input type="radio" id="manlaw_status_3" ng-click="zhengchang(3,3)" name="shenhe2"/>无信息</div>
+			</div>
+		</div>
+		<div id="collapseEight" class="panel-collapse collapse">
+			<div class="panel-body">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.out.manlaw_note" ng-blur="save1(3)"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(4)"
+				   >
+					失信网查询
+				</a>
+				&nbsp;&nbsp;&nbsp;<a href="http://shixin.court.gov.cn/" target="_blank" style="text-decoration: underline;color: #ff6368;">访问失信网</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseFour" class="panel-collapse collapse">
+			<div class="panel-body">
+				<p>客户姓名：{{order.item.realname}}</p><p>身份证号：{{order.item.idcard}}</p><div style="float: right;margin-top: -42px;"><input type="radio" ng-click="zhengchang(4,1)" id="discredit_status_1" name="shenhe3"/>正常&nbsp;&nbsp;&nbsp;<input type="radio" ng-click="yichang(4)" id="discredit_status_2" name="shenhe3"/>异常&nbsp;&nbsp;&nbsp;<input type="radio" ng-click="zhengchang(4)" id="discredit_status_3" name="shenhe3"/>无信息</div>
+			</div>
+		</div>
+		<div id="collapseNine" class="panel-collapse collapse">
+			<div class="panel-body">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.out.discredit_note" ng-blur="save1(4)"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(5)"
+				   >
+					备注
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseFive" class="panel-collapse collapse">
+			<div class="panel-body">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.out.note" ng-blur="save1(5)"></textarea>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

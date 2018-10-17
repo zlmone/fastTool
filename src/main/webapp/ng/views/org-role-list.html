@@ -1,0 +1,553 @@
+
+<div class="row">
+    <div class="col-md-12">
+        <!-- Begin: life time stats -->
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-list"></i>组织架构 -
+                    <small>
+                        <a ng-if="$root.auth('204')|| user.category_id=='0'|| user.category_id=='1'" href="#org-list/0" class="active">组织架构</a> |
+                        <a ng-if="$root.auth('203')|| user.category_id=='0'|| user.category_id=='1'" href="#user-list/0" >用户管理</a>
+                        <!--<a href="#" >待激活用户</a> |-->
+                        <!--<a href="#" >已停用用户</a>-->
+                    </small>
+                </div>
+                <div class="actions btn-set">
+
+                    <div class="btn-group btn-group-sm btn-group-solid">
+
+                        <div class="btn-group btn-group-sm btn-group-solid">
+                            <button type="button" class="btn blue"  ng-if="$root.auth('2041')" ng-click="org.add('dept')" >添加部门</button>&nbsp;
+                            <button type="button" class="btn green" ng-if="$root.auth('2042')"  ng-click="org.add('post')">添加岗位</button>&nbsp;
+                            <button type="button" class="btn blue"  ng-if="$root.auth('2044')" ng-click="org.userAdd()">添加用户</button>&nbsp;
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-container">
+                    <div id="datatable_ajax_wrapper" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+
+                        <!--消息-->
+                        <div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+                            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                                <span data-ng-bind-html="alert.msg"></span>
+                            </alert>
+                        </div>
+                        <div class="row-fluid" style="background-color:#fff">
+                            <div class="clearfix" style="margin-top:0px;">
+                                <div class="condition span12" style="margin-left:0px;padding:15px;">
+                                    <div class="bulk-actions align-left">
+                                        <a href="#org-list/0" style="color:#333333;">部门岗位图</a> |
+                                        <a href="#org-role-list/0" >上下级关系图</a>
+
+
+                                     <!--   <div class="pull-right">
+                                            <div class="zzjgttt">
+                                                <a id="add_department" href >
+                                                    <div class="zzjgttt_img"><img src="images/plczkh_01.png" border="0" /></div>
+                                                    <div class="zzjgttt_txt">添加部门</div>
+                                                    <div class="clear"></div>
+                                                </a>
+                                            </div>
+                                            <div class="zzjgttt">
+                                                <a id="add_role" href ng-click="org.add('post')">
+                                                    <div class="zzjgttt_img"><img src="images/plczkh_01.png" border="0" /></div>
+                                                    <div class="zzjgttt_txt">添加岗位</div>
+                                                    <div class="clear"></div>
+                                                </a>
+                                            </div>
+                                            <div class="zzjgttt">
+                                                <a href="#user-add/0">
+                                                    <div class="zzjgttt_img"><img src="images/plczkh_01.png" border="0" /></div>
+                                                    <div class="zzjgttt_txt">添加用户</div>
+                                                    <div class="clear"></div>
+                                                </a>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="condition span12" style="margin-left:0px;padding:15px;">
+                                    <!--<ul id="browser" class="filetree"><li><span rel='1' class='folder'>办公室 &nbsp; <span class='control' id='control_folder1'><a class='department_edit' rel=1 href='javascript:void(0)'>修改</a> &nbsp; <a class='department_delete' rel=1 href='javascript:void(0)'>删除</a> </span></span><ul><li><span rel='1' class='file'>CEO &nbsp; <span class='control' id='control_file1'><a class='position_edit' rel=1 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=1 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='22' class='folder'>财务部 &nbsp; <span class='control' id='control_folder22'><a class='department_edit' rel=22 href='javascript:void(0)'>修改</a> &nbsp; <a class='department_delete' rel=22 href='javascript:void(0)'>删除</a> </span></span><ul><li><span rel='39' class='file'>财务经理 &nbsp; <span class='control' id='control_file39'><a class='position_edit' rel=39 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=39 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='42' class='file'>财务会计 &nbsp; <span class='control' id='control_file42'><a class='position_edit' rel=42 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=42 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='43' class='file'>财务部出纳员 &nbsp; <span class='control' id='control_file43'><a class='position_edit' rel=43 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=43 href='javascript:void(0)'>删除</a> </span> </span></li></ul></li><li><span rel='4' class='folder'>销售部 &nbsp; <span class='control' id='control_folder4'><a class='department_edit' rel=4 href='javascript:void(0)'>修改</a> &nbsp; <a class='department_delete' rel=4 href='javascript:void(0)'>删除</a> </span></span><ul><li><span rel='40' class='file'>销售经理 &nbsp; <span class='control' id='control_file40'><a class='position_edit' rel=40 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=40 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='45' class='file'>销售员 &nbsp; <span class='control' id='control_file45'><a class='position_edit' rel=45 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=45 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='44' class='file'>销售部主管 &nbsp; <span class='control' id='control_file44'><a class='position_edit' rel=44 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=44 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='6' class='folder'>销售一组 &nbsp; <span class='control' id='control_folder6'><a class='department_edit' rel=6 href='javascript:void(0)'>修改</a> &nbsp; <a class='department_delete' rel=6 href='javascript:void(0)'>删除</a> </span></span></li></ul></li><li><span rel='23' class='folder'>仓管部门 &nbsp; <span class='control' id='control_folder23'><a class='department_edit' rel=23 href='javascript:void(0)'>修改</a> &nbsp; <a class='department_delete' rel=23 href='javascript:void(0)'>删除</a> </span></span><ul><li><span rel='46' class='file'>仓库主管 &nbsp; <span class='control' id='control_file46'><a class='position_edit' rel=46 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=46 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='47' class='file'>仓库员 &nbsp; <span class='control' id='control_file47'><a class='position_edit' rel=47 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=47 href='javascript:void(0)'>删除</a> </span> </span></li></ul></li><li><span rel='24' class='folder'>采购部门 &nbsp; <span class='control' id='control_folder24'><a class='department_edit' rel=24 href='javascript:void(0)'>修改</a> &nbsp; <a class='department_delete' rel=24 href='javascript:void(0)'>删除</a> </span></span><ul><li><span rel='48' class='file'>采购主管 &nbsp; <span class='control' id='control_file48'><a class='position_edit' rel=48 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=48 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='49' class='file'>采购员 &nbsp; <span class='control' id='control_file49'><a class='position_edit' rel=49 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=49 href='javascript:void(0)'>删除</a> </span> </span></li></ul></li><li><span rel='25' class='folder'>售后部门 &nbsp; <span class='control' id='control_folder25'><a class='department_edit' rel=25 href='javascript:void(0)'>修改</a> &nbsp; <a class='department_delete' rel=25 href='javascript:void(0)'>删除</a> </span></span><ul><li><span rel='50' class='file'>售后主管 &nbsp; <span class='control' id='control_file50'><a class='position_edit' rel=50 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=50 href='javascript:void(0)'>删除</a> </span> </span></li><li><span rel='51' class='file'>接线员 &nbsp; <span class='control' id='control_file51'><a class='position_edit' rel=51 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=51 href='javascript:void(0)'>删除</a> </span> </span></li></ul></li></ul></li><li><span rel='26' class='folder'>采购部1 &nbsp; <span class='control' id='control_folder26'><a class='department_edit' rel=26 href='javascript:void(0)'>修改</a> &nbsp; <a class='department_delete' rel=26 href='javascript:void(0)'>删除</a> </span></span><ul><li><span rel='52' class='file'>采购经理 &nbsp; <span class='control' id='control_file52'><a class='position_edit' rel=52 href='javascript:void(0)'>修改</a> &nbsp; <a class='position_delete' rel=52 href='javascript:void(0)'>删除</a> </span> </span></li></ul></li></ul>					</div>-->
+                                    <ul  class="ztree" id="postTree" ></ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End: life time stats -->
+    </div>
+</div>
+
+
+
+
+
+<!--end zzjg-->
+<div class="clear"></div>
+<style type="text/css">
+    .app-modal-window-detail .modal-dialog {
+        width: 560px;
+    }
+</style>
+<style type="text/css">
+    .app-modal-window-permission .modal-dialog {
+        width: 950px;
+    }
+</style>
+
+<script type="text/ng-template" id="department-add.html">
+    <div class="modal-header lm_window_head" >
+        <p class="p1" >
+            <span  ng-if="org.item.id==undefined||org.item.id==''">添加部门</span>
+            <span  ng-if="org.item.id!=undefined&&org.item.id!=''">修改部门</span>
+        </p>
+        <p class="p2" >  <button class="btn green" ng-click="cancel()">关闭</button></p>
+    </div>
+    <form action="#" name="myform" class="form-horizontal">
+    <div class="modal-body">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" style="display: block">
+                    <label  class="col-md-3 control-label lm_lbl" style="text-align:right">部门名称：<span ng-class="{required:myform.dept_name.$invalid}">*</span></label>
+                    <div class="col-md-8">
+                        <input ng-model="org.item.name" name="dept_name" type="text"  required/>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" style="display: block">
+                    <label  class="col-md-3 control-label lm_lbl" style="text-align:right">上级部门： </label>
+                    <div class="col-md-4">
+                        <select ng-model="org.item.department_id" name="department_id" style="width:270px;">
+                            <option value="">顶级部门</option>
+                            <option ng-repeat=" dept in org.deptList" value="{{dept.id}}" ng-selected="dept.id==org.item.department_id">{{dept.name}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group" style="display: block">
+                    <label  class="col-md-3 control-label lm_lbl" style="text-align:right">部门描述： </label>
+                    <div class="col-md-4">
+                        <div class="zdytjzdnr_table_zdm_01">
+                            <textarea name="description" ng-model="org.item.description" style="width:270px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn green" ng-click="submit()" ng-disabled="myform.$invalid">保存</button>
+        <button class="btn green" ng-click="cancel()">关闭</button>
+        <!--<button class="btn btn-xs" ng-click="selectNode(this)">确认</button>-->
+    </div>
+</script>
+
+<script type="text/ng-template" id="position-add.html">
+    <div class="modal-header lm_window_head" >
+        <p class="p1" >
+            <span  ng-if="org.item.id==undefined||org.item.id==''">添加岗位</span>
+            <span  ng-if="org.item.id!=undefined&&org.item.id!=''">修改岗位</span>
+        </p>
+        <p class="p2" >  <button class="btn green" ng-click="cancel()">关闭</button></p>
+    </div>
+    <form action="#" name="myform" class="form-horizontal">
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="display: block">
+                        <label  class="col-md-3 control-label lm_lbl" style="text-align:right">岗位名称：<span ng-class="{required:myform.post_name.$invalid}">*</span></label>
+                        <div class="col-md-8">
+                            <input ng-model="org.item.name" name="post_name" type="text"  required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="display: block">
+                        <label  class="col-md-3 control-label lm_lbl" style="text-align:right"> 所属部门:<span ng-class="{required:myform.department_id.$invalid}">*</span></label>
+                        <div class="col-md-8">
+                            <select ng-model="org.item.department_id" name="department_id"  style="width:270px;" required>
+                                <option value="">--请选择--</option>
+                                <option ng-repeat=" dept in org.deptList"  value="{{dept.id}}" ng-selected="dept.id==org.item.department_id">{{dept.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="display: block">
+                        <label  class="col-md-3 control-label lm_lbl" style="text-align:right"> 上级岗位:<span ng-class="{required:myform.position_id.$invalid}">*</span></label>
+                        <div class="col-md-8">
+                            <select ng-model="org.item.position_id" name="position_id"  style="width:270px;">
+                                <option value="">--请选择--</option>
+                                <option ng-repeat=" post in org.postList"  value="{{post.id}}" ng-selected="post.id==org.item.position_id">{{post.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group" style="display: block">
+                        <label  class="col-md-3 control-label lm_lbl" style="text-align:right">部门描述： </label>
+                        <div class="col-md-4">
+                            <div class="zdytjzdnr_table_zdm_01">
+                                <textarea name="description" ng-model="org.item.description" style="width:270px;"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </form>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn green" ng-click="submit()" ng-disabled="myform.$invalid">保存</button>
+        <button class="btn green" ng-click="cancel()">关闭</button>
+        <!--<button class="btn btn-xs" ng-click="selectNode(this)">确认</button>-->
+    </div>
+</script>
+
+<script type="text/ng-template" id="permission-add.html">
+    <div id="dialog-authorize">
+        <div id="role_mkjqxsz">
+            <div class="role_mkjqxsz_hdm">
+                <div class="page-head" style="margin-left:20px;">
+                    <h4>模块级权限设置</h4>
+                </div>
+                <tabset>
+
+                    <tab  heading="出入库">
+                        <div class="ctt">
+                            <div class="dis" id="tbc_01">
+                                <div class="rmh_kehu">
+                                    <div class="tab-pane" id="tab1" style="line-height:30px;padding:0">
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">入库</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(headcheck_marketing,'入库')" ng-model="headcheck_marketing"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='入库'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">出库</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(chuku,'出库')" ng-model="chuku"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='出库'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                    </div>
+                                    <div class="rmh_kehu_kong"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+
+
+
+
+
+                    <tab  heading="车辆培训管理">
+                        <div class="ctt">
+                            <div class="dis" id="tbc_02">
+                                <div class="rmh_kehu">
+                                    <div class="tab-pane" id="tab2" style="line-height:30px;padding:0">
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">车辆管理</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(cheliangguanli,'车辆管理')" ng-model="cheliangguanli"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='车辆管理'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">培训管理</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(peixunguanli,'培训管理')" ng-model="peixunguanli"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='培训管理'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        
+
+                                    
+
+                                    </div>
+                                    <div class="rmh_kehu_kong"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+
+                    <tab  heading="计划管理">
+                        <div class="ctt">
+                            <div class="dis" id="tbc_051">
+                                <div class="rmh_kehu">
+                                    <div class="tab-pane" id="tab51" style="line-height:30px;padding:0">
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">进入计划</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(jinrujihua,'进入计划')" ng-model="jinrujihua"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='进入计划'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">出去计划</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(chuqujihua,'出去计划')" ng-model="chuqujihua"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='出去计划'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+
+                                    </div>
+                                    <div class="rmh_kehu_kong"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+
+                    <tab  heading="库存管理">
+                        <div class="ctt">
+                            <div class="dis" id="tbc_04">
+                                <div class="rmh_kehu">
+                                    <div class="tab-pane" id="tab4" style="line-height:30px;padding:0">
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">库存盘点</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(kucunpandian,'库存盘点')" ng-model="kucunpandian"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='库存盘点'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">库存一览</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(kucunyilan,'库存一览')" ng-model="kucunyilan"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='库存一览'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                    </div>
+                                    <div class="rmh_kehu_kong"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+
+					<tab  heading="信息查询">
+                        <div class="ctt">
+                            <div class="dis" id="tbc_04">
+                                <div class="rmh_kehu">
+                                    <div class="tab-pane" id="tab4" style="line-height:30px;padding:0">
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">安检信息</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(anjianxinxi,'安检信息')" ng-model="anjianxinxi"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='安检信息'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">入库报表</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(rukubaobiao,'入库报表')" ng-model="rukubaobiao"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='入库报表'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+										
+										<div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">出库报表</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(chukubaobiao,'出库报表')" ng-model="chukubaobiao"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='出库报表'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+										<div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">计划实际比对表</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(planreal,'计划实际比对表')" ng-model="planreal"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='计划实际比对表'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+										<div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">车辆一览</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(cheliangyilan,'车辆一览')" ng-model="cheliangyilan"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='车辆一览'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+										
+                                    </div>
+                                    <div class="rmh_kehu_kong"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>					
+
+                    <tab  heading="系统设置">
+                        <div class="ctt">
+                            <div class="dis" id="tbc_03">
+                                <div class="rmh_kehu">
+                                    <div class="tab-pane" id="tab3" style="line-height:30px;padding:0">
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">组织结构</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(zuzhi,'组织结构')" ng-model="zuzhi"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='组织结构'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">权限管理</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(quanxian,'权限管理')" ng-model="quanxian"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='权限管理'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">客户设置</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(kehushezhi,'客户设置')" ng-model="kehushezhi"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='客户设置'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">货位设置</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(huoweishezhi,'货位设置')" ng-model="huoweishezhi"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='货位设置'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">货品科目维护</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(leimu,'货品科目维护')" ng-model="leimu"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='货品科目维护'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">货品维护</div>
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(huopinweihu,'货品维护')" ng-model="huopinweihu"/>全部选择<br/>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.firstModule=='货品维护'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-if="function.checked && function.type=='complex'" ng-options="data_role.value as data_role.name for data_role in org.dataRoles">
+                                            </select>
+                                        </span>
+
+             
+                                    </div>
+                                    <div class="rmh_kehu_kong"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>
+
+
+
+
+
+
+                    <!--<tab  heading="系统设置">
+                        <div class="ctt">
+                            <div class="dis" id="tbc_07">
+                                <div class="rmh_kehu">
+                                    <div class="tab-pane" id="tab7" style="line-height:30px;padding:0">
+                                        <input type="checkbox" class="check_all" ng-click="org.checkAll(headcheck_shezhi,'shezhi')" ng-model="headcheck_shezhi"/>全部选择<br/>
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">数据维护</div>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.secondModule=='set_data'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[index]" ng-model="function.dataRole" ng-init="function.dataRole='2'" ng-if="function.checked && function.type=='complex'">
+                                                <option  value="2">自己和下属</option>
+                                                <option  value="1">所有人</option>
+                                                <option  value="4">仅自己</option>
+                                                <option  value="3">部门所有人</option>
+                                            </select>
+                                        </span>
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">字段自定义</div>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.secondModule=='set_custom'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="contacts[index]" ng-model="function.dataRole" ng-init="function.dataRole='2'" ng-if="function.checked && function.type=='complex'">
+                                                <option  value="1">自己和下属</option>
+                                                <option  value="2">所有人</option>
+                                                <option  value="3">仅自己</option>
+                                                <option  value="4">部门所有人</option>
+                                            </select>
+                                        </span>
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">组织结构</div>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.secondModule=='set_org'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-init="function.dataRole='2'" ng-if="function.checked && function.type=='complex'">
+                                                <option  value="1">自己和下属</option>
+                                                <option  value="2">所有人</option>
+                                                <option  value="3">仅自己</option>
+                                                <option  value="4">部门所有人</option>
+                                            </select>
+                                        </span>
+                                        <div style="padding-top:22px;clear:both;font-size:18px; font-weight:bold;">权限管理</div>
+                                        <span style="width:25%; float:left;" ng-repeat="function in org.functionList" ng-if="function.secondModule=='set_permission'">
+                                            <input class="check_opt" type="checkbox"  name="per[]" ng-model="function.checked"/>{{function.name}}&nbsp;
+                                            <select class="hide_select" name="customer[cares]" ng-model="function.dataRole" ng-init="function.dataRole='2'" ng-if="function.checked && function.type=='complex'">
+                                                <option  value="1">自己和下属</option>
+                                                <option  value="2">所有人</option>
+                                                <option  value="3">仅自己</option>
+                                                <option  value="4">部门所有人</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div class="rmh_kehu_kong"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </tab>-->
+                </tabset>
+                <div id="role_mkjqxsz_hdm_anniu">
+                    <input class="btn green" id="sub_btn" name="submit" type="button" value="保存" ng-click="submit()"> &nbsp;
+                    <input class="btn green" type="button" value="取消" ng-click="cancel()"/>&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

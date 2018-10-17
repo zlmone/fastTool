@@ -1,0 +1,224 @@
+<div>
+	<div class="panel-group" id="accordion">
+	<div class="panel panel-default" ng-if="order.idnamelist.length>0">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a id="collapseOneparent" ng-click="zhedie(1)" data-toggle="collapse" data-parent="#accordion" 
+				   >
+					本人身份证号码+姓名&nbsp;&nbsp;&nbsp;(<span style="color:#ff6368;">查重件：{{order.chachong.idcard}}+{{order.chachong.name}}</span>)
+				</a>
+				<i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseOneOne" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+				     <tr>
+				     	<td>姓名</td>
+				     	<td>进件时间</td>
+				     	<td>操作</td>
+				     </tr>
+				     <tr ng-repeat="d in idnamelist">
+				     		<td>{{d.name}}</td>
+				     		<td>{{d.addtime}}</td>
+				     		<td><a href="javascript:;" ng-click="detail(d)">查看</a></td>
+				     </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top: 0px;" ng-if="order.phonelist.length>0">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(2)"
+				   >
+					本人手机号码&nbsp;&nbsp;&nbsp;(<span style="color:#ff6368;">查重件：{{order.chachong.cellphone}}</span>)
+				</a>
+				<i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseTwoTwo" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+				     <tr>
+				     	<td>姓名</td>
+				     	<td>进件时间</td>
+				     	<td>操作</td>
+				     </tr>
+				     <tr ng-repeat="d in order.phonelist">
+				     		<td>{{d.name}}</td>
+				     		<td>{{d.addtime}}</td>
+				     		<td><a href="javascript:;" ng-click="detail(d)">查看</a></td>
+				     </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top: 0px;" ng-if="order.unitlist.length>0">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(3)"
+				  >
+					单位名称&nbsp;&nbsp;&nbsp;(<span style="color:#ff6368;">查重件：{{order.chachong.companyName}}</span>)
+				</a>
+				<i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseThreeThree" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+				     <tr>
+				     	<td>姓名</td>
+				     	<td>进件时间</td>
+				     	<td>操作</td>
+				     </tr>
+				     <tr ng-repeat="d in order.unitlist">
+				     		<td>{{d.name}}</td>
+				     		<td>{{d.addtime}}</td>
+				     		<td><a href="javascript:;" ng-click="detail(d)">查看</a></td>
+				     </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top: 0px;" ng-if="order.fphonelist.length>0">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(4)"
+				   >
+					四个联系人手机号码
+				</a>
+				<i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseFourFour" class="panel-collapse collapse">
+			<div class="panel-body">
+			
+				<table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+				     <tr>
+				     	<td colspan="3" style="text-align: left;color:#ff6368;">查重件</td>
+				     </tr>
+				     <tr>
+				     	<td>姓名</td>
+				     	<td>关系</td>
+				     	<td>手机号码</td>
+				     </tr>
+				     <tr ng-if="order.chachong.first_name1!=''">
+				     		<td>{{order.chachong.first_name1}}</td>
+				     		<td>{{order.chachong.first_relation1}}</td>
+				     		<td style="color: #ff6368;">{{order.chachong.first_phone1}}</td>
+				     </tr>
+				     <tr ng-if="order.chachong.second_name1!=''">
+				     		<td>{{order.chachong.second_name1}}</td>
+				     		<td>{{order.chachong.second_relation1}}</td>
+				     		<td style="color: #ff6368;">{{order.chachong.second_phone1}}</td>
+				     </tr>
+				     <tr ng-if="order.chachong.third_name1!=''">
+				     		<td>{{order.chachong.third_name1}}</td>
+				     		<td>{{order.chachong.third_relation1}}</td>
+				     		<td style="color:#ff6368;">{{order.chachong.third_phone1}}</td>
+				     </tr>
+				     <tr ng-if="order.chachong.fourth_name1!=''">
+				     		<td>{{order.chachong.fourth_name1}}</td>
+				     		<td>{{order.chachong.fourth_relation1}}</td>
+				     		<td style="color: #ff6368;">{{order.chachong.fourth_phone1}}</td>
+				     </tr>
+				</table>
+			
+				<table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;margin-top: 20px;">
+				     <tr>
+				     	<td>姓名</td>
+				     	<td>进件时间</td>
+				     	<td>操作</td>
+				     </tr>
+				     <tr ng-repeat="d in order.fphonelist">
+				     		<td>{{d.name}}</td>
+				     		<td>{{d.addtime}}</td>
+				     		<td><a href="javascript:;" ng-click="detail(d)">查看</a></td>
+				     </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="panel panel-default" style="margin-top: 0px;" ng-if="order.frenamelist.length>0">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(5)"
+				   >
+					四个联系人姓名+关系
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseFiveFive" class="panel-collapse collapse">
+			<div class="panel-body">
+			
+				<table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+				     <tr>
+				     	<td colspan="3" style="text-align: left;color:#ff6368;">查重件</td>
+				     </tr>
+				     <tr>
+				     	<td>姓名</td>
+				     	<td>关系</td>
+				     </tr>
+				     <tr ng-if="order.chachong.first_name2!=''">
+				     		<td style="color:#ff6368;">{{order.chachong.first_name2}}</td>
+				     		<td style="color:#ff6368;">{{order.chachong.first_relation2}}</td>
+				     </tr>
+				     <tr ng-if="order.chachong.second_name2!=''">
+				     		<td style="color:#ff6368;">{{order.chachong.second_name2}}</td>
+				     		<td style="color:#ff6368;">{{order.chachong.second_relation2}}</td>
+				     </tr>
+				     <tr ng-if="order.chachong.third_name2!=''">
+				     		<td style="color:#ff6368;">{{order.chachong.third_name2}}</td>
+				     		<td style="color:#ff6368;">{{order.chachong.third_relation2}}</td>
+				     </tr>
+				     <tr ng-if="order.chachong.fourth_name2!=''">
+				     		<td style="color:#ff6368;">{{order.chachong.fourth_name2}}</td>
+				     		<td style="color:#ff6368;">{{order.chachong.fourth_relation2}}</td>
+				     </tr>
+				</table>
+			
+				<table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+				     <tr>
+				     	<td>姓名</td>
+				     	<td>进件时间</td>
+				     	<td>操作</td>
+				     </tr>
+				     <tr ng-repeat="d in order.frenamelist">
+				     		<td>{{d.name}}</td>
+				     		<td>{{d.addtime}}</td>
+				     		<td><a href="javascript:;" ng-click="detail(d)">查看</a></td>
+				     </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+		<div class="panel panel-default" style="margin-top: 0px;" ng-if="order.uphonelist.length>0">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(6)"
+				   >
+					单位座机&nbsp;&nbsp;&nbsp;(<span style="color:#ff6368;">查重件：{{order.chachong.unitphone}}</span>)
+				</a>
+				<i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapseSixSix" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+				     <tr>
+				     	<td>姓名</td>
+				     	<td>进件时间</td>
+				     	<td>操作</td>
+				     </tr>
+				     <tr ng-repeat="d in order.uphonelist">
+				     		<td>{{d.name}}</td>
+				     		<td>{{d.addtime}}</td>
+				     		<td><a href="javascript:;" ng-click="detail(d)">查看</a></td>
+				     </tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

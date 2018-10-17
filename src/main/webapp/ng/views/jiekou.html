@@ -1,0 +1,590 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                        <div class="form-body">
+                           <form action="#" name="form" class="form-horizontal">
+					     <div class="form-body">
+                                        
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">辅助查询</td>
+               					</tr>
+								<tr>
+									<td class="tdleft" width="20%">大圣数据查询</td>
+                					<td width="15%">
+                						<span ng-click="dasheng()" style="color: #ff6368;cursor: pointer;">查看</span>
+                					</td>
+                					<td class="tdleft" width="17%">企查查</td>
+                					<td width="13%">
+                						<span>未发送</span>
+                					</td>
+                					<td class="tdleft" width="15%"></td>
+                					<td width="20%"></td>
+								</tr>
+                           </table>
+                	
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">逾期数据查询</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="20%">上海资信信用报告</td>
+                					<td width="15%">
+                						<span>未查得</span>
+                					</td>
+                					<td class="tdleft" width="17%">宜信阿福</td>
+                					<td width="13%">
+                						<span>未发送</span>
+                					</td>
+                					<td class="tdleft" width="15%"></td>
+                					<td width="20%"></td>
+                			</tr>
+                      		
+                           </table>
+                	
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">黑名单</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="20%">百融信息查询</td>
+                					<td colspan="5">
+                						<span>查得</span>
+                					</td>
+                			</tr>
+                      		
+                           </table>
+                	
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6" >汇总信息</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="20%">社保信息查询</td>
+                					<td width="15%">
+                						<span>未查得</span>
+                					</td>
+                					<td class="tdleft" width="17%">运营商</td>
+                					<td width="13%">
+                						<span ng-click="yunying()" style="color: #ff6368;cursor: pointer;">{{order.item.isWind=='0'&&'未查'||order.item.isWind=='1'&&'已查'||''}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">银行卡流水</td>
+                					<td width="20%">未查得</td>
+                			</tr>
+                      		
+                      		<tr>
+                					<td class="tdleft" width="12%">公积金爬取</td>
+                					<td width="15%">
+                						<span>未查得</span>
+                					</td>
+                					<td class="tdleft" width="25%">聚合数据</td>
+                					<td width="13%">
+                						<span ng-click="juhe()">查得</span>
+                					</td>
+                					<td class="tdleft" width="15%"></td>
+                					<td width="20%"></td>
+                			</tr>
+                      		
+                           </table>	
+                	
+                        </div>
+					   </form>
+                        </div>
+					   
+                     </div> 
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>
+
+
+<script type="text/ng-template" id="juhe.html">
+	
+    <div class="modal-header lm_window_head" >
+        <span>聚合数据</span>
+        <p class="p2" ><button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    	<div class="modal-body">
+        	<div class="table-container">
+            	<div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+					
+
+                <!--&lt;!&ndash;开始table&ndash;&gt;-->
+                	<div class="table-scrollable" style="overflow-y: auto">
+                    	<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">身份证OCR身份识别</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="20%">姓名</td>
+                					<td width="15%">
+                						<span>陈紫韵</span>
+                					</td>
+                					<td class="tdleft" width="17%">性别</td>
+                					<td width="13%">
+                						<span>女</span>
+                					</td>
+                					<td class="tdleft" width="15%">民族</td>
+                					<td width="20%">汉</td>
+                			</tr>
+                      		<tr>
+                					<td class="tdleft" width="12%">出生日期</td>
+                					<td width="15%">
+                						<span>1993-12-22</span>
+                					</td>
+                					<td class="tdleft" width="10%">签发日期</td>
+                					<td width="13%">
+                						<span>1993-12-12</span>
+                					</td>
+                					<td class="tdleft" width="20%">失效日期</td>
+                					<td width="30%">2003-12-12</td>
+                			</tr>
+							<tr>
+									<td class="tdleft" width="12%">签发机关</td>
+                					<td width="15%">
+                						<span>广西来宾</span>
+                					</td>
+                					<td class="tdleft" width="10%">地址</td>
+                					<td colspan="3">
+                						<span>广西省来宾兴宾区平阳镇大龙村民委高院村49号</span>
+                					</td>
+							</tr>
+                           </table>
+                	
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">三网手机实名制</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="15%">姓名</td>
+                					<td width="15%">
+                						<span>陈紫韵</span>
+                					</td>
+                					<td class="tdleft" width="10%">手机号码</td>
+                					<td width="10%">
+                						<span>13602958776</span>
+                					</td>
+                					<td class="tdleft" width="25%">身份证号码</td>
+                					<td width="25%">452226197605204774</td>
+                			</tr>
+                      		
+							<tr>
+                					<td class="tdleft" width="15%">手机运营商</td>
+                					<td width="15%">
+                						<span>移动</span>
+                					</td>
+                					<td class="tdleft" width="10%">归属地</td>
+                					<td width="10%">
+                						<span>广东肇庆</span>
+                					</td>
+                					<td class="tdleft" width="25%">三要素身份是否一致</td>
+                					<td width="25%">是</td>
+                			</tr>
+
+                           </table>
+                	
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6" >实名认证</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="20%">是否实名认证</td>
+                					<td colspan="5">
+                						<span>是</span>
+                					</td>
+                			</tr>
+                      		
+                           </table>
+                	
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">人脸比对</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="10%">
+                						<span>陈紫韵</span>
+                					</td>
+                					<td class="tdleft" width="10%">比对得分</td>
+                					<td width="10%">
+                						<span>查得</span>
+                					</td>
+                					<td class="tdleft" width="10%">比对结果</td>
+                					<td width="50%">身份证号与姓名匹配，且比对成功</td>
+                			</tr>
+                      		
+                           </table>	
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="dasheng.html">
+	
+    <div class="modal-header lm_window_head" >
+        <span>大圣数据</span>
+        <p class="p2" ><button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    	<div class="modal-body">
+        	<div class="table-container">
+            	<div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+					
+
+                <!--&lt;!&ndash;开始table&ndash;&gt;-->
+                	<div class="table-scrollable" style="overflow-y: auto">
+                    	<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">D系在线风控</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft">年龄</td>
+                					<td width="15%">
+                						<span>{{order.item.age}}</span>
+                					</td>
+                					<td class="tdleft">性别</td>
+                					<td width="15%">
+                						<span>{{order.item.gender}}</span>
+                					</td>
+
+                			</tr>
+                      		<tr>
+                					<td class="tdleft">生日日期</td>
+                					<td width="15%">
+                						<span>{{order.item.birthday}}</span>
+                					</td>
+                					<td class="tdleft">身份证是否是有效身份证</td>
+                					<td width="15%">
+                						<span>{{order.item.idcard_validate=='1'&&'通过'||order.item.idcard_validate=='0'&&'不通过'||''}}</span>
+                					</td>
+ 
+                			</tr>
+							<tr>
+									<td class="tdleft">身份证户籍省份</td>
+                					<td width="15%">
+                						<span>{{order.item.idcard_province}}</span>
+                					</td>
+                					<td class="tdleft">身份证户籍城市</td>
+									<td width="15%">
+										<span>{{order.item.idcard_city}}</span>
+									</td>
+							</tr>
+							<tr>
+									<td class="tdleft">身份证户籍地区</td>
+                					<td width="15%">
+                						<span>{{order.item.region}}</span>
+                					</td>
+                					<td class="tdleft">手机运营商</td>
+									<td width="15%">
+										<span>{{order.item.phone_operator}}</span>
+									</td>
+							</tr>
+							<tr>
+									<td class="tdleft">手机归属地省份</td>
+                					<td width="15%">
+                						<span>{{order.item.phone_province}}</span>
+                					</td>
+                					<td class="tdleft">手机归属地城市</td>
+									<td width="15%">
+										<span>{{order.item.phone_city}}</span>
+									</td>
+							</tr>
+							<tr>
+									<td class="tdleft">身份证号记录天数</td>
+                					<td width="15%">
+                						<span>{{order.item.record_idcard_days}}</span>
+                					</td>
+                					<td class="tdleft">手机号记录天数</td>
+									<td width="15%">
+										<span>{{order.item.record_phone_days}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">身份证最近出现时间</td>
+                					<td width="15%">
+                						<span>{{order.item.last_appear_idcard}}</span>
+                					</td>
+                					<td class="tdleft">手机号最近出现时间</td>
+									<td width="15%">
+										<span>{{order.item.last_appear_phone}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">关联身份证数量</td>
+                					<td width="15%">
+                						<span>{{order.item.used_idcards_cnt}}</span>
+                					</td>
+                					<td class="tdleft">关联手机号数量</td>
+									<td width="15%">
+										<span>{{order.item.used_phones_cnt}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">葫芦分</td>
+                					<td width="15%">
+                						<span>{{order.item.sn_score}}</span>
+                					</td>
+                					<td class="tdleft">直接联系人</td>
+									<td width="15%">
+										<span>{{order.item.sn_order1_contacts_cnt}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">直接联系人在黑名单中数量(直接黑人)</td>
+                					<td width="15%">
+                						<span>{{order.item.sn_order1_blacklist_contacts_cnt}}</span>
+                					</td>
+                					<td class="tdleft">间接联系人在黑名单中数量(间接黑人)</td>
+									<td width="15%">
+										<span>{{order.item.sn_order2_blacklist_contacts_cnt}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">认识间接黑人的直接联系人个数</td>
+                					<td width="15%">
+                						<span>{{order.item.sn_order2_blacklist_routers_cnt}}</span>
+                					</td>
+                					<td class="tdleft">认识间接黑人的直接联系人比例</td>
+									<td width="15%">
+										<span>{{order.item.sn_order2_blacklist_routers_pct}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">身份证是否命中黑名单</td>
+                					<td width="15%">
+                						<span>{{order.item.idcard_in_blacklist=='false'&&'否'||order.item.idcard_in_blacklist=='true'&&'是'||''}}</span>
+                					</td>
+                					<td class="tdleft">手机号是否命中黑名单</td>
+									<td width="15%">
+										<span>{{order.item.phone_in_blacklist=='false'&&'否'||order.item.phone_in_blacklist=='true'&&'是'||''}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">是否命中法院黑名单</td>
+                					<td width="15%">
+                						<span>{{order.item.in_court_blacklist=='false'&&'否'||order.item.in_court_blacklist=='true'&&'是'||''}}</span>
+                					</td>
+                					<td class="tdleft">是否命中网贷黑名单</td>
+									<td width="15%">
+										<span>{{order.item.in_p2p_blacklist=='false'&&'否'||order.item.in_p2p_blacklist=='true'&&'是'||''}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">是否命中银行黑名单</td>
+                					<td width="15%">
+                						<span>{{order.item.in_bank_blacklist=='false'&&'否'||order.item.in_bank_blacklist=='true'&&'是'||''}}</span>
+                					</td>
+                					<td class="tdleft">最近该身份证出现在黑名单中时间</td>
+									<td width="15%">
+										<span>{{order.item.last_appear_idcard_in_blacklist}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">最近该手机号出现在黑名单中时间</td>
+                					<td width="15%">
+                						<span>{{order.item.last_appear_phone_in_blacklist}}</span>
+                					</td>
+                					<td class="tdleft">线上消费分期出现次数</td>
+									<td width="15%">
+										<span>{{order.item.online_installment_cnt}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">线下消费分期出现次数</td>
+                					<td width="15%">
+                						<span>{{order.item.offline_installment_cnt}}</span>
+                					</td>
+                					<td class="tdleft">信用卡代还出现次数</td>
+									<td width="15%">
+										<span>{{order.item.credit_card_repayment_cnt}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">小额快速贷出现次数</td>
+									<td width="15%">
+										<span>{{order.item.payday_loan_cnt}}</span>
+									</td>
+                					<td class="tdleft">线上现金贷出现次数</td>
+									<td width="15%">
+										<span>{{order.item.online_cash_loan_cnt}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">线下现金贷出现次数</td>
+                					<td width="15%">
+                						<span>{{order.item.offline_cash_loan_cnt}}</span>
+                					</td>
+                					<td class="tdleft">其他</td>
+									<td width="15%">
+										<span>{{order.item.others_cnt}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">历史查询总次数</td>
+                					<td width="15%">
+                						<span>{{order.item.search_cnt}}</span>
+                					</td>
+                					<td class="tdleft">最近7天查询次数</td>
+									<td width="15%">
+										<span>{{order.item.search_cnt_recent_7_days}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">最近14天查询次数</td>
+                					<td width="15%">
+                						<span>{{order.item.search_cnt_recent_14_days}}</span>
+                					</td>
+                					<td class="tdleft">最近30天查询次数</td>
+									<td width="15%">
+										<span>{{order.item.search_cnt_recent_30_days}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">最近60天查询次数</td>
+                					<td width="15%">
+                						<span>{{order.item.search_cnt_recent_60_days}}</span>
+                					</td>
+                					<td class="tdleft">最近90天查询次数</td>
+									<td width="15%">
+										<span>{{order.item.search_cnt_recent_90_days}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">最近180天查询次数</td>
+                					<td width="15%">
+                						<span>{{order.item.search_cnt_recent_180_days}}</span>
+                					</td>
+                					<td class="tdleft">历史查询总机构数</td>
+									<td width="15%">
+										<span>{{order.item.org_cnt}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">最近7天查询机构数</td>
+                					<td width="15%">
+                						<span>{{order.item.org_cnt_recent_7_days}}</span>
+                					</td>
+                					<td class="tdleft">最近14天查询机构数</td>
+									<td width="15%">
+										<span>{{order.item.org_cnt_recent_14_days}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">最近30天查询机构数</td>
+                					<td width="15%">
+                						<span>{{order.item.org_cnt_recent_30_days}}</span>
+                					</td>
+                					<td class="tdleft">最近60天查询机构数</td>
+									<td width="15%">
+										<span>{{order.item.org_cnt_recent_60_days}}</span>
+									</td>
+							</tr>
+<tr>
+									<td class="tdleft">最近90天查询机构数</td>
+                					<td width="15%">
+                						<span>{{order.item.org_cnt_recent_90_days}}</span>
+                					</td>
+                					<td class="tdleft">最近180天查询机构数</td>
+									<td width="15%">
+										<span>{{order.item.org_cnt_recent_180_days}}</span>
+									</td>
+							</tr>
+							<tr>
+								<td class="tdleft">火眼黑名单2.0命中结果</td>
+								<td colspan="3">{{order.item.result}}</td>
+							</tr>
+							</table>
+                	
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="yunying.html">
+	
+    <div class="modal-header lm_window_head" >
+        <span>运营商数据</span>
+        <p class="p2" ><button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    	<div class="modal-body">
+        	<div class="table-container">
+            	<div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+					
+
+                <!--&lt;!&ndash;开始table&ndash;&gt;-->
+                	<div class="table-scrollable" style="overflow-y: auto">
+                    	<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                				<tr>
+                					<td class="tdleft">三网手机实名制认证</td>
+                					<td colspan ="3">
+                						<span>{{order.item.realSystem}}</span>
+                					</td>
+                			</tr>
+							<tr>
+								<td class="tdleft">手机在网状态</td>
+                					<td colspan ="3">
+                						<span>{{order.item.onlinedes}}</span>
+                					</td>
+							</tr>
+							<tr>
+								<td class="tdleft">手机在网时长</td>
+                					<td colspan ="3">
+                						<span>{{order.item.timedes}}</span>
+                					</td>
+							</tr>
+							<tr>
+								<td class="tdleft">手机网络供应商</td>
+                					<td>
+                						<span>{{order.item.consume_isp}}</span>
+                					</td>
+								<td class="tdleft">手机消费档次</td>
+                					<td>
+                						<span>{{order.item.consume_desc}}</span>
+                					</td>
+							</tr>
+							<tr>
+								<td colspan="4" style="color:#ff6368;">注:电信是近三个月的均值 ，移动是近3个月的消费，联通是近六个月平均消费</td>
+							</tr>
+							</table>
+                	
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</script>
+
+

@@ -1,0 +1,18 @@
+<svg width="300" height="110" xmlns="http://www.w3.org/2000/svg" fill="rgba(255,255,255,.8)">
+    <g>
+		<path d="M 0 90 Q 87.5 115, 175 90 T 350 90 T 525 90 T 700 90 T 875 90 T 1050 90 T 1225 90 V 129 H 0 V 0"></path>
+		<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-350" dur="3s" repeatCount="indefinite"></animateTransform>
+	</g>
+	<g>
+		<path d="M 0 90 Q 87.5 115, 175 90 T 350 90 T 525 90 T 700 90 T 875 90 T 1050 90 T 1225 90 V 129 H 0 V 0" transform="translate(-87.5, 0)"></path>
+		<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-700" dur="3.5s" repeatCount="indefinite"></animateTransform>
+	</g>
+	<g>
+		<path d="M 0 90 Q 87.5 115, 175 90 T 350 90 T 525 90 T 700 90 T 875 90 T 1050 90 T 1225 90 V 129 H 0 V 0" transform="translate(-175, 0)"></path>
+		<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-700" dur="4s" repeatCount="indefinite"></animateTransform>
+	</g>
+	<g>
+		<path d="M 0 90 Q 87.5 115, 175 90 T 350 90 T 525 90 T 700 90 T 875 90 T 1050 90 T 1225 90 V 129 H 0 V 0" transform="translate(-131.25, 0)"></path>
+		<animateTransform attributeName="transform" attributeType="XML" type="translate" from="0" to="-350" dur="4.5s" repeatCount="indefinite"></animateTransform>
+	</g>
+</svg>

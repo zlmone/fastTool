@@ -1,0 +1,262 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="container2" style="margin-top:0px;padding:10px;background:#fff;">
+                    <a style="color:#000;font-size:15px;font-weight:bold;" name="tab">基本信息</a>
+                    <div class="pull-right"style="margin:-3px 10px 0 0;">
+                       <div class="btn-group lianxu boder">
+                        <a class="btn "  ng-if="materiel_Apply.item.examine=='1'&&type=='0'" ng-click="forward(materiel_Apply.item)"><span>通过</span></a>
+                        <a class="btn "  ng-if="materiel_Apply.item.examine=='1'&&type=='0'" ng-click="terminate(materiel_Apply.item)"><span>驳回</span></a>
+                        <a class="btn " ng-click="$root.settings.utils.back()">返回</a>
+						</div>
+					 </div>
+                </div>
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                       
+					     <div class="form-body">
+                           
+					<!--<div class="tnz_half">
+						<div class="tnz_half_hui">
+							物资单号：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{materiel_Apply.item.materiel_Apply_number}}
+						</div>
+						<div class="clear"></div>
+					</div>-->
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							申请人：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{materiel_Apply.item.apply_people_name}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							申请时间：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{materiel_Apply.item.apply_time}}
+						</div>
+						<div class="clear"></div>
+					</div>
+
+					<!--<div class="tnz_half">
+						<div class="tnz_half_hui">
+							申请说明：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{materiel_Apply.item.apply_explain}}
+						</div>
+						<div class="clear"></div>
+					</div>-->
+                             <div class="tnz_two">
+                                 <div class="tnz_two_hui">
+                                     申请说明：
+                                     <span class="tnz_kong"></span>
+                                 </div>
+                                 <div class="tnz_two_bai">
+                                     <span class="tnz_kong"></span>
+                                     {{materiel_Apply.item.apply_explain}}
+                                 </div>
+                                 <div class="clear"></div>
+                             </div>
+                             <div class="tnz_half">
+                                 <div class="tnz_half_hui">
+                                     所属城市：
+                                     <span class="tnz_kong"></span>
+                                 </div>
+                                 <div class="tnz_half_bai">
+                                     <span class="tnz_kong"></span>
+                                     {{materiel_Apply.item.belong_city}}
+                                 </div>
+                                 <div class="clear"></div>
+                             </div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							状态：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+							<!--	{{materiel_Apply.item.state}}-->
+                            {{materiel_Apply.item.state=='0'&&'新增'||materiel_Apply.item.state=='1'&&'提交'||materiel_Apply.item.state=='2'&&'编辑'||''}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							审核：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+                            {{materiel_Apply.item.examine=='0'&&'未提交'||materiel_Apply.item.examine=='1'&&'待审核'||materiel_Apply.item.examine=='2'&&'已审核'||materiel_Apply.item.examine=='3'&&'驳回'||''}}
+								<!--{{materiel_Apply.item.examine}}-->
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							发放状态：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+                            {{materiel_Apply.item.release_status=='0'&&'--'||materiel_Apply.item.release_status=='1'&&'待发放'||materiel_Apply.item.release_status=='2'&&'已发放'||''}}
+								<!--{{materiel_Apply.item.release_status}}-->
+						</div>
+						<div class="clear"></div>
+					</div>
+                        </div>
+
+
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="form-group">
+                                     <div>
+                                         <div class="col-md-2">
+
+                                             <input type="button"  class="btn green btn-default btn-xs" disabled  value="物料" style="width:100px;"/>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+
+
+                         <div id="plczkh_neirong_xia_shang">
+                             <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                 <tr>
+
+                                     <td>
+                                         <span class="plczkh_table_title">物资编号</span>
+                                     </td>
+                                     <td>
+                                         <span class="plczkh_table_title">物资名称</span>
+                                     </td>
+                                     <td>
+                                         <span class="plczkh_table_title">物资规格/品牌</span>
+                                     </td>
+                                     <td>
+                                         <span class="plczkh_table_title">申请数量</span>
+                                     </td>
+                                     <td>
+                                         <span class="plczkh_table_title">单位</span>
+                                     </td>
+                                 </tr>
+
+                                 <tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in materiel_Apply.wuliao_list">
+
+                                     <td>
+                                         {{d.materiel_number}}
+                                     </td>
+                                     <td>
+                                         {{d.materiel_name}}
+                                     </td>
+                                     <td>
+                                         {{d.materiel_specifications}}
+                                     </td>
+                                     <td>
+                                         {{d.apply_amount}}
+                                     </td>
+                                     <td>
+                                         {{d.danwei}}
+                                     </td>
+                                 </tr>
+                             </table>
+                         </div>
+
+
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="form-group">
+                                     <div>
+                                         <div class="col-md-2">
+
+                                             <input type="button"  class="btn green btn-default btn-xs" disabled value="流程日志" style="width:100px;"/>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+
+                        <div id="plczkh_neirong_xia_shang">
+                            <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                <tr>
+                                    <td>
+                                        <span class="plczkh_table_title">处理人</span>
+                                    </td>
+                                    <td>
+                                        <span class="plczkh_table_title">操作时间</span>
+                                    </td>
+                                    <td>
+                                        <span class="plczkh_table_title">动作</span>
+                                    </td>
+                                    <td>
+                                        <span class="plczkh_table_title">审核意见</span>
+                                    </td>
+                                </tr>
+
+                                <tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in materiel_Apply.list_log">
+
+                                    <td>
+                                        {{d.creatorName}}
+                                    </td>
+                                    <td>
+                                        {{d.operation_time}}
+                                    </td>
+                                    <td>
+                                        {{d.action}}
+                                    </td>
+                                    <td>
+                                        {{d.examine_opinion}}
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+
+
+                         <div class="row">
+                             <div class="col-md-12">
+                                 <div class="form-group">
+                                     <div>
+                                         <div class="col-md-2">
+
+                                             <input type="button"  class="btn green btn-default btn-xs" disabled  value="物资发放记录" style="width:100px;"/>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

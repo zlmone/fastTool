@@ -1,0 +1,331 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="back_box" style="position: relative;">
+                    <div id="gsxxdiv">
+                        <div class="form-body">
+					     <div class="form-body">
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">业务信息</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="15%">客户姓名</td>
+                					<td width="30%">
+                						<span>{{order.item.realname}}</span>
+                					</td>
+                					<td class="tdleft" width="20%">客户性别</td>
+                					<td width="5%">
+                						<span>{{order.item.sex}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">年龄</td>
+                					<td width="15%">{{order.item.age}}</td>
+                			</tr>
+                      		<tr>
+                      			<td class="tdleft" width="15%">证件类型</td>
+                      			<td width="30%">身份证</td>
+                      			<td class="tdleft" width="20%">身份证号</td>
+                      			<td colspan="3" width="40%">{{order.item.idcard}}</td>
+                      		</tr>
+                      		<tr>
+                      			<td class="tdleft" width="10%">移动电话</td>
+                      			<td width="30%">{{order.item.cellphone}}</td>
+                      			<td class="tdleft" width="20%">其他手机号</td>
+                      			<td colspan="3" width="35%"></td>
+                      		</tr>
+                      		<tr>
+                					<td class="tdleft" width="15%">申请日期</td>
+                					<td width="30%">
+                						<span>{{order.item.addtime}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">渠道商户</td>
+                					<td colspan="3" width="5%">
+                						<span>{{order.item.merchant}}</span>
+                					</td>
+
+                			</tr>
+                           </table>
+                        
+                        
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">借款信息</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="12%">商品类型</td>
+                					<td width="15%">
+                						<span>{{order.item.goodsmodel}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">商品名称</td>
+                					<td width="23%">
+                						<span>{{order.item.goodsname}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">商品售价</td>
+                					<td width="20%">{{order.item.goodsprice}}</td>
+                			</tr>
+                      		<tr>
+                					<td class="tdleft" width="12%">首付金额</td>
+                					<td width="15%">
+                						<span>{{order.item.firstpay}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">销售代码</td>
+                					<td width="23%">
+                						<span>{{order.item.sellercode}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">分期月数</td>
+                					<td width="20%">{{order.item.monthnumber}}</td>
+                			</tr>
+                           </table>
+                           
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">个人信息<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;" ng-click="bianji(1)">编辑</button><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;" ng-click="savebianji(1)">保存</button></td>
+               					</tr>
+               					<!-- <tr>
+               						<td colspan="4"></td>
+               					</tr> -->
+                				<tr>
+                					<td class="tdleft" width="20%">婚姻状况</td>
+                					<td width="40%">
+                						<span><input type="text" ng-model="order.item.marriage" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified1"/></span>
+                					</td>
+                					<td class="tdleft" width="20%">最高学历</td>
+                					<td width="20%">
+                					<input type="text" ng-model="order.item.education" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified1"/>
+                					</td>
+                					
+                			</tr>
+                      		<tr>
+                      			<td class="tdleft" width="20%">户口所在地</td>
+                      			<td colspan="3"><input type="text" ng-model="order.item.address" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified1"/></td>
+                      		</tr>
+                      		<tr>
+                      			<td class="tdleft" width="20%">现住宅地址</td>
+                      			<td colspan="3"></td>
+                      		</tr>
+                      		<tr>
+                					<td class="tdleft" width="20%">住宅电话</td>
+                					<td width="40%">
+                						<span></span>
+                					</td>
+                					<td class="tdleft" width="20%">来本市的年份</td>
+                					<td width="20%">
+                					
+                					</td>
+         
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="20%">银行卡号</td>
+                					<td width="40%">
+                						<input type="text" ng-model="order.item.bank" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified1"/>
+                					</td>
+                					<td class="tdleft" width="20%">银行卡是否本人</td>
+                					<td width="20%">
+                					
+                					</td>
+         
+                			</tr>
+                           </table>
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">工作信息<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;" ng-click="bianji(2)">编辑</button><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;" ng-click="savebianji(2)">保存</button></td>
+               					</tr>
+               					<!-- <tr>
+               						<td colspan="4"><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;" ng-click="bianji()">编辑</button></td>
+               					</tr> -->
+                				<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">单位名称</td>
+                					<td width="35%">
+                						<input type="text" ng-model="order.item.unit" style="border: 0px;width: 100%;" ng-disabled = "order.item.ismodified2"/>
+                					</td>
+                					<td class="tdleft" width="15%">单位地址</td>
+                					<td width="35%">
+                						<input type="text" ng-model="order.item.unitaddress" style="border: 0px;width: 100%;" ng-disabled = "order.item.ismodified2"/>
+                					</td>
+         
+                			</tr>
+                				<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">工作年限</td>
+                					<td width="35%">
+                						
+                					</td>
+                					<td class="tdleft" width="15%">公司规模</td>
+                					<td width="35%">
+                					
+                					</td>
+         							
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">公司性质</td>
+                					<td width="35%">
+                						
+                					</td>
+                					<td class="tdleft" width="15%">部门</td>
+                					<td width="35%">
+                					
+                					</td>
+         
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">职位</td>
+                					<td width="35%">
+                						<input type="text" ng-model="order.item.position" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified2"/>
+                					</td>
+                					<td class="tdleft" width="15%">每月收入</td>
+                					<td width="35%">
+                					
+                					</td>
+         
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">单位座机</td>
+                					<td width="35%">
+                						<input type="text" ng-model="order.item.unitphone" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified2"/>
+                					</td>
+                					<td class="tdleft" width="15%">入职时间</td>
+                					<td width="35%">
+                						<input type="text" ng-model="order.item.entry_time" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified2"/>
+                					</td>
+         
+                			</tr>	
+                			</table>
+                			
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6" >联系人信息<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;" ng-click="bianji(3)">编辑</button><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;" ng-click="savebianji(3)">保存</button></td>
+               					</tr>
+               					<!-- <tr>
+               						<td colspan="6"><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;">编辑</button></td>
+               					</tr> -->
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						<input type="text" ng-model="order.item.first_realname" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						<input type="text" ng-model="order.item.first_relation" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						<input type="text" ng-model="order.item.first_cellphone" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+                			</tr>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						<input type="text" ng-model="order.item.second_realname" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						<input type="text" ng-model="order.item.second_relation" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						<input type="text" ng-model="order.item.second_cellphone" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+                			</tr>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						<input type="text" ng-model="order.item.third_realname" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						<input type="text" ng-model="order.item.third_relation" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						<input type="text" ng-model="order.item.third_cellphone" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+                			</tr>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						<input type="text" ng-model="order.item.fourth_realname" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						<input type="text" ng-model="order.item.fourth_relation" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						<input type="text" ng-model="order.item.fourth_cellphone" style="border: 0px;width: 100%;" ng-disabled="order.item.ismodified3"/>
+                					</td>
+                			</tr>
+                			</table>
+                			
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">房产信息<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;">编辑</button><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;">保存</button></td>
+               					</tr>
+               					<!-- <tr>
+               						<td colspan="4"><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;">编辑</button></td>
+               					</tr> -->
+                				<tr>
+                					<td class="tdleft" width="15%">房产地址</td>
+                					<td width="30%">
+                						
+                					</td>
+                					<td class="tdleft" width="20%">是否按揭</td>
+                					<td></td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="15%">贷款金额</td>
+                					<td width="30%">
+                						
+                					</td>
+                					<td class="tdleft" width="20%">每月还款金额</td>
+                					<td></td>
+                			</tr>
+                			</table>
+                			<table border="0" cellpadding="0"cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">车辆信息<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;">编辑</button><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;">保存</button></td>
+               					</tr>
+               					<!-- <tr>
+               						<td colspan="4"><button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="float: right;background-color: #0b78cb;width: 50px;color:white;">编辑</button></td>
+               					</tr> -->
+                				<tr>
+                					<td class="tdleft" width="20%">车辆情况</td>
+                					<td>
+                						无
+                					</td>
+                					
+                			</tr>
+                			</table>
+                        </div>
+                        </div>
+					   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

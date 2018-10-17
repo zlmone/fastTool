@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.CustomerMapper">
+  
+  <cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Customer">
+	    INSERT INTO customer (id
+  ,login_name
+  ,login_password
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{login_name,jdbcType=VARCHAR},	     
+  #{login_password,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Customer">
+    	UPDATE customer 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      	<if test="login_name != null" >
+        login_name = #{login_name,jdbcType=VARCHAR},
+      </if>
+		<if test="login_password != null" >
+        login_password = #{login_password,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Customer">
+    	UPDATE customer 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        login_name = #{login_name,jdbcType=VARCHAR},
+        login_password = #{login_password,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from customer where id = #{id}
+	</delete>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition">
+	    select count(*) from customer <include refid="Where_Clause"/>
+  	</select>
+  	
+  	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+</mapper>

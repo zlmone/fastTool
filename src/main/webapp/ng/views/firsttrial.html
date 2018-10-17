@@ -1,0 +1,86 @@
+<div class="back_box">
+	<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                				<tr>
+                					<td class="tdleft" width="15%">商品名称</td>
+                					<td width="40%">
+                						{{order.item.goodsname}}
+                					</td>
+                					<td class="tdleft" width="20%">商品售价</td>
+                					<td>{{order.item.goodsprice}}</td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="15%">渠道商户</td>
+                					<td width="40%">
+                						{{order.item.merchant}}
+                					</td>
+                					<td class="tdleft" width="20%">分期月数</td>
+                					<td>{{order.item.monthnumber}}</td>
+                			</tr>
+              
+                			<tr>
+                				<td class="tdleft">月收入</td>
+                				<td></td>
+                				<td class="tdleft">月还金额</td>
+                				<td>{{order.item.monthpay}}</td>
+                			</tr>
+                			<tr>
+                				<td class="tdleft">借款费率</td>
+                				<td>4.66%</td>
+                				<td class="tdleft"></td>
+                				<td></td>
+                			</tr>
+                			<tr>
+                				<td class="tdleft">合同金额</td>
+                				<td colspan="3">{{order.item.goodsprice-order.item.firstpay}}</td>
+                			</tr>
+                			<tr>
+                				<td class="tdleft">初审结论</td>
+                				<td colspan="3"><input type="radio" name="jielun" id="jielun1" ng-click="jujue(0)"/>回退补件&nbsp;&nbsp;<input type="radio" name="jielun" id="jielun2" ng-click="jujue(1)"/>拒绝&nbsp;&nbsp;<input type="radio" ng-click="jujue(2)" id="jielun3" name="jielun"/>通过</td>
+                			</tr>
+                			<tr style="display: none;" id="reason">
+                				<td class="tdleft">
+                					拒绝理由	
+                				</td>
+                				
+                				<td colspan="3">
+                					<select style="width: 40%;" ng-change="xuanze1()" ng-model="order.item.firstreason">
+                						<option value="0">D1欺诈</option>
+                						<option value="1">D2提供虚假资料</option>
+                						<option value="2">D3不良信用记录</option>
+                						<option value="3">D4信息不真实</option>
+                						<option value="4">D5负面信息</option>
+                						<option value="5">D6信息无法核实</option>
+                						<option value="6">D7无法联络申请人/公司</option>
+                						<option value="7">D8不愿透露/无法提供资料或信息</option>
+                						<option value="8">D9偿债能力不足</option>
+                						<option value="9">D10单位未在工商网注册/吊销/注销</option>
+                						<option value="10">D11不符合进件要求</option>
+                						<option value="12">D12其他</option>
+                					</select>
+                					&nbsp;&nbsp;&nbsp;
+                					<select ng-options="d.value as d.name for d in order.reasonlist" style="width: 40%;" ng-model="order.item.jujue_reason" ng-change="save_reason()">
+                						
+                					</select>
+                				</td>
+                			</tr>
+                			<tr style="display: none;" id="reason3">
+                				<td class="tdleft">具体结果</td>
+                				<td colspan="3">
+                					<textarea style="width: 74%;height: 100px;" ng-model="order.item.note2" ng-blur="save_note()"></textarea>
+                				</td>
+                			</tr>
+                			<tr style="display: none;" id="reason1">
+                				<td class="tdleft">具体结果</td>
+                				<td colspan="3">
+                					<textarea style="width: 74%;height: 100px;" ng-model="order.item.note1" ng-blur="save_note()"></textarea>
+                				</td>
+                			</tr>
+                			<tr style="display: none;" id="reason2">
+                				<td class="tdleft">具体结果</td>
+                				<td colspan="3">
+                					<textarea style="width: 74%;height: 100px;" ng-model="order.item.note3" ng-blur="save_note()"></textarea>
+                				</td>
+                			</tr>
+                			</table>
+</div>

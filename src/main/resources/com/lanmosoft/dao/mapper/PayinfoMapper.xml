@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.PayinfoMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Payinfo">
+	    INSERT INTO tc_loan_pay (id
+  ,uid
+  ,loanid
+  ,gid
+  ,yborderid
+  ,requestno
+  ,status
+  ,sort_order
+  ,totalnumber
+  ,monthpay
+  ,capital
+  ,interest
+  ,overdue
+  ,dorepayment_time
+  ,repayment_time
+  ,admin_name
+  ,addtime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{uid,jdbcType=VARCHAR},
+  #{loanid,jdbcType=VARCHAR},
+  #{gid,jdbcType=VARCHAR},
+  #{yborderid,jdbcType=VARCHAR},
+  #{requestno,jdbcType=VARCHAR},
+  #{status,jdbcType=VARCHAR},
+  #{sort_order,jdbcType=VARCHAR},
+  #{totalnumber,jdbcType=VARCHAR},
+  #{monthpay,jdbcType=VARCHAR},
+  #{capital,jdbcType=VARCHAR},
+  #{interest,jdbcType=VARCHAR},
+  #{overdue,jdbcType=VARCHAR},
+  #{dorepayment_time,jdbcType=VARCHAR},
+  #{repayment_time,jdbcType=VARCHAR},
+  #{admin_name,jdbcType=VARCHAR},
+  #{addtime,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Payinfo">
+    	UPDATE tc_loan_pay 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+		<if test="loanid != null" >
+        loanid = #{loanid,jdbcType=VARCHAR},
+      </if>
+		<if test="gid != null" >
+        gid = #{gid,jdbcType=VARCHAR},
+      </if>
+		<if test="yborderid != null" >
+        yborderid = #{yborderid,jdbcType=VARCHAR},
+      </if>
+		<if test="requestno != null" >
+        requestno = #{requestno,jdbcType=VARCHAR},
+      </if>
+		<if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+		<if test="sort_order != null" >
+        sort_order = #{sort_order,jdbcType=VARCHAR},
+      </if>
+		<if test="totalnumber != null" >
+        totalnumber = #{totalnumber,jdbcType=VARCHAR},
+      </if>
+		<if test="monthpay != null" >
+        monthpay = #{monthpay,jdbcType=VARCHAR},
+      </if>
+		<if test="capital != null" >
+        capital = #{capital,jdbcType=VARCHAR},
+      </if>
+		<if test="interest != null" >
+        interest = #{interest,jdbcType=VARCHAR},
+      </if>
+		<if test="overdue != null" >
+        overdue = #{overdue,jdbcType=VARCHAR},
+      </if>
+		<if test="dorepayment_time != null" >
+        dorepayment_time = #{dorepayment_time,jdbcType=VARCHAR},
+      </if>
+		<if test="repayment_time != null" >
+        repayment_time = #{repayment_time,jdbcType=VARCHAR},
+      </if>
+		<if test="admin_name != null" >
+        admin_name = #{admin_name,jdbcType=VARCHAR},
+      </if>
+		<if test="addtime != null" >
+        addtime = #{addtime,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Payinfo">
+    	UPDATE tc_loan_pay 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        uid = #{uid,jdbcType=VARCHAR},
+        loanid = #{loanid,jdbcType=VARCHAR},
+        gid = #{gid,jdbcType=VARCHAR},
+        yborderid = #{yborderid,jdbcType=VARCHAR},
+        requestno = #{requestno,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        sort_order = #{sort_order,jdbcType=VARCHAR},
+        totalnumber = #{totalnumber,jdbcType=VARCHAR},
+        monthpay = #{monthpay,jdbcType=VARCHAR},
+        capital = #{capital,jdbcType=VARCHAR},
+        interest = #{interest,jdbcType=VARCHAR},
+        overdue = #{overdue,jdbcType=VARCHAR},
+        dorepayment_time = #{dorepayment_time,jdbcType=VARCHAR},
+        repayment_time = #{repayment_time,jdbcType=VARCHAR},
+        admin_name = #{admin_name,jdbcType=VARCHAR},
+        addtime = #{addtime,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from tc_loan_pay where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from tc_loan_pay <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE tc_loan_pay 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.uid != null" >
+        uid = #{domain.uid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.loanid != null" >
+        loanid = #{domain.loanid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.gid != null" >
+        gid = #{domain.gid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.yborderid != null" >
+        yborderid = #{domain.yborderid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.requestno != null" >
+        requestno = #{domain.requestno,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.status != null" >
+        status = #{domain.status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sort_order != null" >
+        sort_order = #{domain.sort_order,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.totalnumber != null" >
+        totalnumber = #{domain.totalnumber,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.monthpay != null" >
+        monthpay = #{domain.monthpay,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.capital != null" >
+        capital = #{domain.capital,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.interest != null" >
+        interest = #{domain.interest,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.overdue != null" >
+        overdue = #{domain.overdue,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.dorepayment_time != null" >
+        dorepayment_time = #{domain.dorepayment_time,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.repayment_time != null" >
+        repayment_time = #{domain.repayment_time,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.admin_name != null" >
+        admin_name = #{domain.admin_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.addtime != null" >
+        addtime = #{domain.addtime,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Payinfo">
+		select <include refid="Base_Column_List"/> from tc_loan_pay where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Payinfo" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from tc_loan_pay <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+  	<select id="query2" resultType="com.lanmosoft.dao.model.Payinfo" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" />, datediff(CURDATE(), repayment_time) as days from tc_loan_pay <include refid="Where_Clause" />
+  	</select>
+  
+  	<select id="query1" resultType="com.lanmosoft.dao.model.Payinfo" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List1" /> from view_yuqidetail<include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from tc_loan_pay <include refid="Where_Clause"/>
+  	</select>
+  	
+  	<select id="count1" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from view_yuqidetail <include refid="Where_Clause"/>
+  	</select>
+  	
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,uid
+,loanid
+,gid
+,yborderid
+,requestno
+,status
+,sort_order
+,totalnumber
+,monthpay
+,capital
+,interest
+,overdue
+,dorepayment_time
+,repayment_time
+,admin_name
+,addtime
+	</sql>
+	<sql id="Base_Column_List1" >
+	  id
+,uid
+,loanid
+,gid
+,yborderid
+,requestno
+,status
+,sort_order
+,totalnumber
+,monthpay
+,capital
+,interest
+,overdue
+,dorepayment_time
+,repayment_time
+,admin_name
+,addtime
+,days
+,realname
+,sellercode
+,cellphone
+,idcard
+,goodsprice
+,firstpay
+	</sql>
+</mapper>

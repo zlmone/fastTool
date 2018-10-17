@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.ZiduanshezhiMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Ziduanshezhi">
+	    INSERT INTO ziduanshezhi (id
+  ,ziduanmingcheng
+  ,ziduandaima
+  ,ziduanbieming
+  ,ziduanleixing
+  ,ziduanbiaoqian
+  ,ziduankuozhan
+  ,ziduanxingzhi
+  ,ziduanpaixu
+  ,zhuti
+  ,qiyong
+  ,delstatus
+  ,createTime
+  ,modifiedTime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{ziduanmingcheng,jdbcType=VARCHAR},
+  #{ziduandaima,jdbcType=VARCHAR},
+  #{ziduanbieming,jdbcType=VARCHAR},
+  #{ziduanleixing,jdbcType=VARCHAR},
+  #{ziduanbiaoqian,jdbcType=VARCHAR},
+  #{ziduankuozhan,jdbcType=VARCHAR},
+  #{ziduanxingzhi,jdbcType=VARCHAR},
+  #{ziduanpaixu,jdbcType=VARCHAR},
+  #{zhuti,jdbcType=VARCHAR},
+  #{qiyong,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Ziduanshezhi">
+    	UPDATE ziduanshezhi 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="ziduanmingcheng != null" >
+        ziduanmingcheng = #{ziduanmingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="ziduandaima != null" >
+        ziduandaima = #{ziduandaima,jdbcType=VARCHAR},
+      </if>
+		<if test="ziduanbieming != null" >
+        ziduanbieming = #{ziduanbieming,jdbcType=VARCHAR},
+      </if>
+		<if test="ziduanleixing != null" >
+        ziduanleixing = #{ziduanleixing,jdbcType=VARCHAR},
+      </if>
+		<if test="ziduanbiaoqian != null" >
+        ziduanbiaoqian = #{ziduanbiaoqian,jdbcType=VARCHAR},
+      </if>
+		<if test="ziduankuozhan != null" >
+        ziduankuozhan = #{ziduankuozhan,jdbcType=VARCHAR},
+      </if>
+		<if test="ziduanxingzhi != null" >
+        ziduanxingzhi = #{ziduanxingzhi,jdbcType=VARCHAR},
+      </if>
+		<if test="ziduanpaixu != null" >
+        ziduanpaixu = #{ziduanpaixu,jdbcType=VARCHAR},
+      </if>
+		<if test="zhuti != null" >
+        zhuti = #{zhuti,jdbcType=VARCHAR},
+      </if>
+		<if test="qiyong != null" >
+        qiyong = #{qiyong,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Ziduanshezhi">
+    	UPDATE ziduanshezhi 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        ziduanmingcheng = #{ziduanmingcheng,jdbcType=VARCHAR},
+        ziduandaima = #{ziduandaima,jdbcType=VARCHAR},
+        ziduanbieming = #{ziduanbieming,jdbcType=VARCHAR},
+        ziduanleixing = #{ziduanleixing,jdbcType=VARCHAR},
+        ziduanbiaoqian = #{ziduanbiaoqian,jdbcType=VARCHAR},
+        ziduankuozhan = #{ziduankuozhan,jdbcType=VARCHAR},
+        ziduanxingzhi = #{ziduanxingzhi,jdbcType=VARCHAR},
+        ziduanpaixu = #{ziduanpaixu,jdbcType=VARCHAR},
+        zhuti = #{zhuti,jdbcType=VARCHAR},
+        qiyong = #{qiyong,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from ziduanshezhi where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from ziduanshezhi <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE ziduanshezhi 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.ziduanmingcheng != null" >
+        ziduanmingcheng = #{domain.ziduanmingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.ziduandaima != null" >
+        ziduandaima = #{domain.ziduandaima,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.ziduanbieming != null" >
+        ziduanbieming = #{domain.ziduanbieming,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.ziduanleixing != null" >
+        ziduanleixing = #{domain.ziduanleixing,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.ziduanbiaoqian != null" >
+        ziduanbiaoqian = #{domain.ziduanbiaoqian,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.ziduankuozhan != null" >
+        ziduankuozhan = #{domain.ziduankuozhan,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.ziduanxingzhi != null" >
+        ziduanxingzhi = #{domain.ziduanxingzhi,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.ziduanpaixu != null" >
+        ziduanpaixu = #{domain.ziduanpaixu,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.zhuti != null" >
+        zhuti = #{domain.zhuti,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.qiyong != null" >
+        qiyong = #{domain.qiyong,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Ziduanshezhi">
+		select <include refid="Base_Column_List"/> from ziduanshezhi where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Ziduanshezhi" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from ziduanshezhi <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from ziduanshezhi <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,ziduanmingcheng
+,ziduandaima
+,ziduanbieming
+,ziduanleixing
+,ziduanbiaoqian
+,ziduankuozhan
+,ziduanxingzhi
+,ziduanpaixu
+,zhuti
+,qiyong
+,delstatus
+,createTime
+,modifiedTime
+	</sql>
+</mapper>

@@ -1,0 +1,42 @@
+<div style="padding: 5px 5px 0px 30px"><span style="font-size:18px;text-align:center"></span>
+    <div style="float:right;" ><a href ng-click="cancel()"><span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span></a></div>
+</div>
+<div class="zdytjzdnr1">
+    <!---以前的搜索条件--->
+    <table border="0" cellpadding="0" cellspacing="0" class="zdytjzdnr_table">
+       <!-- <tr>
+            <td colspan="4">
+                <span class="tnz_kong"></span>
+                请填写备注<strong></strong>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <span class="tnz_kong"></span>
+                定义搜索条件,并且可以将常用的搜索条件保存。<strong></strong>
+            </td>
+        </tr>-->
+
+        <tr>
+            <td colspan="4">
+                <span class="tnz_kong"></span>
+                <strong>请填写备注</strong>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <span class="tnz_kong" ng-init="datamessge.messge=''"></span>
+                <input  type="text" class="smsrecord_soushuomingcheng1" ng-model="datamessge.messge" />
+            </td>
+        </tr>
+    </table>
+     <br/>
+</div>
+
+<div style="text-align:center;">
+    <div class="tnb_submit" >
+        <input type="submit" class="zdytjzdnr_table_submit" value="提交" ng-click="submit()"/>
+        <input type="reset" class="zdytjzdnr_table_submit" value="取消" ng-click="cancel()"/>
+        <div class="clear"></div>
+    </div>
+</div>

@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.ProcessActivityMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.ProcessActivity">
+	    INSERT INTO processActivity (id
+  ,mubanid
+  ,fnid
+  ,mobanmingcheng
+  ,zhuti
+  ,muban
+  ,biaodanid
+  ,zhuangtai
+  ,xuhao
+  ,dangqiankusuo
+  ,delstatus
+  ,creatorId
+  ,creatorName
+  ,superOrg_id
+  ,superOrg_name
+  ,fulldept_id
+  ,fulldept_name
+  ,fullpost_id
+  ,fullpost_name
+  ,org_code
+  ,createTime
+  ,modifiedTime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{mubanid,jdbcType=VARCHAR},
+  #{fnid,jdbcType=VARCHAR},
+  #{mobanmingcheng,jdbcType=VARCHAR},
+  #{zhuti,jdbcType=VARCHAR},
+  #{muban,jdbcType=VARCHAR},
+  #{biaodanid,jdbcType=VARCHAR},
+  #{zhuangtai,jdbcType=VARCHAR},
+  #{xuhao,jdbcType=VARCHAR},
+  #{dangqiankusuo,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR},
+  #{creatorId,jdbcType=VARCHAR},
+  #{creatorName,jdbcType=VARCHAR},
+  #{superOrg_id,jdbcType=VARCHAR},
+  #{superOrg_name,jdbcType=VARCHAR},
+  #{fulldept_id,jdbcType=VARCHAR},
+  #{fulldept_name,jdbcType=VARCHAR},
+  #{fullpost_id,jdbcType=VARCHAR},
+  #{fullpost_name,jdbcType=VARCHAR},
+  #{org_code,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.ProcessActivity">
+    	UPDATE processActivity 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="mubanid != null" >
+        mubanid = #{mubanid,jdbcType=VARCHAR},
+      </if>
+		<if test="fnid != null" >
+        fnid = #{fnid,jdbcType=VARCHAR},
+      </if>
+		<if test="mobanmingcheng != null" >
+        mobanmingcheng = #{mobanmingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="zhuti != null" >
+        zhuti = #{zhuti,jdbcType=VARCHAR},
+      </if>
+		<if test="muban != null" >
+        muban = #{muban,jdbcType=VARCHAR},
+      </if>
+		<if test="biaodanid != null" >
+        biaodanid = #{biaodanid,jdbcType=VARCHAR},
+      </if>
+		<if test="zhuangtai != null" >
+        zhuangtai = #{zhuangtai,jdbcType=VARCHAR},
+      </if>
+      <if test="xuhao != null" >
+        xuhao = #{xuhao,jdbcType=VARCHAR},
+      </if>
+		<if test="dangqiankusuo != null" >
+        dangqiankusuo = #{dangqiankusuo,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_id != null" >
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_name != null" >
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_id != null" >
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_name != null" >
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_id != null" >
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_name != null" >
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="org_code != null" >
+        org_code = #{org_code,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.ProcessActivity">
+    	UPDATE processActivity 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        mubanid = #{mubanid,jdbcType=VARCHAR},
+        fnid = #{fnid,jdbcType=VARCHAR},
+        mobanmingcheng = #{mobanmingcheng,jdbcType=VARCHAR},
+        zhuti = #{zhuti,jdbcType=VARCHAR},
+        muban = #{muban,jdbcType=VARCHAR},
+        biaodanid = #{biaodanid,jdbcType=VARCHAR},
+        zhuangtai = #{zhuangtai,jdbcType=VARCHAR},
+        xuhao = #{xuhao,jdbcType=VARCHAR},
+        dangqiankusuo = #{dangqiankusuo,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+        org_code = #{org_code,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from processActivity where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from processActivity <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE processActivity 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.mubanid != null" >
+        mubanid = #{domain.mubanid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fnid != null" >
+        fnid = #{domain.fnid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.mobanmingcheng != null" >
+        mobanmingcheng = #{domain.mobanmingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.zhuti != null" >
+        zhuti = #{domain.zhuti,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.muban != null" >
+        muban = #{domain.muban,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.biaodanid != null" >
+        biaodanid = #{domain.biaodanid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.zhuangtai != null" >
+        zhuangtai = #{domain.zhuangtai,jdbcType=VARCHAR},
+      </if>
+      <if test="domain.xuhao != null" >
+        xuhao = #{domain.xuhao,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.dangqiankusuo != null" >
+        dangqiankusuo = #{domain.dangqiankusuo,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorId != null" >
+        creatorId = #{domain.creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorName != null" >
+        creatorName = #{domain.creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_id != null" >
+        superOrg_id = #{domain.superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_name != null" >
+        superOrg_name = #{domain.superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_id != null" >
+        fulldept_id = #{domain.fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_name != null" >
+        fulldept_name = #{domain.fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_id != null" >
+        fullpost_id = #{domain.fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_name != null" >
+        fullpost_name = #{domain.fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.org_code != null" >
+        org_code = #{domain.org_code,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.ProcessActivity">
+		select <include refid="Base_Column_List"/> from processActivity where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.ProcessActivity" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from processActivity <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from processActivity <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,mubanid
+,fnid
+,mobanmingcheng
+,zhuti
+,muban
+,biaodanid
+,zhuangtai
+,xuhao
+,dangqiankusuo
+,delstatus
+,creatorId
+,creatorName
+,superOrg_id
+,superOrg_name
+,fulldept_id
+,fulldept_name
+,fullpost_id
+,fullpost_name
+,org_code
+,createTime
+,modifiedTime
+	</sql>
+</mapper>

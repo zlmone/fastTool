@@ -1,0 +1,134 @@
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row" ng-form="bigform">
+    <div class="col-md-12">
+
+        <div class="portlet light bordered ">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-pencil"></i>用户详情
+                </div>
+                <div class="actions btn-set">
+                    <a class="btn green" ng-if="$root.auth('2032')" href="#user-edit/{{user.item.id}}">修改</a>
+                    <a class="btn green" onclick="javascript:history.go(-1)" href="javascript:void(0)">返回</a>
+                 <!--   <button type="button" name="back" class="btn default" ng-click="$root.settings.utils.back()"><i class="fa fa-angle-left"></i> 返回</button>
+                    <button ng-disabled="bigform.$invalid" class="btn green" ng-click="view_bug_value.save(1)"popover-trigger="mouseenter"><i class="fa fa-check"></i> 保存并返回</button>
+                    <button ng-disabled="bigform.$invalid"  class="btn green" ng-click="view_bug_value.save(2)"  popover-trigger="mouseenter"><i class="fa fa-check-circle"></i>保存并新增</button>
+-->
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form">
+                            <!-- BEGIN FORM-->
+                            <form action="#" name="myform" class="form-horizontal">
+                                <div class="form-body">
+
+                                    <!--/row-->
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">真实名</label>
+                                            <div class="col-md-9">
+                                                {{user.item.value_name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">用户名</label>
+                                            <div class="col-md-9">
+                                                {{user.item.name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">目前职位</label>
+                                            <div class="col-md-9">
+                                                {{user.item.department_name}}-{{user.item.position_name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">所属城市</label>
+                                            <div class="col-md-9">
+                                                {{user.item.belong_city}}
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <!-- <div class="col-md-12" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-1">可见城市</label>
+                                            <div class="col-md-11" style="margin-top: 10px">
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city1"  name="city"/>全国
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city2" name="city"/>上海市
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city3" name="city"/>杭州市
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city4" name="city"/>北京市
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city5" name="city"/>天津市
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city6" name="city"/>广州市
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city7" name="city"/>南京市
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city8" name="city"/>义乌市
+                                                <input class="icheck" disabled style="margin-left: -0px;" type="checkbox"  ng-model="user.item.city9" name="city"/>宁波市
+                                            </div>
+                                        </div>
+                                    </div> -->
+
+
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">性别</label>
+                                            <div class="col-md-9">
+                                                {{user.item.sex=='1'&&'男'||user.item.sex=='0'&&'女'||user.item.user==null&&''}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">邮箱</label>
+                                            <div class="col-md-9">
+                                                {{user.item.email}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">手机</label>
+                                            <div class="col-md-9">
+                                                {{user.item.telephone}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6" >
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">联系地址</label>
+                                            <div class="col-md-9">
+                                                {{user.item.address}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+
+                            </form>
+                            <!-- END FORM-->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+
+

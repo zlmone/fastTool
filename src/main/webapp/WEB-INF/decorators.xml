@@ -1,0 +1,20 @@
+<!-- bak the file by lanmosoft.com -->
+<decorators defaultdir="/decorators">
+    
+    <excludes>
+        <pattern>**ajax*</pattern>
+        <pattern>/login*</pattern>
+        <pattern>**.htm</pattern>
+        <pattern>/ng*</pattern>
+         <pattern>/*</pattern>
+    </excludes>
+    
+    <decorator name="windowDefault" page="defaultwindow.ftl">
+        <pattern>/**/window</pattern>
+    </decorator>
+    
+    <!-- 默认所有都拦截 -->
+    <decorator name="default" page="default.ftl">
+        <pattern>/**</pattern>
+    </decorator>
+</decorators>

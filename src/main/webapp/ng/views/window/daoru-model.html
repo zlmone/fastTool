@@ -1,0 +1,58 @@
+
+<div class="modal-header lm_window_head" >
+        <span>导入数据
+        </span>
+</div>
+
+<div class="portlet-body">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form">
+                <!-- BEGIN FORM-->
+                <div class="zdytjzdnr">
+                    <table border="0" cellpadding="0" cellspacing="0" class="zdytjzdnr_table">
+                        <tr>
+                            <td class="zdytjzdnr_table_tdtitle">文件要求：</td>
+                            <td>
+                                <p>1)文件格式必须与模板完全一致!<span class="sx_table_lianjie"><a href ng-click="daoru.download()">点击下载</a></span></p>
+                                <p>2)骑士Id、骑士名称、所属城市、所属商圈、骑士状态、是否使用内部宿舍、是否使用电瓶车、薪资标准模式不能为空！</p>
+                                <p>3)骑士Id为文本格式！</p>
+                                <p>4)Excel中产品明细不能超过1000行!</p>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="zdytjzdnr_table_tdtitle">选择导入文件：</td>
+                            <td>
+                                <div class="zdytjzdnr_table_zdm_01">
+                                    <div flow-init  flow-name="daoru.fileflow"
+                                         flow-files-submitted="daoru.fileflow.upload()"
+                                         flow-file-added="!!{xlsx:1,xls:1}[$file.getExtension()]">
+                                        <input type="button" flow-btn class="btn btn-default btn-xs" value="添加导入文件" />
+                            <span ng-repeat="file in daoru.fileflow.files" class="transfer-box">
+                                {{file.relativePath}}<a class="btn btn-sm btn-danger" ng-click="file.cancel()">删除</a>
+                            </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td colspan="3">
+                                &nbsp;&nbsp;<input type="submit" class="zdytjzdnr_table_submit" value="保存" ng-click="submit()"/>
+                                &nbsp;&nbsp;<input type="reset" class="zdytjzdnr_table_reset" value="取消" ng-click="cancel()"/>
+                                <div class="clear"></div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+
+                <!-- END FORM-->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

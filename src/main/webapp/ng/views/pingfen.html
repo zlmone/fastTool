@@ -1,0 +1,86 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                        <div class="form-body">
+                           <form action="#" name="form" class="form-horizontal">
+					     <div class="form-body">
+                                        
+                           <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="2">评分引擎结果</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="30%">DA结果</td>
+                					<td>
+                						<span></span>
+                					</td>
+                			</tr>
+                      		<tr>
+                					<td class="tdleft" width="30%">初始风险等级</td>
+                					<td>
+                						<span></span>
+                					</td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="30%">初始额度建议</td>
+                					<td>
+                						<span></span>
+                					</td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="30%">风险提示</td>
+                					<td>
+                						<span></span>
+                					</td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="30%">减核提示</td>
+                					<td>
+                						<span></span>
+                					</td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="30%">其他提示</td>
+                					<td>
+                						<span></span>
+                					</td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="30%">DA自动拒绝原因码</td>
+                					<td>
+                						<span></span>
+                					</td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="30%">批贷产品</td>
+                					<td>
+                						<span></span>
+                					</td>
+                			</tr>
+                           </table>
+                
+                	
+                        </div>
+					   </form>
+                        </div>
+					   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

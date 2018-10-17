@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.OrgMapper">
+  
+  <cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Org">
+	    INSERT INTO org (id
+  ,name
+  ,department_id
+  ,department_name
+  ,position_id
+  ,position_name
+  ,description
+  ,org_type
+  ,status
+  ,sortNum
+  ,delstatus
+  ,creatorId
+  ,creatorName
+  ,superOrg_id
+  ,superOrg_name
+  ,fulldept_id
+  ,fulldept_name
+  ,fullpost_id
+  ,fullpost_name
+  ,createTime
+  ,modifiedTime
+  ,account_id
+  ,account_name
+  ,org_code
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{name,jdbcType=VARCHAR},
+  #{department_id,jdbcType=VARCHAR},
+  #{department_name,jdbcType=VARCHAR},
+  #{position_id,jdbcType=VARCHAR},
+  #{position_name,jdbcType=VARCHAR},
+  #{description,jdbcType=VARCHAR},
+  #{org_type,jdbcType=VARCHAR},
+  #{status,jdbcType=VARCHAR},
+  #{sortNum,jdbcType=INTEGER},
+  #{delstatus,jdbcType=VARCHAR},
+  #{creatorId,jdbcType=VARCHAR},
+  #{creatorName,jdbcType=VARCHAR},
+  #{superOrg_id,jdbcType=VARCHAR},
+  #{superOrg_name,jdbcType=VARCHAR},
+  #{fulldept_id,jdbcType=VARCHAR},
+  #{fulldept_name,jdbcType=VARCHAR},
+  #{fullpost_id,jdbcType=VARCHAR},
+  #{fullpost_name,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP},
+  #{account_id,jdbcType=VARCHAR},
+  #{account_name,jdbcType=VARCHAR},
+  #{org_code,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Org">
+    	UPDATE org 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+		<if test="department_id != null" >
+        department_id = #{department_id,jdbcType=VARCHAR},
+      </if>
+		<if test="department_name != null" >
+        department_name = #{department_name,jdbcType=VARCHAR},
+      </if>
+		<if test="position_id != null" >
+        position_id = #{position_id,jdbcType=VARCHAR},
+      </if>
+		<if test="position_name != null" >
+        position_name = #{position_name,jdbcType=VARCHAR},
+      </if>
+		<if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+		<if test="org_type != null" >
+        org_type = #{org_type,jdbcType=VARCHAR},
+      </if>
+		<if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+		<if test="sortNum != null" >
+        sortNum = #{sortNum,jdbcType=INTEGER},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_id != null" >
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_name != null" >
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_id != null" >
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_name != null" >
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_id != null" >
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_name != null" >
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="account_id != null" >
+        account_id = #{account_id,jdbcType=VARCHAR},
+      </if>
+		<if test="account_name != null" >
+        account_name = #{account_name,jdbcType=VARCHAR},
+      </if>
+		<if test="org_code != null" >
+        org_code = #{org_code,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Org">
+    	UPDATE org 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        department_id = #{department_id,jdbcType=VARCHAR},
+        department_name = #{department_name,jdbcType=VARCHAR},
+        position_id = #{position_id,jdbcType=VARCHAR},
+        position_name = #{position_name,jdbcType=VARCHAR},
+        description = #{description,jdbcType=VARCHAR},
+        org_type = #{org_type,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        sortNum = #{sortNum,jdbcType=INTEGER},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+        account_id = #{account_id,jdbcType=VARCHAR},
+        account_name = #{account_name,jdbcType=VARCHAR},
+        org_code = #{org_code,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from org where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from org <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE org 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.name != null" >
+        name = #{domain.name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.department_id != null" >
+        department_id = #{domain.department_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.department_name != null" >
+        department_name = #{domain.department_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.position_id != null" >
+        position_id = #{domain.position_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.position_name != null" >
+        position_name = #{domain.position_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.description != null" >
+        description = #{domain.description,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.org_type != null" >
+        org_type = #{domain.org_type,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.status != null" >
+        status = #{domain.status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sortNum != null" >
+        sortNum = #{domain.sortNum,jdbcType=INTEGER},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorId != null" >
+        creatorId = #{domain.creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorName != null" >
+        creatorName = #{domain.creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_id != null" >
+        superOrg_id = #{domain.superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_name != null" >
+        superOrg_name = #{domain.superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_id != null" >
+        fulldept_id = #{domain.fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_name != null" >
+        fulldept_name = #{domain.fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_id != null" >
+        fullpost_id = #{domain.fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_name != null" >
+        fullpost_name = #{domain.fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.account_id != null" >
+        account_id = #{domain.account_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.account_name != null" >
+        account_name = #{domain.account_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.org_code != null" >
+        org_code = #{domain.org_code,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Org">
+		select <include refid="Base_Column_List"/> from org where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Org" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from org <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from org <include refid="Where_Clause"/>
+  	</select>
+  	
+  	<select id="getMaxSortNum" resultType="Integer" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select distinct max(sortNum) from org <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,name
+,department_id
+,department_name
+,position_id
+,position_name
+,description
+,org_type
+,status
+,sortNum
+,delstatus
+,creatorId
+,creatorName
+,superOrg_id
+,superOrg_name
+,fulldept_id
+,fulldept_name
+,fullpost_id
+,fullpost_name
+,createTime
+,modifiedTime
+,account_id
+,account_name
+,org_code
+	</sql>
+</mapper>

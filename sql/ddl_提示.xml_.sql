@@ -1,0 +1,22 @@
+CREATE TABLE IF NOT EXISTS `reminder` (
+  `id` varchar(128) DEFAULT NULL comment 'id',
+  `reminder_id` varchar(128) DEFAULT NULL comment '提醒者id',
+  `reminder_name` varchar(128) DEFAULT NULL comment '提醒者',
+  `form_id` varchar(128) DEFAULT NULL comment '表单id',
+  `type` varchar(128) DEFAULT NULL comment '请假  离职 等等..',
+  `state` varchar(128) DEFAULT NULL comment '1.待审核  2.审核通过  3.驳回',
+  `content` varchar(128) DEFAULT NULL comment '类容',
+  `isRead` varchar(128) DEFAULT NULL comment '是否已读（0：未读，1：已读）',
+  `delstatus` varchar(128) DEFAULT NULL comment 'delstatus',
+  `creatorId` varchar(128) DEFAULT NULL comment 'creatorId',
+  `creatorName` varchar(128) DEFAULT NULL comment 'creatorName',
+  `superOrg_id` varchar(128) DEFAULT NULL comment '所属公司id',
+  `superOrg_name` varchar(128) DEFAULT NULL comment '所属公司名称',
+  `fulldept_id` varchar(128) DEFAULT NULL comment '全部门路径id',
+  `fulldept_name` varchar(128) DEFAULT NULL comment '全部门路径名',
+  `fullpost_id` varchar(128) DEFAULT NULL comment '全岗位路径id',
+  `fullpost_name` varchar(128) DEFAULT NULL comment '全岗位路径名',
+  `org_code` varchar(128) DEFAULT NULL comment '组织机构代码',
+  `createTime` datetime DEFAULT NULL comment 'createTime',
+  `modifiedTime` datetime DEFAULT NULL comment 'modifiedTime'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.FilerecordMapper">
+  
+  <cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Filerecord">
+	    INSERT INTO filerecord (id
+  ,yuanshimingcheng
+  ,xianshimingcheng
+  ,houzhuiming
+  ,logicname
+  ,logicfullpath
+  ,beizhu
+  ,xitongzhuangtai
+  ,refid
+  ,gongxiangid
+  ,gongxiangname
+  ,leixing
+  ,delstatus
+  ,creatorId
+  ,creatorName
+  ,creatorCode
+  ,creatorIdPath
+  ,creatorNamePath
+  ,creatorCodePath
+  ,createTime
+  ,modifiedTime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{yuanshimingcheng,jdbcType=VARCHAR},
+  #{xianshimingcheng,jdbcType=VARCHAR},
+  #{houzhuiming,jdbcType=VARCHAR},
+  #{logicname,jdbcType=VARCHAR},
+  #{logicfullpath,jdbcType=VARCHAR},
+  #{beizhu,jdbcType=VARCHAR},
+  #{xitongzhuangtai,jdbcType=VARCHAR},
+  #{refid,jdbcType=VARCHAR},
+  #{gongxiangid,jdbcType=VARCHAR},
+  #{gongxiangname,jdbcType=VARCHAR},
+  #{leixing,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR},
+  #{creatorId,jdbcType=VARCHAR},
+  #{creatorName,jdbcType=VARCHAR},
+  #{creatorCode,jdbcType=VARCHAR},
+  #{creatorIdPath,jdbcType=VARCHAR},
+  #{creatorNamePath,jdbcType=VARCHAR},
+  #{creatorCodePath,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Filerecord">
+    	UPDATE filerecord 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="yuanshimingcheng != null" >
+        yuanshimingcheng = #{yuanshimingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="xianshimingcheng != null" >
+        xianshimingcheng = #{xianshimingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="houzhuiming != null" >
+        houzhuiming = #{houzhuiming,jdbcType=VARCHAR},
+      </if>
+		<if test="logicname != null" >
+        logicname = #{logicname,jdbcType=VARCHAR},
+      </if>
+		<if test="logicfullpath != null" >
+        logicfullpath = #{logicfullpath,jdbcType=VARCHAR},
+      </if>
+		<if test="beizhu != null" >
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+		<if test="xitongzhuangtai != null" >
+        xitongzhuangtai = #{xitongzhuangtai,jdbcType=VARCHAR},
+      </if>
+		<if test="refid != null" >
+        refid = #{refid,jdbcType=VARCHAR},
+      </if>
+		<if test="gongxiangid != null" >
+        gongxiangid = #{gongxiangid,jdbcType=VARCHAR},
+      </if>
+		<if test="gongxiangname != null" >
+        gongxiangname = #{gongxiangname,jdbcType=VARCHAR},
+      </if>
+		<if test="leixing != null" >
+        leixing = #{leixing,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorCode != null" >
+        creatorCode = #{creatorCode,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorIdPath != null" >
+        creatorIdPath = #{creatorIdPath,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorNamePath != null" >
+        creatorNamePath = #{creatorNamePath,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorCodePath != null" >
+        creatorCodePath = #{creatorCodePath,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Filerecord">
+    	UPDATE filerecord 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        yuanshimingcheng = #{yuanshimingcheng,jdbcType=VARCHAR},
+        xianshimingcheng = #{xianshimingcheng,jdbcType=VARCHAR},
+        houzhuiming = #{houzhuiming,jdbcType=VARCHAR},
+        logicname = #{logicname,jdbcType=VARCHAR},
+        logicfullpath = #{logicfullpath,jdbcType=VARCHAR},
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+        xitongzhuangtai = #{xitongzhuangtai,jdbcType=VARCHAR},
+        refid = #{refid,jdbcType=VARCHAR},
+        gongxiangid = #{gongxiangid,jdbcType=VARCHAR},
+        gongxiangname = #{gongxiangname,jdbcType=VARCHAR},
+        leixing = #{leixing,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+        creatorCode = #{creatorCode,jdbcType=VARCHAR},
+        creatorIdPath = #{creatorIdPath,jdbcType=VARCHAR},
+        creatorNamePath = #{creatorNamePath,jdbcType=VARCHAR},
+        creatorCodePath = #{creatorCodePath,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from filerecord where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from filerecord <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE filerecord 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.yuanshimingcheng != null" >
+        yuanshimingcheng = #{domain.yuanshimingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.xianshimingcheng != null" >
+        xianshimingcheng = #{domain.xianshimingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.houzhuiming != null" >
+        houzhuiming = #{domain.houzhuiming,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.logicname != null" >
+        logicname = #{domain.logicname,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.logicfullpath != null" >
+        logicfullpath = #{domain.logicfullpath,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.beizhu != null" >
+        beizhu = #{domain.beizhu,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.xitongzhuangtai != null" >
+        xitongzhuangtai = #{domain.xitongzhuangtai,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.refid != null" >
+        refid = #{domain.refid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.gongxiangid != null" >
+        gongxiangid = #{domain.gongxiangid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.gongxiangname != null" >
+        gongxiangname = #{domain.gongxiangname,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.leixing != null" >
+        leixing = #{domain.leixing,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorId != null" >
+        creatorId = #{domain.creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorName != null" >
+        creatorName = #{domain.creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorCode != null" >
+        creatorCode = #{domain.creatorCode,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorIdPath != null" >
+        creatorIdPath = #{domain.creatorIdPath,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorNamePath != null" >
+        creatorNamePath = #{domain.creatorNamePath,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorCodePath != null" >
+        creatorCodePath = #{domain.creatorCodePath,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Filerecord">
+		select <include refid="Base_Column_List"/> from filerecord where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Filerecord" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from filerecord <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from filerecord <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,yuanshimingcheng
+,xianshimingcheng
+,houzhuiming
+,logicname
+,logicfullpath
+,beizhu
+,xitongzhuangtai
+,refid
+,gongxiangid
+,gongxiangname
+,leixing
+,delstatus
+,creatorId
+,creatorName
+,creatorCode
+,creatorIdPath
+,creatorNamePath
+,creatorCodePath
+,createTime
+,modifiedTime
+	</sql>
+</mapper>

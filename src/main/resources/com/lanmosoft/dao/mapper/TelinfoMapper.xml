@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.TelinfoMapper">
+  
+  	<cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Telinfo">
+	    INSERT INTO telinfo (id
+  ,order_id
+  ,source
+  ,type
+  ,phonenum
+  ,status
+  ,address
+  ,note
+  ,createTime
+  ,telTime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{source,jdbcType=VARCHAR},
+  #{type,jdbcType=VARCHAR},
+  #{phonenum,jdbcType=VARCHAR},
+  #{status,jdbcType=VARCHAR},
+  #{address,jdbcType=VARCHAR},
+  #{note,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{telTime,jdbcType=TIMESTAMP}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Telinfo">
+    	UPDATE telinfo 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="source != null" >
+        source = #{source,jdbcType=VARCHAR},
+      </if>
+		<if test="type != null" >
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+		<if test="phonenum != null" >
+        phonenum = #{phonenum,jdbcType=VARCHAR},
+      </if>
+		<if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+		<if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+		<if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="telTime != null" >
+        telTime = #{telTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Telinfo">
+    	UPDATE telinfo 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        source = #{source,jdbcType=VARCHAR},
+        type = #{type,jdbcType=VARCHAR},
+        phonenum = #{phonenum,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        address = #{address,jdbcType=VARCHAR},
+        note = #{note,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        telTime = #{telTime,jdbcType=TIMESTAMP},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from telinfo where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from telinfo <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE telinfo 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.source != null" >
+        source = #{domain.source,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.type != null" >
+        type = #{domain.type,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.phonenum != null" >
+        phonenum = #{domain.phonenum,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.status != null" >
+        status = #{domain.status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.address != null" >
+        address = #{domain.address,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.note != null" >
+        note = #{domain.note,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.telTime != null" >
+        telTime = #{domain.telTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Telinfo">
+		select <include refid="Base_Column_List"/> from telinfo where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Telinfo" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from telinfo <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from telinfo <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,order_id
+,source
+,type
+,phonenum
+,status
+,address
+,note
+,createTime
+,telTime
+	</sql>
+</mapper>

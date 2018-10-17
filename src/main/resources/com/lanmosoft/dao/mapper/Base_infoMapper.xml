@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.Base_infoMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Base_info">
+	    INSERT INTO base_info (id
+  ,order_id
+  ,createTime
+  ,user_name
+  ,user_sex
+  ,user_number
+  ,cert_num
+  ,cert_addr
+  ,user_contact_no
+  ,user_email
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{createTime,jdbcType=VARCHAR},
+  #{user_name,jdbcType=VARCHAR},
+  #{user_sex,jdbcType=VARCHAR},
+  #{user_number,jdbcType=VARCHAR},
+  #{cert_num,jdbcType=VARCHAR},
+  #{cert_addr,jdbcType=VARCHAR},
+  #{user_contact_no,jdbcType=VARCHAR},
+  #{user_email,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Base_info">
+    	UPDATE base_info 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=VARCHAR},
+      </if>
+		<if test="user_name != null" >
+        user_name = #{user_name,jdbcType=VARCHAR},
+      </if>
+		<if test="user_sex != null" >
+        user_sex = #{user_sex,jdbcType=VARCHAR},
+      </if>
+		<if test="user_number != null" >
+        user_number = #{user_number,jdbcType=VARCHAR},
+      </if>
+		<if test="cert_num != null" >
+        cert_num = #{cert_num,jdbcType=VARCHAR},
+      </if>
+		<if test="cert_addr != null" >
+        cert_addr = #{cert_addr,jdbcType=VARCHAR},
+      </if>
+		<if test="user_contact_no != null" >
+        user_contact_no = #{user_contact_no,jdbcType=VARCHAR},
+      </if>
+		<if test="user_email != null" >
+        user_email = #{user_email,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Base_info">
+    	UPDATE base_info 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=VARCHAR},
+        user_name = #{user_name,jdbcType=VARCHAR},
+        user_sex = #{user_sex,jdbcType=VARCHAR},
+        user_number = #{user_number,jdbcType=VARCHAR},
+        cert_num = #{cert_num,jdbcType=VARCHAR},
+        cert_addr = #{cert_addr,jdbcType=VARCHAR},
+        user_contact_no = #{user_contact_no,jdbcType=VARCHAR},
+        user_email = #{user_email,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from base_info where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from base_info <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE base_info 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.user_name != null" >
+        user_name = #{domain.user_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.user_sex != null" >
+        user_sex = #{domain.user_sex,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.user_number != null" >
+        user_number = #{domain.user_number,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.cert_num != null" >
+        cert_num = #{domain.cert_num,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.cert_addr != null" >
+        cert_addr = #{domain.cert_addr,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.user_contact_no != null" >
+        user_contact_no = #{domain.user_contact_no,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.user_email != null" >
+        user_email = #{domain.user_email,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Base_info">
+		select <include refid="Base_Column_List"/> from base_info where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Base_info" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from base_info <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from base_info <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,order_id
+,createTime
+,user_name
+,user_sex
+,user_number
+,cert_num
+,cert_addr
+,user_contact_no
+,user_email
+	</sql>
+</mapper>

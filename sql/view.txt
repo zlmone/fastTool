@@ -1,0 +1,192 @@
+﻿-- 审批管理视图（暂未使用）
+ CREATE  OR REPLACE VIEW processview AS select p.*, 
+ z.shenpileixing,
+    z.iszhanleixin_notice,
+    z.isduanxin_notice,
+    z.isyoujian_notice,
+    z.status,
+    z.belong_city
+ 
+ from processapp p 
+ 	left join processzhuti z on p.pid = z.id;
+ 	
+-- 	
+ CREATE  OR REPLACE VIEW view_materiel_Apply AS select	
+ ma.*,
+ use1.value_name as apply_people_name
+from  materiel_Apply ma
+	left join  user use1 on use1.id=ma.apply_people_id;
+ 	
+-- 出库视图
+CREATE  OR REPLACE VIEW view_chuku_manage AS select
+	chuku.*,
+ 	wa.warehouse_name as warehouse_name,
+ 	wa.belong_city as belong_city,
+ 	ma.materiel_number as materiel_number,
+	ma.materiel_name as materiel_name,
+	ma.materiel_specifications as materiel_specifications,
+	ma.danwei as danwei,
+	ma.remarks as remarks,
+	
+	use1.value_name as issuer_name,
+	kni.knight_name  as shiyong_name
+	
+from chuku_manage chuku
+  left join warehouse wa on wa.id=chuku.warehouse_id
+  left join materiel ma on ma.id=chuku.material_id
+  left join user use1 on use1.id=chuku.issuer_id
+  left join knight kni on kni.id=chuku.shiyong_id;
+  
+ 
+ 
+-- 入库单视图
+CREATE  OR REPLACE VIEW view_ruku_manage AS select
+	ruku.*,
+	wa.warehouse_name as warehouse_name,
+	wa.belong_city as belong_city,
+	kni.knight_name as knight_name
+from ruku_manage ruku
+	left join warehouse wa on wa.id=ruku.warehouse_id
+	left join knight    kni on kni.id=ruku.knight_id;
+	
+-- 入库单 物料
+CREATE  OR REPLACE VIEW view_ruku_materiel AS select
+	ruku_m.*,
+	ma.materiel_number as materiel_number,
+	ma.materiel_name as materiel_name,
+	ma.materiel_specifications as materiel_specifications,
+	ma.danwei as danwei,
+	ma.remarks as remarks
+from ruku_materiel ruku_m
+	left join materiel ma on ma.id=ruku_m.materiel_id;
+	
+-- 调拨单 物料
+CREATE  OR REPLACE VIEW view_diaobo_materiel AS select
+	diaobo_m.*,
+	ma.materiel_number as materiel_number,
+	ma.materiel_name as materiel_name,
+	ma.materiel_specifications as materiel_specifications,
+	ma.danwei as danwei,
+	ma.remarks as remarks
+from diaobo_materiel diaobo_m
+	left join materiel ma on ma.id=diaobo_m.materiel_id;
+
+-- 调拨单
+CREATE  OR REPLACE VIEW view_diaobodan AS select
+	diaobo.*,
+	wa1.warehouse_name as chukuWarehouse_name,
+	wa2.warehouse_name as rukuWarehouse_name,
+	us.value_name as diaoboren_name
+	
+from diaobodan diaobo
+    left join user us on us.id=diaobo.diaoboren_id 
+	left join warehouse wa1 on wa1.id=diaobo.chukuWarehouse_id
+	left join warehouse wa2 on wa2.id=diaobo.rukuWarehouse_id;
+	
+-- 库存视图
+CREATE  OR REPLACE VIEW view_stock AS select
+	sto.*,
+	ma.materiel_number as materiel_number,
+	ma.materiel_name as materiel_name,
+	ma.materiel_specifications as materiel_specifications,
+	ma.danwei as danwei,
+	ma.remarks as remarks,
+	wa.warehouse_name as warehouse_name
+	
+from stock sto
+	left join materiel ma on ma.id=sto.material_id
+	left join warehouse wa on wa.id=sto.warehouse_id;
+	
+-- 报销单视图
+CREATE  OR REPLACE VIEW view_baoxiao_application  AS select
+	bx.*,
+	us.value_name as baoxiao_name,
+	us.belong_city as belong_city
+
+from baoxiao_application bx
+	left join user us on us.id=bx.baoxiao_id; 
+
+-- 物资管理 视图 apply_materiel
+CREATE  OR REPLACE VIEW view_apply_materiel AS select
+	ruku_m.*,
+	ma.materiel_number as materiel_number,
+	ma.materiel_name as materiel_name,
+	ma.materiel_specifications as materiel_specifications,
+	ma.danwei as danwei,
+	ma.remarks as remarks
+from apply_materiel ruku_m
+	left join materiel ma on ma.id=ruku_m.materiel_id;
+	
+-- 发放记录 	
+CREATE  OR REPLACE VIEW view_materiel_releaselog AS select
+	ruku_m.*,
+	ma.materiel_number as materiel_number,
+	ma.materiel_name as materiel_name,
+	ma.materiel_specifications as materiel_specifications,
+	ma.danwei as danwei,
+	ma.remarks as remarks,
+	
+	use1.value_name as fafangren_name,
+	
+	kni.knight_name  as lingyongren_name,
+	wa.warehouse_name as chuhuo_warehouse_name
+	
+from materiel_releaselog ruku_m	
+	left join materiel ma on ma.id=ruku_m.materiel_id
+	left join user use1 on use1.id=ruku_m.fafangren_id
+	left join knight kni on kni.id=ruku_m.lingyongren_id
+	left join warehouse wa on wa.id=ruku_m.chuhuo_warehouse_id;
+	
+-- 离职视图
+CREATE  OR REPLACE VIEW view_quit AS select
+	qui.*,
+	kni.knight_account  as  knight_account,
+	kni.knight_name  as  knight_name,
+	kni.belong_city  as  belong_city,
+	
+	busi.business_name as belong_shangquan_name
+	
+from  quit qui
+	left join knight kni on kni.id=qui.knight_id
+	left join business_weihu busi on busi.id=kni.belong_shangquan;
+	
+-- 请假视图
+CREATE  OR REPLACE VIEW view_leave1 AS select
+	qui.*,
+	kni.knight_account  as  knight_account,
+	kni.knight_name  as  knight_name,
+	kni.belong_city  as  belong_city,
+	
+	busi.business_name as belong_shangquan_name
+	
+from  leave1 qui
+	left join knight kni on kni.id=qui.knight_id
+	left join business_weihu busi on busi.id=kni.belong_shangquan;
+	
+	
+-- 工资金额调整视图
+CREATE  OR REPLACE VIEW view_salary_adjustment AS select
+	qui.*,
+	kni.knight_account  as  knight_account,
+	kni.knight_name  as  knight_name,
+	kni.belong_city  as  belong_city,
+	
+	busi.business_name as belong_shangquan_name
+	
+from  salary_adjustment qui
+	left join knight kni on kni.id=qui.knight_id
+	left join business_weihu busi on busi.id=kni.belong_shangquan;
+
+
+-- 考勤数据明细视图
+CREATE  OR REPLACE VIEW view_attendance_data AS select
+	qui.*,
+	kni.knight_account  as  knight_account,
+	kni.knight_name  as  knight_name,
+	kni.belong_city  as  belong_city,
+	
+	busi.business_name as belong_shangquan_name
+	
+from  attendance_data qui
+	left join knight kni on kni.id=qui.knight_id
+	left join business_weihu busi on busi.id=kni.belong_shangquan;

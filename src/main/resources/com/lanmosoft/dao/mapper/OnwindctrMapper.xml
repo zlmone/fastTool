@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.OnwindctrMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Onwindctr">
+	    INSERT INTO onwindctr (id
+  ,order_id
+  ,addTime
+  ,age
+  ,gender
+  ,birthday
+  ,idcard_validate
+  ,idcard_province
+  ,idcard_city
+  ,idcard_region
+  ,phone_operator
+  ,phone_province
+  ,phone_city
+  ,record_idcard_days
+  ,record_phone_days
+  ,last_appear_idcard
+  ,last_appear_phone
+  ,used_idcards_cnt
+  ,used_phones_cnt
+  ,sn_score
+  ,sn_order1_contacts_cnt
+  ,sn_order1_blacklist_contacts_cnt
+  ,sn_order2_blacklist_contacts_cnt
+  ,sn_order2_blacklist_routers_cnt
+  ,sn_order2_blacklist_contacts_pct
+  ,idcard_in_blacklist
+  ,phone_in_blacklist
+  ,in_court_blacklist
+  ,in_p2p_blacklist
+  ,in_bank_blacklist
+  ,last_appear_idcard_in_blacklist
+  ,last_appear_phone_in_blacklist
+  ,online_installment_cnt
+  ,offline_installment_cnt
+  ,credit_card_repayment_cnt
+  ,payday_loan_cnt
+  ,online_cash_loan_cnt
+  ,offline_cash_loan_cnt
+  ,others_cnt
+  ,search_cnt
+  ,search_cnt_recent_7_days
+  ,search_cnt_recent_14_days
+  ,search_cnt_recent_30_days
+  ,search_cnt_recent_60_days
+  ,search_cnt_recent_90_days
+  ,search_cnt_recent_180_days
+  ,org_cnt
+  ,org_cnt_recent_7_days
+  ,org_cnt_recent_14_days
+  ,org_cnt_recent_30_days
+  ,org_cnt_recent_60_days
+  ,org_cnt_recent_90_days
+  ,org_cnt_recent_180_days
+  ,result
+  ,status
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{addTime,jdbcType=VARCHAR},
+  #{age,jdbcType=INTEGER},
+  #{gender,jdbcType=VARCHAR},
+  #{birthday,jdbcType=VARCHAR},
+  #{idcard_validate,jdbcType=VARCHAR},
+  #{idcard_province,jdbcType=VARCHAR},
+  #{idcard_city,jdbcType=VARCHAR},
+  #{idcard_region,jdbcType=VARCHAR},
+  #{phone_operator,jdbcType=VARCHAR},
+  #{phone_province,jdbcType=VARCHAR},
+  #{phone_city,jdbcType=VARCHAR},
+  #{record_idcard_days,jdbcType=VARCHAR},
+  #{record_phone_days,jdbcType=VARCHAR},
+  #{last_appear_idcard,jdbcType=VARCHAR},
+  #{last_appear_phone,jdbcType=VARCHAR},
+  #{used_idcards_cnt,jdbcType=VARCHAR},
+  #{used_phones_cnt,jdbcType=VARCHAR},
+  #{sn_score,jdbcType=VARCHAR},
+  #{sn_order1_contacts_cnt,jdbcType=VARCHAR},
+  #{sn_order1_blacklist_contacts_cnt,jdbcType=VARCHAR},
+  #{sn_order2_blacklist_contacts_cnt,jdbcType=VARCHAR},
+  #{sn_order2_blacklist_routers_cnt,jdbcType=VARCHAR},
+  #{sn_order2_blacklist_contacts_pct,jdbcType=VARCHAR},
+  #{idcard_in_blacklist,jdbcType=VARCHAR},
+  #{phone_in_blacklist,jdbcType=VARCHAR},
+  #{in_court_blacklist,jdbcType=VARCHAR},
+  #{in_p2p_blacklist,jdbcType=VARCHAR},
+  #{in_bank_blacklist,jdbcType=VARCHAR},
+  #{last_appear_idcard_in_blacklist,jdbcType=VARCHAR},
+  #{last_appear_phone_in_blacklist,jdbcType=VARCHAR},
+  #{online_installment_cnt,jdbcType=VARCHAR},
+  #{offline_installment_cnt,jdbcType=VARCHAR},
+  #{credit_card_repayment_cnt,jdbcType=VARCHAR},
+  #{payday_loan_cnt,jdbcType=VARCHAR},
+  #{online_cash_loan_cnt,jdbcType=VARCHAR},
+  #{offline_cash_loan_cnt,jdbcType=VARCHAR},
+  #{others_cnt,jdbcType=VARCHAR},
+  #{search_cnt,jdbcType=VARCHAR},
+  #{search_cnt_recent_7_days,jdbcType=VARCHAR},
+  #{search_cnt_recent_14_days,jdbcType=VARCHAR},
+  #{search_cnt_recent_30_days,jdbcType=VARCHAR},
+  #{search_cnt_recent_60_days,jdbcType=VARCHAR},
+  #{search_cnt_recent_90_days,jdbcType=VARCHAR},
+  #{search_cnt_recent_180_days,jdbcType=VARCHAR},
+  #{org_cnt,jdbcType=VARCHAR},
+  #{org_cnt_recent_7_days,jdbcType=VARCHAR},
+  #{org_cnt_recent_14_days,jdbcType=VARCHAR},
+  #{org_cnt_recent_30_days,jdbcType=VARCHAR},
+  #{org_cnt_recent_60_days,jdbcType=VARCHAR},
+  #{org_cnt_recent_90_days,jdbcType=VARCHAR},
+  #{org_cnt_recent_180_days,jdbcType=VARCHAR},
+  #{result,jdbcType=VARCHAR},
+  #{status,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Onwindctr">
+    	UPDATE onwindctr 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="addTime != null" >
+        addTime = #{addTime,jdbcType=VARCHAR},
+      </if>
+		<if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+	  
+		<if test="gender != null" >
+        gender = #{gender,jdbcType=VARCHAR},
+      </if>
+		<if test="birthday != null" >
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+		<if test="idcard_validate != null" >
+        idcard_validate = #{idcard_validate,jdbcType=VARCHAR},
+      </if>
+		<if test="idcard_province != null" >
+        idcard_province = #{idcard_province,jdbcType=VARCHAR},
+      </if>
+		<if test="idcard_city != null" >
+        idcard_city = #{idcard_city,jdbcType=VARCHAR},
+      </if>
+		<if test="idcard_region != null" >
+        idcard_region = #{idcard_region,jdbcType=VARCHAR},
+      </if>
+		<if test="phone_operator != null" >
+        phone_operator = #{phone_operator,jdbcType=VARCHAR},
+      </if>
+		<if test="phone_province != null" >
+        phone_province = #{phone_province,jdbcType=VARCHAR},
+      </if>
+		<if test="phone_city != null" >
+        phone_city = #{phone_city,jdbcType=VARCHAR},
+      </if>
+		<if test="record_idcard_days != null" >
+        record_idcard_days = #{record_idcard_days,jdbcType=VARCHAR},
+      </if>
+		<if test="record_phone_days != null" >
+        record_phone_days = #{record_phone_days,jdbcType=VARCHAR},
+      </if>
+		<if test="last_appear_idcard != null" >
+        last_appear_idcard = #{last_appear_idcard,jdbcType=VARCHAR},
+      </if>
+		<if test="last_appear_phone != null" >
+        last_appear_phone = #{last_appear_phone,jdbcType=VARCHAR},
+      </if>
+		<if test="used_idcards_cnt != null" >
+        used_idcards_cnt = #{used_idcards_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="used_phones_cnt != null" >
+        used_phones_cnt = #{used_phones_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="sn_score != null" >
+        sn_score = #{sn_score,jdbcType=VARCHAR},
+      </if>
+		<if test="sn_order1_contacts_cnt != null" >
+        sn_order1_contacts_cnt = #{sn_order1_contacts_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="sn_order1_blacklist_contacts_cnt != null" >
+        sn_order1_blacklist_contacts_cnt = #{sn_order1_blacklist_contacts_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="sn_order2_blacklist_contacts_cnt != null" >
+        sn_order2_blacklist_contacts_cnt = #{sn_order2_blacklist_contacts_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="sn_order2_blacklist_routers_cnt != null" >
+        sn_order2_blacklist_routers_cnt = #{sn_order2_blacklist_routers_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="sn_order2_blacklist_contacts_pct != null" >
+        sn_order2_blacklist_contacts_pct = #{sn_order2_blacklist_contacts_pct,jdbcType=VARCHAR},
+      </if>
+		<if test="idcard_in_blacklist != null" >
+        idcard_in_blacklist = #{idcard_in_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="phone_in_blacklist != null" >
+        phone_in_blacklist = #{phone_in_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="in_court_blacklist != null" >
+        in_court_blacklist = #{in_court_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="in_p2p_blacklist != null" >
+        in_p2p_blacklist = #{in_p2p_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="in_bank_blacklist != null" >
+        in_bank_blacklist = #{in_bank_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="last_appear_idcard_in_blacklist != null" >
+        last_appear_idcard_in_blacklist = #{last_appear_idcard_in_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="last_appear_phone_in_blacklist != null" >
+        last_appear_phone_in_blacklist = #{last_appear_phone_in_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="online_installment_cnt != null" >
+        online_installment_cnt = #{online_installment_cnt,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Onwindctr">
+    	UPDATE onwindctr 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        addTime = #{addTime,jdbcType=VARCHAR},
+        age = #{age,jdbcType=INTEGER},
+        gender = #{gender,jdbcType=VARCHAR},
+        birthday = #{birthday,jdbcType=VARCHAR},
+        idcard_validate = #{idcard_validate,jdbcType=VARCHAR},
+        idcard_province = #{idcard_province,jdbcType=VARCHAR},
+        idcard_city = #{idcard_city,jdbcType=VARCHAR},
+        idcard_region = #{idcard_region,jdbcType=VARCHAR},
+        phone_operator = #{phone_operator,jdbcType=VARCHAR},
+        phone_province = #{phone_province,jdbcType=VARCHAR},
+        phone_city = #{phone_city,jdbcType=VARCHAR},
+        record_idcard_days = #{record_idcard_days,jdbcType=VARCHAR},
+        record_phone_days = #{record_phone_days,jdbcType=VARCHAR},
+        last_appear_idcard = #{last_appear_idcard,jdbcType=VARCHAR},
+        last_appear_phone = #{last_appear_phone,jdbcType=VARCHAR},
+        used_idcards_cnt = #{used_idcards_cnt,jdbcType=VARCHAR},
+        used_phones_cnt = #{used_phones_cnt,jdbcType=VARCHAR},
+        sn_score = #{sn_score,jdbcType=VARCHAR},
+        sn_order1_contacts_cnt = #{sn_order1_contacts_cnt,jdbcType=VARCHAR},
+        sn_order1_blacklist_contacts_cnt = #{sn_order1_blacklist_contacts_cnt,jdbcType=VARCHAR},
+        sn_order2_blacklist_contacts_cnt = #{sn_order2_blacklist_contacts_cnt,jdbcType=VARCHAR},
+        sn_order2_blacklist_routers_cnt = #{sn_order2_blacklist_routers_cnt,jdbcType=VARCHAR},
+        sn_order2_blacklist_contacts_pct = #{sn_order2_blacklist_contacts_pct,jdbcType=VARCHAR},
+        idcard_in_blacklist = #{idcard_in_blacklist,jdbcType=VARCHAR},
+        phone_in_blacklist = #{phone_in_blacklist,jdbcType=VARCHAR},
+        in_court_blacklist = #{in_court_blacklist,jdbcType=VARCHAR},
+        in_p2p_blacklist = #{in_p2p_blacklist,jdbcType=VARCHAR},
+        in_bank_blacklist = #{in_bank_blacklist,jdbcType=VARCHAR},
+        last_appear_idcard_in_blacklist = #{last_appear_idcard_in_blacklist,jdbcType=VARCHAR},
+        last_appear_phone_in_blacklist = #{last_appear_phone_in_blacklist,jdbcType=VARCHAR},
+        online_installment_cnt = #{online_installment_cnt,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from onwindctr where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from onwindctr <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE onwindctr 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.addTime != null" >
+        addTime = #{domain.addTime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.age != null" >
+        age = #{domain.age,jdbcType=INTEGER},
+      </if>
+	  <if test="domain.age == null" >
+        
+      </if>
+		<if test="domain.gender != null" >
+        gender = #{domain.gender,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.birthday != null" >
+        birthday = #{domain.birthday,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.idcard_validate != null" >
+        idcard_validate = #{domain.idcard_validate,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.idcard_province != null" >
+        idcard_province = #{domain.idcard_province,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.idcard_city != null" >
+        idcard_city = #{domain.idcard_city,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.idcard_region != null" >
+        idcard_region = #{domain.idcard_region,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.phone_operator != null" >
+        phone_operator = #{domain.phone_operator,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.phone_province != null" >
+        phone_province = #{domain.phone_province,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.phone_city != null" >
+        phone_city = #{domain.phone_city,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.record_idcard_days != null" >
+        record_idcard_days = #{domain.record_idcard_days,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.record_phone_days != null" >
+        record_phone_days = #{domain.record_phone_days,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.last_appear_idcard != null" >
+        last_appear_idcard = #{domain.last_appear_idcard,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.last_appear_phone != null" >
+        last_appear_phone = #{domain.last_appear_phone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.used_idcards_cnt != null" >
+        used_idcards_cnt = #{domain.used_idcards_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.used_phones_cnt != null" >
+        used_phones_cnt = #{domain.used_phones_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sn_score != null" >
+        sn_score = #{domain.sn_score,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sn_order1_contacts_cnt != null" >
+        sn_order1_contacts_cnt = #{domain.sn_order1_contacts_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sn_order1_blacklist_contacts_cnt != null" >
+        sn_order1_blacklist_contacts_cnt = #{domain.sn_order1_blacklist_contacts_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sn_order2_blacklist_contacts_cnt != null" >
+        sn_order2_blacklist_contacts_cnt = #{domain.sn_order2_blacklist_contacts_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sn_order2_blacklist_routers_cnt != null" >
+        sn_order2_blacklist_routers_cnt = #{domain.sn_order2_blacklist_routers_cnt,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sn_order2_blacklist_contacts_pct != null" >
+        sn_order2_blacklist_contacts_pct = #{domain.sn_order2_blacklist_contacts_pct,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.idcard_in_blacklist != null" >
+        idcard_in_blacklist = #{domain.idcard_in_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.phone_in_blacklist != null" >
+        phone_in_blacklist = #{domain.phone_in_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.in_court_blacklist != null" >
+        in_court_blacklist = #{domain.in_court_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.in_p2p_blacklist != null" >
+        in_p2p_blacklist = #{domain.in_p2p_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.in_bank_blacklist != null" >
+        in_bank_blacklist = #{domain.in_bank_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.last_appear_idcard_in_blacklist != null" >
+        last_appear_idcard_in_blacklist = #{domain.last_appear_idcard_in_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.last_appear_phone_in_blacklist != null" >
+        last_appear_phone_in_blacklist = #{domain.last_appear_phone_in_blacklist,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.online_installment_cnt != null" >
+        online_installment_cnt = #{domain.online_installment_cnt,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Onwindctr">
+		select <include refid="Base_Column_List"/> from onwindctr where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Onwindctr" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from onwindctr <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from onwindctr <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,order_id
+,addTime
+,age
+,gender
+,birthday
+,idcard_validate
+,idcard_province
+,idcard_city
+,idcard_region
+,phone_operator
+,phone_province
+,phone_city
+,record_idcard_days
+,record_phone_days
+,last_appear_idcard
+,last_appear_phone
+,used_idcards_cnt
+,used_phones_cnt
+,sn_score
+,sn_order1_contacts_cnt
+,sn_order1_blacklist_contacts_cnt
+,sn_order2_blacklist_contacts_cnt
+,sn_order2_blacklist_routers_cnt
+,sn_order2_blacklist_contacts_pct
+,idcard_in_blacklist
+,phone_in_blacklist
+,in_court_blacklist
+,in_p2p_blacklist
+,in_bank_blacklist
+,last_appear_idcard_in_blacklist
+,last_appear_phone_in_blacklist
+,online_installment_cnt
+,offline_cash_loan_cnt
+,others_cnt
+,search_cnt
+,search_cnt_recent_7_days
+,search_cnt_recent_14_days
+,search_cnt_recent_30_days
+,search_cnt_recent_60_days
+,search_cnt_recent_90_days
+,search_cnt_recent_180_days
+,org_cnt
+,org_cnt_recent_7_days
+,org_cnt_recent_14_days
+,org_cnt_recent_30_days
+,org_cnt_recent_60_days
+,org_cnt_recent_90_days
+,org_cnt_recent_180_days
+,result
+,status
+	</sql>
+</mapper>

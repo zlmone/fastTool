@@ -1,0 +1,194 @@
+<!--content_left-->
+<div>
+	<ul id="myTab" class="nav nav-tabs" style="background-color: white;">
+
+		<li ng-click="qu(2)"><a data-toggle="tab"> 全部审批列表 </a></li>
+		<li ng-click="qu(0)"><a data-toggle="tab"> 我的待审批列表 </a></li>
+		<li ng-click="qu(1)"><a data-toggle="tab"> 我的已审批列表 </a></li>
+	</ul>
+</div>
+<div class="container_top15">
+	<!--khst-->
+	<!--
+    <div id="khst">
+        <div id="khst_neirong">
+            <ul>
+                <li>
+                    <div id="khst_neirong_title">车辆表：</div>
+                </li>
+                <li>
+                    <img src="images/khst_01.png" border="0"  class="khst_img_01" />
+                </li>
+                
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+	-->
+
+	<!--消息-->
+	<div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+		<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+			close="alert.close()"> <span data-ng-bind-html="alert.msg"></span>
+		</alert>
+	</div>
+
+	<!--plczkh-->
+	<div id="plczkh">
+		<div id="plczkh_neirong" style="padding: 0 0 0 0; margin: 0;">
+
+			<div id="khst_neirong">
+				<div class="clear"></div>
+			</div>
+
+			<!--plczkh_neirong_shang-->
+			<div id="plczkh_neirong_shang" style="padding: 10px 0 0 0">
+				<div class="smsrecord_tiaojian">
+					<div class="btn-group lianxu">
+						<!-- <button class="btn " ng-click="add()">
+                            <i class="  icon-plus imgleft"></i>
+                            <span style="font-size: 14px;">领单</span>
+                        </button> -->
+						<!-- <div class="btn-group">
+                            <button class="btn">更多操作</button>
+                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                <span class="orderet"></span>
+                            </button>
+                            <ul class="dropdown-menu biankang">
+							
+                                <li><a href ng-click="">修改快递</a></li>
+							
+                            </ul>
+                        </div> -->
+					</div>
+
+
+					<div class="pull-right">
+						<div class="input-append search lianxu"
+							ng-init="$root.settings.utils.initpicker()">
+							筛选条件:&nbsp;&nbsp;&nbsp; 申请产品:<select
+								class="xzbjd_jbxx_table_select"
+								style="border-radius: 4px 0 0 4px;"
+								ng-model="order.searchForm.status">
+								<option>待领取</option>
+								<option>待初审</option>
+								<option>待终审</option>
+							</select>&nbsp;&nbsp;&nbsp; 信审状态:<select class="xzbjd_jbxx_table_select"
+								style="border-radius: 4px 0 0 4px;"
+								ng-model="order.searchForm.status">
+								<option>待领取</option>
+								<option>待初审</option>
+								<option>待终审</option>
+							</select>&nbsp;&nbsp;&nbsp; 特殊分组类型:<select class="xzbjd_jbxx_table_select"
+								style="border-radius: 4px 0 0 4px;"
+								ng-model="order.searchForm.status">
+								<option>待领取</option>
+								<option>待初审</option>
+								<option>待终审</option>
+							</select>&nbsp;&nbsp;&nbsp; <input class="span2 date-picker"
+								ng-keypress="order.exitsearch($event)" placeholder="开始进件日期"
+								data-date-format="yyyy-mm-dd"
+								ng-model="order.searchForm.searchItems.applyTime_ge" type="text">&nbsp;&nbsp;
+							<input class="span2 date-picker"
+								ng-keypress="order.exitsearch($event)" placeholder="结束进件日期"
+								data-date-format="yyyy-mm-dd"
+								ng-model="order.searchForm.searchItems.applyTime_le" type="text">&nbsp;&nbsp;&nbsp;
+							查询条件:&nbsp;&nbsp;<input class="span2"
+								ng-keypress="order.exitsearch($event)" placeholder="进件编号"
+								ng-model="order.searchForm.merchantNum" type="text"><input
+								class="span2" ng-keypress="order.exitsearch($event)"
+								placeholder="姓名"
+								ng-model="order.searchForm.searchItems.realname_lk" type="text">
+
+							<button class="btn icon-search" type="button"
+								ng-click="order.search1()">查询</button>
+							<!--    <button style="margin-left: -4px" class="btn  icon-zoom-in" type="button">高级查询</button>-->
+						</div>
+
+					</div>
+
+					<div class="clear"></div>
+				</div>
+			</div>
+			<!--plczkh_neirong_xia-->
+			<div id="plczkh_neirong_xia">
+				<div id="plczkh_neirong_xia_shang">
+					<table border="0" cellpadding="0" cellspacing="0"
+						class="plczkh_table" style="text-align: center;">
+						<tr style="background-color: #e6f4ff;">
+
+
+							<td><span class="plczkh_table_title">信审状态</span></td>
+
+							<td><span class="plczkh_table_title">进件编号</span></td>
+
+							<td><span class="plczkh_table_title">特殊分组类型</span></td>
+
+							<td><span class="plczkh_table_title">服务网点</span></td>
+
+							<td><span class="plczkh_table_title">进件时间</span></td>
+
+							<td><span class="plczkh_table_title">操作</span> <span
+								class="plczkh_table_kong"></span></td>
+						</tr>
+
+						<tr ng-if="order.dataList.length==0">
+							<td colspan="6">----暂无数据！----</td>
+						</tr>
+
+						<tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]"
+							ng-repeat="d in order.dataList">
+
+							<td></td>
+
+							<td>{{d.ordercode}}</td>
+
+							<td>{{d.leibie=='0'&&'3C分期'||''}}</td>
+
+							<td>{{d.merchant}}</td>
+
+							<td>{{d.addtime}}</td>
+
+							<td><span class="plczkh_table_caozuo"><a href="#"
+									ng-click="detail(d)">查看</a></span> <span class="plczkh_table_kong"></span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="plczkh_neirong_xia_xia">
+					<div class="plczkh_neirong_xia_xia_left">
+						共{{order.searchForm.page.totalItems}}条记录{{order.searchForm.page.currentPage}}/{{order.searchForm.page.totalPages}}页
+					</div>
+					<div class="plczkh_neirong_xia_xia_mid">
+
+						<pagination boundary-links="true"
+							total-items="order.searchForm.page.totalItems"
+							items-per-page="order.searchForm.page.itemsperpage"
+							ng-model="order.searchForm.page.currentPage" max-size="5"
+							num-pages class="pagination-sm" previous-text="&lt;&lt;上一页"
+							next-text="下一页&gt;&gt;" first-text="首页" last-text="尾页"></pagination>
+						<label style="display: inline-block; vertical-align: 8px;">每页
+							<select ng-model="order.searchForm.page.itemsperpage"
+							class="tnz_select input-xsmall input-sm input-inline">
+								<option value="10">10</option>
+								<option value="20">20</option>
+								<option value="50">50</option>
+								<option value="100">100</option>
+								<option value="150">150</option>
+						</select> 条
+						</label>
+
+						<div class="clear"></div>
+					</div>
+					<div class="plczkh_neirong_xia_xia_right">
+						跳转至第<input ng-model="goto" type="number" class="t1"><input
+							class="b1" type="button" ng-click="order.searchCurrent(goto)" />页
+					</div>
+					<div class="clear"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="clear"></div>

@@ -1,0 +1,84 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--鍩烘湰淇℃伅-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="container2" style="margin-top:0px;padding:10px;background:#fff;">
+                    <a style="color:#000;font-size:15px;font-weight:bold;" name="tab">
+						 <span ng-if="cangku.item.id==undefined||cangku.item.id==''">新建仓库表</span>
+						 <span ng-if="cangku.item.id!=undefined&&cangku.item.id!=''">编辑仓库表</span>
+					
+					</a>
+                    <div class="pull-right"style="margin:-3px 10px 0 0;">
+					  <div class="btn-group lianxu">
+						<button type="button" name="back" class="btn " ng-click="$root.settings.utils.back()"><i 		class="fa fa-angle-left"></i>返回</button>
+						<button ng-disabled="form.$invalid" class="btn " ng-click="order.save()" popover-trigger="mouseenter"><i class="fa fa-check"></i>保存</button>
+										
+					  </div>
+                    </div>
+                </div>
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                        <form action="#" name="form" class="form-horizontal">
+					     <div class="form-body">
+					     <table border="0" cellpadding="0" cellspacing="0" class="xzbjd_jbxx_table">
+                           <tr>	
+                    			
+                    		<td class="xzbjd_jbxx_table_hui">
+                       姓名
+                        <span class="tnz_kong"></span>
+                    				</td>
+                    				<td class="xzbjd_jbxx_table_bai">
+                        				<span class="tnz_kong"></span>
+            						<input type="text" ng-model="order.item.realname"/>	            				
+                    				</td>
+                    				
+                    			<td class="xzbjd_jbxx_table_hui">
+                        身份证号
+                       					 <span class="tnz_kong"></span>
+                    				</td>
+                    				<td class="xzbjd_jbxx_table_bai">
+                        				<span class="tnz_kong"></span>
+                        				<input type="text" class="xzbjd_jbxx_table_text" ng-model="order.item.idcard"/>
+                    				</td>	
+                    				
+                           		</tr>
+                           		<tr>	
+                    			
+                    		<td class="xzbjd_jbxx_table_hui">
+                       手机号码
+                        <span class="tnz_kong"></span>
+                    				</td>
+                    				<td class="xzbjd_jbxx_table_bai">
+                        				<span class="tnz_kong"></span>
+            						<input type="text" ng-model="order.item.cellphone"/>	            				
+                    				</td>
+                    				
+                    			<td class="xzbjd_jbxx_table_hui">
+                     
+                       					 <span class="tnz_kong"></span>
+                    				</td>
+                    				<td class="xzbjd_jbxx_table_bai">
+                        				<span class="tnz_kong"></span>
+                        				
+                    				</td>	
+                    				
+                           		</tr>
+                           		</table>
+                        </div>
+					   </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

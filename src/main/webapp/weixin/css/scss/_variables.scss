@@ -1,0 +1,11 @@
+﻿// 定义需要兼容的前缀
+$drawing-width: 750;
+
+@function rem($px) {
+	@return $px / 750 * 100 + vw
+}
+
+$prefix: -webkit-, null;
+
+$fix-bar-top-height: 0;
+$fix-bar-bottom-height: 0;

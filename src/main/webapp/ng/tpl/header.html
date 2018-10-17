@@ -1,0 +1,109 @@
+<!-- BEGIN HEADER INNER -->
+<div class="page-header-inner" ng-controller="login_controller">
+	<!-- BEGIN LOGO -->
+	<div class="page-logo">
+		<a href="#/">
+		<img ng-src="images/jinghui.png" style="height: 30px;width: 30px;margin-top: 10px;margin-left: 50px;" alt="logo" class="logo-default"/>
+		</a>
+		<div class="menu-toggler sidebar-toggler ">
+			<!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+		</div>
+	</div>
+	<!-- END LOGO -->
+
+    <!-- 开始 水平菜单 -->
+    <!-- DOC: Remove "hor-menu-light" class to have a horizontal menu with theme background instead of white background -->
+    <!-- DOC: This is desktop version of the horizontal menu. The mobile version is defined(duplicated) in the responsive menu below along with sidebar menu. So the horizontal menu has 2 seperate versions -->
+    <div class="hor-menu hor-menu-light hidden-sm hidden-xs">
+    <ul class="nav navbar-nav">
+    <!-- DOC: Add data-hover="dropdown", data-close-others="true" and data-toggle="dropdown" attributes for the below "dropdown-toggle" links to enable hover dropdowns -->
+        <li class="classic-menu-dropdown" >
+            <a  href="" >
+                风控后台管理系统
+            </a>
+        </li>
+    </ul>
+    </div>
+    <!-- 结束 水平菜单 -->
+
+	<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+	<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+	</a>
+	<!-- END RESPONSIVE MENU TOGGLER -->
+	<!-- 开始响应式菜单 -->
+	<div class="top-menu">
+		<ul class="nav navbar-nav pull-right">
+			<!-- BEGIN NOTIFICATION DROPDOWN -->
+			<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+			<!-- END NOTIFICATION DROPDOWN -->
+
+			<!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
+			<li class="dropdown dropdown-user" ng-controller="common_controller" ng-init="initlogin()">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+				<img alt="" class="img-circle" src="assets/admin/layout/img/avatar3_small.jpg"/>
+				<span class="username username-hide-on-mobile">
+				{{$root.user.value_name}} </span>
+				<i class="fa fa-angle-down"></i>
+				</a>
+				<ul class="dropdown-menu dropdown-menu-default">
+					<li>
+						<a href="../logout">
+						<i class="icon-key"></i>退出系统 </a>
+					</li>
+                    <li>
+                        <a ng-click="open()">
+                            <i class="icon-user"></i>更改密码 </a>
+                    </li>
+                    <li>
+                        <a href="#user-detail/{{user.id}}">
+                            <i class="icon-user"></i>个人资料</a>
+                    </li>
+				</ul>
+			</li>
+			<!-- END USER LOGIN DROPDOWN -->
+
+		</ul>
+	</div>
+	<!--结束响应式菜单-->
+</div>
+<!-- END HEADER INNER -->
+
+<!--更改密码-->
+<script type="text/ng-template" id="passwd-update.html">
+    <div class="modal-header lm_window_head" >
+        <p class="p1" >  修改密码</p>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-5 control-label lm_lbl">原始密码</label>
+
+                        <div class="col-md-7">
+                            <input ng-model="mima.oldpasswd"   type="text" class="form-control lm_form">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label class="col-md-5 control-label lm_lbl">新密码</label>
+
+                        <div class="col-md-7">
+                            <input ng-model="mima.newpasswd"   type="text" class="form-control lm_form">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn btn-xs" ng-click="submit()">提交</button>
+        <button class="btn btn-xs" ng-click="cancel()">取消</button>
+    </div>
+</script>

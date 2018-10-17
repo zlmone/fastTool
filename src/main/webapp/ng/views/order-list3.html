@@ -1,0 +1,407 @@
+<!--content_left-->
+<div>
+<ul id="myTab" class="nav nav-tabs" style="background-color: white;">
+
+	<li ng-click="qu(0)">
+		<a data-toggle="tab">
+			信借数据
+		</a>
+	</li>
+	<li ng-click="qu(1)">
+		<a data-toggle="tab">
+			 我的主页
+		</a>
+	</li>
+</ul>
+</div>
+<div class="container_top15">
+    <!--khst-->
+    <!--消息-->
+    <div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+            <span data-ng-bind-html="alert.msg"></span>
+        </alert>
+    </div>
+
+    <!--plczkh-->
+    <div id="plczkh">
+        <div id="plczkh_neirong" style="padding: 0 0 0 0;margin: 0;">
+		
+		   <div id="khst_neirong">
+                <div class="clear"></div>
+            </div>
+		
+            <!--plczkh_neirong_shang-->
+            <div id="plczkh_neirong_shang" style="padding: 10px 0 0 0">
+                <div class="smsrecord_tiaojian" >
+                     <div class="btn-group lianxu">
+                        <!-- <button class="btn " ng-click="add()">
+                            <i class="  icon-plus imgleft"></i>
+                            <span style="font-size: 14px;">领单</span>
+                        </button> -->
+                        <!-- <div class="btn-group">
+                            <button class="btn">更多操作</button>
+                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                <span class="orderet"></span>
+                            </button>
+                            <ul class="dropdown-menu biankang">
+							
+                                <li><a href ng-click="">修改快递</a></li>
+							
+                            </ul>
+                        </div> -->
+                    </div>
+
+
+                    <div class="pull-right" >
+                        <div class="input-append search lianxu" ng-init="$root.settings.utils.initpicker()">
+                        	筛选条件:&nbsp;&nbsp;&nbsp; 
+                             信审状态:<select class="xzbjd_jbxx_table_select" style="border-radius: 4px 0 0 4px;" ng-model="order.searchForm.status">
+                            	<option></option>
+                            	<option value="1">拒绝</option>
+                            	<option value="2">通过</option>
+                            </select>&nbsp;&nbsp;&nbsp;              
+                            查询条件:&nbsp;&nbsp;<input class="span2" ng-keypress="order.exitsearch($event)" placeholder="客户名称" ng-model="order.searchForm.searchItems.realname_lk" type="text"><input class="span2" ng-keypress="order.exitsearch($event)" placeholder="渠道商户" ng-model="order.searchForm.searchItems.merchant_lk" type="text">
+                            <input class="span2" ng-keypress="order.exitsearch($event)" placeholder="团队经理" type="text"><input class="span2" ng-keypress="order.exitsearch($event)" placeholder="销售代码" ng-model="order.searchForm.searchItems.sellercode_lk" type="text">
+                        
+                            <button class="btn icon-search" type="button" ng-click="order.search1()">查询</button>
+                        <!--    <button style="margin-left: -4px" class="btn  icon-zoom-in" type="button">高级查询</button>-->
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--plczkh_neirong_xia-->
+            <div id="plczkh_neirong_xia">
+                <div id="plczkh_neirong_xia_shang">
+                    <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+                        <tr style="background-color: #e6f4ff">
+                       
+							<td>
+								<span class="plczkh_table_title">序号</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">进件编号</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">客户名称</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">商品名称</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">服务网点</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">进件时间</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">审批时间</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">申请金额</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">合同金额</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">信审状态</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">分期期限</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">拒绝原因</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">销售代码</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">团队经理</span>
+							</td>
+							
+                            <td>
+                                <span class="plczkh_table_title">操作</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                        </tr>
+						
+						 <tr ng-if="order.dataList.length==0">
+                            <td colspan="15"> ----暂无数据！----</td>
+                        </tr> 
+						
+						<tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in order.dataList">
+                         
+                         	<td>{{$index+1}}</td>
+                         
+                         	<td>{{d.ordercode}}</td>
+                         
+                         	<td>{{d.realname}}</td>
+                         	
+                         	<td>{{d.goodsname}}</td>
+                         	
+                         	<td>{{d.merchant}}</td>
+                         	
+                         	<td>{{d.addtime}}</td>
+                         	
+                         	<td>{{d.shenpiTime}}</td>
+                         	
+                         	<td>{{d.goodsprice-d.firstpay}}</td>
+                         	
+                         	<td><span ng-if="d.jielun=='2'">{{d.goodsprice-d.firstpay}}</span></td>
+                         	
+                         	<td>{{d.jielun=='0'&&'回退补件'||d.jielun=='1'&&'拒绝'||d.jielun=='2'&&'通过'||''}}</td>
+                         	
+                         	<td>{{d.monthnumber}}</td>
+                         	
+                         	<td><span ng-if="d.jielun=='1'">{{d.firstreason=='0'&&'D1欺诈'||d.firstreason=='1'&&'D2提供虚假资料'||d.firstreason=='2'&&'D3不良信用记录'||d.firstreason=='3'&&'D4信息不真实'||d.firstreason=='4'&&'D5负面信息'||d.firstreason=='5'&&'D6信息无法核实'||d.firstreason=='6'&&'D7无法联络申请人/公司'||d.firstreason=='7'&&'D8不愿透露/无法提供资料或信息'||d.firstreason=='8'&&'D9偿债能力不足'||d.firstreason=='9'&&'D10单位未在工商网注册/吊销/注销'||d.firstreason=='10'&&'D11不符合进件要求'||d.firstreason=='12'&&'D12其他'||''}}</span></td>
+                         	
+                         	<td>{{d.sellercode}}</td>
+                         	
+                         	<td></td>
+                         
+                            <td>
+                                <span class="plczkh_table_caozuo" ng-if="d.jielun=='2'"><a href="#" ng-click="detail(d)">查看</a></span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                        </tr>
+						
+                    </table>
+                </div>
+                <div class="plczkh_neirong_xia_xia">
+                    <div class="plczkh_neirong_xia_xia_left">
+                        共{{order.searchForm.page.totalItems}}条记录{{order.searchForm.page.currentPage}}/{{order.searchForm.page.totalPages}}页
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_mid">
+
+                        <pagination boundary-links="true" total-items="order.searchForm.page.totalItems"      items-per-page="order.searchForm.page.itemsperpage"  ng-model="order.searchForm.page.currentPage"  max-size="5" num-pages
+                                    class="pagination-sm" previous-text="&lt;&lt;上一页" next-text="下一页&gt;&gt;"
+                                    first-text="首页"
+                                    last-text="尾页"></pagination>
+						   <label style="display: inline-block;vertical-align: 8px;">每页
+								<select ng-model="order.searchForm.page.itemsperpage" class="tnz_select input-xsmall input-sm input-inline">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="50">50</option>
+									<option value="100">100</option>
+									<option value="150">150</option>
+								</select>
+							条</label>
+								
+                        <div class="clear"></div>
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_right">
+                        跳转至第<input ng-model="goto" type="number" class="t1"><input class="b1" type="button" ng-click="order.searchCurrent(goto)"/>页
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>
+
+
+<script type="text/ng-template" id="seller-add.html">
+	
+    <div class="modal-header lm_window_head" >
+        <span>订单信息</span>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    	<div class="modal-body">
+        	<div class="table-container">
+            	<div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+					
+
+               <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6">业务信息</td>
+               					</tr>
+                				<tr>
+                					<td class="tdleft" width="15%">客户姓名</td>
+                					<td width="30%">
+                						<span>{{order.item.realname}}</span>
+                					</td>
+                					<td class="tdleft" width="20%">客户性别</td>
+                					<td width="5%">
+                						<span>{{order.item.sex}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">年龄</td>
+                					<td width="15%">{{order.item.age}}</td>
+                			</tr>
+                      		<tr>
+                      			<td class="tdleft" width="15%">证件类型</td>
+                      			<td width="30%">身份证</td>
+                      			<td class="tdleft" width="20%">身份证号</td>
+                      			<td colspan="3" width="40%">{{order.item.idcard}}</td>
+                      		</tr>
+                      		<tr>
+                      			<td class="tdleft" width="10%">移动电话</td>
+                      			<td width="30%">{{order.item.cellphone}}</td>
+                      			<td class="tdleft" width="20%">其他手机号</td>
+                      			<td colspan="3" width="35%"></td>
+                      		</tr>
+                      		<tr>
+                					<td class="tdleft" width="15%">申请日期</td>
+                					<td width="30%">
+                						<span>{{order.item.addtime}}</span>
+                					</td>
+                					<td class="tdleft" width="15%">渠道商户</td>
+                					<td colspan="3" width="5%">
+                						<span>{{order.item.merchant}}</span>
+                					</td>
+
+                			</tr>
+                           </table>
+
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                				<tr>
+                					<td class="tdleft" width="15%">商品名称</td>
+                					<td width="40%">
+                						{{order.item.goodsname}}
+                					</td>
+                					<td class="tdleft" width="20%">商品售价</td>
+                					<td>{{order.item.goodsprice}}</td>
+                			</tr>
+                			<tr>
+                					<td class="tdleft" width="15%">渠道商户</td>
+                					<td width="40%">
+                						{{order.item.merchant}}
+                					</td>
+                					<td class="tdleft" width="20%">分期月数</td>
+                					<td>{{order.item.monthnumber}}</td>
+                			</tr>
+              
+                			<tr>
+                				<td class="tdleft">月收入</td>
+                				<td></td>
+                				<td class="tdleft">月还金额</td>
+                				<td>{{order.item.monthpay}}</td>
+                			</tr>
+                			<tr>
+                				<td class="tdleft">借款费率</td>
+                				<td>4.66%</td>
+                				<td class="tdleft"></td>
+                				<td></td>
+                			</tr>
+                			<tr>
+                				<td class="tdleft">合同金额</td>
+                				<td colspan="3">{{order.item.goodsprice-order.item.firstpay}}</td>
+                			</tr>
+					</table>	
+
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+					<tr>
+						<td>还款状态</td>
+						<td>期数</td>
+						<td>还款金额</td>
+						<td>还款日期</td>
+						<td>逾期天数</td>
+						<td>逾期金额</td>
+					</tr>
+					<tr ng-repeat="d in order.paylist">
+						<td>{{d.status=='0'&&'未还'||d.status=='1'&&'已还'||''}}</td>
+						<td>{{d.sort_order}}/{{d.totalnumber}}</td>
+						<td>￥{{d.monthpay}}</td>
+						<td>{{d.repayment_time}}</td>
+						<td>{{d.overdays}}</td>
+						<td>{{d.overdue}}</td>
+					</tr>
+
+				</table>	
+
+					<div class="table-scrollable" style="overflow-y: auto">
+                    	<table class="table table-striped table-bordered table-hover">
+                        	<thead>
+                        	<tr role="row" class="heading">
+                            <th width="1%">
+                                	序号
+                            </th>
+                            <th width="10%">
+                                	创建时间
+                            </th>
+                            <th width="10%">
+                                创建人
+                            </th>
+                            <th width="10%">
+                                回访结论
+                            </th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="d in return_visit.dataList" ng-class-odd="'odd'" ng-click="xuan(d)" ng-class-even="'even'">
+                            <td>{{$index+1}}</td>
+                            <td>
+								{{d.addTime}}
+                           </td>
+                            <td>
+                                {{d.creator}}
+                            </td>
+                            <td>
+                                {{d.content}}
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--&lt;!&ndash;结束table&ndash;&gt;-->
+                <!--&lt;!&ndash;开始table尾部分页以及工具栏&ndash;&gt;-->
+                <div class="row">
+                    <div class="col-md-8 col-sm-12" style="width:100%;">
+                        <div class="dataTables_paginate paging_bootstrap_extended" style="width:45%;">
+                            <div class="pagination-panel" style="float: left;margin-left: 25%;"> 第 <a ng-click="return_visit.prePage()"
+                                                                class="btn btn-sm default prev"
+                                                                title="Prev"><i class="fa fa-angle-left"></i></a><input
+                                    type="text"  ng-model="return_visit.searchForm.page.currentPage"
+                                    class="pagination-panel-input form-control input-mini input-inline input-sm"
+                                    maxlenght="5" style="text-align:center; margin: 0 5px;"><a   ng-click="return_visit.nextPage()"
+                                                                                                 class="btn btn-sm default next"
+                                                                                                 title="Next"><i
+                                    class="fa fa-angle-right"></i></a> 页,&nbsp;&nbsp;&nbsp;总<span class="pagination-panel-total">{{return_visit.searchForm.page.totalPages}}</span>页
+                            </div>
+                        </div>
+                        <div class="dataTables_length" ><label><span
+                                class="seperator">|</span>每页 <select ng-model="return_visit.searchForm.page.itemsperpage" class="form-control input-xsmall input-sm input-inline">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                        </select> 条</label></div>
+                        <div class="dataTables_info"  role="status" aria-live="polite">
+                            <span class="seperator">|</span>总计{{return_visit.searchForm.page.totalItems}} 条
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn btn-xs" ng-click="cancel()">关闭</button>
+    </div>
+
+</script>

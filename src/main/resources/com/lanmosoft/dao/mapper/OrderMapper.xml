@@ -1,0 +1,958 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.OrderMapper">
+  
+  <cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Order">
+	    INSERT INTO tc_member_loan (id
+  ,uid
+  ,status
+  ,sex
+  ,age
+  ,cellphone
+  ,bank_id
+  ,marriage
+  ,education
+  ,address
+  ,unit
+  ,unitaddress
+  ,unit_size
+  ,unit_type
+  ,work_life
+  ,department
+  ,position
+  ,month_incomes
+  ,unitphone
+  ,entry_time
+  ,addtime
+  ,realname
+  ,idcard
+  ,zm_score
+  ,open_id
+  ,riskscore
+  ,first_relation
+  ,first_realname
+  ,first_cellphone
+  ,second_relation
+  ,second_realname
+  ,second_cellphone
+  ,third_relation
+  ,third_realname
+  ,third_cellphone
+  ,fourth_relation
+  ,fourth_realname
+  ,fourth_cellphone
+  ,leibie
+  ,sellerid
+  ,goodsmodel
+  ,goodsname
+  ,goodsprice
+  ,firstpay
+  ,sellercode
+  ,monthnumber
+  ,monthpay
+  ,ordercode
+  ,self_check_status
+  ,self_phone_addr
+  ,self_check_result
+  ,self_check_time
+  ,com_check_status
+  ,com_phone_addr
+  ,com_check_result
+  ,com_check_time
+  ,rela_check_status1
+  ,rela_phone_addr1
+  ,rela_check_result1
+  ,rela_check_time1
+  ,rela_check_status2
+  ,rela_phone_addr2
+  ,rela_check_result2
+  ,rela_check_time2
+  ,rela_check_status3
+  ,rela_phone_addr3
+  ,rela_check_result3
+  ,rela_check_time3
+  ,rela_check_status4
+  ,rela_phone_addr4
+  ,rela_check_result4
+  ,rela_check_time4
+  ,jielun
+  ,tongguoTime
+  ,jujue_reason
+  ,note1
+  ,note2
+  ,note3
+  ,merchant
+  ,firstreason
+  ,shenpiStatus
+  ,shenpiTime
+  ,user_id
+  ,user_name
+  ,isWind
+  ,tongdun_task_id
+  ,task_status
+  ,idcardLeftPath
+  ,idcardRightPath
+  ,oneselfLeftPath
+  ,oneselfRightPath
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{uid,jdbcType=VARCHAR},	     
+  #{status,jdbcType=VARCHAR},
+  #{sex,jdbcType=VARCHAR},
+  #{age,jdbcType=VARCHAR},
+  #{cellphone,jdbcType=VARCHAR},
+  #{bank_id,jdbcType=VARCHAR},
+  #{marriage,jdbcType=VARCHAR},
+  #{education,jdbcType=VARCHAR},
+  #{address,jdbcType=VARCHAR},
+  #{unit,jdbcType=VARCHAR},
+  #{unitaddress,jdbcType=VARCHAR},
+  #{unit_size,jdbcType=VARCHAR},
+  #{unit_type,jdbcType=VARCHAR},
+  #{work_life,jdbcType=VARCHAR},
+  #{department,jdbcType=VARCHAR},
+  #{position,jdbcType=VARCHAR},
+  #{month_incomes,jdbcType=VARCHAR},
+  #{unitphone,jdbcType=VARCHAR},
+  #{entry_time,jdbcType=VARCHAR},
+  #{addtime,jdbcType=VARCHAR},
+  #{realname,jdbcType=VARCHAR},
+  #{idcard,jdbcType=VARCHAR},
+  #{zm_score,jdbcType=VARCHAR},
+  #{open_id,jdbcType=VARCHAR},
+  #{riskscore,jdbcType=VARCHAR},
+  #{first_relation,jdbcType=VARCHAR},
+  #{first_realname,jdbcType=VARCHAR},
+  #{first_cellphone,jdbcType=VARCHAR},
+  #{second_relation,jdbcType=VARCHAR},
+  #{second_realname,jdbcType=VARCHAR},
+  #{second_cellphone,jdbcType=VARCHAR},
+  #{third_relation,jdbcType=VARCHAR},
+  #{third_realname,jdbcType=VARCHAR},
+  #{third_cellphone,jdbcType=VARCHAR},
+  #{fourth_relation,jdbcType=VARCHAR},
+  #{fourth_realname,jdbcType=VARCHAR},
+  #{fourth_cellphone,jdbcType=VARCHAR},
+  #{leibie,jdbcType=VARCHAR},
+  #{sellerid,jdbcType=VARCHAR},
+  #{goodsmodel,jdbcType=VARCHAR},
+  #{goodsname,jdbcType=VARCHAR},
+  #{goodsprice,jdbcType=DOUBLE},
+  #{firstpay,jdbcType=DOUBLE},
+  #{sellercode,jdbcType=VARCHAR},
+  #{monthnumber,jdbcType=INTEGER},
+  #{monthpay,jdbcType=DOUBLE},
+  #{ordercode,jdbcType=VARCHAR},
+  #{self_check_status,jdbcType=VARCHAR},
+  #{self_phone_addr,jdbcType=VARCHAR},
+  #{self_check_result,jdbcType=VARCHAR},
+  #{self_check_time,jdbcType=VARCHAR},
+  #{com_check_status,jdbcType=VARCHAR},
+  #{com_phone_addr,jdbcType=VARCHAR},
+  #{com_check_result,jdbcType=VARCHAR},
+  #{com_check_time,jdbcType=VARCHAR},
+  #{rela_check_status1,jdbcType=VARCHAR},
+  #{rela_phone_addr1,jdbcType=VARCHAR},
+  #{rela_check_result1,jdbcType=VARCHAR},
+  #{rela_check_time1,jdbcType=VARCHAR},
+  #{rela_check_status2,jdbcType=VARCHAR},
+  #{rela_phone_addr2,jdbcType=VARCHAR},
+  #{rela_check_result2,jdbcType=VARCHAR},
+  #{rela_check_time2,jdbcType=VARCHAR},
+  #{rela_check_status3,jdbcType=VARCHAR},
+  #{rela_phone_addr3,jdbcType=VARCHAR},
+  #{rela_check_result3,jdbcType=VARCHAR},
+  #{rela_check_time3,jdbcType=VARCHAR},
+  #{rela_check_status4,jdbcType=VARCHAR},
+  #{rela_phone_addr4,jdbcType=VARCHAR},
+  #{rela_check_result4,jdbcType=VARCHAR},
+  #{rela_check_time4,jdbcType=VARCHAR},
+  #{jielun,jdbcType=VARCHAR},
+  #{tongguoTime,jdbcType=VARCHAR},
+  #{jujue_reason,jdbcType=VARCHAR},
+  #{note1,jdbcType=VARCHAR},
+  #{note2,jdbcType=VARCHAR},
+  #{note3,jdbcType=VARCHAR},
+  #{merchant,jdbcType=VARCHAR},
+  #{firstreason,jdbcType=VARCHAR},
+  #{shenpiStatus,jdbcType=VARCHAR},
+  #{shenpiTime,jdbcType=VARCHAR},
+  #{user_id,jdbcType=VARCHAR},
+  #{user_name,jdbcType=VARCHAR},
+  #{isWind,jdbcType=VARCHAR},
+  #{tongdun_task_id,jdbcType=VARCHAR},
+  #{task_status,jdbcType=VARCHAR},
+  #{idcardLeftPath,jdbcType=VARCHAR},
+  #{idcardRightPath,jdbcType=VARCHAR},
+  #{oneselfLeftPath,jdbcType=VARCHAR},
+  #{oneselfRightPath,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Order">
+    	UPDATE tc_member_loan 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+      	<if test="uid != null" >
+        uid = #{uid,jdbcType=VARCHAR},
+      </if>
+		<if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+		<if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+		<if test="age != null" >
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+		<if test="cellphone != null" >
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="bank_id != null" >
+        bank_id = #{bank_id,jdbcType=VARCHAR},
+      </if>
+      	<if test="bank_name != null" >
+        bank_name = #{bank_name,jdbcType=VARCHAR},
+      </if>
+      	<if test="bank_address != null" >
+        bank_address = #{bank_address,jdbcType=VARCHAR},
+      </if>
+      	<if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      	<if test="birth != null" >
+        birth = #{birth,jdbcType=VARCHAR},
+      </if>
+      	<if test="live != null" >
+        live = #{live,jdbcType=VARCHAR},
+      </if>
+		<if test="marriage != null" >
+        marriage = #{marriage,jdbcType=VARCHAR},
+      </if>
+		<if test="education != null" >
+        education = #{education,jdbcType=VARCHAR},
+      </if>
+		<if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+     <if test="unit != null" >
+        unit = #{unit,jdbcType=VARCHAR},
+      </if>
+		<if test="unitaddress != null" >
+        unitaddress = #{unitaddress,jdbcType=VARCHAR},
+      </if>
+      	<if test="unit_size != null" >
+       unit_size = #{unit_size,jdbcType=VARCHAR},
+      </if>
+      	<if test="unit_type != null" >
+        unit_type = #{unit_type,jdbcType=VARCHAR},
+      </if>
+      	<if test="work_life != null" >
+        work_life = #{work_life,jdbcType=VARCHAR},
+      </if>
+       <if test="department != null" >
+       department = #{department,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null" >
+        position = #{position,jdbcType=VARCHAR},
+      </if> 
+      <if test="month_incomes != null" >
+       month_incomes = #{month_incomes,jdbcType=VARCHAR},
+      </if>
+      	<if test="unitphone != null" >
+        unitphone = #{unitphone,jdbcType=VARCHAR},
+      </if>
+       <if test="entry_time != null" >
+        entry_time = #{entry_time,jdbcType=VARCHAR},
+      </if>
+	
+		<if test="addtime != null" >
+        addtime = #{addtime,jdbcType=VARCHAR},
+      </if>
+		<if test="realname != null" >
+        realname = #{realname,jdbcType=VARCHAR},
+      </if>
+		<if test="idcard != null" >
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+		<if test="zm_score != null" >
+        zm_score = #{zm_score,jdbcType=VARCHAR},
+      </if>
+		<if test="open_id != null" >
+        open_id = #{open_id,jdbcType=VARCHAR},
+      </if>
+		<if test="riskscore != null" >
+        riskscore = #{riskscore,jdbcType=VARCHAR},
+      </if>
+		<if test="first_relation != null" >
+        first_relation = #{first_relation,jdbcType=VARCHAR},
+      </if>
+		<if test="first_realname != null" >
+        first_realname = #{first_realname,jdbcType=VARCHAR},
+      </if>
+		<if test="first_cellphone != null" >
+        first_cellphone = #{first_cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="second_relation != null" >
+        second_relation = #{second_relation,jdbcType=VARCHAR},
+      </if>
+		<if test="second_realname != null" >
+        second_realname = #{second_realname,jdbcType=VARCHAR},
+      </if>
+		<if test="second_cellphone != null" >
+        second_cellphone = #{second_cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="third_relation != null" >
+        third_relation = #{third_relation,jdbcType=VARCHAR},
+      </if>
+		<if test="third_realname != null" >
+        third_realname = #{third_realname,jdbcType=VARCHAR},
+      </if>
+		<if test="third_cellphone != null" >
+        third_cellphone = #{third_cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="fourth_relation != null" >
+        fourth_relation = #{fourth_relation,jdbcType=VARCHAR},
+      </if>
+		<if test="fourth_realname != null" >
+        fourth_realname = #{fourth_realname,jdbcType=VARCHAR},
+      </if>
+		<if test="fourth_cellphone != null" >
+        fourth_cellphone = #{fourth_cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="leibie != null" >
+        leibie = #{leibie,jdbcType=VARCHAR},
+      </if>
+		<if test="sellerid != null" >
+        sellerid = #{sellerid,jdbcType=VARCHAR},
+      </if>
+		<if test="goodsmodel != null" >
+        goodsmodel = #{goodsmodel,jdbcType=VARCHAR},
+      </if>
+		<if test="goodsname != null" >
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsprice != null" >
+        goodsprice = #{goodsprice,jdbcType=DOUBLE},
+      </if>
+		<if test="firstpay != null" >
+        firstpay = #{firstpay,jdbcType=DOUBLE},
+      </if>
+		<if test="sellercode != null" >
+        sellercode = #{sellercode,jdbcType=VARCHAR},
+      </if>
+		<if test="monthnumber != null" >
+        monthnumber = #{monthnumber,jdbcType=INTEGER},
+      </if>
+	  <if test="monthpay != null" >
+        monthpay = #{monthpay,jdbcType=DOUBLE},
+      </if>
+		<if test="ordercode != null" >
+        ordercode = #{ordercode,jdbcType=VARCHAR},
+      </if>
+		<if test="self_check_status != null" >
+        self_check_status = #{self_check_status,jdbcType=VARCHAR},
+      </if>
+		<if test="self_phone_addr != null" >
+        self_phone_addr = #{self_phone_addr,jdbcType=VARCHAR},
+      </if>
+		<if test="self_check_result != null" >
+        self_check_result = #{self_check_result,jdbcType=VARCHAR},
+      </if>
+		<if test="self_check_time != null" >
+        self_check_time = #{self_check_time,jdbcType=VARCHAR},
+      </if>
+		<if test="com_check_status != null" >
+        com_check_status = #{com_check_status,jdbcType=VARCHAR},
+      </if>
+		<if test="com_phone_addr != null" >
+        com_phone_addr = #{com_phone_addr,jdbcType=VARCHAR},
+      </if>
+		<if test="com_check_result != null" >
+        com_check_result = #{com_check_result,jdbcType=VARCHAR},
+      </if>
+		<if test="com_check_time != null" >
+        com_check_time = #{com_check_time,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_status1 != null" >
+        rela_check_status1 = #{rela_check_status1,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_phone_addr1 != null" >
+        rela_phone_addr1 = #{rela_phone_addr1,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_result1 != null" >
+        rela_check_result1 = #{rela_check_result1,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_time1 != null" >
+        rela_check_time1 = #{rela_check_time1,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_status2 != null" >
+        rela_check_status2 = #{rela_check_status2,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_phone_addr2 != null" >
+        rela_phone_addr2 = #{rela_phone_addr2,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_result2 != null" >
+        rela_check_result2 = #{rela_check_result2,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_time2 != null" >
+        rela_check_time2 = #{rela_check_time2,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_status3 != null" >
+        rela_check_status3 = #{rela_check_status3,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_phone_addr3 != null" >
+        rela_phone_addr3 = #{rela_phone_addr3,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_result3 != null" >
+        rela_check_result3 = #{rela_check_result3,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_time3 != null" >
+        rela_check_time3 = #{rela_check_time3,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_status4 != null" >
+        rela_check_status4 = #{rela_check_status4,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_phone_addr4 != null" >
+        rela_phone_addr4 = #{rela_phone_addr4,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_result4 != null" >
+        rela_check_result4 = #{rela_check_result4,jdbcType=VARCHAR},
+      </if>
+		<if test="rela_check_time4 != null" >
+        rela_check_time4 = #{rela_check_time4,jdbcType=VARCHAR},
+      </if>
+      	<if test="jielun != null" >
+        jielun = #{jielun,jdbcType=VARCHAR},
+      </if>
+      	<if test="tongguoTime != null" >
+        tongguoTime = #{tongguoTime,jdbcType=VARCHAR},
+      </if>
+      	<if test="jujue_reason != null" >
+        jujue_reason = #{jujue_reason,jdbcType=VARCHAR},
+      </if>
+      	<if test="note1 != null" >
+        note1 = #{note1,jdbcType=VARCHAR},
+      </if>
+      	<if test="note2 != null" >
+        note2 = #{note2,jdbcType=VARCHAR},
+      </if>
+      	<if test="note3 != null" >
+        note3 = #{note3,jdbcType=VARCHAR},
+      </if>
+      	<if test="merchant != null" >
+        merchant = #{merchant,jdbcType=VARCHAR},
+      </if>
+      	<if test="firstreason != null" >
+        firstreason = #{firstreason,jdbcType=VARCHAR},
+      </if>
+      	<if test="shenpiStatus != null" >
+        shenpiStatus = #{shenpiStatus,jdbcType=VARCHAR},
+      </if>
+      	<if test="shenpiTime != null" >
+        shenpiTime = #{shenpiTime,jdbcType=VARCHAR},
+      </if>
+      	<if test="user_id != null" >
+        user_id = #{user_id,jdbcType=VARCHAR},
+      </if>
+      	<if test="user_name != null" >
+        user_name = #{user_name,jdbcType=VARCHAR},
+      </if>
+      	<if test="isWind != null" >
+        isWind = #{isWind,jdbcType=VARCHAR},
+      </if>
+      	<if test="tongdun_task_id != null" >
+        tongdun_task_id = #{tongdun_task_id,jdbcType=VARCHAR},
+      </if>
+      	<if test="task_status != null" >
+        task_status = #{task_status,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardLeftPath != null" >
+        idcardLeftPath = #{idcardLeftPath,jdbcType=VARCHAR},
+      </if>
+      <if test="idcardRightPath != null" >
+        idcardRightPath = #{idcardRightPath,jdbcType=VARCHAR},
+      </if>
+      <if test="oneselfLeftPath != null" >
+        oneselfLeftPath = #{oneselfLeftPath,jdbcType=VARCHAR},
+      </if>
+      <if test="oneselfRightPath != null" >
+        oneselfRightPath = #{oneselfRightPath,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Order">
+    	UPDATE tc_member_loan 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        uid = #{uid,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=VARCHAR},
+        age = #{age,jdbcType=VARCHAR},
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+        bank_id = #{bank_id,jdbcType=VARCHAR},
+        marriage = #{marriage,jdbcType=VARCHAR},
+        education = #{education,jdbcType=VARCHAR},
+        address = #{address,jdbcType=VARCHAR},
+        unit = #{unit,jdbcType=VARCHAR},
+        unitaddress = #{unitaddress,jdbcType=VARCHAR},
+        position = #{position,jdbcType=VARCHAR},
+        entry_time = #{entry_time,jdbcType=VARCHAR},
+        unitphone = #{unitphone,jdbcType=VARCHAR},
+        addtime = #{addtime,jdbcType=VARCHAR},
+        realname = #{realname,jdbcType=VARCHAR},
+        idcard = #{idcard,jdbcType=VARCHAR},
+        zm_score = #{zm_score,jdbcType=VARCHAR},
+        open_id = #{open_id,jdbcType=VARCHAR},
+        riskscore = #{riskscore,jdbcType=VARCHAR},
+        first_relation = #{first_relation,jdbcType=VARCHAR},
+        first_realname = #{first_realname,jdbcType=VARCHAR},
+        first_cellphone = #{first_cellphone,jdbcType=VARCHAR},
+        second_relation = #{second_relation,jdbcType=VARCHAR},
+        second_realname = #{second_realname,jdbcType=VARCHAR},
+        second_cellphone = #{second_cellphone,jdbcType=VARCHAR},
+        third_relation = #{third_relation,jdbcType=VARCHAR},
+        third_realname = #{third_realname,jdbcType=VARCHAR},
+        third_cellphone = #{third_cellphone,jdbcType=VARCHAR},
+        fourth_relation = #{fourth_relation,jdbcType=VARCHAR},
+        fourth_realname = #{fourth_realname,jdbcType=VARCHAR},
+        fourth_cellphone = #{fourth_cellphone,jdbcType=VARCHAR},
+        leibie = #{leibie,jdbcType=VARCHAR},
+        sellerid = #{sellerid,jdbcType=VARCHAR},
+        goodsmodel = #{goodsmodel,jdbcType=VARCHAR},
+        goodsname = #{goodsname,jdbcType=VARCHAR},
+        goodsprice = #{goodsprice,jdbcType=DOUBLE},
+        firstpay = #{firstpay,jdbcType=DOUBLE},
+        sellercode = #{sellercode,jdbcType=VARCHAR},
+        monthnumber = #{monthnumber,jdbcType=INTEGER},
+        monthpay = #{monthpay,jdbcType=DOUBLE},
+        ordercode = #{ordercode,jdbcType=VARCHAR},
+        self_check_status = #{self_check_status,jdbcType=VARCHAR},
+        self_phone_addr = #{self_phone_addr,jdbcType=VARCHAR},
+        self_check_result = #{self_check_result,jdbcType=VARCHAR},
+        self_check_time = #{self_check_time,jdbcType=VARCHAR},
+        com_check_status = #{com_check_status,jdbcType=VARCHAR},
+        com_phone_addr = #{com_phone_addr,jdbcType=VARCHAR},
+        com_check_result = #{com_check_result,jdbcType=VARCHAR},
+        com_check_time = #{com_check_time,jdbcType=VARCHAR},
+        rela_check_status1 = #{rela_check_status1,jdbcType=VARCHAR},
+        rela_phone_addr1 = #{rela_phone_addr1,jdbcType=VARCHAR},
+        rela_check_result1 = #{rela_check_result1,jdbcType=VARCHAR},
+        rela_check_time1 = #{rela_check_time1,jdbcType=VARCHAR},
+        rela_check_status2 = #{rela_check_status2,jdbcType=VARCHAR},
+        rela_phone_addr2 = #{rela_phone_addr2,jdbcType=VARCHAR},
+        rela_check_result2 = #{rela_check_result2,jdbcType=VARCHAR},
+        rela_check_time2 = #{rela_check_time2,jdbcType=VARCHAR},
+        rela_check_status3 = #{rela_check_status3,jdbcType=VARCHAR},
+        rela_phone_addr3 = #{rela_phone_addr3,jdbcType=VARCHAR},
+        rela_check_result3 = #{rela_check_result3,jdbcType=VARCHAR},
+        rela_check_time3 = #{rela_check_time3,jdbcType=VARCHAR},
+        rela_check_status4 = #{rela_check_status4,jdbcType=VARCHAR},
+        rela_phone_addr4 = #{rela_phone_addr4,jdbcType=VARCHAR},
+        rela_check_result4 = #{rela_check_result4,jdbcType=VARCHAR},
+        rela_check_time4 = #{rela_check_time4,jdbcType=VARCHAR},
+        jielun = #{jielun,jdbcType=VARCHAR},
+        tongguoTime = #{tongguoTime,jdbcType=VARCHAR},
+        jujue_reason = #{jujue_reason,jdbcType=VARCHAR},
+        note1 = #{note1,jdbcType=VARCHAR},
+        note2 = #{note2,jdbcType=VARCHAR},
+        note3 = #{note3,jdbcType=VARCHAR},
+        merchant = #{merchant,jdbcType=VARCHAR},
+        firstreason = #{firstreason,jdbcType=VARCHAR},
+        shenpiStatus = #{shenpiStatus,jdbcType=VARCHAR},
+        shenpiTime = #{shenpiTime,jdbcType=VARCHAR},
+        user_id = #{user_id,jdbcType=VARCHAR},
+        user_name = #{user_name,jdbcType=VARCHAR},
+        isWind = #{isWind,jdbcType=VARCHAR},
+        tongdun_task_id = #{tongdun_task_id,jdbcType=VARCHAR},
+        task_status = #{task_status,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from tc_member_loan where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from tc_member_loan <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE tc_member_loan 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.uid != null" >
+        uid = #{domain.uid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.status != null" >
+        status = #{domain.status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sex != null" >
+        sex = #{domain.sex,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.age != null" >
+        age = #{domain.age,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.cellphone != null" >
+        cellphone = #{domain.cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.bank != null" >
+        bank = #{domain.bank,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.marriage != null" >
+        marriage = #{domain.marriage,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.education != null" >
+        education = #{domain.education,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.address != null" >
+        address = #{domain.address,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.unit != null" >
+        unit = #{domain.unit,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.unitaddress != null" >
+        unitaddress = #{domain.unitaddress,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.position != null" >
+        position = #{domain.position,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.entry_time != null" >
+        entry_time = #{domain.entry_time,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.unitphone != null" >
+        unitphone = #{domain.unitphone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.addtime != null" >
+        addtime = #{domain.addtime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.realname != null" >
+        realname = #{domain.realname,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.idcard != null" >
+        idcard = #{domain.idcard,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.zm_score != null" >
+        zm_score = #{domain.zm_score,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.open_id != null" >
+        open_id = #{domain.open_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.riskscore != null" >
+        riskscore = #{domain.riskscore,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.first_relation != null" >
+        first_relation = #{domain.first_relation,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.first_realname != null" >
+        first_realname = #{domain.first_realname,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.first_cellphone != null" >
+        first_cellphone = #{domain.first_cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.second_relation != null" >
+        second_relation = #{domain.second_relation,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.second_realname != null" >
+        second_realname = #{domain.second_realname,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.second_cellphone != null" >
+        second_cellphone = #{domain.second_cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.third_relation != null" >
+        third_relation = #{domain.third_relation,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.third_realname != null" >
+        third_realname = #{domain.third_realname,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.third_cellphone != null" >
+        third_cellphone = #{domain.third_cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fourth_relation != null" >
+        fourth_relation = #{domain.fourth_relation,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fourth_realname != null" >
+        fourth_realname = #{domain.fourth_realname,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fourth_cellphone != null" >
+        fourth_cellphone = #{domain.fourth_cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.leibie != null" >
+        leibie = #{domain.leibie,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sellerid != null" >
+        sellerid = #{domain.sellerid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.goodsmodel != null" >
+        goodsmodel = #{domain.goodsmodel,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.goodsname != null" >
+        goodsname = #{domain.goodsname,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.goodsprice != null" >
+        goodsprice = #{domain.goodsprice,jdbcType=DOUBLE},
+      </if>
+		<if test="domain.firstpay != null" >
+        firstpay = #{domain.firstpay,jdbcType=DOUBLE},
+      </if>
+		<if test="domain.sellercode != null" >
+        sellercode = #{domain.sellercode,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.monthnumber != null" >
+        monthnumber = #{domain.monthnumber,jdbcType=INTEGER},
+      </if>
+      	<if test="domain.monthpay != null" >
+        monthpay = #{domain.monthpay,jdbcType=DOUBLE},
+      </if>
+		<if test="domain.ordercode != null" >
+        ordercode = #{domain.ordercode,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.self_check_status != null" >
+        self_check_status = #{domain.self_check_status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.self_phone_addr != null" >
+        self_phone_addr = #{domain.self_phone_addr,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.self_check_result != null" >
+        self_check_result = #{domain.self_check_result,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.self_check_time != null" >
+        self_check_time = #{domain.self_check_time,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.com_check_status != null" >
+        com_check_status = #{domain.com_check_status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.com_phone_addr != null" >
+        com_phone_addr = #{domain.com_phone_addr,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.com_check_result != null" >
+        com_check_result = #{domain.com_check_result,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.com_check_time != null" >
+        com_check_time = #{domain.com_check_time,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_status1 != null" >
+        rela_check_status1 = #{domain.rela_check_status1,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_phone_addr1 != null" >
+        rela_phone_addr1 = #{domain.rela_phone_addr1,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_result1 != null" >
+        rela_check_result1 = #{domain.rela_check_result1,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_time1 != null" >
+        rela_check_time1 = #{domain.rela_check_time1,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_status2 != null" >
+        rela_check_status2 = #{domain.rela_check_status2,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_phone_addr2 != null" >
+        rela_phone_addr2 = #{domain.rela_phone_addr2,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_result2 != null" >
+        rela_check_result2 = #{domain.rela_check_result2,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_time2 != null" >
+        rela_check_time2 = #{domain.rela_check_time2,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_status3 != null" >
+        rela_check_status3 = #{domain.rela_check_status3,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_phone_addr3 != null" >
+        rela_phone_addr3 = #{domain.rela_phone_addr3,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_result3 != null" >
+        rela_check_result3 = #{domain.rela_check_result3,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_time3 != null" >
+        rela_check_time3 = #{domain.rela_check_time3,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_status4 != null" >
+        rela_check_status4 = #{domain.rela_check_status4,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_phone_addr4 != null" >
+        rela_phone_addr4 = #{domain.rela_phone_addr4,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_result4 != null" >
+        rela_check_result4 = #{domain.rela_check_result4,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.rela_check_time4 != null" >
+        rela_check_time4 = #{domain.rela_check_time4,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.jielun != null" >
+        jielun = #{domain.jielun,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.tongguoTime != null" >
+        tongguoTime = #{domain.tongguoTime,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.jujue_reason != null" >
+        jujue_reason = #{domain.jujue_reason,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.note1 != null" >
+        note1 = #{domain.note1,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.note2 != null" >
+        note2 = #{domain.note2,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.note3 != null" >
+        note3 = #{domain.note3,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.merchant != null" >
+        merchant = #{domain.merchant,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.firstreason != null" >
+        firstreason = #{domain.firstreason,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.shenpiStatus != null" >
+        shenpiStatus = #{domain.shenpiStatus,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.shenpiTime != null" >
+        shenpiTime = #{domain.shenpiTime,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.user_id != null" >
+        user_id = #{domain.user_id,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.user_name != null" >
+        user_name = #{domain.user_name,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.isWind != null" >
+        isWind = #{domain.isWind,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.tongdun_task_id != null" >
+        tongdun_task_id = #{domain.tongdun_task_id,jdbcType=VARCHAR},
+      </if>
+      	<if test="domain.task_status != null" >
+        task_status = #{domain.task_status,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Order">
+		select <include refid="Base_Column_List"/> from tc_member_loan where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Order" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from tc_member_loan <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition">
+	    select count(*) from tc_member_loan <include refid="Where_Clause"/>
+  	</select>
+  
+  	<select id="tongji" resultType="com.lanmosoft.dao.model.TongJi" parameterType="com.lanmosoft.model.WhereCondition">
+  		select count(*) as amount,SUM(goodsprice-firstpay) as jine from tc_member_loan <include refid="Where_Clause"/> group by tongguoTime
+	</select>
+  
+  	<select id="tongji1" resultType="com.lanmosoft.dao.model.TongJi" parameterType="com.lanmosoft.model.WhereCondition">
+  		select count(*) as amount,SUM(goodsprice-firstpay) as jine from tc_member_loan <include refid="Where_Clause"/>
+	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,uid	  
+,status
+,sex
+,age
+,cellphone
+,bank_id
+,marriage
+,education
+,address
+,unit
+,unitaddress
+,unit_size
+,unit_type,
+,work_life
+,department
+,position
+,month_incomes
+,unitphone
+,entry_time
+,addtime
+,realname
+,idcard
+,zm_score
+,open_id
+,riskscore
+,first_relation
+,first_realname
+,first_cellphone
+,second_relation
+,second_realname
+,second_cellphone
+,third_relation
+,third_realname
+,third_cellphone
+,fourth_relation
+,fourth_realname
+,fourth_cellphone
+,leibie
+,sellerid
+,goodsmodel
+,goodsname
+,goodsprice
+,firstpay
+,sellercode
+,monthnumber
+,monthpay
+,ordercode
+,self_check_status
+,self_phone_addr
+,self_check_result
+,self_check_time
+,com_check_status
+,com_phone_addr
+,com_check_result
+,com_check_time
+,rela_check_status1
+,rela_phone_addr1
+,rela_check_result1
+,rela_check_time1
+,rela_check_status2
+,rela_phone_addr2
+,rela_check_result2
+,rela_check_time2
+,rela_check_status3
+,rela_phone_addr3
+,rela_check_result3
+,rela_check_time3
+,rela_check_status4
+,rela_phone_addr4
+,rela_check_result4
+,rela_check_time4
+,jielun
+,tongguoTime
+,jujue_reason
+,note1
+,note2
+,note3
+,merchant
+,firstreason
+,shenpiStatus
+,shenpiTime
+,user_id
+,user_name
+,isWind
+,tongdun_task_id
+,task_status
+	</sql>
+</mapper>

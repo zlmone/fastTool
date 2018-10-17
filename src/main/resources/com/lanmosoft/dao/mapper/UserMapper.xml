@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.UserMapper">
+  
+  <cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.User">
+	    INSERT INTO user (id
+  ,pic
+  ,value_name
+  ,name
+  ,password
+  ,category_id
+  ,category_name
+  ,belong_city
+  ,status
+  ,department_id
+  ,department_name
+  ,position_id
+  ,position_name
+  ,sex
+  ,email
+  ,telephone
+  ,address
+  ,kejian_city
+  ,delstatus
+  ,creatorId
+  ,creatorName
+  ,superOrg_id
+  ,superOrg_name
+  ,fulldept_id
+  ,fulldept_name
+  ,fullpost_id
+  ,fullpost_name
+  ,createTime
+  ,modifiedTime
+  ,account_id
+  ,account_name
+  ,org_code
+  ,prisonNum
+  ,jianquName
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{pic,jdbcType=VARCHAR},
+  #{value_name,jdbcType=VARCHAR},
+  #{name,jdbcType=VARCHAR},
+  #{password,jdbcType=VARCHAR},
+  #{category_id,jdbcType=VARCHAR},
+  #{category_name,jdbcType=VARCHAR},
+   #{belong_city,jdbcType=VARCHAR},
+  #{status,jdbcType=VARCHAR},
+  #{department_id,jdbcType=VARCHAR},
+  #{department_name,jdbcType=VARCHAR},
+  #{position_id,jdbcType=VARCHAR},
+  #{position_name,jdbcType=VARCHAR},
+  #{sex,jdbcType=VARCHAR},
+  #{email,jdbcType=VARCHAR},
+  #{telephone,jdbcType=VARCHAR},
+  #{address,jdbcType=VARCHAR},
+   #{kejian_city,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR},
+  #{creatorId,jdbcType=VARCHAR},
+  #{creatorName,jdbcType=VARCHAR},
+  #{superOrg_id,jdbcType=VARCHAR},
+  #{superOrg_name,jdbcType=VARCHAR},
+  #{fulldept_id,jdbcType=VARCHAR},
+  #{fulldept_name,jdbcType=VARCHAR},
+  #{fullpost_id,jdbcType=VARCHAR},
+  #{fullpost_name,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP},
+  #{account_id,jdbcType=VARCHAR},
+  #{account_name,jdbcType=VARCHAR},
+  #{org_code,jdbcType=VARCHAR},
+  #{prisonNum,jdbcType=VARCHAR},
+  #{jianquName,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.User">
+    	UPDATE user 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="pic != null" >
+        pic = #{pic,jdbcType=VARCHAR},
+      </if>
+		<if test="value_name != null" >
+        value_name = #{value_name,jdbcType=VARCHAR},
+      </if>
+		<if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+		<if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+		<if test="category_id != null" >
+        category_id = #{category_id,jdbcType=VARCHAR},
+      </if>
+		<if test="category_name != null" >
+        category_name = #{category_name,jdbcType=VARCHAR},
+      </if>
+      <if test="belong_city != null" >
+        belong_city = #{belong_city,jdbcType=VARCHAR},
+      </if>
+		<if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+		<if test="department_id != null" >
+        department_id = #{department_id,jdbcType=VARCHAR},
+      </if>
+		<if test="department_name != null" >
+        department_name = #{department_name,jdbcType=VARCHAR},
+      </if>
+		<if test="position_id != null" >
+        position_id = #{position_id,jdbcType=VARCHAR},
+      </if>
+		<if test="position_name != null" >
+        position_name = #{position_name,jdbcType=VARCHAR},
+      </if>
+		<if test="sex != null" >
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+		<if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+		<if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+		<if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="kejian_city != null" >
+        kejian_city = #{kejian_city,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_id != null" >
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_name != null" >
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_id != null" >
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_name != null" >
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_id != null" >
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_name != null" >
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="account_id != null" >
+        account_id = #{account_id,jdbcType=VARCHAR},
+      </if>
+		<if test="account_name != null" >
+        account_name = #{account_name,jdbcType=VARCHAR},
+      </if>
+		<if test="org_code != null" >
+        org_code = #{org_code,jdbcType=VARCHAR},
+      </if>
+      <if test="prisonNum != null" >
+        prisonNum = #{prisonNum,jdbcType=VARCHAR},
+      </if>
+      <if test="jianquName != null" >
+        jianquName = #{jianquName,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.User">
+    	UPDATE user 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        pic = #{pic,jdbcType=VARCHAR},
+        value_name = #{value_name,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
+        category_id = #{category_id,jdbcType=VARCHAR},
+        category_name = #{category_name,jdbcType=VARCHAR},
+         belong_city = #{belong_city,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        department_id = #{department_id,jdbcType=VARCHAR},
+        department_name = #{department_name,jdbcType=VARCHAR},
+        position_id = #{position_id,jdbcType=VARCHAR},
+        position_name = #{position_name,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        telephone = #{telephone,jdbcType=VARCHAR},
+        address = #{address,jdbcType=VARCHAR},
+        kejian_city = #{kejian_city,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+        account_id = #{account_id,jdbcType=VARCHAR},
+        account_name = #{account_name,jdbcType=VARCHAR},
+        org_code = #{org_code,jdbcType=VARCHAR},
+        prisonNum = #{prisonNum,jdbcType=VARCHAR},
+        jianquName = #{jianquName,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from user where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from user <include refid="Where_Clause" />
+	</delete>
+	
+	
+	<update id="deleteBystatus" parameterType="com.lanmosoft.model.WhereCondition">
+			UPDATE user 
+		<set>
+			<if test="delstatusValue ==0" >delstatus=0</if>
+			<if test="delstatusValue ==1" >delstatus=1</if>
+	    </set>
+	   <include refid="Where_Clause"/>
+	</update>
+
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE user 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.pic != null" >
+        pic = #{domain.pic,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.value_name != null" >
+        value_name = #{domain.value_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.name != null" >
+        name = #{domain.name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.password != null" >
+        password = #{domain.password,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.category_id != null" >
+        category_id = #{domain.category_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.category_name != null" >
+        category_name = #{domain.category_name,jdbcType=VARCHAR},
+      </if>
+      <if test="domain.belong_city != null" >
+        belong_city = #{domain.belong_city,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.status != null" >
+        status = #{domain.status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.department_id != null" >
+        department_id = #{domain.department_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.department_name != null" >
+        department_name = #{domain.department_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.position_id != null" >
+        position_id = #{domain.position_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.position_name != null" >
+        position_name = #{domain.position_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.sex != null" >
+        sex = #{domain.sex,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.email != null" >
+        email = #{domain.email,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.telephone != null" >
+        telephone = #{domain.telephone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.address != null" >
+        address = #{domain.address,jdbcType=VARCHAR},
+      </if>
+      <if test="domain.kejian_city != null" >
+        kejian_city = #{domain.kejian_city,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorId != null" >
+        creatorId = #{domain.creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorName != null" >
+        creatorName = #{domain.creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_id != null" >
+        superOrg_id = #{domain.superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_name != null" >
+        superOrg_name = #{domain.superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_id != null" >
+        fulldept_id = #{domain.fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_name != null" >
+        fulldept_name = #{domain.fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_id != null" >
+        fullpost_id = #{domain.fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_name != null" >
+        fullpost_name = #{domain.fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.account_id != null" >
+        account_id = #{domain.account_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.account_name != null" >
+        account_name = #{domain.account_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.org_code != null" >
+        org_code = #{domain.org_code,jdbcType=VARCHAR},
+      </if>
+      <if test="domain.prisonNum != null" >
+        prisonNum = #{domain.prisonNum,jdbcType=VARCHAR},
+      </if>
+      <if test="domain.jianquName != null" >
+        jianquName = #{domain.jianquName,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.User">
+		select <include refid="Base_Column_List"/> from user where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.User" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from user <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  	
+    <select id="queryByPost" resultType="String" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select id from user <include refid="Where_Clause"/>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from user <include refid="Where_Clause"/>
+  	</select>
+  	
+  	
+  	
+  	  	<!-- 查询指定地区和工序的分页工人  sql -->
+  	 <select id="query1" resultType="com.lanmosoft.dao.model.User" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from user where
+    			  id in (select work_id from type where checked=true 
+    			 	<if test="worker_type_id != null" >
+    			 			and worker_type_id=#{worker_type_id} 
+    			 	</if>
+    			 	)
+    			 and id in(select work_id from woke_region where  delstatus='0'
+    			 	<if test="region_id != null" >
+    			 			 and region_id=#{region_id}
+    			 	</if>
+    			 	<if test="qiyundi != 0" >
+    			 			 and departure=#{qiyundi}
+    			 	</if>
+    			 	)
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  	
+  		<!-- 查询指定地区和工序的所有工人的  sql -->
+  	 <select id="query1All" resultType="com.lanmosoft.dao.model.User" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from user where
+    			 id in (select work_id from type where checked=true 
+    			 	<if test="worker_type_id != null" >
+    			 			and worker_type_id=#{worker_type_id} 
+    			 	</if>
+    			 	)
+    			 and id in(select work_id from woke_region where  delstatus='0'
+    			 	<if test="region_id != null" >
+    			 			 and region_id=#{region_id}
+    			 	</if>
+    			 	<if test="qiyundi != 0" >
+    			 			 and departure=#{qiyundi}
+    			 	</if>
+    			 	)
+  	</select>
+  	
+  	  		<!-- 查询指定地区和工序的所有工人的  sql -->
+  	<select id="count1" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select count(*) from user where
+    			 id in (select work_id from type where checked=true 
+    			 	<if test="worker_type_id != null" >
+    			 			and worker_type_id=#{worker_type_id} 
+    			 	</if>
+    			 	)
+    			 and id in(select work_id from woke_region where  delstatus='0'
+    			 	<if test="region_id != null" >
+    			 			 and region_id=#{region_id}
+    			 	</if>
+    			 	<if test="qiyundi != 0" >
+    			 			 and departure=#{qiyundi}
+    			 	</if>
+    			 	)
+  	</select>
+  	
+  	
+  	
+  	
+  	
+  	
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,pic
+,value_name
+,name
+,password
+,category_id
+,category_name
+,belong_city
+,status
+,department_id
+,department_name
+,position_id
+,position_name
+,sex
+,email
+,telephone
+,address
+,kejian_city
+,delstatus
+,creatorId
+,creatorName
+,superOrg_id
+,superOrg_name
+,fulldept_id
+,fulldept_name
+,fullpost_id
+,fullpost_name
+,createTime
+,modifiedTime
+,account_id
+,account_name
+,org_code
+,prisonNum
+,jianquName
+	</sql>
+</mapper>

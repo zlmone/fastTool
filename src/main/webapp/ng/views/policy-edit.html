@@ -1,0 +1,62 @@
+<!--content_left-->
+<div class="container_top15">
+
+
+	<!--消息-->
+	<div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+		<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+			close="alert.close()"> <span data-ng-bind-html="alert.msg"></span>
+		</alert>
+	</div>
+
+	<div>
+		<div
+			style="float: left; height: 800px; overflow: auto; width: 50%; border-right: 1px solid #DDDDDD;">
+			<!--plczkh-->
+			<ul id="myTab" class="nav nav-tabs">
+				<li class="active"><a data-target="#tab17" data-toggle="tab">
+						全部更新 </a></li>
+				<li><a data-target="#tab18" data-toggle="tab">政策更新</a></li>
+
+			</ul>
+
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="tab17">
+					<div data-ng-include="'views/policy-list.html'"
+						data-ng-controller="policy_controller"></div>
+				</div>
+				<div class="tab-pane fade" id="tab18">
+					<div data-ng-include="'views/imgdata.html'"
+						data-ng-controller="order-edit_controller4"></div>
+				</div>
+				<!-- <div class="tab-pane fade" id="tab2">
+        <div data-ng-include="'views/plan_tab-list.html'" data-ng-controller="plan_tab-edit_controller">
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tab3">
+    	<div data-ng-include="'views/contract-list.html'" data-ng-controller="contract-edit_controller">
+		</div> 
+    </div>
+    <div class="tab-pane fade" id="tab4">
+        <div data-ng-include="'views/help_tab-list.html'" data-ng-controller="help_tab-edit_controller">
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab5">
+        <div data-ng-include="'views/goto_schoool-list.html'" data-ng-controller="goto_schoool-edit_controller">
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tab6">
+        <div data-ng-include="'views/student-hudong-list.html'" data-ng-controller="student-edit_controller">
+        </div>
+    </div> -->
+			</div>
+		</div>
+		<div style="float: left; height: 800px; overflow: auto; width: 50%;">
+
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+
+

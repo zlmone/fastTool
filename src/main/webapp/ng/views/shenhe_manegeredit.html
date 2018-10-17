@@ -1,0 +1,114 @@
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row" ng-form="bigform">
+<div class="col-md-12">
+
+<div class="portlet light bordered ">
+<div class="portlet-title">
+    <div class="caption">
+        <i class="fa fa-pencil"></i>{{shenhe_maneger.item.suoshukehu||'开始新的'}}
+    </div>
+    <div class="actions btn-set">
+        <button type="button" name="back" class="btn default" ng-click="$root.settings.utils.back()"><i class="fa fa-angle-left"></i> 返回</button>
+        <button ng-disabled="bigform.$invalid" class="btn green" ng-click="shenhe_maneger.save(1)"popover-trigger="mouseenter"><i class="fa fa-check"></i> 保存并返回</button>
+        <button ng-disabled="bigform.$invalid"  class="btn green" ng-click="shenhe_maneger.save(2)"  popover-trigger="mouseenter"><i class="fa fa-check-circle"></i>保存并新增</button>
+
+    </div>
+</div>
+<div class="portlet-body">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="form">
+                    <!-- BEGIN FORM-->
+                    <form action="#" name="myform" class="form-horizontal">
+                        <div class="form-body">
+                           
+                            <!--/row-->
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">id</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.id"  name="id"/>
+									</div>
+								</div>
+							</div>
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">订单id</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.order_id"  name="order_id"/>
+									</div>
+								</div>
+							</div>
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">类型</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.type"  name="type"/>
+									</div>
+								</div>
+							</div>
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">类型单号</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.type_number"  name="type_number"/>
+									</div>
+								</div>
+							</div>
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">操作人id</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.user_id"  name="user_id"/>
+									</div>
+								</div>
+							</div>
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">操作人</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.user_name"  name="user_name"/>
+									</div>
+								</div>
+							</div>
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">操作时间</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.caozuo_time"  name="caozuo_time"/>
+									</div>
+								</div>
+							</div>
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">动作</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.activity"  name="activity"/>
+									</div>
+								</div>
+							</div>
+							 <div class="col-md-6" >
+								<div class="form-group">
+									<label class="control-label col-md-3">类容</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control" ng-model="shenhe_maneger.item.content"  name="content"/>
+									</div>
+								</div>
+							</div>
+							
+
+                        </div>
+
+                     </form>
+                    <!-- END FORM-->
+
+                </div>
+        </div>
+    </div>
+</div>
+</div>
+</form>
+</div>
+</div>

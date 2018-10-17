@@ -1,0 +1,113 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="container2" style="margin-top:0px;padding:10px;background:#fff;">
+                    <a style="color:#000;font-size:15px;font-weight:bold;" name="tab">基本信息</a>
+                    <div class="pull-right"style="margin:-3px 10px 0 0;">
+                       <div class="btn-group lianxu boder">
+                        <a class="btn "  ng-click="edit(reminder.item)"><span>编辑</span></a>
+                        <a class="btn " ng-click="$root.settings.utils.back()">返回</a>
+						</div>
+					 </div>
+                </div>
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                       
+					     <div class="form-body">
+                           
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							提醒者id：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{reminder.item.reminder_id}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							提醒者：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{reminder.item.reminder_name}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							表单id：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{reminder.item.form_id}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							请假  离职 等等..：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{reminder.item.type}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							1.待审核  2.审核通过  3.驳回：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{reminder.item.state}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							类容：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{reminder.item.content}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							是否已读（0：未读，1：已读）：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{reminder.item.isRead}}
+						</div>
+						<div class="clear"></div>
+					</div>
+                        </div>
+					   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

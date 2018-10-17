@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>我的资料</title>
+	<link rel="stylesheet" href="js/mint-ui/mint-ui.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/vue.min.js"></script>
+	<script src="js/mint-ui/mint-ui.js"></script>
+	<script src="js/sea.min.js"></script>
+	<script src="js/sea.config.js"></script>
+</head>
+<body>
+	<div id="app" class="bg-gray" v-cloak>
+		<div class="cut"></div>
+		<field-text class="guide-ico" label="关于我们" href="#"></field-text>
+		<div class="cut center"></div>
+		<div class="submit-btn-wrap">
+			<mt-button v-on:click="onSubmit">退出登录</mt-button>
+		</div>
+	</div>
+	<script>
+		(function(Vue, seajs){
+			seajs.use(["fieldText"], function(fieldText){
+				Vue.component(fieldText.name,fieldText);
+				var app = new Vue({
+					el: "#app",
+					methods: {
+						onSubmit: function(){
+							this.$indicator.open();
+						}
+					}
+				});
+			});
+		})(Vue, seajs);
+	</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="container2" style="margin-top:0px;padding:10px;background:#fff;">
+                    <a style="color:#000;font-size:15px;font-weight:bold;" name="tab">
+						 <span ng-if="reminder.item.id==undefined||reminder.item.id==''">新建提示</span>
+						 <span ng-if="reminder.item.id!=undefined&&reminder.item.id!=''">编辑提示</span>
+					
+					</a>
+                    <div class="pull-right"style="margin:-3px 10px 0 0;">
+					  <div class="btn-group lianxu">
+						<button type="button" name="back" class="btn " ng-click="$root.settings.utils.back()"><i 		class="fa fa-angle-left"></i> 返回</button>
+						<button ng-disabled="form.$invalid" class="btn " ng-click="reminder.save(1)" popover-trigger="mouseenter"><i class="fa fa-check"></i> 保存并返回</button>
+						<button ng-disabled="form.$invalid"  class="btn " ng-click="reminder.save(2)"  popover-trigger="mouseenter"><i class="fa fa-check-circle"></i>保存并新增</button>
+										
+					  </div>
+                    </div>
+                </div>
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                        <form action="#" name="form" class="form-horizontal">
+					     <div class="form-body">
+                           
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							提醒者id：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								<input type="text" class="xzbjd_jbxx_table_text" ng-model="reminder.item.reminder_id"  name="reminder_id" />
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							提醒者：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								<input type="text" class="xzbjd_jbxx_table_text" ng-model="reminder.item.reminder_name"  name="reminder_name" />
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							表单id：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								<input type="text" class="xzbjd_jbxx_table_text" ng-model="reminder.item.form_id"  name="form_id" />
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							请假  离职 等等..：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								<input type="text" class="xzbjd_jbxx_table_text" ng-model="reminder.item.type"  name="type" />
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							1.待审核  2.审核通过  3.驳回：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								<input type="text" class="xzbjd_jbxx_table_text" ng-model="reminder.item.state"  name="state" />
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							类容：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								<input type="text" class="xzbjd_jbxx_table_text" ng-model="reminder.item.content"  name="content" />
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							是否已读（0：未读，1：已读）：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								<input type="text" class="xzbjd_jbxx_table_text" ng-model="reminder.item.isRead"  name="isRead" />
+						</div>
+						<div class="clear"></div>
+					</div>
+                        </div>
+					   </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

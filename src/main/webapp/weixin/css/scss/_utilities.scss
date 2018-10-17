@@ -1,0 +1,185 @@
+﻿html, body {
+  height: 100%;
+}
+
+html {
+  background-color: #eee;
+  @include prefix(tap-highlight-color, rgba(0, 0, 0, 0));
+  @include prefix(user-select, none);
+  @include prefix(text-rendering, geometricPrecision);
+  @include prefix(font-smoothing, antialiased);
+}
+
+body {
+  position: relative;
+  // max-width: 16rem;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+ul {
+  list-style: none;
+}
+
+/*--- 布局 ---*/
+.top-fix-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  height: $fix-bar-top-height;
+  @include prefix(box-sizing, border-box);
+  & ~ .container {
+    top: $fix-bar-top-height;
+  }
+}
+
+.bottom-fix-bar {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  height: $fix-bar-bottom-height;
+  @include prefix(box-sizing, border-box);
+  & ~ .container {
+    bottom: $fix-bar-bottom-height;
+  }
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #fff;
+  @include prefix(overflow-scrolling, touch);
+  > .scroll {
+    min-height: 100%;
+    overflow: hidden;
+  }
+}
+
+.scroll-wrap {
+  overflow: hidden;
+}
+
+/*--- 通用 ---*/
+/* 基础 */
+.clearfix {
+  @include clearfix;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.no-float {
+  float: none !important;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex-center {
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.img-space{
+    >img:first-child{
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+/*--- 图标 ---*/
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.state-ico{
+    width: rem(96);
+    height: rem(96);
+    background-image: url(../img/state-ico.png);
+    background-size: 300% 100%;
+    &.sign1{
+        background-position: left center;
+    }
+    &.sign2{
+        background-position: center;
+    }
+    &.sign3{
+        background-position: right center;
+    }
+}
+.system-ico{
+    width: rem(40);
+    height: rem(40);
+    background-image: url(../img/system_ico.png);
+    background-size: rem(40) rem(490);
+    &.sign1{
+      background-position-y: rem(0);
+    }
+    &.sign2{
+      background-position-y: rem(-50);
+    }
+    &.sign3{
+      background-position-y: rem(-100);
+    }
+    &.sign4{
+      background-position-y: rem(-150);
+    }
+    &.sign5{
+      background-position-y: rem(-200);
+    }
+    &.sign6{
+      background-position-y: rem(-250);
+    }
+    &.sign7{
+      background-position-y: rem(-300);
+    }
+    &.sign8{
+      background-position-y: rem(-350);
+    }
+    &.sign9{
+      background-position-y: rem(-400);
+    }
+    &.sign10{
+      background-position-y: rem(-450);
+    }
+}
+
+/*--- 动画 ---*/

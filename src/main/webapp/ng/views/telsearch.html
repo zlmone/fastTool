@@ -1,0 +1,338 @@
+<div>
+	<div class="panel-group" id="accordion">
+	<div class="panel panel-default" ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a id="collapseOneparent" ng-click="zhedie(1)" data-toggle="collapse" data-parent="#accordion" 
+				   >
+					需要添加新的号码
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapse1" class="panel-collapse collapse in">
+			<div class="panel-body">
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                           		<tr>
+                           			<td colspan="6"><button style="float: right;background-color: #0b78cb;width: 50px;color:white;" ng-click="savetel()">保存</button></td>
+                           		</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">来源</td>
+                					<td width="23%">
+                						<select style="width: 120px;" ng-model="order.tel.source">
+                							<option value="1">网络</option>
+                							<option value="2">口述</option>
+                							<option value="3">其他</option>
+                						</select>
+                					</td>
+                					<td class="tdleft" width="10%">类型</td>
+                					<td width="23%">
+                							<select style="width: 120px;" ng-model="order.tel.type">
+                								<option value="1">朋友</option>
+												<option value="2">亲戚</option>
+                								<option value="3">同事</option>
+                								<option value="4">单位</option>
+                								<option value="5">借款人</option>
+                							</select>
+                							
+                					</td>
+         							<td class="tdleft" width="10%">号码</td>
+                					<td width="24%">
+                					<input type="text" style="width: 80%;" class="xzbjd_jbxx_table_text" ng-model="order.tel.phonenum"/>
+                					</td>
+                			</tr>
+                		</table>
+			</div>
+		</div>
+		
+	</div>
+
+		<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(2)"
+				   >
+					借款人手机号核实 {{order.item.cellphone}}- 辽宁 朝阳 -<span style="color: #ff6368;">{{order.item.self_check_status=='0'&&'未调查'||order.item.self_check_status=='1'&&'已核实'||''}}</span>
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapse2" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                           		<tr>
+                           			<td colspan="6">{{order.item.self_check_time}}<div style="float: right;"><img ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" width="28px;" height="28px;" ng-click="tel()" src="images/tel.png"/>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" ng-click="save1(1)" style="background-color: #0b78cb;width: 50px;color:white;">保存</button>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb;width: 50px;color:white;">取消</button></div></td>
+                           		</tr>
+                					<tr>
+         							<td class="tdleft" width="20%">号码归属地</td>
+                					<td>
+                					<input type="text" style="width: 80%;" class="xzbjd_jbxx_table_text"/>
+                					</td>
+                			</tr>
+                			<tr>
+         							<td class="tdleft" width="20%">调查状态</td>
+                					<td>
+                						<select style="width: 80%;" ng-model="order.item.self_check_status" ng-change="check(1)">
+                								<option value="0">未调查</option>
+              									<option value="1">已核实</option>
+                							</select>
+                					</td>
+                			</tr>
+                		</table>
+			</div>
+		</div>
+		<div id="collapse11" class="panel-collapse collapse">
+			<div class="panel-body" style="margin-top: -30px;">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.item.self_check_result"></textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(3)"
+				   >
+					单位电话核实 <span id="unitphone">{{order.item.unitphone}}</span>- 辽宁 朝阳 -<span style="color: #ff6368;">{{order.item.com_check_status=='0'&&'未调查'||order.item.com_check_status=='1'&&'已核实'||''}}</span>
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapse3" class="panel-collapse collapse">
+			<div class="panel-body" >
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                           		<tr>
+                           			<td colspan="6">{{order.item.com_check_time}}<div style="float: right;"><img ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" width="28px;" height="28px;" src="images/tel.png"/>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" ng-click="save1(2)" style="background-color: #0b78cb;width: 50px;color:white;">保存</button>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb;width: 50px;color:white;">取消</button></div></td>
+                           		</tr>
+                					<tr>
+         							<td class="tdleft" width="20%">号码归属地</td>
+                					<td>
+                					<input type="text" style="width: 80%;" class="xzbjd_jbxx_table_text"/>
+                					</td>
+                			</tr>
+                			<tr>
+         							<td class="tdleft" width="20%">调查状态</td>
+                					<td>
+                						<select style="width: 80%;" ng-model="order.item.com_check_status" ng-model="order.item.com_check_status" ng-change="check(2)">
+                								<option value="0">未调查</option>
+                								<option value="1">已核实</option>
+                							</select>
+                					</td>
+                			</tr>
+                		</table>
+			</div>
+		</div>
+		<div id="collapse21" class="panel-collapse collapse">
+			<div class="panel-body" style="margin-top: -30px;">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.item.com_check_result"></textarea>
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(4)"
+				   >
+					联系人手机号核实 <span id="first_cellphone">{{order.item.first_cellphone}}</span> <span id="first_realname">{{order.item.first_realname}}</span>(<span id="first_relation">{{order.item.first_relation}}</span>)- 辽宁 朝阳 -<span style="color: #ff6368;">{{order.item.rela_check_status1=='0'&&'未调查'||order.item.rela_check_status1=='1'&&'已核实'||''}}</span>
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapse4" class="panel-collapse collapse">
+			<div class="panel-body" >
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                           		<tr>
+                           			<td colspan="6">{{order.item.rela_check_time1}}<div style="float: right;"><img ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" width="28px;" height="28px;" src="images/tel.png"/>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" ng-click="save1(3)" style="background-color: #0b78cb;width: 50px;color:white;">保存</button>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb;width: 50px;color:white;">取消</button></div></td>
+                           		</tr>
+                					<tr>
+         							<td class="tdleft" width="20%">号码归属地</td>
+                					<td>
+                					<input type="text" style="width: 80%;" class="xzbjd_jbxx_table_text"/>
+                					</td>
+                			</tr>
+                			<tr>
+         							<td class="tdleft" width="20%">调查状态</td>
+                					<td>
+                						<select style="width: 80%;" ng-model="order.item.rela_check_status1" ng-change="check(3)">
+                								<option value="0">未调查</option>
+                								<option value="1">已核实</option>
+                							</select>
+                					</td>
+                			</tr>
+                		</table>
+			</div>
+		</div>
+		<div id="collapse31" class="panel-collapse collapse">
+			<div class="panel-body" style="margin-top: -30px;">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.item.rela_check_result1"></textarea>
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(5)"
+				   >
+					联系人手机号核实 <span id="second_cellphone">{{order.item.second_cellphone}}</span> <span id="second_realname">{{order.item.second_realname}}</span>(<span id="second_relation">{{order.item.second_relation}}</span>)- 辽宁 朝阳 -<span style="color: #ff6368;">{{order.item.rela_check_status2=='0'&&'未调查'||order.item.rela_check_status2=='1'&&'已核实'||''}}</span>
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapse5" class="panel-collapse collapse">
+			<div class="panel-body" >
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                           		<tr>
+                           			<td colspan="6">{{order.item.rela_check_time2}}<div style="float: right;"><img ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" width="28px;" height="28px;" src="images/tel.png"/>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" ng-click="save1(4)" style="background-color: #0b78cb;width: 50px;color:white;">保存</button>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb;width: 50px;color:white;">取消</button></div></td>
+                           		</tr>
+                					<tr>
+         							<td class="tdleft" width="20%">号码归属地</td>
+                					<td>
+                					<input type="text" style="width: 80%;" class="xzbjd_jbxx_table_text"/>
+                					</td>
+                			</tr>
+                			<tr>
+         							<td class="tdleft" width="20%">调查状态</td>
+                					<td>
+                						<select style="width: 80%;" ng-model="order.item.rela_check_status2" ng-change="check(4)">
+                								<option value="0">未调查</option>
+                								<option value="1">已核实</option>
+                							</select>
+                					</td>
+                			</tr>
+                		</table>
+			</div>
+		</div>
+		<div id="collapse41" class="panel-collapse collapse">
+			<div class="panel-body" style="margin-top: -30px;">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.item.rela_check_result2"></textarea>
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(6)"
+				   >
+					联系人手机号核实 <span id="third_cellphone">{{order.item.third_cellphone}}</span> <span id="third_realname">{{order.item.third_realname}}</span>(<span id="third_relation">{{order.item.third_relation}}</span>)- 辽宁 朝阳 -<span style="color: #ff6368;">{{order.item.rela_check_status3=='0'&&'未调查'||order.item.rela_check_status3=='1'&&'已核实'||''}}</span>
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapse6" class="panel-collapse collapse">
+			<div class="panel-body">
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                           		<tr>
+                           			<td colspan="6">{{order.item.rela_check_time3}}<div style="float: right;"><img ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" width="28px;" height="28px;" src="images/tel.png"/>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" ng-click="save1(5)" style="background-color: #0b78cb;width: 50px;color:white;">保存</button>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb;width: 50px;color:white;">取消</button></div></td>
+                           		</tr>
+                					<tr>
+         							<td class="tdleft" width="20%">号码归属地</td>
+                					<td>
+                					<input type="text" style="width: 80%;" class="xzbjd_jbxx_table_text"/>
+                					</td>
+                			</tr>
+                			<tr>
+         							<td class="tdleft" width="20%">调查状态</td>
+                					<td>
+                						<select style="width: 80%;" ng-model="order.item.rela_check_status3" ng-change="check(5)">
+                								<option value="0">未调查</option>
+                								<option value="1">ͬ已核实</option>
+                							</select>
+                					</td>
+                			</tr>
+                		</table>
+			</div>
+		</div>
+		<div id="collapse51" class="panel-collapse collapse">
+			<div class="panel-body" style="margin-top: -30px;">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.item.rela_check_result3"></textarea>
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-default" style="margin-top: 0px;">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie(7)"
+				   >
+					联系人手机号核实 <span id="fourth_cellphone">{{order.item.fourth_cellphone}}</span> <span id="fourth_realname">{{order.item.fourth_realname}}</span>(<span id="fourth_relation">{{order.item.fourth_relation}}</span>)- 辽宁 朝阳 -<span style="color: #ff6368;">{{order.item.rela_check_status4=='0'&&'未调查'||order.item.rela_check_status4=='1'&&'已核实'||''}}</span>
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="collapse7" class="panel-collapse collapse">
+			<div class="panel-body" >
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                           		<tr>
+                           			<td colspan="6">{{order.item.rela_check_time4}}<div style="float: right;"><img ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" width="28px;" height="28px;" src="images/tel.png"/>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" ng-click="save1(6)" style="background-color: #0b78cb;width: 50px;color:white;">保存</button>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb;width: 50px;color:white;">取消</button></div></td>
+                           		</tr>
+                					<tr>
+         							<td class="tdleft" width="20%">号码归属地</td>
+                					<td>
+                					<input type="text" style="width: 80%;" class="xzbjd_jbxx_table_text"/>
+                					</td>
+                			</tr>
+                			<tr>
+         							<td class="tdleft" width="20%">调查状态</td>
+                					<td>
+                						<select style="width: 80%;" ng-model="order.item.rela_check_status4" ng-change="check(6)">
+                								<option value="0">未调查</option>
+                								<option value="1">已核实</option>
+                							</select>
+                					</td>
+                			</tr>
+                		</table>
+			</div>
+		</div>
+		<div id="collapse61" class="panel-collapse collapse">
+			<div class="panel-body" style="margin-top: -30px;">
+				<textarea style="width: 74%;height: 100px;" ng-model="order.item.rela_check_result4"></textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default" style="margin-top: 0px;" ng-repeat="d in order.tellist">
+		<div class="panel-heading" style="background-color: #eff8ff;color: #55a2dc;">
+			<h4 class="panel-title" style="font-size: 14px;">
+				<a data-toggle="collapse" data-parent="#accordion" ng-click="zhedie1(d)"
+				   >
+					联系人手机号核实 {{d.phonenum}} ({{d.type=='1'&&'朋友'||d.type=='2'&&'亲戚'||d.type=='3'&&'同事'||d.type=='4'&&'单位'||d.type=='5'&&'借款人'||''}})- {{d.address}} -<span style="color: #ff6368;">{{d.status=='0'&&'未调查'||d.status=='1'&&'已核实'||''}}</span>
+				</a><i style="float: right;" class="icon-angle-down"></i>
+			</h4>
+		</div>
+		<div id="{{d.id}}" class="panel-collapse collapse">
+			<div class="panel-body" >
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+                           		<tr>
+                           			<td colspan="6">{{d.telTime}}<div style="float: right;"><img ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" width="28px;" height="28px;" src="images/tel.png"/>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" ng-click="save2(d)" style="background-color: #0b78cb;width: 50px;color:white;">保存</button>&nbsp;&nbsp;<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb;width: 50px;color:white;">取消</button></div></td>
+                           		</tr>
+                					<tr>
+         							<td class="tdleft" width="20%">号码归属地</td>
+                					<td>
+                					<input type="text" style="width: 80%;" class="xzbjd_jbxx_table_text" ng-model="d.address"/>
+                					</td>
+                			</tr>
+                			<tr>
+         							<td class="tdleft" width="20%">调查状态</td>
+                					<td>
+                						<select style="width: 80%;" ng-model="d.status" ng-change="check1(d)">
+                								<option value="0">未调查</option>
+                								<option value="1">已核实</option>
+                							</select>
+                					</td>
+                			</tr>
+                		</table>
+			</div>
+		</div>
+		<div id="{{d.id}}1" class="panel-collapse collapse">
+			<div class="panel-body" style="margin-top: -30px;">
+				<textarea style="width: 74%;height: 100px;" ng-model="d.note"></textarea>
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>

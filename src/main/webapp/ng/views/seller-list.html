@@ -1,0 +1,280 @@
+<!--content_left-->
+<div class="container_top15">
+    <!--khst-->
+	<!--
+    <div id="khst">
+        <div id="khst_neirong">
+            <ul>
+                <li>
+                    <div id="khst_neirong_title">商户管理：</div>
+                </li>
+                <li>
+                    <img src="images/khst_01.png" border="0"  class="khst_img_01" />
+                </li>
+                
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+	-->
+	
+    <!--消息-->
+    <div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+            <span data-ng-bind-html="alert.msg"></span>
+        </alert>
+    </div>
+
+    <!--plczkh-->
+    <div id="plczkh">
+        <div id="plczkh_neirong" style="padding: 0 0 0 0;margin: 0;">
+		
+		   <div id="khst_neirong">
+                <!-- <ul>
+                    <li>
+                        <img src="images/khst_01.png" border="0"  class="khst_img_01" />
+                    </li>
+                    <li>
+                        <div id="khst_neirong_title" style="font-size:12px">&nbsp;商户管理</div>
+                    </li>
+                </ul> -->
+                <div class="clear"></div>
+            </div>
+		
+            <!--plczkh_neirong_shang-->
+            <div id="plczkh_neirong_shang" style="padding: 10px 0 0 0">
+                <div class="smsrecord_tiaojian" >
+                     <div class="btn-group lianxu">
+                        <button class="btn" ng-click="seller.delete()">
+                            <i class="  icon-remove imgleft"></i>
+                            <span>删除</span>
+                        </button>
+                        <button class="btn " ng-click="add()">
+                            <i class="  icon-plus imgleft"></i>
+                            <span style="font-size: 14px;">新增</span>
+                        </button>
+                        <div class="btn-group">
+                            <!-- <button class="btn">更多操作</button>
+                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu biankang">
+							
+                                <li><a href ng-click="">修改快递</a></li>
+							
+                            </ul> -->
+                        </div>
+                    </div>
+
+
+                    <div class="pull-right" >
+                        <div class="input-append search lianxu" ng-init="$root.settings.utils.initpicker()">
+							
+                            <input class="span2" ng-keypress="seller.exitsearch($event)"  placeholder="名称"  ng-model="seller.searchForm.searchItems.name_lk"  type="text">
+                            <input class="span2" ng-keypress="seller.exitsearch($event)"  placeholder="地址"  ng-model="seller.searchForm.searchItems.address_lk"  type="text">
+                            <input class="span2" ng-keypress="seller.exitsearch($event)"  placeholder="编号"  ng-model="seller.searchForm.searchItems.number_lk"  type="text">
+                            <input class="span2" ng-keypress="seller.exitsearch($event)"  placeholder="联系人"  ng-model="seller.searchForm.searchItems.contactor_lk"  type="text">
+                            <input class="span2" ng-keypress="seller.exitsearch($event)"  placeholder="电话号码"  ng-model="seller.searchForm.searchItems.cellphone_lk"  type="text">
+                            <!--<input class="span2 date-picker" ng-keypress="seller.exitsearch($event)" placeholder="时间" data-date-format="yyyy-mm-dd"  ng-model="seller.searchForm.tid" type="text">
+							-->
+                            <button class="btn icon-search" type="button" ng-click="seller.search1()">查询</button>
+                        <!--    <button style="margin-left: -4px" class="btn  icon-zoom-in" type="button">高级查询</button>-->
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--plczkh_neirong_xia-->
+            <div id="plczkh_neirong_xia">
+                <div id="plczkh_neirong_xia_shang">
+                    <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                        <tr style="background-color: #e6f4ff;">
+                            <td>
+                                <span class="plczkh_table_kong"></span>
+                                <input  type="checkbox" ng-model="headcheck" ng-click="seller.checkAll(headcheck)"/>
+                            </td>
+							
+							<td>
+                                <span class="plczkh_table_title">名称</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                            
+                            <td>
+                                <span class="plczkh_table_title">地址</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                            
+                            <td>
+                                <span class="plczkh_table_title">编号</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                            
+                            <td>
+                                <span class="plczkh_table_title">联系人</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                            
+                            <td>
+                                <span class="plczkh_table_title">电话号码</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+							
+                            <td>
+                                <span class="plczkh_table_title">操作</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                        </tr>
+						
+						
+                        <tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in seller.dataList">
+                            <td>
+                                <span class="plczkh_table_kong"></span>
+                                <input type="checkbox" ng-model="d.checked"/>
+                            </td>
+							
+							<td>
+								<span>{{d.name}}</span>
+							</td>
+
+							<td>
+								<span>{{d.address}}</span>
+							</td>
+							
+							<td>
+								<span>{{d.number}}</span>
+							</td>
+							
+							<td>
+								<span>{{d.contactor}}</span>
+							</td>
+							
+							<td>
+								<span>{{d.cellphone}}</span>
+							</td>
+
+                            <td>
+                                <span class="plczkh_table_caozuo"><a href="#" ng-click="edit(d)">编辑</a></span>
+                                <span class="plczkh_table_kong"></span>
+								 <span class="plczkh_table_caozuo"><a href="#" ng-click="seller.deleteData(d)">删除</a></span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="plczkh_neirong_xia_xia">
+                    <div class="plczkh_neirong_xia_xia_left">
+                        共{{seller.searchForm.page.totalItems}}条记录{{seller.searchForm.page.currentPage}}/{{seller.searchForm.page.totalPages}}页
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_mid">
+
+                        <pagination boundary-links="true" total-items="seller.searchForm.page.totalItems"      items-per-page="seller.searchForm.page.itemsperpage"  ng-model="seller.searchForm.page.currentPage"  max-size="5" num-pages
+                                    class="pagination-sm" previous-text="&lt;&lt;上一页" next-text="下一页&gt;&gt;"
+                                    first-text="首页"
+                                    last-text="尾页"></pagination>
+						   <label style="display: inline-block;vertical-align: 8px;">每页
+								<select ng-model="seller.searchForm.page.itemsperpage" class="tnz_select input-xsmall input-sm input-inline">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="50">50</option>
+									<option value="100">100</option>
+									<option value="150">150</option>
+								</select>
+							条</label>
+								
+                        <div class="clear"></div>
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_right">
+                        跳转至第<input ng-model="goto" type="number" class="t1"><input class="b1" type="button" ng-click="seller.searchCurrent(goto)"/>页
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>
+
+
+<script type="text/ng-template" id="seller-add.html">
+	
+    <div class="modal-header lm_window_head" >
+        <span>添加渠道</span>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    	<div class="modal-body">
+        	<div class="table-container">
+            	<div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+					
+
+                <!--&lt;!&ndash;开始table&ndash;&gt;-->
+                	<div class="table-scrollable" style="overflow-y: auto">
+						                           <table border="0" cellpadding="0" cellspacing="0" class="xzbjd_jbxx_table">
+                           		<tr>
+                           			<td class="xzbjd_jbxx_table_hui">
+                        名称
+                        <span class="tnz_kong"></span>
+                    				</td>
+                    				<td class="xzbjd_jbxx_table_bai">
+                        				<span class="tnz_kong"></span>
+                        				<input type="text" class="xzbjd_jbxx_table_text" ng-model="seller.item.name"/>
+                    				</td>
+                    				
+                           		</tr>
+
+						
+							<tr>
+                           			<td class="xzbjd_jbxx_table_hui">
+                        地址
+                        <span class="tnz_kong"></span>
+                    				</td>
+                    				<td class="xzbjd_jbxx_table_bai">
+                        				<span class="tnz_kong"></span>
+                        				<input type="text" class="xzbjd_jbxx_table_text" ng-model="seller.item.address"/>
+                    				</td>
+                    				
+                           		</tr>
+
+							<tr>
+                           			<td class="xzbjd_jbxx_table_hui">
+                        联系人
+                        <span class="tnz_kong"></span>
+                    				</td>
+                    				<td class="xzbjd_jbxx_table_bai">
+                        				<span class="tnz_kong"></span>
+                        				<input type="text" class="xzbjd_jbxx_table_text" ng-model="seller.item.contactor"/>
+                    				</td>
+                    				
+                           		</tr>
+
+								<tr>
+                           			<td class="xzbjd_jbxx_table_hui">
+                        电话号码
+                        <span class="tnz_kong"></span>
+                    				</td>
+                    				<td class="xzbjd_jbxx_table_bai">
+                        				<span class="tnz_kong"></span>
+                        				<input type="text" class="xzbjd_jbxx_table_text" ng-model="seller.item.cellphone"/>
+                    				</td>
+                    				
+                           		</tr>
+
+							
+							
+                           </table>
+                </div>
+                <!--&lt;!&ndash;结束table&ndash;&gt;-->
+                <!--&lt;!&ndash;开始table尾部分页以及工具栏&ndash;&gt;-->
+
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer lm_window_footer" >
+         <button class="btn btn-xs"  ng-click="submit()"> 提交</button>
+        <button class="btn btn-xs" ng-click="cancel()">关闭</button>
+    </div>
+
+</script>

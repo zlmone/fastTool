@@ -1,0 +1,138 @@
+<!--content_left-->
+<div class="container_top15">
+
+
+	<!--消息-->
+	<div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+		<alert ng-repeat="alert in alerts" type="{{alert.type}}"
+			close="alert.close()"> <span data-ng-bind-html="alert.msg"></span>
+		</alert>
+	</div>
+
+	<div style="margin-bottom: 20px;font-size: 16px;">
+		进件编号:18011244030708812032&nbsp;&nbsp;&nbsp;信审状态:{{order.item.shenpiStatus=='0'&&'待审核'||order.item.shenpiStatus=='1'&&'审核中'||order.item.shenpiStatus=='2'&&'已审核'||''}}&nbsp;&nbsp;&nbsp;提交人:{{order.item.realname}}&nbsp;&nbsp;&nbsp;<span
+			style="color: #ff6368">信息采集方式:电子采集</span>&nbsp;&nbsp;&nbsp;
+		<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb; width: 110px; color: white;" ng-click="order.save(2)">进件挂起</button>
+		&nbsp;&nbsp;&nbsp;
+		<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb; width: 110px; color: white;">提交反欺诈</button>
+		&nbsp;&nbsp;&nbsp;
+		<button ng-if="order.item.shenpiStatus=='0'||order.item.shenpiStatus=='1'" style="background-color: #0b78cb; width: 110px; color: white;" ng-click="order.save(1)">提交决策</button>
+	</div>
+
+	<div>
+		<div style="float: left;height:800px;width: 50%;min-width: 47%;">
+			<!--plczkh-->
+			<ul id="myTab" class="nav nav-tabs">
+				<li class="active"><a data-target="#tab1" data-toggle="tab">
+						申请信息 </a></li>
+				<li><a data-target="#tab2" data-toggle="tab">图像资料</a></li>
+				<li><a data-target="#tab3" data-toggle="tab">欺诈风险</a></li>
+				<li><a data-target="#tab4" data-toggle="tab">三方数据</a></li>
+				<li><a data-target="#tab5" data-toggle="tab">爬取数据</a></li>
+				<li><a data-target="#tab6" data-toggle="tab">2.0初审评分</a></li>
+
+			</ul>
+
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="tab1" style="height: 750px;overflow: auto;">
+					<div data-ng-include="'views/order_edit1.html'"
+						data-ng-controller="order-edit_controller" style="height: 100%;margin-top: -14px;"></div>
+				</div>
+				<div class="tab-pane fade" id="tab2">
+					<div data-ng-include="'views/imgdata.html'"
+						data-ng-controller="order-edit_controller4"></div>
+				</div>
+				<div class="tab-pane fade" id="tab3">
+					<div data-ng-include="'views/risk.html'"
+						data-ng-controller="order-edit_controller4"></div>
+				</div>
+				<div class="tab-pane fade" id="tab4">
+					<div data-ng-include="'views/jiekou.html'"
+						data-ng-controller="order-edit_controller4"></div>
+				</div>
+				<div class="tab-pane fade" id="tab6">
+					<div data-ng-include="'views/pingfen.html'"
+						data-ng-controller="order-edit_controller4"></div>
+				</div>
+				<!-- <div class="tab-pane fade" id="tab2">
+        <div data-ng-include="'views/plan_tab-list.html'" data-ng-controller="plan_tab-edit_controller">
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tab3">
+    	<div data-ng-include="'views/contract-list.html'" data-ng-controller="contract-edit_controller">
+		</div> 
+    </div>
+    <div class="tab-pane fade" id="tab4">
+        <div data-ng-include="'views/help_tab-list.html'" data-ng-controller="help_tab-edit_controller">
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab5">
+        <div data-ng-include="'views/goto_schoool-list.html'" data-ng-controller="goto_schoool-edit_controller">
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tab6">
+        <div data-ng-include="'views/student-hudong-list.html'" data-ng-controller="student-edit_controller">
+        </div>
+    </div> -->
+			</div>
+		</div>
+		<div style="float: left;height: 800px;overflow: auto;width: 50%;">
+			<ul id="myTab" class="nav nav-tabs">
+				<li class="active"><a data-target="#tab7" data-toggle="tab">
+						 外部信息</a></li>
+				<li><a data-target="#tab8" data-toggle="tab">摘要信息</a></li>
+				<li><a data-target="#tab10" data-toggle="tab">电话调查</a></li>
+				<li><a data-target="#tab11" data-toggle="tab">初审结论</a></li>
+				<li><a data-target="#tab13" data-toggle="tab">回访结论</a></li>
+			</ul>
+
+			<div id="myTabContent" class="tab-content">
+				 <div class="tab-pane fade in active" id="tab7">
+					<div data-ng-include="'views/waibuxinxi.html'"
+						data-ng-controller="order-edit_controller"></div>
+				</div>
+				<div class="tab-pane fade" id="tab8">
+					<div data-ng-include="'views/content_detail.html'"
+						data-ng-controller="order-edit_controller5"></div>
+				</div>
+				<div class="tab-pane fade" id="tab10">
+					<div data-ng-include="'views/telsearch.html'"
+						data-ng-controller="order-edit_controller3"></div>
+				</div>
+				<div class="tab-pane fade" id="tab11">
+					<div data-ng-include="'views/firsttrial.html'"
+						data-ng-controller="order-edit_controller3"></div>
+				</div>
+				<div class="tab-pane fade" id="tab13">
+					<div data-ng-include="'views/returnvisit.html'"
+						data-ng-controller="order-edit_controller"></div>
+				</div>
+				<!-- <div class="tab-pane fade" id="tab2">
+        <div data-ng-include="'views/plan_tab-list.html'" data-ng-controller="plan_tab-edit_controller">
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tab3">
+    	<div data-ng-include="'views/contract-list.html'" data-ng-controller="contract-edit_controller">
+		</div> 
+    </div>
+    <div class="tab-pane fade" id="tab4">
+        <div data-ng-include="'views/help_tab-list.html'" data-ng-controller="help_tab-edit_controller">
+        </div>
+    </div>
+
+    <div class="tab-pane fade" id="tab5">
+        <div data-ng-include="'views/goto_schoool-list.html'" data-ng-controller="goto_schoool-edit_controller">
+        </div>
+    </div>
+    <div class="tab-pane fade" id="tab6">
+        <div data-ng-include="'views/student-hudong-list.html'" data-ng-controller="student-edit_controller">
+        </div>
+    </div> -->
+			</div>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+
+

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>状态审核</title>
+	<link rel="stylesheet" href="js/mint-ui/mint-ui.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/vue.min.js"></script>
+	<script src="js/mint-ui/mint-ui.js"></script>
+	<script src="js/sea.min.js"></script>
+	<script src="js/sea.config.js"></script>
+</head>
+<body>
+	<div id="app" v-cloak>
+		<div class="state-page sign1" v-if="state === 1">
+			<div class="top-wrap">
+				<div>
+					<i class="icon state-ico sign1"></i>
+					<p>审核中...</p>
+				</div>
+				<img src="img/wave.svg" alt="">
+			</div>
+			<p>提交成功</p>
+			<p>请等待管理员审核！</p>
+		</div>
+		<div class="state-page sign2" v-if="state === 2">
+			<div class="top-wrap">
+				<div>
+					<i class="icon state-ico sign2"></i>
+					<p>审核成功</p>
+				</div>
+				<img src="img/wave.svg" alt="">
+			</div>
+			<p>请等待管理员审核！</p>
+			<p>分期订单审核成功！</p>
+			<div class="submit-btn-wrap">
+				<mt-button v-on:click="onSubmit">查看我的订单</mt-button>
+			</div>
+		</div>
+		<div class="state-page sign3" v-if="state === 3">
+			<div class="top-wrap">
+				<div>
+					<i class="icon state-ico sign3"></i>
+					<p>审核失败</p>
+				</div>
+				<img src="img/wave.svg" alt="">
+			</div>
+			<p>非常抱歉！</p>
+			<p class="text-center">您的订单审核未通过！</p>
+		</div>
+	</div>
+	<script>
+		(function(Vue, seajs){
+			seajs.use([], function(){
+				var app = new Vue({
+					el: "#app",
+					data: {
+						state: 2
+					},
+					methods: {
+						onSubmit: function(){
+							location.href = "#";
+						}
+					}
+				});
+			});
+		})(Vue, seajs);
+	</script>
+</body>
+</html>

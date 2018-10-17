@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.ChangliangMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Changliang">
+	    INSERT INTO changliang (id
+  ,mingcheng
+  ,daima
+  ,leibie
+  ,ext1
+  ,ext2
+  ,ext3
+  ,ext4
+  ,ext5
+  ,delstatus
+  ,createTime
+  ,modifiedTime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{mingcheng,jdbcType=VARCHAR},
+  #{daima,jdbcType=VARCHAR},
+  #{leibie,jdbcType=VARCHAR},
+  #{ext1,jdbcType=VARCHAR},
+  #{ext2,jdbcType=VARCHAR},
+  #{ext3,jdbcType=VARCHAR},
+  #{ext4,jdbcType=VARCHAR},
+  #{ext5,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Changliang">
+    	UPDATE changliang 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="mingcheng != null" >
+        mingcheng = #{mingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="daima != null" >
+        daima = #{daima,jdbcType=VARCHAR},
+      </if>
+		<if test="leibie != null" >
+        leibie = #{leibie,jdbcType=VARCHAR},
+      </if>
+        <if test="ext1 != null" >
+        ext1 = #{ext1,jdbcType=VARCHAR},
+      </if>
+        <if test="ext2 != null" >
+        ext2 = #{ext2,jdbcType=VARCHAR},
+      </if>
+        <if test="ext3 != null" >
+        ext3 = #{ext3,jdbcType=VARCHAR},
+      </if>
+        <if test="ext4 != null" >
+        ext4 = #{ext4,jdbcType=VARCHAR},
+      </if>
+        <if test="ext5 != null" >
+        ext5 = #{ext5,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Changliang">
+    	UPDATE changliang 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        mingcheng = #{mingcheng,jdbcType=VARCHAR},
+        daima = #{daima,jdbcType=VARCHAR},
+        leibie = #{leibie,jdbcType=VARCHAR},
+        ext1 = #{ext1,jdbcType=VARCHAR},
+        ext2 = #{ext2,jdbcType=VARCHAR},
+        ext3 = #{ext3,jdbcType=VARCHAR},
+        ext4 = #{ext4,jdbcType=VARCHAR},
+        ext5 = #{ext5,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from changliang where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from changliang <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE changliang 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.mingcheng != null" >
+        mingcheng = #{domain.mingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.daima != null" >
+        daima = #{domain.daima,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.leibie != null" >
+        leibie = #{domain.leibie,jdbcType=VARCHAR},
+      </if>
+        <if test="domain.ext1 != null" >
+        ext1 = #{domain.ext1,jdbcType=VARCHAR},
+      </if>
+        <if test="domain.ext2 != null" >
+        ext2 = #{domain.ext2,jdbcType=VARCHAR},
+      </if>
+        <if test="domain.ext3 != null" >
+        ext3 = #{domain.ext3,jdbcType=VARCHAR},
+      </if>
+        <if test="domain.ext4 != null" >
+        ext4 = #{domain.ext4,jdbcType=VARCHAR},
+      </if>
+        <if test="domain.ext5 != null" >
+        ext5 = #{domain.ext5,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Changliang">
+		select <include refid="Base_Column_List"/> from changliang where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Changliang" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from changliang <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from changliang <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,mingcheng
+,daima
+,leibie
+,ext1
+,ext2
+,ext3
+,ext4
+,ext5
+,delstatus
+,createTime
+,modifiedTime
+	</sql>
+</mapper>

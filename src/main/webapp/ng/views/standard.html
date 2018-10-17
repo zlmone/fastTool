@@ -1,0 +1,312 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="container2" style="margin-top:0px;padding:10px;background:#fff;">
+                    <a style="color:#000;font-size:15px;font-weight:bold;" name="tab">
+						 <span >底薪核算标准</span>
+					</a>
+                    <div class="pull-right"style="margin:-3px 10px 0 0;">
+					  <div class="btn-group lianxu">
+						<button type="button" name="back" class="btn " ng-click="$root.settings.utils.back()"><i 		class="fa fa-angle-left"></i> 返回</button>
+					  </div>
+                    </div>
+                </div>
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                        <form action="#" name="form" class="form-horizontal">
+					     <div class="form-body">
+
+<!--广州-->
+                             <div class="row">
+                                 <div class="col-md-12">
+                                     <div class="form-group">
+                                         <div>
+                                             <div class="col-md-2">
+                                                 <input type="button" disabled class="btn green btn-default btn-xs"  value="广州薪资及提成规则" />
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div id="plczkh_neirong_xia_shang">
+                                 <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                     <tr>
+                                         <td>
+                                             <span class="plczkh_table_title">基本工资标：</span>
+                                         </td>
+                                         <td>
+                                             1、满勤28天以上3000元基本工资）||（2、不满28天者2700元基本薪资）
+                                             如果上一天班，薪资如何算？
+                                             ｛（2700/28）×（工人上了几天班），不满勤的都是按这个公式 ｝
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td style="width: 8%">
+                                             <span class="plczkh_table_title">提成的标准：</span>
+                                         </td>
+                                         <td>
+                                             满300单以上{ 有效送单数（301-500单）以5元/单计算 }  + 有效送单数（501单以上）以7元/单计算，
+                                             例2：王某当月有效出勤天数20天，完成单量400单，其当月工资计算方式为：【（基本工资：2700÷28×20=1928.5元）+（提成工资：100×5=500元）-各类扣款=实发工资】。
+                                         </td>
+                                     </tr>
+                                 </table>
+                             </div>
+<!--宁波1-->
+                             <div class="row" style="margin-top: 20px">
+                                 <div class="col-md-12">
+                                     <div class="form-group">
+                                         <div>
+                                             <div class="col-md-2">
+                                                 <input type="button" disabled class="btn green btn-default btn-xs"  value="宁波1薪资及提成规则" />
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div id="plczkh_neirong_xia_shang">
+                                 <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                     <tr>
+                                         <td>
+                                             <span class="plczkh_table_title">基本工资标：</span>
+                                         </td>
+                                         <td>
+                                             1、满勤28天2000元基本工资）||（2、不满28天者1700元基本薪资）
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td style="width: 8%">
+                                             <span class="plczkh_table_title">提成的标准：</span>
+                                         </td>
+                                         <td>
+                                             1.当员工总完成单量高于280单，1、薪资将以4元/单计算，有基本工资）
+                                             2.当月员工总完成单量低于280单，薪资将以6元/单计算，无基本工资）
+                                         </td>
+                                     </tr>
+                                 </table>
+                             </div>
+<!--宁波2-->
+                             <div class="row" style="margin-top: 20px">
+                                 <div class="col-md-12">
+                                     <div class="form-group">
+                                         <div>
+                                             <div class="col-md-2">
+
+                                                 <input type="button" disabled class="btn green btn-default btn-xs"  value=" 宁波2薪资及提成规则" />
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div id="plczkh_neirong_xia_shang">
+                                 <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                     <tr>
+                                         <td>
+                                             <span class="plczkh_table_title">基本工资标：</span>
+                                         </td>
+                                         <td>
+                                             无基本工资标
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td style="width: 8%">
+                                             <span class="plczkh_table_title">提成的标准：</span>
+                                         </td>
+                                         <td>
+                                             1.当月满勤员工（满28天），总单量280单以上，薪资将以7元/单计算
+                                             2.当月不满勤的员工，总单量280单以上，薪资以6.5元／单计算
+                                             3.当月满勤或不满勤的员工，总单量低于280单，薪资以6元／单计算
+                                          </td>
+                                     </tr>
+                                 </table>
+                             </div>
+<!--义乌-->
+                             <div class="row" style="margin-top: 20px">
+                                 <div class="col-md-12">
+                                     <div class="form-group">
+                                         <div>
+                                             <div class="col-md-2">
+                                                 <input type="button" disabled class="btn green btn-default btn-xs"  value=" 义乌薪资及提成规则" />
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div id="plczkh_neirong_xia_shang">
+                                 <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                     <tr>
+                                         <td>
+                                             <span class="plczkh_table_title">基本工资标：</span>
+                                         </td>
+                                         <td>
+                                             无基本工资标
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td style="width: 8%">
+                                             <span class="plczkh_table_title">提成的标准：</span>
+                                         </td>
+                                         <td>
+                                             1.当月满勤员工（满28天），薪资将以6.5元/单计算
+                                             2.当月不满勤的员工，薪资以6元／单计算
+                                          </td>
+                                     </tr>
+                                 </table>
+                             </div>
+<!--杭州-->
+                             <div class="row" style="margin-top: 20px">
+                                 <div class="col-md-12">
+                                     <div class="form-group">
+                                         <div>
+                                             <div class="col-md-2">
+                                                 <input type="button" disabled class="btn green btn-default btn-xs"  value=" 杭州薪资及提成规则" />
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <div id="plczkh_neirong_xia_shang">
+                                 <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                     <tr>
+                                         <td>
+                                             <span class="plczkh_table_title">基本工资标：</span>
+                                         </td>
+                                         <td>
+                                             1、满勤28天2410元基本工资）||（2、不满28天者2000元基本薪资）
+                                         </td>
+                                     </tr>
+                                     <tr>
+                                         <td style="width: 8%">
+                                             <span class="plczkh_table_title">提成的标准：</span>
+                                         </td>
+                                         <td>
+                                             有效送单数≤100单以1元/单计算+有效送单数（101-200单）以2元/单计算+有效送单数（201-500单）以4元/单计算+有效送单数（501单以上）以6元/单计算。
+                                             （例：张某当月完成订单900单，其提成工资计算方式为：（100×1）+（100×2）+（300×4）+（400×6）=3900元）。
+                                         </td>
+                                     </tr>
+                                 </table>
+                             </div>
+<!--上海-->
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div>
+                                            <div class="col-md-2">
+                                                <input type="button" disabled class="btn green btn-default btn-xs"  value=" 上海薪资及提成规则" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="plczkh_neirong_xia_shang">
+                                <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                    <tr>
+                                        <td>
+                                            <span class="plczkh_table_title">基本工资标：</span>
+                                        </td>
+                                        <td>
+                                            1、满勤28天3000元基本工资）||（2、不满28天者2500元基本薪资）
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 8%">
+                                            <span class="plczkh_table_title">提成的标准：</span>
+                                        </td>
+                                        <td>
+                                            当月员工总完成单量低于280单，薪资将以7元/单计算，无标准工资。
+                                            有效送单数≤100单以1元/单计算+有效送单数（101-200单）以2元/单计算+有效送单数（201-500单）以4元/单计算+有效送单数（501单以上）以6元/单计算。
+                                            （例：张某当月完成订单900单，其提成工资计算方式为：（100×1）+（100×2）+（300×4）+（400×6）=3900元）。
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+<!--南京-->
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div>
+                                            <div class="col-md-2">
+
+                                                <input type="button" disabled class="btn green btn-default btn-xs"  value=" 南京薪资及提成规则" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="plczkh_neirong_xia_shang">
+                                <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                    <tr>
+                                        <td>
+                                            <span class="plczkh_table_title">基本工资标：</span>
+                                        </td>
+                                        <td>
+                                            1、满勤28天2000元基本工资）||（2、不满28天者1600元基本薪资）
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 8%">
+                                            <span class="plczkh_table_title">提成的标准：</span>
+                                        </td>
+                                        <td>
+                                            1.有效送单数≤300单以3元/单计算+有效送单数（301单-700单）以5元/单计算+有效送单数（700单）以上7元/单计算。
+                                            （例：张某当月完成订单900单，且有效出勤满28天，其提成工资计算方式为：（300×3）+（400×5）+（200×7）=4300元
+                                            2.当月满勤或不满勤的员工，总单量低于280单，薪资以7元计算，无基本工资。
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+<!--天津-->
+                            <div class="row" style="margin-top: 20px">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div>
+                                            <div class="col-md-2">
+                                                <input type="button" disabled class="btn green btn-default btn-xs"  value=" 天津薪资及提成规则" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="plczkh_neirong_xia_shang">
+                                <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                    <tr>
+                                        <td>
+                                            <span class="plczkh_table_title">基本工资标：</span>
+                                        </td>
+                                        <td>
+                                            1、满勤28天2500元基本工资）||（2、不满28天者2300元基本薪资）
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 8%">
+                                            <span class="plczkh_table_title">提成的标准：</span>
+                                        </td>
+                                        <td>
+                                            1.提成工资：有效送单数≤300单以2元/单计算+有效送单数（300单以上）以5元/单计算。
+                                            例：张某当月完成订单900单，且有效出勤满28天，其提成工资计算方式为：（300×2）+（600×5）=3600元
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+
+
+                        </div>
+					   </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

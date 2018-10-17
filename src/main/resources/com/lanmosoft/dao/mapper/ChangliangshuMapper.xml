@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.ChangliangshuMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Changliangshu">
+	    INSERT INTO changliangshu (id
+  ,mingcheng
+  ,bianma
+  ,quanlujingming
+  ,quanlujingbianma
+  ,quanlujingid
+  ,fujiedian
+  ,xuhao
+  ,keyongzhuangtai
+  ,changliangshuleixing
+  ,jiesuostatus
+  ,delstatus
+  ,createTime
+  ,modifiedTime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{mingcheng,jdbcType=VARCHAR},
+  #{bianma,jdbcType=VARCHAR},
+  #{quanlujingming,jdbcType=VARCHAR},
+  #{quanlujingbianma,jdbcType=VARCHAR},
+  #{quanlujingid,jdbcType=VARCHAR},
+  #{fujiedian,jdbcType=VARCHAR},
+  #{xuhao,jdbcType=VARCHAR},
+  #{keyongzhuangtai,jdbcType=VARCHAR},
+  #{changliangshuleixing,jdbcType=VARCHAR},
+  #{jiesuostatus,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Changliangshu">
+    	UPDATE changliangshu 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="mingcheng != null" >
+        mingcheng = #{mingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="bianma != null" >
+        bianma = #{bianma,jdbcType=VARCHAR},
+      </if>
+		<if test="quanlujingming != null" >
+        quanlujingming = #{quanlujingming,jdbcType=VARCHAR},
+      </if>
+		<if test="quanlujingbianma != null" >
+        quanlujingbianma = #{quanlujingbianma,jdbcType=VARCHAR},
+      </if>
+		<if test="quanlujingid != null" >
+        quanlujingid = #{quanlujingid,jdbcType=VARCHAR},
+      </if>
+		<if test="fujiedian != null" >
+        fujiedian = #{fujiedian,jdbcType=VARCHAR},
+      </if>
+		<if test="xuhao != null" >
+        xuhao = #{xuhao,jdbcType=VARCHAR},
+      </if>
+		<if test="keyongzhuangtai != null" >
+        keyongzhuangtai = #{keyongzhuangtai,jdbcType=VARCHAR},
+      </if>
+		<if test="changliangshuleixing != null" >
+        changliangshuleixing = #{changliangshuleixing,jdbcType=VARCHAR},
+      </if>
+        <if test="jiesuostatus != null" >
+        jiesuostatus = #{jiesuostatus,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Changliangshu">
+    	UPDATE changliangshu 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        mingcheng = #{mingcheng,jdbcType=VARCHAR},
+        bianma = #{bianma,jdbcType=VARCHAR},
+        quanlujingming = #{quanlujingming,jdbcType=VARCHAR},
+        quanlujingbianma = #{quanlujingbianma,jdbcType=VARCHAR},
+        quanlujingid = #{quanlujingid,jdbcType=VARCHAR},
+        fujiedian = #{fujiedian,jdbcType=VARCHAR},
+        xuhao = #{xuhao,jdbcType=VARCHAR},
+        keyongzhuangtai = #{keyongzhuangtai,jdbcType=VARCHAR},
+        changliangshuleixing = #{changliangshuleixing,jdbcType=VARCHAR},
+        jiesuostatus = #{jiesuostatus,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from changliangshu where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from changliangshu <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE changliangshu 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.mingcheng != null" >
+        mingcheng = #{domain.mingcheng,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.bianma != null" >
+        bianma = #{domain.bianma,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.quanlujingming != null" >
+        quanlujingming = #{domain.quanlujingming,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.quanlujingbianma != null" >
+        quanlujingbianma = #{domain.quanlujingbianma,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.quanlujingid != null" >
+        quanlujingid = #{domain.quanlujingid,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fujiedian != null" >
+        fujiedian = #{domain.fujiedian,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.xuhao != null" >
+        xuhao = #{domain.xuhao,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.keyongzhuangtai != null" >
+        keyongzhuangtai = #{domain.keyongzhuangtai,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.changliangshuleixing != null" >
+        changliangshuleixing = #{domain.changliangshuleixing,jdbcType=VARCHAR},
+      </if>
+        <if test="domain.jiesuostatus != null" >
+        jiesuostatus = #{domain.jiesuostatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Changliangshu">
+		select <include refid="Base_Column_List"/> from changliangshu where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Changliangshu" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from changliangshu <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from changliangshu <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,mingcheng
+,bianma
+,quanlujingming
+,quanlujingbianma
+,quanlujingid
+,fujiedian
+,xuhao
+,keyongzhuangtai
+,changliangshuleixing
+,jiesuostatus
+,delstatus
+,createTime
+,modifiedTime
+	</sql>
+</mapper>

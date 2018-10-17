@@ -1,0 +1,38 @@
+
+<div class="modal-header lm_window_head" >
+        <span>审核
+        </span>
+    <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+</div>
+
+<div class="portlet-body">
+<div class="row">
+<div class="col-md-12">
+<div class="form">
+<!-- BEGIN FORM-->
+<form action="#" name="myform" class="form-horizontal">
+<div class="form-body">
+
+    <div class="col-md-6" >
+        <div class="form-group">
+            <label class="control-label col-md-3">审核意见</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" ng-model="shenhe.item.yijian"  name="yijian"/>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</form>
+<!-- END FORM-->
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="modal-footer lm_window_footer" >
+    <button class="btn btn-xs"  ng-disabled="myform.$invalid" ng-click="submit()">提交</button>
+    <button class="btn btn-xs" ng-click="cancel()">关闭</button>
+</div>

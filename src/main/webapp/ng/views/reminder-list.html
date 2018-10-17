@@ -1,0 +1,201 @@
+<!--content_left-->
+<div class="container_top15">
+    <!--khst-->
+	<!--
+    <div id="khst">
+        <div id="khst_neirong">
+            <ul>
+                <li>
+                    <div id="khst_neirong_title">提示：</div>
+                </li>
+                <li>
+                    <img src="images/khst_01.png" border="0"  class="khst_img_01" />
+                </li>
+                
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+	-->
+	
+    <!--消息-->
+    <div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+            <span data-ng-bind-html="alert.msg"></span>
+        </alert>
+    </div>
+
+    <!--plczkh-->
+    <div id="plczkh">
+        <div id="plczkh_neirong" style="padding: 0 0 0 0;margin: 0;">
+		
+		   <div id="khst_neirong">
+                <ul>
+                    <li>
+                        <img src="images/khst_01.png" border="0"  class="khst_img_01" />
+                    </li>
+                    <li>
+                        <div id="khst_neirong_title" style="font-size:12px">&nbsp;提示</div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+		
+            <!--plczkh_neirong_shang-->
+            <div id="plczkh_neirong_shang" style="padding: 10px 0 0 0">
+                <div class="smsrecord_tiaojian" >
+                    <!-- <div class="btn-group lianxu">
+                        <button class="btn" ng-click="reminder.delete()">
+                            <i class="  icon-remove imgleft"></i>
+                            <span>删除</span>
+                        </button>
+                    </div>-->
+
+
+                    <div class="pull-right" >
+                        <div class="input-append search lianxu" ng-init="$root.settings.utils.initpicker()">
+							<!--
+                            <input class="span2" ng-keypress="reminder.exitsearch($event)"  placeholder="订单编号"  ng-model="reminder.searchForm.order_no"  type="text">
+                            <input class="span2 date-picker" ng-keypress="reminder.exitsearch($event)" placeholder="时间" data-date-format="yyyy-mm-dd"  ng-model="reminder.searchForm.tid" type="text">
+							-->
+                            <select class="span2" ng-model="reminder.searchForm.type" style="width: 100px">
+                                <option value="">--类型--</option>
+                                <option value="1">物料管理</option>
+                                <option value="2">报销管理</option>
+                                <option value="3">离职管理</option>
+                                <option value="4">请假管理</option>
+                                <option value="5">更改为1审批</option>
+                            </select>
+
+                            <select ng-model="reminder.searchForm.state" style="width: 100px">
+                                <option value="">--状态--</option>
+                                <option value="1">待审核</option>
+                                <option value="2">审核通过</option>
+                                <option value="3">驳回</option>
+                            </select>
+
+                            <select ng-model="reminder.searchForm.isRead" style="width: 100px">
+                                <option value="">--是否已读--</option>
+                                <option value="0">未读</option>
+                                <option value="1">已读</option>
+                            </select>
+
+                            <button class="btn icon-search" type="button" ng-click="reminder.search1()">查询</button>
+                        <!--    <button style="margin-left: -4px" class="btn  icon-zoom-in" type="button">高级查询</button>-->
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--plczkh_neirong_xia-->
+            <div id="plczkh_neirong_xia">
+                <div id="plczkh_neirong_xia_shang">
+                    <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                        <tr>
+                            <td>
+                                <span class="plczkh_table_kong"></span>
+                                <input  type="checkbox" ng-model="headcheck" ng-click="reminder.checkAll(headcheck)"/>
+                            </td>
+							
+									 <!--<td>
+									  <span class="plczkh_table_title">提醒者id</span>
+									 </td>
+									 <td>
+									  <span class="plczkh_table_title">提醒者</span>
+									 </td>
+									 <td>
+									  <span class="plczkh_table_title">表单id</span>
+									 </td>-->
+									 <td>
+									  <span class="plczkh_table_title">类型</span>
+									 </td>
+									 <td>
+									  <span class="plczkh_table_title">状态<!--1.待审核  2.审核通过  3.驳回--></span>
+									 </td>
+									 <td>
+									  <span class="plczkh_table_title">类容</span>
+									 </td>
+									 <td>
+									  <span class="plczkh_table_title">是否已读<!--（0：未读，1：已读）--></span>
+									 </td>
+							
+                            <td>
+                                <span class="plczkh_table_title">操作</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                        </tr>
+						
+						
+                        <tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in reminder.dataList">
+                            <td>
+                                <span class="plczkh_table_kong"></span>
+                                <input type="checkbox" ng-model="d.checked"/>
+                            </td>
+									<!-- <td>
+									 {{d.reminder_id}}
+                                    </td>
+									 <td>
+									 {{d.reminder_name}}
+                                    </td>
+									 <td>
+									 {{d.form_id}}
+                                    </td>-->
+									 <td>
+									<a href="#" ng-click="reminder.detail(d)"> {{d.type=='1'&&'物料管理'||d.type=='2'&&'报销管理'||d.type=='3'&&'离职管理'||d.type=='4'&&'请假管理'||d.type=='5'&&'更改为1审批'||''}}
+                                    </a>
+                                     </td>
+									 <td>
+									 {{d.state=='1'&&'待审核'||d.state=='2'&&'审核通过'||d.state=='3'&&'驳回'||''}}
+                                    </td>
+									 <td>
+									 {{d.content}}
+                                    </td>
+									 <td>
+									 {{d.isRead=='0'&&'未读'||d.isRead=='1'&&'已读'||''}}
+                                    </td>
+                            <td>
+                                <span class="plczkh_table_caozuo"><a href="#" ng-click="reminder.detail(d)">查看</a></span>
+                                <span class="plczkh_table_kong"></span>
+                                <span class="plczkh_table_caozuo"><a href="#" ng-click="reminder.yidu(d)">标记已读</a></span>
+                                <span class="plczkh_table_kong"></span>
+								 <span class="plczkh_table_caozuo"><a href="#" ng-click="reminder.deleteData(d)">删除</a></span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="plczkh_neirong_xia_xia">
+                    <div class="plczkh_neirong_xia_xia_left">
+                        共{{reminder.searchForm.page.totalItems}}条记录{{reminder.searchForm.page.currentPage}}/{{reminder.searchForm.page.totalPages}}页
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_mid">
+
+                        <pagination boundary-links="true" total-items="reminder.searchForm.page.totalItems"      items-per-page="reminder.searchForm.page.itemsperpage"  ng-model="reminder.searchForm.page.currentPage"  max-size="5" num-pages
+                                    class="pagination-sm" previous-text="&lt;&lt;上一页" next-text="下一页&gt;&gt;"
+                                    first-text="首页"
+                                    last-text="尾页"></pagination>
+						   <label style="display: inline-block;vertical-align: 8px;">每页
+								<select ng-model="reminder.searchForm.page.itemsperpage" class="tnz_select input-xsmall input-sm input-inline">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="50">50</option>
+									<option value="100">100</option>
+									<option value="150">150</option>
+								</select>
+							条</label>
+								
+                        <div class="clear"></div>
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_right">
+                        跳转至第<input ng-model="goto" type="number" class="t1"><input class="b1" type="button" ng-click="reminder.searchCurrent(goto)"/>页
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>

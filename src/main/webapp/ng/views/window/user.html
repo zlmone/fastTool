@@ -1,0 +1,120 @@
+
+    <div class="modal-header lm_window_head" >
+        <span>选择工人</span>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    <div class="modal-body">
+        <div class="table-container">
+            <div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+
+                <!--开始table-->
+                <div class="table-scrollable" style="overflow-y: auto">
+                    <table class="table table-striped table-bordered table-hover">
+                        <thead>
+                        <tr role="row" class="heading">
+                            <th width="1%">
+                                <input type="checkbox" class="group-checkable">
+                            </th>
+                            <th width="1%">
+                                序号
+                            </th>
+                            <th width="10%">
+                                用户名
+                            </th>
+                            <th width="10%">
+                                岗位
+                            </th>
+                            <th width="10%">
+                                手机
+                            </th>
+                            <th width="10%">
+                                性别
+                            </th>
+
+                            <th width="10%">
+                                Email
+                            </th>
+                            <th width="10%">
+                                联系地址
+                            </th>
+                            <th width="10%">
+                                <div style="width:120px">操作</div>
+                            </th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="d in user.dataList" ng-class-odd="'odd'" ng-click="xuan(d)" ng-class-even="'even'">
+                            <td><span> <input type="checkbox" ng-model="d.checked" class="group-checkable"/></span></td>
+                            <td>{{$index+1}}</td>
+                            <td>{{d.name}}
+                                <!--<a href="#user-detail/{{d.id}}"></a>
+                                <span ng-if="d.category_id=='1'"><img src="images/admin_img.png" style="width:13px;height:16px;"></span>-->
+                            </td>
+                            <td>
+                                {{d.department_name}} - {{d.position_name}}
+                            </td>
+                            <td>
+                                {{d.telephone}}
+                            </td>
+                            <td>
+                                {{d.sex=='1'&&'男'||d.sex=='0'&&'女'||''}}
+                            </td>
+
+                            <td>
+                                {{d.email}}
+                            </td>
+                            <td>
+                                {{d.address}}
+                            </td>
+
+                            <td>
+
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--结束table-->
+                <!--开始table尾部分页以及工具栏-->
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="dataTables_paginate paging_bootstrap_extended">
+                            <div class="pagination-panel"> 第 <a ng-click="user.prePage()"
+                                                                class="btn btn-sm default prev"
+                                                                title="Prev"><i class="fa fa-angle-left"></i></a><input
+                                    type="text"  ng-model="user.searchForm.page.currentPage"
+                                    class="pagination-panel-input form-control input-mini input-inline input-sm"
+                                    maxlenght="5" style="text-align:center; margin: 0 5px;"><a   ng-click="user.nextPage()"
+                                                                                                 class="btn btn-sm default next"
+                                                                                                 title="Next"><i
+                                    class="fa fa-angle-right"></i></a> 页,&nbsp;&nbsp;&nbsp;总<span class="pagination-panel-total">{{user.searchForm.page.totalPages}}</span>页
+                            </div>
+                        </div>
+                        <div class="dataTables_length" ><label><span
+                                class="seperator">|</span>每页 <select ng-model="user.searchForm.page.itemsperpage" class="form-control input-xsmall input-sm input-inline">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                        </select> 条</label></div>
+                        <div class="dataTables_info"  role="status" aria-live="polite">
+                            <span class="seperator">|</span>总计{{user.searchForm.page.totalItems}} 条
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+
+                    </div>
+                </div>
+                <!--结束table尾部分页以及工具栏-->
+
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer lm_window_footer" >
+        <!-- <button class="btn btn-xs"  ng-click="submit()"> 提交</button>-->
+        <button class="btn btn-xs" ng-click="cancel()">关闭</button>
+    </div>

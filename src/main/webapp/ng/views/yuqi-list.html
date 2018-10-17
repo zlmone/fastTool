@@ -1,0 +1,449 @@
+<!--content_left-->
+<div>
+<ul id="myTab" class="nav nav-tabs" style="background-color: white;">
+
+	<li ng-click="qu(0)">
+		<a data-toggle="tab">
+			 回访结论
+		</a>
+	</li>
+	<li ng-click="qu(1)">
+		<a data-toggle="tab">
+			 逾期情况
+		</a>
+	</li>
+</ul>
+</div>
+<div class="container_top15">
+    <!--khst-->
+    <!--消息-->
+    <div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+            <span data-ng-bind-html="alert.msg"></span>
+        </alert>
+    </div>
+
+    <!--plczkh-->
+    <div id="plczkh">
+        <div id="plczkh_neirong" style="padding: 0 0 0 0;margin: 0;">
+		
+		   <div id="khst_neirong">
+                <div class="clear"></div>
+            </div>
+		
+            <!--plczkh_neirong_shang-->
+            <div id="plczkh_neirong_shang" style="padding: 10px 0 0 0">
+                <div class="smsrecord_tiaojian" >
+                     <div class="btn-group lianxu">
+                        <!-- <button class="btn " ng-click="add()">
+                            <i class="  icon-plus imgleft"></i>
+                            <span style="font-size: 14px;">领单</span>
+                        </button> -->
+                        <!-- <div class="btn-group">
+                            <button class="btn">更多操作</button>
+                            <button class="btn dropdown-toggle" data-toggle="dropdown">
+                                <span class="payinfoet"></span>
+                            </button>
+                            <ul class="dropdown-menu biankang">
+							
+                                <li><a href ng-click="">修改快递</a></li>
+							
+                            </ul>
+                        </div> -->
+                    </div>
+
+
+                    <div class="pull-right" >
+                        <div class="input-append search lianxu" ng-init="$root.settings.utils.initpicker()">               
+                            查询条件:&nbsp;&nbsp;<input class="span2 date-picker" ng-keypress="payinfo.exitsearch($event)" placeholder="放款日期" data-date-format="yyyy-mm-dd"  type="text">&nbsp;&nbsp;
+                            <input class="span2" ng-keypress="payinfo.exitsearch($event)" placeholder="销售经理" type="text"><input class="span2" ng-keypress="payinfo.exitsearch($event)" placeholder="逾期天数" ng-model="payinfo.searchForm.searchItems.days_lk" type="text">
+                            <input class="span2" ng-keypress="payinfo.exitsearch($event)" placeholder="电话号码" ng-model="payinfo.searchForm.searchItems.cellphone_lk" type="text"><input class="span2" ng-keypress="payinfo.exitsearch($event)" placeholder="身份证" ng-model="payinfo.searchForm.searchItems.idcard_lk" type="text"><input class="span2" ng-keypress="payinfo.exitsearch($event)" placeholder="姓名" ng-model="payinfo.searchForm.searchItems.realname_lk" type="text">
+                            
+                        
+                            <button class="btn icon-search" type="button" ng-click="payinfo.search1()">查询</button>
+                        <!--    <button style="margin-left: -4px" class="btn  icon-zoom-in" type="button">高级查询</button>-->
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--plczkh_neirong_xia-->
+            <div id="plczkh_neirong_xia">
+                <div id="plczkh_neirong_xia_shang">
+                    <table bpayinfo="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+                        <tr style="background-color: #e6f4ff">
+                       
+							
+							<td>
+								<span class="plczkh_table_title">放款日期</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">借款人</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">手机号</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">身份证</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">销售代码</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">销售经理</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">申请金额</span>
+							</td>
+							
+							<td>
+								<span class="plczkh_table_title">逾期天数</span>
+							</td>
+							
+                            <td>
+                                <span class="plczkh_table_title">催收情况</span>
+                            </td>
+                        </tr>
+						
+						 <tr ng-if="payinfo.dataList.length==0">
+                            <td colspan="6"> ----暂无数据！----</td>
+                        </tr> 
+						
+						<tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in payinfo.dataList">
+                         
+                         	<td>
+                         		{{d.shenpiTime}}
+                         	</td>
+                         
+                         	<td>{{d.realname}}</td>
+                         	
+                         	<td>{{d.cellphone}}</td>
+                         	
+                         	<td>{{d.idcard}}</td>
+                         	
+                         	<td>{{d.sellercode}}</td>
+                         	
+                         	<td></td>
+                         
+                         	<td>{{d.goodsprice-d.firstpay}}</td>
+                         	
+                         	<td><a style="text-decoration: underline;color: red;" href="javascript:;" ng-click="detail(d)">{{d.days}}</a></td>
+                         
+                            <td>
+                                <a href="javascript:;" ng-click="detail1(d)">查看</a>
+                            </td>
+                        </tr>
+						
+                    </table>
+                </div>
+                <div class="plczkh_neirong_xia_xia">
+                    <div class="plczkh_neirong_xia_xia_left">
+                        共{{payinfo.searchForm.page.totalItems}}条记录{{payinfo.searchForm.page.currentPage}}/{{payinfo.searchForm.page.totalPages}}页
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_mid">
+
+                        <pagination boundary-links="true" total-items="payinfo.searchForm.page.totalItems"      items-per-page="payinfo.searchForm.page.itemsperpage"  ng-model="payinfo.searchForm.page.currentPage"  max-size="5" num-pages
+                                    class="pagination-sm" previous-text="&lt;&lt;上一页" next-text="下一页&gt;&gt;"
+                                    first-text="首页"
+                                    last-text="尾页"></pagination>
+						   <label style="display: inline-block;vertical-align: 8px;">每页
+								<select ng-model="payinfo.searchForm.page.itemsperpage" class="tnz_select input-xsmall input-sm input-inline">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="50">50</option>
+									<option value="100">100</option>
+									<option value="150">150</option>
+								</select>
+							条</label>
+								
+                        <div class="clear"></div>
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_right">
+                        跳转至第<input ng-model="goto" type="number" class="t1"><input class="b1" type="button" ng-click="payinfo.searchCurrent(goto)"/>页
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>
+
+<script type="text/ng-template" id="seller-add.html">
+	
+    <div class="modal-header lm_window_head" >
+        <span>逾期详情</span>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    	<div class="modal-body">
+        	<div class="table-container">
+            	<div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+				
+				<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+					<tr>
+						<td>联系人:</td>
+						<td>{{payinfo.item.realname}}({{payinfo.item.cellphone}})</td>
+						<td>订单号:</td>
+						<td colspan="2">{{payinfo.item.ordercode}}</td>
+					</tr>
+					<tr ng-repeat="d in payinfo.yuqilist">
+						<td>{{d.monthpay}}</td>
+						<td>{{d.repayment_time}}</td>
+						<td>逾期费用:{{d.overdue}}</td>
+						<td>逾期天数:{{d.days}}</td>
+						<td>{{d.sort_order}}/{{d.totalnumber}}</td>
+					</tr>
+				</table>	
+
+               <table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="4">工作信息</td>
+               					</tr>
+               					<tr>
+               						<td colspan="4"></td>
+               					</tr>
+                				<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">单位名称</td>
+                					<td width="35%">
+                						{{payinfo.item.unit}}
+                					</td>
+                					<td class="tdleft" width="15%">单位地址</td>
+                					<td width="35%">
+                					{{payinfo.item.unitaddress}}
+                					</td>
+         
+                			</tr>
+                				<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">工作年限</td>
+                					<td width="35%">
+                						
+                					</td>
+                					<td class="tdleft" width="15%">公司规模</td>
+                					<td width="35%">
+                					
+                					</td>
+         							
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">公司性质</td>
+                					<td width="35%">
+                						
+                					</td>
+                					<td class="tdleft" width="15%">部门</td>
+                					<td width="35%">
+                					
+                					</td>
+         
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">职位</td>
+                					<td width="35%">
+                						{{payinfo.item.position}}
+                					</td>
+                					<td class="tdleft" width="15%">每月收入</td>
+                					<td width="35%">
+                					
+                					</td>
+         
+                			</tr>
+                			<tr>
+                					<tr>
+                					<td class="tdleft" width="15%">单位座机</td>
+                					<td width="35%">
+                						{{payinfo.item.unitphone}}
+                					</td>
+                					<td class="tdleft" width="15%">入职时间</td>
+                					<td width="35%">
+                						{{payinfo.item.entry_time}}
+                					</td>
+         
+                			</tr>	
+                			</table>
+                			
+                			<table border="0" cellpadding="0" cellspacing="0" class="table xzbjd_jbxx_table">
+                           		
+               					<tr style="background-color: #eff8ff;color: #55a2dc;">
+               						<td colspan="6" >联系人信息</td>
+               					</tr>
+               					<tr>
+               						<td colspan="6"></td>
+               					</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						{{payinfo.item.first_realname}}
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						{{payinfo.item.first_relation}}
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						{{payinfo.item.first_cellphone}}
+                					</td>
+                			</tr>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						{{payinfo.item.second_realname}}
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						{{payinfo.item.second_relation}}
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						{{payinfo.item.second_cellphone}}
+                					</td>
+                			</tr>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						{{payinfo.item.third_realname}}
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						{{payinfo.item.third_relation}}
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						{{payinfo.item.third_cellphone}}
+                					</td>
+                			</tr>
+                			</tr>
+                					<tr>
+                					<td class="tdleft" width="10%">姓名</td>
+                					<td width="23%">
+                						{{payinfo.item.fourth_realname}}
+                					</td>
+                					<td class="tdleft" width="10%">关系</td>
+                					<td width="20%">
+                						{{payinfo.item.fourth_relation}}
+                					</td>
+         							<td class="tdleft" width="13%">手机号码</td>
+                					<td width="24%">
+                						{{payinfo.item.fourth_cellphone}}
+                					</td>
+                			</tr>
+                			</table>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn btn-xs" ng-click="cancel()">关闭</button>
+    </div>
+
+</script>
+
+<script type="text/ng-template" id="urge_detail-list.html">
+	
+    <div class="modal-header lm_window_head" >
+        <span>催收情况</span>
+        <p class="p2" ><button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    	<div class="modal-body">
+        	<div class="table-container">
+            	<div id="datata32s" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+					
+						<div>
+							<textarea style="width: 74%;height: 100px;" ng-model="urge_detail.item.content"></textarea>
+							<button ng-click="submit()">保存</button>
+						</div>
+
+                <!--&lt;!&ndash;开始table&ndash;&gt;-->
+                	<div class="table-scrollable" style="overflow-y: auto">
+                    	<table class="table table-striped table-bordered table-hover">
+                        	<thead>
+                        	<tr role="row" class="heading">
+                            <th width="1%">
+                                	序号
+                            </th>
+                            <th width="10%">
+                                	创建时间
+                            </th>
+                            <th width="10%">
+                                创建人
+                            </th>
+                            <th width="10%">
+                                催收情况
+                            </th>
+                        </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="d in urge_detail.dataList" ng-class-odd="'odd'" ng-click="xuan(d)" ng-class-even="'even'">
+                            <td>{{$index+1}}</td>
+                            <td>
+								{{d.addTime}}
+                           </td>
+                            <td>
+                                {{d.creator}}
+                            </td>
+                            <td>
+                                {{d.content}}
+                            </td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+                <!--&lt;!&ndash;结束table&ndash;&gt;-->
+                <!--&lt;!&ndash;开始table尾部分页以及工具栏&ndash;&gt;-->
+                <div class="row">
+                    <div class="col-md-8 col-sm-12">
+                        <div class="dataTables_paginate paging_bootstrap_extended">
+                            <div class="pagination-panel"> 第 <a ng-click="urge_detail.prePage()"
+                                                                class="btn btn-sm default prev"
+                                                                title="Prev"><i class="fa fa-angle-left"></i></a><input
+                                    type="text"  ng-model="urge_detail.searchForm.page.currentPage"
+                                    class="pagination-panel-input form-control input-mini input-inline input-sm"
+                                    maxlenght="5" style="text-align:center; margin: 0 5px;"><a   ng-click="urge_detail.nextPage()"
+                                                                                                 class="btn btn-sm default next"
+                                                                                                 title="Next"><i
+                                    class="fa fa-angle-right"></i></a> 页,&nbsp;&nbsp;&nbsp;总<span class="pagination-panel-total">{{urge_detail.searchForm.page.totalPages}}</span>页
+                            </div>
+                        </div>
+                        <div class="dataTables_length" ><label><span
+                                class="seperator">|</span>每页 <select ng-model="urge_detail.searchForm.page.itemsperpage" class="form-control input-xsmall input-sm input-inline">
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                            <option value="150">150</option>
+                        </select> 条</label></div>
+                        <div class="dataTables_info"  role="status" aria-live="polite">
+                            <span class="seperator">|</span>总计{{urge_detail.searchForm.page.totalItems}} 条
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+
+                    </div>
+                </div>
+                <!--&lt;!&ndash;结束table尾部分页以及工具栏&ndash;&gt;-->
+
+
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn btn-xs" ng-click="cancel()">关闭</button>
+    </div>
+
+</script>

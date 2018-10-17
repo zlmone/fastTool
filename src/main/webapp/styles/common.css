@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ margin:0px; padding:0px;}
+div,body{ margin:0 auto; padding:0px; font-size:12px; }
+ul,h1,h2,h3,p,label,table,dd,dt,dl{ margin:0px; padding:0px;}
+img{ border:none;}
+ul{ list-style-type:none;} 
+a{ text-decoration:none;}
+a:hover{ cursor:pointer; text-decoration:underline; }
+em{ font-style:normal;}
+.fl{ float:left;}
+.fr{ float:right;}
+
+
+
+body{ background:#fff;}
+.login_box{ width:396px;  overflow:hidden; zoom:1; margin-top:10%;}
+.login_top{ height:60px; background:url(../images/login_03.jpg) repeat-x;}
+.logo{ margin-top:16px; margin-left:10px; background:url(../images/login_06.jpg) top left no-repeat; width:160px; color:#fff; padding-top:22px; padding-left:40px; font-size:14px;} 
+.login_top p{ font-size:16px; color:#fff; font-weight:bold; font-family:微软雅黑; padding-top:25px; padding-right:10px;} 
+.login_content{ padding-top:30px; background: #F4F5F3 url(../images/login_15.jpg) bottom no-repeat; padding-bottom:20px;}
+.row0{ padding:8px 10px; overflow:hidden; zoom:1; clear:both;}
+.erro{ line-height:20px; padding-left:110px; color:#F30;}
+.name{ width:90px; display:block; text-align:right; padding-right:10px; line-height:32px; color:#333; font-weight:bold;}
+.input_txt1{ width:210px; height:32px; background:#fff; border:1px solid #C4C4C4; line-height:32px; padding-left:5px; color:#666;}
+.btn{ width:70px; height:34px; background:url(../images/login_11.jpg) no-repeat; border:none; cursor:pointer; font-size:14px; color:#fff; }
+.check{ margin-right:3px; margin-top:1px;}

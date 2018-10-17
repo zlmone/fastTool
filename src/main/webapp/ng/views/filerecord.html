@@ -1,0 +1,251 @@
+<!-- BEGIN PAGE HEADER-->
+
+<!--<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#">公共 </a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">文件柜</a>
+        </li>
+
+    </ul>
+
+</div>-->
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="note note-success note-bordered">
+            <span class="close" data-close="note"></span></h3>
+            <p>
+                说明：默认上传的文件只有自己能看到，如需其他人看到，需要把这个文件共享给其他人。<span class="label label-warning">只有自己能删除，其他人只能查看</span>。
+            </p>
+        </div>
+        <!-- Begin: life time stats -->
+        <div class="portlet">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-list"></i>文件柜
+                </div>
+                <div class="actions" ng-controller="file_controller">
+                    <div class="btn-group btn-group-sm btn-group-solid">
+                        <button type="button" class="btn blue" ng-click="openwenjiangui(filerecord.search1)" >上传</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="table-container">
+                    <div id="datatable_ajax_wrapper" class="dataTables_wrapper dataTables_extended_wrapper no-footer">
+                    <!--开始table表头分页以及工具栏-->
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12">
+                                <div class="dataTables_paginate paging_bootstrap_extended">
+                                    <div class="pagination-panel"> 第 <a ng-click="filerecord.prePage()"
+                                                                           class="btn btn-sm default prev"
+                                                                           title="Prev"><i class="fa fa-angle-left"></i></a><input
+                                            type="text"  ng-model="filerecord.searchForm.page.currentPage"
+                                            class="pagination-panel-input form-control input-mini input-inline input-sm"
+                                            maxlenght="5" style="text-align:center; margin: 0 5px;"><a   ng-click="filerecord.nextPage()"
+                                                                                                       class="btn btn-sm default next"
+                                                                                                       title="Next"><i
+                                            class="fa fa-angle-right"></i></a> 页,&nbsp;&nbsp;&nbsp;总<span class="pagination-panel-total">{{filerecord.searchForm.page.totalPages}}</span>页
+                                    </div>
+                                </div>
+                                <div class="dataTables_length" ><label><span
+                                        class="seperator">|</span>每页 <select ng-model="filerecord.searchForm.page.itemsperpage" class="form-control input-xsmall input-sm input-inline">
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                    <option value="150">150</option>
+                                </select> 条</label></div>
+                                <div class="dataTables_info"  role="status" aria-live="polite">
+                                    <span class="seperator">|</span>总计{{filerecord.searchForm.page.totalItems}} 条
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+
+                            </div>
+                        </div>
+                    <!--结束table表头分页以及工具栏-->
+                    <!--开始table-->
+                        <div class="table-scrollable" style="overflow-y: auto">
+                            <table class="table table-striped table-bordered table-hover">
+                                <thead>
+                                <tr role="row" class="heading">
+                                    <th width="1%">
+                                        <input type="checkbox" class="group-checkable">
+                                    </th>
+                                    <th width="1%">
+                                        序号
+                                    </th>
+									 <th width="10%">
+										文件名
+									</th>
+									 <th width="10%">
+										共享人
+									</th>
+									 <th width="10%">
+										创建人
+									</th>
+									 <th width="10%">
+										创建时间
+									</th>
+                                   
+                                    <th width="10%">
+                                       <div style="width:120px">操作</div>
+                                    </th>
+                                </tr>
+                                <tr role="row" class="filter">
+                                    <td></td>
+                                    <td></td>
+									 <td>
+                                        <input type="text" class="form-control form-filter input-sm" ng-model="filerecord.searchForm.searchItems.yuanshimingcheng_lk">
+                                    </td>
+									 <td>
+                                        <input type="text" class="form-control form-filter input-sm" ng-model="filerecord.searchForm.searchItems.gongxiangname_lk">
+                                    </td>
+									 <td>
+                                        <input type="text" class="form-control form-filter input-sm" ng-model="filerecord.searchForm.searchItems.creatorName_lk">
+                                    </td>
+                                    <td>
+                                        <input type="text"   data-date-format="yyyy-mm-dd" class="form-control  date-picker input-xsmall input-sm" placeholder="开始" ng-model="filerecord.searchForm.searchItems.createTime_start">
+                                        <input type="text"   data-date-format="yyyy-mm-dd" class="form-control  date-picker input-xsmall input-sm" placeholder="结束"   ng-model="filerecord.searchForm.searchItems.createTime_end">
+                                    </td>
+
+                                    <td>
+                                        <button class="btn btn-xs  filter-submit margin-bottom" ng-click="filerecord.searchN()"><i
+                                                class="fa fa-search"></i> 查找
+                                        </button>
+                                        <button class="btn btn-xs  filter-cancel" ng-click="filerecord.reset()"><i class="fa fa-times"></i> 重置
+                                        </button>
+                                    </td>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="d in filerecord.dataList" ng-class-odd="'odd'" ng-class-even="'even'">
+                                    <td><span> <input type="checkbox" ng-model="d.checked" class="group-checkable"/></span></td>
+                                    <td>{{$index+1}}</td>
+                                    <td><a href="../ngres/download/{{d.id}}" target="_blank">{{d.yuanshimingcheng}}</a></td>
+									 <td>
+									 {{d.gongxiangname}}
+                                    </td>
+									 <td>
+									 {{d.creatorName}}
+                                    </td>
+									 <td>
+									 {{d.createTime}}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-xs" ng-if="filerecord.searchForm.qtype=='sf'">
+                                            <button  type="button" class="btn" ng-click="gongxiang(d)">共享</button>
+                                            <button type="button" class="btn " ng-click="filerecord.deleteData(d)">删除</button>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    <!--结束table-->
+                    <!--开始table尾部分页以及工具栏-->
+                    <div class="row">
+                        <div class="col-md-8 col-sm-12">
+                            <div class="dataTables_paginate paging_bootstrap_extended">
+                                <div class="pagination-panel"> 第 <a ng-click="filerecord.prePage()"
+                                                                    class="btn btn-sm default prev"
+                                                                    title="Prev"><i class="fa fa-angle-left"></i></a><input
+                                        type="text"  ng-model="filerecord.searchForm.page.currentPage"
+                                        class="pagination-panel-input form-control input-mini input-inline input-sm"
+                                        maxlenght="5" style="text-align:center; margin: 0 5px;"><a   ng-click="filerecord.nextPage()"
+                                                                                                     class="btn btn-sm default next"
+                                                                                                     title="Next"><i
+                                        class="fa fa-angle-right"></i></a> 页,&nbsp;&nbsp;&nbsp;总<span class="pagination-panel-total">{{filerecord.searchForm.page.totalPages}}</span>页
+                                </div>
+                            </div>
+                            <div class="dataTables_length" ><label><span
+                                    class="seperator">|</span>每页 <select ng-model="filerecord.searchForm.page.itemsperpage" class="form-control input-xsmall input-sm input-inline">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
+                                <option value="100">100</option>
+                                <option value="150">150</option>
+                            </select> 条</label></div>
+                            <div class="dataTables_info"  role="status" aria-live="polite">
+                                <span class="seperator">|</span>总计{{filerecord.searchForm.page.totalItems}} 条
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+
+                        </div>
+                    </div>
+                    <!--结束table尾部分页以及工具栏-->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End: life time stats -->
+    </div>
+</div>
+<!-- END PAGE CONTENT-->
+<script type="text/ng-template" id="gongxiang.html">
+    <div class="modal-header lm_window_head" >
+        <span>共享文件</span>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <form class="form-horizontal" name="form">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="form-group" style="display: block">
+                            <label class="col-md-2 control-label lm_lbl">文件名称</label>
+                            <div class="col-md-10">
+                                <span style="font-size: 14px;">{{wenjian.yuanshimingcheng}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-6">
+                        <div class="form-group" style="display: block" ng-if="!suoyouren">
+                            <label class="col-md-4 control-label lm_lbl">共享给<span class="lanmo-error" ng-show="form.gongxiangname.$error.required">*</span></label>
+                            <div class="col-md-8">
+                                <div class="input-group"  style="position: relative">
+                                    <input ng-model="wenjian.gongxiangname"  ng-click="zuzhitreeshow(wenjian)"  type="text" required name="gongxiangname"  class="form-control lm_form {{form.gongxiangname.$invalid&&'lanmo-error'}}" readonly/>
+                                    <div style="position: absolute;z-index:90;border:1px solid lightslategray;width:200px;background-color: #F9F9F9" ng-show="wenjian.show2" >
+                                        <ul  class="ztree"  id="zuzhiztree2">
+                                        </ul>
+                                        <ul  class="ztree" >
+                                            <button  ng-click="zuzhitreeconfirm(wenjian)">确定</button>
+                                            <button  ng-click="zuzhitreeclose(wenjian)">取消</button>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group" style="display: block">
+                            <label class="col-md-4 control-label lm_lbl">所有人</label>
+                            <div class="col-md-8">
+                                <input type="checkbox" ng-model="suoyouren"/>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn btn-xs" ng-click="cancel()">取消</button>
+        <button class="btn btn-xs" ng-disabled="!form.$valid" ng-click="submit()"> 提交</button>
+    </div>
+</script>

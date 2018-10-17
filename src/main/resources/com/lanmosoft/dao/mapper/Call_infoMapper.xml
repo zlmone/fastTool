@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.Call_infoMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Call_info">
+	    INSERT INTO call_info (id
+  ,createTime
+  ,order_id
+  ,call_address
+  ,call_type_name
+  ,call_other_number
+  ,call_time
+  ,contact_type
+  ,contact_name
+  ,contact_area
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{createTime,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{call_address,jdbcType=VARCHAR},
+  #{call_type_name,jdbcType=VARCHAR},
+  #{call_other_number,jdbcType=VARCHAR},
+  #{call_time,jdbcType=VARCHAR},
+  #{contact_type,jdbcType=VARCHAR},
+  #{contact_name,jdbcType=VARCHAR},
+  #{contact_area,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Call_info">
+    	UPDATE call_info 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="call_address != null" >
+        call_address = #{call_address,jdbcType=VARCHAR},
+      </if>
+		<if test="call_type_name != null" >
+        call_type_name = #{call_type_name,jdbcType=VARCHAR},
+      </if>
+		<if test="call_other_number != null" >
+        call_other_number = #{call_other_number,jdbcType=VARCHAR},
+      </if>
+		<if test="call_time != null" >
+        call_time = #{call_time,jdbcType=VARCHAR},
+      </if>
+		<if test="contact_type != null" >
+        contact_type = #{contact_type,jdbcType=VARCHAR},
+      </if>
+		<if test="contact_name != null" >
+        contact_name = #{contact_name,jdbcType=VARCHAR},
+      </if>
+		<if test="contact_area != null" >
+        contact_area = #{contact_area,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Call_info">
+    	UPDATE call_info 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        call_address = #{call_address,jdbcType=VARCHAR},
+        call_type_name = #{call_type_name,jdbcType=VARCHAR},
+        call_other_number = #{call_other_number,jdbcType=VARCHAR},
+        call_time = #{call_time,jdbcType=VARCHAR},
+        contact_type = #{contact_type,jdbcType=VARCHAR},
+        contact_name = #{contact_name,jdbcType=VARCHAR},
+        contact_area = #{contact_area,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from call_info where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from call_info <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE call_info 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.call_address != null" >
+        call_address = #{domain.call_address,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.call_type_name != null" >
+        call_type_name = #{domain.call_type_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.call_other_number != null" >
+        call_other_number = #{domain.call_other_number,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.call_time != null" >
+        call_time = #{domain.call_time,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.contact_type != null" >
+        contact_type = #{domain.contact_type,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.contact_name != null" >
+        contact_name = #{domain.contact_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.contact_area != null" >
+        contact_area = #{domain.contact_area,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Call_info">
+		select <include refid="Base_Column_List"/> from call_info where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Call_info" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from call_info <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from call_info <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,createTime
+,order_id
+,call_address
+,call_type_name
+,call_other_number
+,call_time
+,contact_type
+,contact_name
+,contact_area
+	</sql>
+</mapper>

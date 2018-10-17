@@ -1,0 +1,133 @@
+<!--content_left-->
+<div class="container_top15">
+    <!--khst-->
+	<!--
+    <div id="khst">
+        <div id="khst_neirong">
+            <ul>
+                <li>
+                    <div id="khst_neirong_title">操作日志：</div>
+                </li>
+                <li>
+                    <img src="images/khst_01.png" border="0"  class="khst_img_01" />
+                </li>
+                
+            </ul>
+            <div class="clear"></div>
+        </div>
+    </div>
+	-->
+	
+    <!--消息-->
+    <div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+            <span data-ng-bind-html="alert.msg"></span>
+        </alert>
+    </div>
+
+    <!--plczkh-->
+    <div id="plczkh">
+        <div id="plczkh_neirong" style="padding: 0 0 0 0;margin: 0;">
+		
+		   <div id="khst_neirong">
+                <div class="clear"></div>
+            </div>
+		
+            <!--plczkh_neirong_shang-->
+            <div id="plczkh_neirong_shang" style="padding: 10px 0 0 0">
+                <div class="smsrecord_tiaojian" >
+                    </div>
+
+
+                    <div class="pull-right" >
+                        <div class="input-append search lianxu" ng-init="$root.settings.utils.initpicker()">
+							<input class="span2 date-picker" ng-keypress="order.exitsearch($event)" placeholder="开始进件日期" data-date-format="yyyy-mm-dd"  ng-model="order.searchForm.searchItems.addTime_ge" type="text">&nbsp;&nbsp;
+                            <input class="span2 date-picker" ng-keypress="order.exitsearch($event)" placeholder="结束进件日期" data-date-format="yyyy-mm-dd"  ng-model="order.searchForm.searchItems.addTime_le" type="text">&nbsp;&nbsp;&nbsp;
+                            <input class="span2" ng-keypress="operationlog.exitsearch($event)"  placeholder="操作人"  ng-model="operationlog.searchForm.searchItems.operator_lk"  type="text">
+                            <button class="btn icon-search" type="button" ng-click="operationlog.search1()">查询</button>
+                        <!--    <button style="margin-left: -4px" class="btn  icon-zoom-in" type="button">高级查询</button>-->
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <!--plczkh_neirong_xia-->
+            <div id="plczkh_neirong_xia">
+                <div id="plczkh_neirong_xia_shang">
+                    <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table" style="text-align: center;">
+                        <tr>
+							
+							
+                            <td width="20%">
+                                <span class="plczkh_table_title">序号</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                            
+                            <td width="20%">
+                                <span class="plczkh_table_title">操作时间</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                            
+                            <td width="20%">
+                                <span class="plczkh_table_title">IP地址</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                            
+                            <td width="20%">
+                                <span class="plczkh_table_title">操作人</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                            
+                            <td width="20%">
+                                <span class="plczkh_table_title">操作内容</span>
+                                <span class="plczkh_table_kong"></span>
+                            </td>
+                           
+                        </tr>
+						
+						
+                        <tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in operationlog.dataList">
+
+                            <td>{{$index+1}}</td>
+                            <td>{{d.addTime}}</td>
+                            <td>{{d.IPAddress}}</td>
+                            <td>{{d.operator}}</td>
+                            <td>{{d.content}}</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="plczkh_neirong_xia_xia">
+                    <div class="plczkh_neirong_xia_xia_left">
+                        共{{operationlog.searchForm.page.totalItems}}条记录{{operationlog.searchForm.page.currentPage}}/{{operationlog.searchForm.page.totalPages}}页
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_mid">
+
+                        <pagination boundary-links="true" total-items="operationlog.searchForm.page.totalItems"      items-per-page="operationlog.searchForm.page.itemsperpage"  ng-model="operationlog.searchForm.page.currentPage"  max-size="5" num-pages
+                                    class="pagination-sm" previous-text="&lt;&lt;上一页" next-text="下一页&gt;&gt;"
+                                    first-text="首页"
+                                    last-text="尾页"></pagination>
+						   <label style="display: inline-block;vertical-align: 8px;">每页
+								<select ng-model="operationlog.searchForm.page.itemsperpage" class="tnz_select input-xsmall input-sm input-inline">
+									<option value="10">10</option>
+									<option value="20">20</option>
+									<option value="50">50</option>
+									<option value="100">100</option>
+									<option value="150">150</option>
+								</select>
+							条</label>
+								
+                        <div class="clear"></div>
+                    </div>
+                    <div class="plczkh_neirong_xia_xia_right">
+                        跳转至第<input ng-model="goto" type="number" class="t1"><input class="b1" type="button" ng-click="operationlog.searchCurrent(goto)"/>页
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>

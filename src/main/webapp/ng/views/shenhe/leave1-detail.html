@@ -1,0 +1,214 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="container2" style="margin-top:0px;padding:10px;background:#fff;">
+                    <a style="color:#000;font-size:15px;font-weight:bold;" name="tab">基本信息</a>
+                    <div class="pull-right"style="margin:-3px 10px 0 0;">
+                       <div class="btn-group lianxu boder">
+                           <a class="btn "  ng-if="leave1.item.examine=='1'&&type=='0'" ng-click="forward(leave1.item)"><span>通过</span></a>
+                           <a class="btn "  ng-if="leave1.item.examine=='1'&&type=='0'" ng-click="terminate(leave1.item)"><span>驳回</span></a>
+                           <a class="btn " ng-click="$root.settings.utils.back()">返回</a>
+						</div>
+					 </div>
+                </div>
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+                       
+					     <div class="form-body">
+                           
+				<!--	<div class="tnz_half">
+						<div class="tnz_half_hui">
+							骑士Id：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{leave1.item.knight_id}}
+						</div>
+						<div class="clear"></div>
+					</div>-->
+
+                             <div class="tnz_half">
+                                 <div class="tnz_half_hui">
+                                     骑士：
+                                     <span class="tnz_kong"></span>
+                                 </div>
+                                 <div class="tnz_half_bai">
+                                     <span class="tnz_kong"></span>
+                                     {{leave1.item.knight_account}}/{{leave1.item.knight_name}}
+                                 </div>
+                                 <div class="clear"></div>
+                             </div>
+                             <div class="tnz_half">
+                                 <div class="tnz_half_hui">
+                                     所属城市：
+                                     <span class="tnz_kong"></span>
+                                 </div>
+                                 <div class="tnz_half_bai">
+                                     <span class="tnz_kong"></span>
+                                     {{leave1.item.belong_city}}
+                                 </div>
+                                 <div class="clear"></div>
+                             </div>
+                             <div class="tnz_half">
+                                 <div class="tnz_half_hui">
+                                     所属商圈：
+                                     <span class="tnz_kong"></span>
+                                 </div>
+                                 <div class="tnz_half_bai">
+                                     <span class="tnz_kong"></span>
+                                     {{leave1.item.belong_shangquan_name}}
+                                 </div>
+                                 <div class="clear"></div>
+                             </div>
+
+
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							提交时间：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{leave1.item.commit_time}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							请假开始时间：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{leave1.item.leave_startTime}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							请假结束时间：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{leave1.item.leave_endTime}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							请假总计天数：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{leave1.item.leave_totalDay}}
+						</div>
+						<div class="clear"></div>
+					</div>
+				<!--	<div class="tnz_half">
+						<div class="tnz_half_hui">
+							请假原因：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								{{leave1.item.leave_reason}}
+						</div>
+						<div class="clear"></div>
+					</div>-->
+                             <div class="tnz_two">
+                                 <div class="tnz_two_hui">
+                                     请假原因：
+                                     <span class="tnz_kong"></span>
+                                 </div>
+                                 <div class="tnz_two_bai">
+                                     <span class="tnz_kong"></span>
+                                     {{leave1.item.leave_reason}}
+                                 </div>
+                                 <div class="clear"></div>
+                             </div>
+
+
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							状态：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+								<!--{{leave1.item.state}}-->
+                            {{leave1.item.state=='0'&&'新增'||leave1.item.state=='1'&&'提交'||leave1.item.state=='2'&&'编辑'||leave1.item.state=='3'&&'作废'||''}}
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="tnz_half">
+						<div class="tnz_half_hui">
+							审核：
+							<span class="tnz_kong"></span>
+						</div>
+						<div class="tnz_half_bai">
+							<span class="tnz_kong"></span>
+							<!--	{{leave1.item.examine}}-->
+                            {{leave1.item.examine=='0'&&'未提交'||leave1.item.examine=='1'&&'待审核'||leave1.item.examine=='2'&&'已审核'||leave1.item.examine=='3'&&'驳回'||''}}
+						</div>
+						<div class="clear"></div>
+					</div>
+                        </div>
+
+
+
+                        <div id="plczkh_neirong_xia_shang">
+                            <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                                <tr>
+                                    <td>
+                                        <span class="plczkh_table_title">处理人</span>
+                                    </td>
+                                    <td>
+                                        <span class="plczkh_table_title">操作时间</span>
+                                    </td>
+                                    <td>
+                                        <span class="plczkh_table_title">动作</span>
+                                    </td>
+                                    <td>
+                                        <span class="plczkh_table_title">审核意见</span>
+                                    </td>
+                                </tr>
+
+                                <tr ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in leave1.log_list">
+
+                                    <td>
+                                        {{d.creatorName}}
+                                    </td>
+                                    <td>
+                                        {{d.createTime}}
+                                    </td>
+                                    <td>
+                                        {{d.operation}}
+                                    </td>
+                                    <td>
+                                        {{d.shenpi_opinions}}
+                                    </td>
+
+                                </tr>
+                            </table>
+                        </div>
+					   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         
+</div>
+<!--end-->
+<div class="clear"></div>

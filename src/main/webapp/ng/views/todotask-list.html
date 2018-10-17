@@ -1,0 +1,196 @@
+
+<!--content_left-->
+<div class="container_top15">
+<!--khst-->
+
+
+<!--消息-->
+<div id="gzrl_dlcg" style="width: 100%; margin-top: 10px;">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+        <span data-ng-bind-html="alert.msg"></span>
+    </alert>
+</div>
+
+<!--plczkh-->
+<div id="plczkh">
+    <div id="plczkh_neirong">
+        <!--plczkh_neirong_shang-->
+        <div id="plczkh_neirong_shang">
+            <div id="khst_neirong">
+                <ul>
+                    <li>
+                        <img src="images/khst_01.png" border="0"  class="khst_img_01" />
+                    </li>
+                    <li>
+                        <div id="khst_neirong_title" style="font-size:12px">&nbsp;审批管理</div>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+
+            <!--plczkh_neirong_shang-->
+            <div id="plczkh_neirong_shang" style="padding: 10px 0 0 0">
+                <div class="smsrecord_tiaojian" >
+
+
+
+                    <div class="pull-right" >
+                        <div class="input-append search lianxu" ng-init="$root.settings.utils.initpicker()">
+                            <!--
+                            <input class="span2" ng-keypress="warehouse.exitsearch($event)"  placeholder="订单编号"  ng-model="warehouse.searchForm.order_no"  type="text">
+                            <input class="span2 date-picker" ng-keypress="warehouse.exitsearch($event)" placeholder="时间" data-date-format="yyyy-mm-dd"  ng-model="warehouse.searchForm.tid" type="text">
+                            -->
+                            <input class="span2 " placeholder="任务名称" ng-keypress="todotask.exitsearch($event)"  type="text" ng-model="todotask.searchForm.mobanmingcheng" >
+                            <input class="span2 " placeholder="发起者" ng-keypress="todotask.exitsearch($event)"  type="text" ng-model="todotask.searchForm.faqizhe" >
+                            <input class="span2 " placeholder="执行者" ng-keypress="todotask.exitsearch($event)"  type="text" ng-model="todotask.searchForm.zhixingzhe" >
+                            <button class="btn icon-search" type="button" ng-click="todotask.search1()">查询</button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+
+
+
+
+
+           <!-- <div class="smsrecord_tiaojian" >
+                <div class="smsrecord_tiaojian_sc">
+                    <a href ng-click="todotask.delete('520',$event)">
+                        <div id="smsrecord_tiaojian_sc_img"><img src="images/kehu_01.png" border="0" /></div>
+                        <div id="smsrecord_tiaojian_sc_txt">删除</div>
+                        <div class="clear"></div>
+                    </a>
+                </div>
+                <div class="smsrecord_tiaojian_qxz">
+                    <select class="smsrecord_tiaojian_select" ng-model="todotask.searchForm.searchItemName" ng-change="todotask.changeCondition2()" >
+                        <option value="">--请选择筛选条件--</option>
+                        <option class="word" value="yewuleixing_select">任务名称</option>
+                        <option class="word" value="faqizhe_text">发起者</option>
+                        <option class="word" value="zhixingzhe_text">执行者</option>
+                        <option class="word" value="beizhu_text">备注</option>
+                        <option class="word" value="zhuangtai_select">状态</option>
+
+                    </select>
+                </div>
+                <div class="smsrecord_tiaojian_bh" ng-if="searchItemValue_type!='date'&& searchItemValue_type!='select'">
+                    <select class="smsrecord_tiaojian_select" ng-model="todotask.searchForm.searchItemCode"
+                            ng-options="condition.value as condition.name for condition in conditionContent">
+                        <option value="">--请选择筛选条件--</option>
+                    </select>
+                </div>
+                <div class="smsrecord_tiaojian_wbk">
+                    <input ng-if="searchItemValue_type!='date'&& searchItemValue_type!='select'" type="text" class="smsrecord_tiaojian_text" ng-model="todotask.searchForm.searchItemValue"/>
+                    <input ng-if="searchItemValue_type=='date'" type="text" class="smsrecord_tiaojian_text" ng-model="todotask.searchForm.searchItemValue_start"
+                           data-provide="datepicker" data-date-format="yyyy-mm-dd"/><span style="margin: 0 5px;" ng-if="searchItemValue_type=='date'">到</span>
+                    <input ng-if="searchItemValue_type=='date'" type="text" class="smsrecord_tiaojian_text" ng-model="todotask.searchForm.searchItemValue_end"
+                           data-provide="datepicker" data-date-format="yyyy-mm-dd"/>
+                    <select ng-if="searchItemValue_type=='select'" class="smsrecord_tiaojian_select" ng-model="todotask.searchForm.searchItemValue"
+                            ng-options="condition.value as condition.name for condition in conditionValues">
+                        <option value="">--请选择--</option>
+                    </select>
+                </div>
+
+                <div class="smsrecord_tiaojian_ss">
+                    <a href ng-click="todotask.search1()">
+                        <div class="smsrecord_tiaojian_ss_img"><img src="images/gjss_01.png" border="0" /></div>
+                        <div class="smsrecord_tiaojian_ss_txt">搜索</div>
+                        <div class="clear"></div>
+                    </a>
+                </div>
+
+                <div class="clear"></div>
+            </div>-->
+        </div>
+        <!--plczkh_neirong_xia-->
+        <div id="plczkh_neirong_xia">
+            <div id="plczkh_neirong_xia_shang">
+                <table border="0" cellpadding="0" cellspacing="0" class="plczkh_table">
+                    <tr>
+                        <td>
+                            <span class="plczkh_table_kong"></span>
+                            <input  type="checkbox" ng-model="headcheck" ng-click="todotask.checkAll(headcheck)"/>
+                        </td>
+                        <td>
+                               <span class="plczkh_table_title"> <a class="sortable" href ng-click="todotask.setOrderby(todotask.collations, 'yewuleixing')">
+                                   任务名称&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':todotask.isArrowUp('yewuleixing'), 'glyphicon-arrow-down':todotask.isArrowDown('yewuleixing')}"></span>
+                               </a></span>
+                        </td>
+                        <td>
+                                <span class="plczkh_table_title"><a class="sortable" href ng-click="todotask.setOrderby(todotask.collations, 'faqizhe')">
+                                    发起者&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':todotask.isArrowUp('faqizhe'), 'glyphicon-arrow-down':todotask.isArrowDown('faqizhe')}"></span>
+                                </a></span>
+                        </td>
+                        <td>
+                               <span class="plczkh_table_title"> <a class="sortable" href ng-click="todotask.setOrderby(todotask.collations, 'zhixingzhe')">
+                                   执行者&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':todotask.isArrowUp('zhixingzhe'), 'glyphicon-arrow-down':todotask.isArrowDown('zhixingzhe')}"></span>
+                               </a></span>
+                        </td>
+                        <td>
+                               <span class="plczkh_table_title"> <a class="sortable" href ng-click="todotask.setOrderby(todotask.collations, 'beizhu')">
+                                   备注&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':todotask.isArrowUp('beizhu'), 'glyphicon-arrow-down':todotask.isArrowDown('beizhu')}"></span>
+                               </a></span>
+                        </td>
+                        <td>
+                               <span class="plczkh_table_title"> <a class="sortable" href ng-click="todotask.setOrderby(todotask.collations, 'zhuangtai')">
+                                   状态&nbsp;<span class="glyphicon" ng-class="{'glyphicon-arrow-up':todotask.isArrowUp('zhuangtai'), 'glyphicon-arrow-down':todotask.isArrowDown('zhuangtai')}"></span>
+                               </a></span>
+                        </td>
+                        <td ng-if="todotask.state=='1'">
+                            <span class="plczkh_table_title">操作</span>
+                            <span class="plczkh_table_kong"></span>
+                        </td>
+                    </tr>
+                    <tr ng-if="todotask.dataList.length==0">
+                        <td colspan="11"> ----暂无数据！----</td>
+                    </tr>
+
+                    <tr ng-if="todotask.dataList.length>0"  ng-class="{true:'plczkh_table_trbg'}[$index%2==0]" ng-repeat="d in todotask.dataList">
+                        <td>
+                            <span class="plczkh_table_kong"></span>
+                            <input type="checkbox" ng-model="d.checked"/>
+                        </td>
+                        <td><a ng-href="#/{{d.zhuti}}-detail1/{{d.biaodanid}}/{{d.zhuangtai}}">{{d.mobanmingcheng}}</a></td>
+                        <td>{{d.faqizhe}}</td>
+                        <td>{{d.zhixingzhe}}</td>
+                        <td title="{{d.beizhu}}"><span ng-if="d.beizhu.length>9">{{d.beizhu | limitTo:9}}...</span><span ng-if="d.beizhu.length<=9">{{d.beizhu}}</span></td>
+                        <td>{{d.zhuangtai=='0'&&'待审核'||d.zhuangtai=='1'&&'已结束'}}</td>
+                        <td ng-if="d.zhuangtai=='0'&&todotask.state=='1'">
+                            <a  href  ng-click="todotask.forward(d)">通过</a>
+                            <a  href  ng-click="todotask.terminate(d)">驳回</a>
+                        </td>
+                        <!--<td ng-if="d.zhuangtai=='1'">
+
+                        </td>-->
+                    </tr>
+                </table>
+            </div>
+            <div class="plczkh_neirong_xia_xia">
+                <div class="plczkh_neirong_xia_xia_left">
+                    共{{todotask.searchForm.page.totalItems}}条记录{{todotask.searchForm.page.currentPage}}/{{todotask.searchForm.page.totalPages}}页
+                </div>
+                <div class="plczkh_neirong_xia_xia_mid">
+
+                    <pagination boundary-links="true" total-items="todotask.searchForm.page.totalItems"      items-per-page="todotask.searchForm.page.itemsperpage"  ng-model="todotask.searchForm.page.currentPage"  max-size="5" num-pages
+                                class="pagination-sm" previous-text="&lt;&lt;上一页" next-text="下一页&gt;&gt;"
+                                first-text="首页"
+                                last-text="尾页"></pagination>
+                    <div class="clear"></div>
+                </div>
+                <div class="plczkh_neirong_xia_xia_right">
+                    跳转至第<input ng-model="goto" type="number" class="t1"><input class="b1" type="button" ng-click="todotask.searchCurrent(goto)"/>页
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<div class="clear"></div>
+
+
+

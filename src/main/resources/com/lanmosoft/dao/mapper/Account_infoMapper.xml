@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.Account_infoMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Account_info">
+	    INSERT INTO account_info (id
+  ,createTime
+  ,order_id
+  ,account_balance
+  ,current_fee
+  ,mobile_status
+  ,net_time
+  ,net_age
+  ,real_info
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{createTime,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{account_balance,jdbcType=VARCHAR},
+  #{current_fee,jdbcType=VARCHAR},
+  #{mobile_status,jdbcType=VARCHAR},
+  #{net_time,jdbcType=VARCHAR},
+  #{net_age,jdbcType=VARCHAR},
+  #{real_info,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Account_info">
+    	UPDATE account_info 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="account_balance != null" >
+        account_balance = #{account_balance,jdbcType=VARCHAR},
+      </if>
+		<if test="current_fee != null" >
+        current_fee = #{current_fee,jdbcType=VARCHAR},
+      </if>
+		<if test="mobile_status != null" >
+        mobile_status = #{mobile_status,jdbcType=VARCHAR},
+      </if>
+		<if test="net_time != null" >
+        net_time = #{net_time,jdbcType=VARCHAR},
+      </if>
+		<if test="net_age != null" >
+        net_age = #{net_age,jdbcType=VARCHAR},
+      </if>
+		<if test="real_info != null" >
+        real_info = #{real_info,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Account_info">
+    	UPDATE account_info 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        account_balance = #{account_balance,jdbcType=VARCHAR},
+        current_fee = #{current_fee,jdbcType=VARCHAR},
+        mobile_status = #{mobile_status,jdbcType=VARCHAR},
+        net_time = #{net_time,jdbcType=VARCHAR},
+        net_age = #{net_age,jdbcType=VARCHAR},
+        real_info = #{real_info,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from account_info where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from account_info <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE account_info 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.account_balance != null" >
+        account_balance = #{domain.account_balance,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.current_fee != null" >
+        current_fee = #{domain.current_fee,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.mobile_status != null" >
+        mobile_status = #{domain.mobile_status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.net_time != null" >
+        net_time = #{domain.net_time,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.net_age != null" >
+        net_age = #{domain.net_age,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.real_info != null" >
+        real_info = #{domain.real_info,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Account_info">
+		select <include refid="Base_Column_List"/> from account_info where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Account_info" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from account_info <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from account_info <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,createTime
+,order_id
+,account_balance
+,current_fee
+,mobile_status
+,net_time
+,net_age
+,real_info
+	</sql>
+</mapper>

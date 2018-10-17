@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.SellerMapper">
+  
+    <cache eviction="LRU" type="com.lanmosoft.model.RedisCache" />
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Seller">
+	    INSERT INTO tc_loan_sellers (id
+  ,name
+  ,contactor
+  ,address
+  ,cellphone
+  ,number
+  ,password
+  ,addtime
+  ,delstatus
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{name,jdbcType=VARCHAR},
+  #{contactor,jdbcType=VARCHAR},
+  #{address,jdbcType=VARCHAR},
+  #{cellphone,jdbcType=VARCHAR},
+  #{number,jdbcType=VARCHAR},
+  #{password,jdbcType=VARCHAR},
+  #{addtime,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Seller">
+    	UPDATE tc_loan_sellers 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+		<if test="contactor != null" >
+        contactor = #{contactor,jdbcType=VARCHAR},
+      </if>
+		<if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+		<if test="cellphone != null" >
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="number != null" >
+        number = #{number,jdbcType=VARCHAR},
+      </if>
+		<if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+		<if test="addtime != null" >
+        addtime = #{addtime,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Seller">
+    	UPDATE tc_loan_sellers 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        name = #{name,jdbcType=VARCHAR},
+        contactor = #{contactor,jdbcType=VARCHAR},
+        address = #{address,jdbcType=VARCHAR},
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+        number = #{number,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
+        addtime = #{addtime,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from tc_loan_sellers where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from tc_loan_sellers <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE tc_loan_sellers 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.name != null" >
+        name = #{domain.name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.contactor != null" >
+        contactor = #{domain.contactor,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.address != null" >
+        address = #{domain.address,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.cellphone != null" >
+        cellphone = #{domain.cellphone,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.number != null" >
+        number = #{domain.number,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.password != null" >
+        password = #{domain.password,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.addtime != null" >
+        addtime = #{domain.addtime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Seller">
+		select <include refid="Base_Column_List"/> from tc_loan_sellers where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Seller" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from tc_loan_sellers <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from tc_loan_sellers <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,name
+,contactor
+,address
+,cellphone
+,number
+,password
+,addtime
+,delstatus
+	</sql>
+</mapper>

@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS `car` (
+  `id` varchar(128) DEFAULT NULL comment 'id',
+  `carNum` varchar(128) DEFAULT NULL comment '车牌号码',
+  `driverName` varchar(128) DEFAULT NULL comment '司机姓名',
+  `jianquName` varchar(128) DEFAULT NULL comment '监区名',
+  `userId` varchar(128) DEFAULT NULL comment '责任民警Id',
+  `userName` varchar(128) DEFAULT NULL comment '责任民警名称',
+  `carStatus` varchar(128) DEFAULT NULL comment '车辆状态',
+  `creatorId` varchar(128) DEFAULT NULL comment '创建者ID',
+  `creatorName` varchar(128) DEFAULT NULL comment '创建者',
+  `createTime` datetime DEFAULT NULL comment '创建时间',
+  `modifiedTime` datetime DEFAULT NULL comment '修改时间',
+  `delstatus` varchar(128) DEFAULT NULL comment '是否禁用（0：否，1：是）',
+  `superOrg_id` varchar(128) DEFAULT NULL comment '所属公司Id',
+  `superOrg_name` varchar(128) DEFAULT NULL comment '所属公司名称',
+  `fulldept_id` varchar(128) DEFAULT NULL comment '全部门路径Id',
+  `fulldept_name` varchar(128) DEFAULT NULL comment '全部门路径名称',
+  `fullpost_id` varchar(128) DEFAULT NULL comment '全岗位路径Id',
+  `fullpost_name` varchar(128) DEFAULT NULL comment '全岗位路径名称',
+  `org_code` varchar(128) DEFAULT NULL comment '组织机构代码'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+// Text overflow
+// Requires inline-block or block for proper styling
+// 加了多行隐藏
+
+@mixin text-overflow($line-number: 1, $line-height: null) {
+  @if $line-number == 1 {
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $line-number;
+    -webkit-box-orient: vertical;
+  }
+  @if $line-height !=null {
+    max-height: $line-height * $line-number;
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

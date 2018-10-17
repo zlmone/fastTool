@@ -1,0 +1,123 @@
+<!-- END PAGE CONTENT--
+<!--客户弹窗 开始-->
+
+    <div class="modal-header lm_window_head" >
+        <p class="p1" >  文件上传</p>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    <div class="modal-body">
+        <div class="row" ng-controller="file1_controller" nv-file-drop="" uploader="uploader" filters="queueLimit, customFilter">
+            <div class="col-md-4">
+                <!-- BEGIN: ACCORDION DEMO -->
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-green-sharp">
+                            <i class="icon-settings font-green-sharp"></i>
+                            <span class="caption-subject bold uppercase">选择文件</span>
+                            <span class="caption-helper hide"></span>
+                        </div>
+                        <div class="actions">
+                            <a class="btn btn-circle btn-icon-only btn-default" href="#">
+                                <i class="icon-cloud-upload"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div ng-show="uploader.isHTML5">
+                            <!-- 3. nv-file-over uploader="link" over-class="className" -->
+                            <div class="file-drop-zone margin-bottom-20"  nv-file-over="" uploader="uploader" over-class="file-drop-zone-over">
+                                可拖拽上传，请把文件拖拽到此区域
+                            </div>
+                        </div>
+                        <!-- Example: nv-file-select="" uploader="{Object}" options="{Object}" filters="{String}" -->
+                        多文件上传
+                        <input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
+                        单文件上传
+                        <input type="file" nv-file-select="" uploader="uploader" />
+                    </div>
+                </div>
+                <!-- END: ACCORDION DEMO -->
+            </div>
+            <div class="col-md-8">
+                <!-- BEGIN: ACCORDION DEMO -->
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption font-green-sharp">
+                            <i class="icon-settings font-green-sharp"></i>
+                            <span class="caption-subject bold uppercase">上传队列 队列长度</span>
+                            <span class="caption-helper">上传队列 队列长度: {{ uploader.queue.length }}</span>
+                        </div>
+                        <div class="actions">
+                            <a class="btn btn-circle btn-icon-only btn-default fullscreen" href="#" data-original-title="" title="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="portlet-body">
+                        <div class="table-scrollable table-scrollable-borderless">
+                            <table class="table table-hover table-light">
+                                <thead>
+                                <tr class="uppercase">
+                                    <th width="50%">名称</th>
+                                    <th ng-show="uploader.isHTML5">大小</th>
+                                    <th ng-show="uploader.isHTML5">进度</th>
+                                    <th>状态</th>
+                                    <th>操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="item in uploader.queue">
+                                    <td><strong>{{ item.file.name }}</strong></td>
+                                    <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                                    <td ng-show="uploader.isHTML5">
+                                        <div class="progress progress-sm" style="margin-bottom: 0;">
+                                            <div class="progress-bar progress-bar-info" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <span ng-show="item.isSuccess" class="text-success"><i class="glyphicon glyphicon-ok"></i></span>
+                                        <span ng-show="item.isCancel" class="text-info"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                                        <span ng-show="item.isError" class="text-danger"><i class="glyphicon glyphicon-remove"></i></span>
+                                    </td>
+                                    <td nowrap>
+                                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                            <span class="glyphicon glyphicon-upload"></span> 上传
+                                        </button>
+                                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                            <span class="glyphicon glyphicon-ban-circle"></span> 取消
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                                            <span class="glyphicon glyphicon-trash"></span> 删除
+                                        </button>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div>
+                            <p>队列进度:</p>
+                            <div class="progress progress-sm" style="">
+                                <div class="progress-bar progress-bar-info" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+                            <span class="glyphicon glyphicon-upload"></span>  上传所有
+                        </button>
+                        <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span> 取消所有
+                        </button>
+                        <button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()" ng-disabled="!uploader.queue.length">
+                            <span class="glyphicon glyphicon-trash"></span> 删除所有
+                        </button>
+                    </div>
+                </div>
+                <!-- END: ACCORDION DEMO -->
+            </div>
+        </div>
+
+    </div>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn btn-xs" ng-click="ok()">确定</button>
+    </div>
+
+<!--客户弹窗 开始-->

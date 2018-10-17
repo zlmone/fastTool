@@ -1,0 +1,17 @@
+<div ng-controller="order_controller">
+<ul id="myTab" class="nav nav-tabs" style="margin-left: 235px;background-color: white;">
+
+	<li ng-repeat = "d in tabs2">
+		
+		<a ng-click="qu(d.action)" data-toggle="tab">
+			 {{d.title}}<i class="icon-remove" ng-click="remove(d.action)" style="padding-left: 90px;margin-top: -31px;"></i>
+		</a>
+	</li>
+
+	<li ng-repeat = "d in tabs1">
+		<a ng-click="qu(d.action)" data-toggle="tab">
+			 {{d.title}}<i class="icon-remove" ng-click="remove(d.action)" style="padding-left: 90px;margin-top: -31px;"></i>
+		</a>
+	</li>
+</ul>
+</div>

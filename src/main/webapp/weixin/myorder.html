@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no">
+	<title>我的订单</title>
+	<link rel="stylesheet" href="js/mint-ui/mint-ui.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/vue.min.js"></script>
+	<script src="js/mint-ui/mint-ui.js"></script>
+	<script src="js/sea.min.js"></script>
+	<script src="js/sea.config.js"></script>
+</head>
+<body>
+	<div id="app" class="bg-gray" v-cloak>
+		<mt-navbar fixed="true" v-model="selected">
+			<mt-tab-item id="item1">还款中</mt-tab-item>
+			<mt-tab-item id="item2">已结清</mt-tab-item>
+		</mt-navbar>
+		<mt-tab-container swipeable="true" v-model="selected">
+			<mt-tab-container-item id="item1">
+				<div class="no-have" v-if="typeof undergo !== 'object'">
+					<img src="img/no_have.png" alt="">
+					<p>暂无记录</p>
+				</div>
+				<div v-if="typeof undergo === 'object'">
+					<div class="undergo-all">
+						<p><span>{{undergo.name}}</span><span>{{undergo.moneySurplus}}元</span></p>
+						<p><span>{{undergo.time}}</span><span>总金额：{{undergo.moneyAll}}元</span></p>
+						<p><span>每月{{undergo.dateReturn}}日还款</span><span>已还 <span>{{undergo.countReturn}}</span> 期 / 总 <span>{{undergo.countAll}}</span> 期</span></p>
+					</div>
+					<div class="cut"></div>
+					<div class="undergo-history">
+						<div class="head">还款明细</div>
+						<ul class="list">
+							<li class="no" v-if="!undergo.history.length">暂无还款记录</li>
+							<li v-if="undergo.history.length" v-for="item in undergo.history">
+								<span>{{item.money}}元</span>
+								<p>{{item.time}}</p>
+								<p>{{item.state}}</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</mt-tab-container-item>
+			<mt-tab-container-item id="item2">
+				<div class="no-have" v-if="!complete.length">
+					<img src="img/no_have.png" alt="">
+					<p>暂无记录</p>
+				</div>
+				<ul class="complete-list" v-if="complete.length">
+					<li v-for="item in complete">
+						<p>{{item.name}}</p>
+						<p>总金额：{{item.money}}元</p>
+						<p>申请时间：{{item.time}}</p>
+					</li>
+				</ul>
+			</mt-tab-container-item>
+		</mt-tab-container>
+	</div>
+	<script>
+		(function(Vue, seajs){
+			seajs.use([], function(){
+				var app = new Vue({
+					el: "#app",
+					data: {
+						selected: "item1",
+						undergo: {
+							name: "Iphone X 128G",
+							moneyAll: "4100.00",
+							time: "2018-05-21 15:23:56",
+							moneySurplus: "3500.00",
+							dateReturn: "13",
+							countAll: "12",
+							countReturn: "4",
+							history: [{
+								time: "2018-5-20 15:30:12",
+								state: "正常还款",
+								money: "510.00"
+							},{
+								time: "2018-5-20 15:30:12",
+								state: "正常还款",
+								money: "510.00"
+							},{
+								time: "2018-5-20 15:30:12",
+								state: "正常还款",
+								money: "510.00"
+							},{
+								time: "2018-5-20 15:30:12",
+								state: "正常还款",
+								money: "510.00"
+							},{
+								time: "2018-5-20 15:30:12",
+								state: "正常还款",
+								money: "510.00"
+							}]
+						},
+						complete: [{
+							name: "Iphone X 128G（12期）",
+							money: "4100.00",
+							time: "2018-05-21 15:23:56"
+						},{
+							name: "Iphone X 128G（12期）",
+							money: "4100.00",
+							time: "2018-05-21 15:23:56"
+						},{
+							name: "Iphone X 128G（12期）",
+							money: "4100.00",
+							time: "2018-05-21 15:23:56"
+						},{
+							name: "Iphone X 128G（12期）",
+							money: "4100.00",
+							time: "2018-05-21 15:23:56"
+						}]
+					},
+					methods: {
+						
+					}
+				});
+			});
+		})(Vue, seajs);
+	</script>
+</body>
+</html>

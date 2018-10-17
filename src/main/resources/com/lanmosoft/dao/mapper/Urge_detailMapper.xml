@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.Urge_detailMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Urge_detail">
+	    INSERT INTO urge_detail (id
+  ,order_id
+  ,addTime
+  ,content
+  ,creator
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{addTime,jdbcType=VARCHAR},
+  #{content,jdbcType=VARCHAR},
+  #{creator,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Urge_detail">
+    	UPDATE urge_detail 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="addTime != null" >
+        addTime = #{addTime,jdbcType=VARCHAR},
+      </if>
+		<if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+		<if test="creator != null" >
+        creator = #{creator,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Urge_detail">
+    	UPDATE urge_detail 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        addTime = #{addTime,jdbcType=VARCHAR},
+        content = #{content,jdbcType=VARCHAR},
+        creator = #{creator,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from urge_detail where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from urge_detail <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE urge_detail 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.addTime != null" >
+        addTime = #{domain.addTime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.content != null" >
+        content = #{domain.content,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creator != null" >
+        creator = #{domain.creator,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Urge_detail">
+		select <include refid="Base_Column_List"/> from urge_detail where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Urge_detail" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from urge_detail <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from urge_detail <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,order_id
+,addTime
+,content
+,creator
+	</sql>
+</mapper>

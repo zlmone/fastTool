@@ -1,0 +1,177 @@
+<!-- BEGIN PAGE HEADER-->
+
+<!--<div class="page-bar">
+    <ul class="page-breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a href="#">系统管理</a>
+            <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+            <a href="#">仓库管理</a>
+        </li>
+
+    </ul>
+</div>-->
+
+<!-- END PAGE HEADER-->
+<!-- BEGIN PAGE CONTENT-->
+<div class="row">
+    <div class="col-md-12">
+        <div class="todo-ui">
+            <!-- BEGIN TODO SIDEBAR -->
+            <div class="todo-sidebar">
+                <div class="portlet light">
+                    <div class="portlet-title">
+                        <div class="caption" data-toggle="collapse" data-target=".todo-project-list-content">
+                            <span class="caption-subject font-green-sharp bold uppercase">仓库管理 </span>
+                        </div>
+                    </div>
+                    <div class="portlet-body todo-project-list-content">
+                        <div >
+                            <div>
+                                <ul  class="ztree" id="ztree" ></ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END TODO SIDEBAR -->
+            <!-- BEGIN TODO CONTENT -->
+            <div class="todo-content">
+                <div class="portlet light">
+                <!-- PROJECT HEAD -->
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="icon-bar-chart font-green-sharp hide"></i>
+                        <span class="caption-helper">全部唯一常量:</span> &nbsp; <span class="caption-subject font-green-sharp bold uppercase">{{changliangshu.item.fujiedianmingcheng||'请选择常量进行维护'}}</span>
+                    </div>
+                    <div class="actions">
+                        <div class="btn-group">
+                            <a class="btn green-haze btn-circle btn-sm" ng-click="changliangshu.edit()">
+                                新增
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- end PROJECT HEAD -->
+                <div class="portlet-body">
+                <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <!--开始table-->
+                    <div class="table-scrollable" style="overflow-y: auto">
+                        <table class="table table-striped table-bordered table-hover">
+                            <thead>
+                            <tr role="row" class="heading">
+                                <th width="1%">
+                                    <input type="checkbox" class="group-checkable">
+                                </th>
+                                <th width="1%">
+                                    序号
+                                </th>
+                                <th width="15%">
+                                   名称
+                                </th>
+                                <th width="15%">
+                                  全路径名
+                                </th>
+                                <th width="15%">
+                                   状态
+                                </th>
+
+                                <th width="10%">
+                                    <div style="width:120px">操作</div>
+                                </th>
+                            </tr>
+
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="d in changliangshu.dataList" ng-class-odd="'odd'" ng-class-even="'even'">
+                                <td><span> <input type="checkbox" ng-model="d.checked" class="group-checkable"/></span></td>
+                                <td>{{$index+1}}</td>
+                                <td>{{d.mingcheng}}</td>
+                                <td>{{d.quanlujingming}}</td>
+                                <td>{{(d.keyongzhuangtai==1)&&'正常'||'锁仓'}}</td>
+                                <td>
+                                    <a ng-click="changliangshu.deleteData(d)">删除</a>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!--结束table-->
+
+                </div>
+                </div>
+                </div>
+                </div>
+             </div>
+
+         </div>
+    </div>
+</div>
+<!-- END PAGE CONTENT-->
+<script type="text/ng-template" id="changliangshuedit.html">
+    <div class="modal-header lm_window_head" >
+        <span>常量树维护</span>
+        <p class="p2" >  <button class="btn btn-xs" ng-click="cancel()">关闭</button></p>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <form class="form-horizontal" name="form">
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-md-3 control-label ">父节点名称</label>
+                            <div class="col-md-9">
+                                <div class="input-group">
+                                    <div class="input-icon">
+                                        <i class="fa fa-lock fa-fw"></i>
+                                        <input  class="form-control" type="text" readonly ng-model="changliangshu.item.fujiedianmingcheng" placeholder="如果清空表示根节点">
+                                    </div>
+												<span class="input-group-btn">
+												<button id="genpassword" class="btn btn-success" ng-click="changliangshu.clearfujiedian()" type="button"><i class="fa fa-arrow-left fa-fw"></i> 清空</button>
+												</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-md-3 control-label ">本节点名称</label>
+                            <div class="col-md-9">
+                                <input type="text" ng-model="changliangshu.item.mingcheng" required=""   class="form-control"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-12">
+                        <div class="form-group" >
+                            <label class="col-md-3 control-label ">状态</label>
+                            <div class="col-md-9">
+                                <select ng-model="changliangshu.item.keyongzhuangtai" required ng-init="changliangshu.item.keyongzhuangtai=1" class="form-control">
+                                    <option value="1">正常</option>
+                                    <option value="0">锁仓</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+
+    </div>
+    <div class="modal-footer lm_window_footer" >
+        <button class="btn btn-xs" ng-click="cancel()">取消</button>
+        <button class="btn btn-xs" ng-disabled="!form.$valid" ng-click="submit()"> 提交</button>
+    </div>
+</script>

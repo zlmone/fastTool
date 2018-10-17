@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.TellogMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Tellog">
+	    INSERT INTO tellog (id
+  ,order_id
+  ,addTime
+  ,realSystem
+  ,onlinestate
+  ,onlinedes
+  ,timestate
+  ,timedes
+  ,consume_isp
+  ,consume_code
+  ,consume_desc
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{addTime,jdbcType=VARCHAR},
+  #{realSystem,jdbcType=VARCHAR},
+  #{onlinestate,jdbcType=VARCHAR},
+  #{onlinedes,jdbcType=VARCHAR},
+  #{timestate,jdbcType=VARCHAR},
+  #{timedes,jdbcType=VARCHAR},
+  #{consume_isp,jdbcType=VARCHAR},
+  #{consume_code,jdbcType=VARCHAR},
+  #{consume_desc,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Tellog">
+    	UPDATE tellog 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="addTime != null" >
+        addTime = #{addTime,jdbcType=VARCHAR},
+      </if>
+		<if test="realSystem != null" >
+        realSystem = #{realSystem,jdbcType=VARCHAR},
+      </if>
+		<if test="onlinestate != null" >
+        onlinestate = #{onlinestate,jdbcType=VARCHAR},
+      </if>
+		<if test="onlinedes != null" >
+        onlinedes = #{onlinedes,jdbcType=VARCHAR},
+      </if>
+		<if test="timestate != null" >
+        timestate = #{timestate,jdbcType=VARCHAR},
+      </if>
+		<if test="timedes != null" >
+        timedes = #{timedes,jdbcType=VARCHAR},
+      </if>
+		<if test="consume_isp != null" >
+        consume_isp = #{consume_isp,jdbcType=VARCHAR},
+      </if>
+		<if test="consume_code != null" >
+        consume_code = #{consume_code,jdbcType=VARCHAR},
+      </if>
+		<if test="consume_desc != null" >
+        consume_desc = #{consume_desc,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Tellog">
+    	UPDATE tellog 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        addTime = #{addTime,jdbcType=VARCHAR},
+        realSystem = #{realSystem,jdbcType=VARCHAR},
+        onlinestate = #{onlinestate,jdbcType=VARCHAR},
+        onlinedes = #{onlinedes,jdbcType=VARCHAR},
+        timestate = #{timestate,jdbcType=VARCHAR},
+        timedes = #{timedes,jdbcType=VARCHAR},
+        consume_isp = #{consume_isp,jdbcType=VARCHAR},
+        consume_code = #{consume_code,jdbcType=VARCHAR},
+        consume_desc = #{consume_desc,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from tellog where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from tellog <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE tellog 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.addTime != null" >
+        addTime = #{domain.addTime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.realSystem != null" >
+        realSystem = #{domain.realSystem,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.onlinestate != null" >
+        onlinestate = #{domain.onlinestate,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.onlinedes != null" >
+        onlinedes = #{domain.onlinedes,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.timestate != null" >
+        timestate = #{domain.timestate,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.timedes != null" >
+        timedes = #{domain.timedes,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.consume_isp != null" >
+        consume_isp = #{domain.consume_isp,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.consume_code != null" >
+        consume_code = #{domain.consume_code,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.consume_desc != null" >
+        consume_desc = #{domain.consume_desc,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Tellog">
+		select <include refid="Base_Column_List"/> from tellog where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Tellog" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from tellog <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from tellog <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,order_id
+,addTime
+,realSystem
+,onlinestate
+,onlinedes
+,timestate
+,timedes
+,consume_isp
+,consume_code
+,consume_desc
+	</sql>
+</mapper>

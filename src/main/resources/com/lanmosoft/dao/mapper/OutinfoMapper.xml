@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.OutinfoMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Outinfo">
+	    INSERT INTO outinfo (id
+  ,order_id
+  ,business_status
+  ,business_note
+  ,network_status
+  ,network_note
+  ,manlaw_status
+  ,manlaw_note
+  ,discredit_status
+  ,discredit_note
+  ,note
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{business_status,jdbcType=VARCHAR},
+  #{business_note,jdbcType=VARCHAR},
+  #{network_status,jdbcType=VARCHAR},
+  #{network_note,jdbcType=VARCHAR},
+  #{manlaw_status,jdbcType=VARCHAR},
+  #{manlaw_note,jdbcType=VARCHAR},
+  #{discredit_status,jdbcType=VARCHAR},
+  #{discredit_note,jdbcType=VARCHAR},
+  #{note,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Outinfo">
+    	UPDATE outinfo 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="business_status != null" >
+        business_status = #{business_status,jdbcType=VARCHAR},
+      </if>
+		<if test="business_note != null" >
+        business_note = #{business_note,jdbcType=VARCHAR},
+      </if>
+		<if test="network_status != null" >
+        network_status = #{network_status,jdbcType=VARCHAR},
+      </if>
+		<if test="network_note != null" >
+        network_note = #{network_note,jdbcType=VARCHAR},
+      </if>
+		<if test="manlaw_status != null" >
+        manlaw_status = #{manlaw_status,jdbcType=VARCHAR},
+      </if>
+		<if test="manlaw_note != null" >
+        manlaw_note = #{manlaw_note,jdbcType=VARCHAR},
+      </if>
+		<if test="discredit_status != null" >
+        discredit_status = #{discredit_status,jdbcType=VARCHAR},
+      </if>
+		<if test="discredit_note != null" >
+        discredit_note = #{discredit_note,jdbcType=VARCHAR},
+      </if>
+		<if test="note != null" >
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Outinfo">
+    	UPDATE outinfo 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        business_status = #{business_status,jdbcType=VARCHAR},
+        business_note = #{business_note,jdbcType=VARCHAR},
+        network_status = #{network_status,jdbcType=VARCHAR},
+        network_note = #{network_note,jdbcType=VARCHAR},
+        manlaw_status = #{manlaw_status,jdbcType=VARCHAR},
+        manlaw_note = #{manlaw_note,jdbcType=VARCHAR},
+        discredit_status = #{discredit_status,jdbcType=VARCHAR},
+        discredit_note = #{discredit_note,jdbcType=VARCHAR},
+        note = #{note,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from outinfo where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from outinfo <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE outinfo 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.business_status != null" >
+        business_status = #{domain.business_status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.business_note != null" >
+        business_note = #{domain.business_note,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.network_status != null" >
+        network_status = #{domain.network_status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.network_note != null" >
+        network_note = #{domain.network_note,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.manlaw_status != null" >
+        manlaw_status = #{domain.manlaw_status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.manlaw_note != null" >
+        manlaw_note = #{domain.manlaw_note,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.discredit_status != null" >
+        discredit_status = #{domain.discredit_status,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.discredit_note != null" >
+        discredit_note = #{domain.discredit_note,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.note != null" >
+        note = #{domain.note,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Outinfo">
+		select <include refid="Base_Column_List"/> from outinfo where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Outinfo" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from outinfo <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from outinfo <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,order_id
+,business_status
+,business_note
+,network_status
+,network_note
+,manlaw_status
+,manlaw_note
+,discredit_status
+,discredit_note
+,note
+	</sql>
+</mapper>

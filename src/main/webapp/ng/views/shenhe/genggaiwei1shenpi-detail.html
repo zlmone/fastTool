@@ -1,0 +1,198 @@
+<!--start-->
+<div class="container-fluid mar-top2">
+    <div class="row-fluid" >
+        <!--基本信息-->
+        <div class="tab-content span12" style="margin-left:15px;">
+            <div id="gzrl_dlcg" style="width: 100%;">
+                <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="alert.close()">
+                    <span data-ng-bind-html="alert.msg"></span>
+                </alert>
+            </div>
+            <div class="tab-pane fade in active" id="tab1">
+                <div class="container2" style="margin-top:0px;padding:10px;background:#fff;">
+                    <a style="color:#000;font-size:15px;font-weight:bold;" name="tab">基本信息</a>
+                    <div class="pull-right"style="margin:-3px 10px 0 0;">
+                        <div class="btn-group lianxu boder">
+                            <a class="btn "  ng-if="attendance_data.item.financial_audit=='1'&&type=='0'" ng-click="forward(attendance_data.item)"><span>通过</span></a>
+                            <a class="btn "  ng-if="attendance_data.item.financial_audit=='1'&&type=='0'" ng-click="terminate(attendance_data.item)"><span>驳回</span></a>
+                            <a class="btn " ng-click="$root.settings.utils.back()">返回</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="back_box" style="margin-top:10px; position: relative">
+                    <div id="gsxxdiv">
+
+                        <div class="form-body">
+
+                         <!--   <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                   骑士Id：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.knight_id}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>-->
+
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    骑士Id：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.knight_account}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    骑士名称：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                   {{attendance_data.item.knight_name}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    所属城市：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.belong_city}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    所属商圈：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.belong_shangquan_name}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    有效单量：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.effective_quantity}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    考勤天：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.attendance_day}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    状态：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                   <!-- {{attendance_data.item.state}}-->
+                                    {{attendance_data.item.state=='0'&&'异常'||attendance_data.item.state=='1'&&'正常'||''}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                           <!-- <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    确认：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.confirm}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    审核：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.examine}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>-->
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    区长操作：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                  <!--  {{attendance_data.item.head_ofoperation}}-->
+                                    {{attendance_data.item.head_ofoperation=='0'&&'--'||attendance_data.item.head_ofoperation=='1'&&'更改考勤天数为1'||attendance_data.item.head_ofoperation=='2'&&'已确认'||''}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    财务审核：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                   <!-- {{attendance_data.item.financial_audit}}-->
+                                    {{attendance_data.item.financial_audit=='0'&&'--'||attendance_data.item.financial_audit=='1'&&'待审核'||attendance_data.item.financial_audit=='2'&&'审核通过'||attendance_data.item.financial_audit=='3'&&'驳回'||''}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    更改考勤为1原因：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.change_reasons}}
+
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="tnz_half">
+                                <div class="tnz_half_hui">
+                                    审核不通过原因：
+                                    <span class="tnz_kong"></span>
+                                </div>
+                                <div class="tnz_half_bai">
+                                    <span class="tnz_kong"></span>
+                                    {{attendance_data.item.examine_reasons}}
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--end-->
+<div class="clear"></div>

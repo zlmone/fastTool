@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.ProcesszhutiMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Processzhuti">
+	    INSERT INTO processzhuti (id
+  ,shenpileixing
+  ,iszhanleixin_notice
+  ,isduanxin_notice
+  ,isyoujian_notice
+  ,status
+  ,belong_city
+  ,delstatus
+  ,creatorId
+  ,creatorName
+  ,superOrg_id
+  ,superOrg_name
+  ,fulldept_id
+  ,fulldept_name
+  ,fullpost_id
+  ,fullpost_name
+  ,org_code
+  ,createTime
+  ,modifiedTime
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{shenpileixing,jdbcType=VARCHAR},
+  #{iszhanleixin_notice,jdbcType=VARCHAR},
+  #{isduanxin_notice,jdbcType=VARCHAR},
+  #{isyoujian_notice,jdbcType=VARCHAR},
+  #{status,jdbcType=VARCHAR},
+  #{belong_city,jdbcType=VARCHAR},
+  #{delstatus,jdbcType=VARCHAR},
+  #{creatorId,jdbcType=VARCHAR},
+  #{creatorName,jdbcType=VARCHAR},
+  #{superOrg_id,jdbcType=VARCHAR},
+  #{superOrg_name,jdbcType=VARCHAR},
+  #{fulldept_id,jdbcType=VARCHAR},
+  #{fulldept_name,jdbcType=VARCHAR},
+  #{fullpost_id,jdbcType=VARCHAR},
+  #{fullpost_name,jdbcType=VARCHAR},
+  #{org_code,jdbcType=VARCHAR},
+  #{createTime,jdbcType=TIMESTAMP},
+  #{modifiedTime,jdbcType=TIMESTAMP}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Processzhuti">
+    	UPDATE processzhuti 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="shenpileixing != null" >
+        shenpileixing = #{shenpileixing,jdbcType=VARCHAR},
+      </if>
+		<if test="iszhanleixin_notice != null" >
+        iszhanleixin_notice = #{iszhanleixin_notice,jdbcType=VARCHAR},
+      </if>
+		<if test="isduanxin_notice != null" >
+        isduanxin_notice = #{isduanxin_notice,jdbcType=VARCHAR},
+      </if>
+		<if test="isyoujian_notice != null" >
+        isyoujian_notice = #{isyoujian_notice,jdbcType=VARCHAR},
+      </if>
+		<if test="status != null" >
+        status = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="belong_city != null" >
+        belong_city = #{belong_city,jdbcType=VARCHAR},
+      </if>
+		<if test="delstatus != null" >
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorId != null" >
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="creatorName != null" >
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_id != null" >
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="superOrg_name != null" >
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_id != null" >
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fulldept_name != null" >
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_id != null" >
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fullpost_name != null" >
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="org_code != null" >
+        org_code = #{org_code,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="modifiedTime != null" >
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Processzhuti">
+    	UPDATE processzhuti 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        shenpileixing = #{shenpileixing,jdbcType=VARCHAR},
+        iszhanleixin_notice = #{iszhanleixin_notice,jdbcType=VARCHAR},
+        isduanxin_notice = #{isduanxin_notice,jdbcType=VARCHAR},
+        isyoujian_notice = #{isyoujian_notice,jdbcType=VARCHAR},
+        status = #{status,jdbcType=VARCHAR},
+        belong_city = #{belong_city,jdbcType=VARCHAR},
+        delstatus = #{delstatus,jdbcType=VARCHAR},
+        creatorId = #{creatorId,jdbcType=VARCHAR},
+        creatorName = #{creatorName,jdbcType=VARCHAR},
+        superOrg_id = #{superOrg_id,jdbcType=VARCHAR},
+        superOrg_name = #{superOrg_name,jdbcType=VARCHAR},
+        fulldept_id = #{fulldept_id,jdbcType=VARCHAR},
+        fulldept_name = #{fulldept_name,jdbcType=VARCHAR},
+        fullpost_id = #{fullpost_id,jdbcType=VARCHAR},
+        fullpost_name = #{fullpost_name,jdbcType=VARCHAR},
+        org_code = #{org_code,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+        modifiedTime = #{modifiedTime,jdbcType=TIMESTAMP},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from processzhuti where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from processzhuti <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE processzhuti 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.shenpileixing != null" >
+        shenpileixing = #{domain.shenpileixing,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.iszhanleixin_notice != null" >
+        iszhanleixin_notice = #{domain.iszhanleixin_notice,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.isduanxin_notice != null" >
+        isduanxin_notice = #{domain.isduanxin_notice,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.isyoujian_notice != null" >
+        isyoujian_notice = #{domain.isyoujian_notice,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.status != null" >
+        status = #{domain.status,jdbcType=VARCHAR},
+      </if>
+      <if test="domain.belong_city != null" >
+        belong_city = #{domain.belong_city,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.delstatus != null" >
+        delstatus = #{domain.delstatus,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorId != null" >
+        creatorId = #{domain.creatorId,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.creatorName != null" >
+        creatorName = #{domain.creatorName,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_id != null" >
+        superOrg_id = #{domain.superOrg_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.superOrg_name != null" >
+        superOrg_name = #{domain.superOrg_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_id != null" >
+        fulldept_id = #{domain.fulldept_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fulldept_name != null" >
+        fulldept_name = #{domain.fulldept_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_id != null" >
+        fullpost_id = #{domain.fullpost_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fullpost_name != null" >
+        fullpost_name = #{domain.fullpost_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.org_code != null" >
+        org_code = #{domain.org_code,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=TIMESTAMP},
+      </if>
+		<if test="domain.modifiedTime != null" >
+        modifiedTime = #{domain.modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Processzhuti">
+		select <include refid="Base_Column_List"/> from processzhuti where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Processzhuti" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from processzhuti <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from processzhuti <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,shenpileixing
+,iszhanleixin_notice
+,isduanxin_notice
+,isyoujian_notice
+,status
+,delstatus
+,belong_city
+,creatorId
+,creatorName
+,superOrg_id
+,superOrg_name
+,fulldept_id
+,fulldept_name
+,fullpost_id
+,fullpost_name
+,org_code
+,createTime
+,modifiedTime
+	</sql>
+</mapper>

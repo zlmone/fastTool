@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+	"-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.lanmosoft.dao.mapper.Bill_infoMapper">
+  
+  	<insert id="insert" parameterType="com.lanmosoft.dao.model.Bill_info">
+	    INSERT INTO bill_info (id
+  ,createTime
+  ,order_id
+  ,fee_name
+  ,fee_category
+  ,fee_amount
+  ,user_number
+  )
+	    VALUES (#{id,jdbcType=VARCHAR},
+  #{createTime,jdbcType=VARCHAR},
+  #{order_id,jdbcType=VARCHAR},
+  #{fee_name,jdbcType=VARCHAR},
+  #{fee_category,jdbcType=VARCHAR},
+  #{fee_amount,jdbcType=VARCHAR},
+  #{user_number,jdbcType=VARCHAR}
+  )
+ 	</insert>
+ 	
+ 	<update id="update" parameterType="com.lanmosoft.dao.model.Bill_info">
+    	UPDATE bill_info 
+	    <set>
+		<if test="id != null" >
+        id = #{id,jdbcType=VARCHAR},
+      </if>
+		<if test="createTime != null" >
+        createTime = #{createTime,jdbcType=VARCHAR},
+      </if>
+		<if test="order_id != null" >
+        order_id = #{order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="fee_name != null" >
+        fee_name = #{fee_name,jdbcType=VARCHAR},
+      </if>
+		<if test="fee_category != null" >
+        fee_category = #{fee_category,jdbcType=VARCHAR},
+      </if>
+		<if test="fee_amount != null" >
+        fee_amount = #{fee_amount,jdbcType=VARCHAR},
+      </if>
+		<if test="user_number != null" >
+        user_number = #{user_number,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	
+ 	<update id="updateForce" parameterType="com.lanmosoft.dao.model.Bill_info">
+    	UPDATE bill_info 
+	    <set>
+        id = #{id,jdbcType=VARCHAR},
+        createTime = #{createTime,jdbcType=VARCHAR},
+        order_id = #{order_id,jdbcType=VARCHAR},
+        fee_name = #{fee_name,jdbcType=VARCHAR},
+        fee_category = #{fee_category,jdbcType=VARCHAR},
+        fee_amount = #{fee_amount,jdbcType=VARCHAR},
+        user_number = #{user_number,jdbcType=VARCHAR},
+	    </set>
+	    WHERE id = #{id}
+ 	</update>
+ 	 
+    <delete id="delete" parameterType="java.lang.String">
+	  	delete from bill_info where id = #{id}
+	</delete>
+	
+	<delete id="deleteByCondition" parameterType="com.lanmosoft.model.WhereCondition">
+	  	delete from bill_info <include refid="Where_Clause" />
+	</delete>
+	
+	 <update id="updateByCondition" parameterType="map">
+    	UPDATE bill_info 
+	   <set>
+		<if test="domain.id != null" >
+        id = #{domain.id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.createTime != null" >
+        createTime = #{domain.createTime,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.order_id != null" >
+        order_id = #{domain.order_id,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fee_name != null" >
+        fee_name = #{domain.fee_name,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fee_category != null" >
+        fee_category = #{domain.fee_category,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.fee_amount != null" >
+        fee_amount = #{domain.fee_amount,jdbcType=VARCHAR},
+      </if>
+		<if test="domain.user_number != null" >
+        user_number = #{domain.user_number,jdbcType=VARCHAR},
+      </if>
+	    </set>
+	   <where>${wc.condition}</where>
+ 	</update>
+	 
+	<select id="loadById" parameterType="String" resultType="com.lanmosoft.dao.model.Bill_info">
+		select <include refid="Base_Column_List"/> from bill_info where id = #{id}
+	</select>
+	
+    <select id="query" resultType="com.lanmosoft.dao.model.Bill_info" parameterType="com.lanmosoft.model.WhereCondition" >
+    	select <include refid="Base_Column_List" /> from bill_info <include refid="Where_Clause" />
+        <if test="orderBy != null" >${orderBy}</if>
+        <if test="length > 0" >LIMIT ${offset}, ${length}</if>
+  	</select>
+  
+   	<select id="count" resultType="int" parameterType="com.lanmosoft.model.WhereCondition" >
+	    select count(*) from bill_info <include refid="Where_Clause"/>
+  	</select>
+  
+	<sql id="Where_Clause">
+	    <if test="condition != null"><where>${condition}</where></if> 
+	</sql>
+  
+	<sql id="Base_Column_List" >
+	  id
+,createTime
+,order_id
+,fee_name
+,fee_category
+,fee_amount
+,user_number
+	</sql>
+</mapper>

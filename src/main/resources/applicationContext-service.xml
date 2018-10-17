@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd"
+
+       default-lazy-init="true">
+
+    <!-- Activates scanning of @Autowired -->
+    <context:annotation-config/>
+
+    <!-- Activates scanning of @Service -->
+    <context:component-scan base-package="com.lanmosoft.service"/>
+    
+    	<!-- jedisPool配置信息 -->  
+<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">  
+    <property name="maxTotal" value="500"/> <!-- 控制一个pool可分配多少个jedis实例 -->  
+    <property name="maxIdle" value="300" />   <!-- 控制一个pool最多有多少个状态为idle(空闲)的jedis实例 -->  
+    <property name="maxWaitMillis" value="3000" />  <!-- 表示当borrow一个jedis实例时，最大的等待时间，如果超过等待时间，则直接抛出JedisConnectionException -->  
+    <property name="testOnBorrow" value="true" /> <!-- 在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的 -->  
+</bean>  
+
+<bean id="jedisPool" class="redis.clients.jedis.JedisPool" destroy-method="destroy">  
+        <constructor-arg ref="jedisPoolConfig" />    
+        <constructor-arg type="String" value="127.0.0.1" />    
+        <constructor-arg type="int" value="6379" /> 
+        <constructor-arg type="int" value="120" />
+		
+</bean>
+    
+</beans>
